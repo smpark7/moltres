@@ -1,0 +1,4 @@
+fuel0 900
+fuel1 1200
+blanket0 900
+blanket1 1200

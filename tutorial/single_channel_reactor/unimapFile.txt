@@ -1,0 +1,2 @@
+fuel 1
+blanket 3
