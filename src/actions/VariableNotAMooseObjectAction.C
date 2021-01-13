@@ -30,7 +30,8 @@ validParams<VariableNotAMooseObjectAction>()
 }
 
 VariableNotAMooseObjectAction::VariableNotAMooseObjectAction(const InputParameters & params)
-  : Action(params)
+  : Action(params),
+    _order(getParam<MooseEnum>("order"))
 {
 }
 

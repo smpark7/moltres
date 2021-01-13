@@ -19,6 +19,11 @@ protected:
    * @param var_name The variable name
    */
   void addVariable(const std::string & var_name);
+
+  /**
+   * Order of FE shape function
+   */
+  std::string _order;
 };
 
 template <>
