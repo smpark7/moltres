@@ -31,6 +31,8 @@ protected:
   virtual void addPrecursorDecay(const unsigned & op, const std::string & var_name);
   virtual void addTimeDerivative(const unsigned & op, const std::string & var_name);
   virtual void addDGAdvection(const std::string & var_name);
+  virtual void addAdvection(const std::string & var_name);
+  virtual void addScalarAdvectionArtDiff(const std::string & var_name);
   virtual void addOutflowBC(const std::string & var_name);
   virtual void addInflowBC(const std::string & var_name);
   virtual void addIC(const std::string & var_name);

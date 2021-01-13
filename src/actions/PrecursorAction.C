@@ -43,6 +43,13 @@ validParams<PrecursorAction>()
       "v_func", "Allows user to specify function value for v component of velocity.");
   params.addParam<FunctionName>(
       "w_func", "Allows user to specify function value for w component of velocity.");
+  params.addParam<bool>("add_art_diff",
+                        false,
+                        "Add artificial diffusion for stability in high Schmidt number "
+                        "Navier-Stokes flow.");
+  params.addParam<MaterialPropertyName>("prec_diffusivity",
+                                        "prec_diff",
+                                        "The diffusivity material property for precursors.");
   params.addRequiredCoupledVar("group_fluxes",
                                "All the variables that hold the group fluxes. "
                                "These MUST be listed by decreasing "
@@ -138,10 +145,17 @@ PrecursorAction::act()
 
       addPrecursorSource(op, var_name);
       addPrecursorDecay(op, var_name);
+
+      if (_order != "CONSTANT")
+      {
+        addAdvection(var_name);
+        if (getParam<bool>("add_art_diff"))
+          addScalarAdvectionArtDiff(var_name);
+      }
     }
 
     // dg kernels
-    if (_current_task == "add_dg_kernel")
+    if (_current_task == "add_dg_kernel" && _order == "CONSTANT")
     {
       addDGAdvection(var_name);
     }
@@ -266,6 +280,63 @@ PrecursorAction::addDGAdvection(const std::string & var_name)
     std::string kernel_name = "DGFunctionConvection_" + var_name + "_" + _object_suffix;
     _problem->addDGKernel("DGFunctionConvection", kernel_name, params);
   }
+}
+
+void PrecursorAction::addAdvection(const std::string & var_name)
+{
+  if (getParam<bool>("constant_velocity_values"))
+  {
+    // if using constant and uniform velocity values
+    InputParameters params = _factory.getValidParams("ConservativeAdvection");
+    setVarNameAndBlock(params, var_name);
+    RealVectorValue vel = {
+        getParam<Real>("u_def"), getParam<Real>("v_def"), getParam<Real>("w_def")};
+    params.set<RealVectorValue>("velocity") = vel;
+
+    std::string kernel_name = "ConservativeAdvection_" + var_name + "_" + _object_suffix;
+    _problem->addKernel("ConservativeAdvection", kernel_name, params);
+  }
+  else if (isParamValid("uvel")) // checks if Navier-Stokes velocities are provided
+  {
+    // if using Navier-Stokes velocities to couple to: (u, v, w)
+    InputParameters params = _factory.getValidParams("CoupledScalarAdvection");
+    setVarNameAndBlock(params, var_name);
+    params.set<std::vector<VariableName>>("u") = {getParam<NonlinearVariableName>("uvel")};
+    if (isParamValid("vvel"))
+      params.set<std::vector<VariableName>>("v") = {getParam<NonlinearVariableName>("vvel")};
+    if (isParamValid("wvel"))
+      params.set<std::vector<VariableName>>("w") = {getParam<NonlinearVariableName>("wvel")};
+    params.set<bool>("use_exp_form") = false;
+    std::string kernel_name = "CoupledScalarAdvection_" + var_name + "_" + _object_suffix;
+    _problem->addKernel("CoupledScalarAdvection", kernel_name, params);
+  }
+  else
+  {
+    // if using prespecified functions
+    InputParameters params = _factory.getValidParams("VelocityFunctionAdvection");
+    setVarNameAndBlock(params, var_name);
+    params.set<FunctionName>("vel_x_func") = getParam<FunctionName>("u_func");
+    params.set<FunctionName>("vel_y_func") = getParam<FunctionName>("v_func");
+    params.set<FunctionName>("vel_z_func") = getParam<FunctionName>("w_func");
+    std::string kernel_name = "VelocityFunctionAdvection_" + var_name + "_" + _object_suffix;
+    _problem->addKernel("VelocityFunctionAdvection", kernel_name, params);
+  }
+}
+
+void
+PrecursorAction::addScalarAdvectionArtDiff(const std::string & var_name)
+{
+  InputParameters params = _factory.getValidParams("ScalarAdvectionArtDiff");
+  setVarNameAndBlock(params, var_name);
+  params.set<std::vector<VariableName>>("u") = {getParam<NonlinearVariableName>("uvel")};
+  if (isParamValid("vvel"))
+    params.set<std::vector<VariableName>>("v") = {getParam<NonlinearVariableName>("vvel")};
+  if (isParamValid("wvel"))
+    params.set<std::vector<VariableName>>("w") = {getParam<NonlinearVariableName>("wvel")};
+  params.set<MaterialPropertyName>("diffusivity") =
+    getParam<MaterialPropertyName>("prec_diffusivity");
+  std::string kernel_name = "ScalarAdvectionArtDiff_" + var_name + "_" + _object_suffix;
+  _problem->addKernel("ScalarAdvectionArtDiff", kernel_name, params);
 }
 
 void
