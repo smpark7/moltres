@@ -163,10 +163,13 @@ PrecursorAction::act()
     // bcs
     if (_current_task == "add_bc")
     {
-      addOutflowBC(var_name);
+      if (_order == "CONSTANT")
+        addOutflowBC(var_name);
 
       if (getParam<bool>("loop_precs"))
         addInflowBC(var_name);
+      else if (_order != "CONSTANT")
+        addDirichletBC(var_name);
     }
 
     // ics
@@ -287,14 +290,14 @@ void PrecursorAction::addAdvection(const std::string & var_name)
   if (getParam<bool>("constant_velocity_values"))
   {
     // if using constant and uniform velocity values
-    InputParameters params = _factory.getValidParams("ConservativeAdvection");
+    InputParameters params = _factory.getValidParams("CoupledScalarAdvection");
     setVarNameAndBlock(params, var_name);
-    RealVectorValue vel = {
-        getParam<Real>("u_def"), getParam<Real>("v_def"), getParam<Real>("w_def")};
-    params.set<RealVectorValue>("velocity") = vel;
+    params.set<Real>("u_def") = getParam<Real>("u_def");
+    params.set<Real>("v_def") = getParam<Real>("v_def");
+    params.set<Real>("w_def") = getParam<Real>("w_def");
 
-    std::string kernel_name = "ConservativeAdvection_" + var_name + "_" + _object_suffix;
-    _problem->addKernel("ConservativeAdvection", kernel_name, params);
+    std::string kernel_name = "CoupledScalarAdvection_" + var_name + "_" + _object_suffix;
+    _problem->addKernel("CoupledScalarAdvection", kernel_name, params);
   }
   else if (isParamValid("uvel")) // checks if Navier-Stokes velocities are provided
   {
@@ -438,6 +441,19 @@ PrecursorAction::addInflowBC(const std::string & var_name)
     std::string bc_name = "PostprocessorInflowBC_" + var_name + "_" + _object_suffix;
     _problem->addBoundaryCondition("PostprocessorInflowBC", bc_name, params);
   }
+}
+
+void
+PrecursorAction::addDirichletBC(const std::string & var_name)
+{
+  InputParameters params = _factory.getValidParams("DirichletBC");
+  params.set<NonlinearVariableName>("variable") = var_name;
+  params.set<std::vector<BoundaryName>>("boundary") =
+        getParam<std::vector<BoundaryName>>("inlet_boundaries");
+  params.set<Real>("value") = 0.;
+
+  std::string bc_name = "DirichletBC_" + var_name + "_" + _object_suffix;
+  _problem->addBoundaryCondition("DirichletBC", bc_name, params);
 }
 
 void

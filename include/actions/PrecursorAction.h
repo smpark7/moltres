@@ -35,6 +35,7 @@ protected:
   virtual void addScalarAdvectionArtDiff(const std::string & var_name);
   virtual void addOutflowBC(const std::string & var_name);
   virtual void addInflowBC(const std::string & var_name);
+  virtual void addDirichletBC(const std::string & var_name);
   virtual void addIC(const std::string & var_name);
   virtual void addOutletPostprocessor(const std::string & var_name);
   virtual void addInletPostprocessor(const std::string & var_name);
