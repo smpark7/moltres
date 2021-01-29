@@ -13,7 +13,6 @@ H=162.56
   group_fluxes = 'group1 group2'
   temperature = 922
   sss2_input = true
-  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
   account_delayed = false
   nt_scale = ${nt_scale}
 []
