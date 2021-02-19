@@ -62,6 +62,7 @@ validParams<NtAction>()
       "dg_for_temperature",
       true,
       "Whether the temperature variable should use discontinuous basis functions.");
+  params.addParam<bool>("transient", true, "Whether to run a transient simulation.");
   params.addParam<bool>(
       "eigen", false, "Whether to run an eigen- instead of a transient- simulation.");
   params.addRequiredParam<bool>("account_delayed", "Whether to account for delayed neutrons.");
@@ -120,7 +121,7 @@ NtAction::act()
     {
 
       // Set up time derivatives
-      if (!getParam<bool>("eigen"))
+      if (getParam<bool>("transient"))
       {
         InputParameters params = _factory.getValidParams("NtTimeDerivative");
         params.set<NonlinearVariableName>("variable") = var_name;
