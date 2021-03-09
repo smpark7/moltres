@@ -21,7 +21,7 @@ INSADEnergyAmbientConvectionControl::validParams()
       "Computes a controllable heat source/sink due to convection from ambient surroundings.");
   params.addRequiredParam<Real>("alpha",
                                 "The heat transfer coefficient from the ambient surroundings");
-  params.declareControllable("alpha"),
+  params.declareControllable("alpha");
   params.addRequiredParam<Real>("T_ambient", "The ambient temperature");
   return params;
 }
