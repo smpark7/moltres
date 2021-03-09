@@ -31,5 +31,5 @@ ManuHX::computeQpResidual()
 Real
 ManuHX::computeQpJacobian()
 {
-  return _test[_i][_qp] * _htc;
+  return _test[_i][_qp] * _htc * _phi[_j][_qp];
 }
