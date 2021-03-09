@@ -10,6 +10,7 @@ validParams<ManuHX>()
   params.addClassDescription("A uniformly applied heat removal proportional to a difference"
                              "from a nominal temperature. A global heat exchanger.");
   params.addRequiredParam<Real>("htc", "heat transfer coefficient for q'=h*(T-T_ref)");
+  params.declareControllable("htc");
   params.addRequiredParam<Real>("tref", "reference temperature");
   return params;
 }

@@ -18,7 +18,7 @@ protected:
   virtual Real computeQpResidual();
   virtual Real computeQpJacobian();
 
-  Real _htc;
+  const Real & _htc;
   Real _tref;
 };
 
