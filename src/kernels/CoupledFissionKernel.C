@@ -16,6 +16,7 @@ validParams<CoupledFissionKernel>()
                                                "These MUST be listed by decreasing "
                                                "energy/increasing group number.");
   params.addRequiredParam<bool>("account_delayed", "Whether to account for delayed neutrons.");
+  params.addParam<Real>("eigenvalue_scaling", 1.0, "Eigenvalue scaling factor.");
   return params;
 }
 
@@ -34,7 +35,8 @@ CoupledFissionKernel::CoupledFissionKernel(const InputParameters & parameters)
     _num_groups(getParam<unsigned int>("num_groups")),
     _temp_id(coupled("temperature")),
     _temp(coupledValue("temperature")),
-    _account_delayed(getParam<bool>("account_delayed"))
+    _account_delayed(getParam<bool>("account_delayed")),
+    _eigenvalue_scaling(getParam<Real>("eigenvalue_scaling"))
 {
   unsigned int n = coupledComponents("group_fluxes");
   if (!(n == _num_groups))
@@ -62,6 +64,9 @@ CoupledFissionKernel::computeQpResidual()
   else
     r *= _chi_t[_qp][_group];
 
+  if (!(_eigenvalue_scaling == 1.0))
+    r /= _eigenvalue_scaling;
+
   return _test[_i][_qp] * r;
 }
 
@@ -83,6 +88,9 @@ CoupledFissionKernel::computeQpJacobian()
   else
     jac *= _chi_t[_qp][_group];
 
+  if (!(_eigenvalue_scaling == 1.0))
+    jac /= _eigenvalue_scaling;
+
   return _test[_i][_qp] * jac;
 }
 
@@ -100,6 +108,8 @@ CoupledFissionKernel::computeQpOffDiagJacobian(unsigned int jvar)
         jac *= (1. - _beta[_qp]) * _chi_p[_qp][_group];
       else
         jac *= _chi_t[_qp][_group];
+      if (!(_eigenvalue_scaling == 1.0))
+        jac /= _eigenvalue_scaling;
       break;
     }
   }
@@ -118,6 +128,8 @@ CoupledFissionKernel::computeQpOffDiagJacobian(unsigned int jvar)
                (_d_chi_t_d_temp[_qp][_group] * _phi[_j][_qp] * _nsf[_qp][i] +
                 _chi_t[_qp][_group] * _d_nsf_d_temp[_qp][i] * _phi[_j][_qp]);
     }
+    if (!(_eigenvalue_scaling == 1.0))
+      jac /= _eigenvalue_scaling;
   }
 
   return jac;
