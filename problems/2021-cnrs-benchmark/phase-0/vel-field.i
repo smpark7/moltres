@@ -12,8 +12,8 @@ alpha = 1           # INS SUPG and PSPG stabilization parameter
   [./square]
     type = GeneratedMeshGenerator
     dim = 2
-    nx = 40
-    ny = 40
+    nx = 50
+    ny = 50
     xmin = 0
     xmax = 200
     ymin = 0

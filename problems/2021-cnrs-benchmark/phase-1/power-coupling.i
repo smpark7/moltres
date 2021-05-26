@@ -23,8 +23,8 @@ alpha = 1           # INS SUPG and PSPG stabilization parameter
 [Mesh]
     type = GeneratedMesh
     dim = 2
-    nx = 40
-    ny = 40
+    nx = 50
+    ny = 50
     xmin = 0
     xmax = 200
     ymin = 0
@@ -225,8 +225,9 @@ alpha = 1           # INS SUPG and PSPG stabilization parameter
   l_max_its = 1000
   nl_max_its = 5000
   nl_abs_tol = 1e-6
+  eig_check_tol = 1e-7
 
-  free_power_iterations = 4
+  free_power_iterations = 8
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'

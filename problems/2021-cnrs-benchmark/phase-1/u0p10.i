@@ -16,8 +16,8 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   [./square]
     type = GeneratedMeshGenerator
     dim = 2
-    nx = 200
-    ny = 200
+    nx = 40
+    ny = 40
     xmin = 0
     xmax = 200
     ymin = 0
@@ -180,7 +180,7 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
     type = VectorDirichletBC
     variable = vel
     boundary = 'top'
-    values = '50 0 0'
+    values = '0 0 0'
   [../]
   [./pressure_pin]
     type = DirichletBC
@@ -216,8 +216,8 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_package'
-  petsc_options_value = 'lu       NONZERO               superlu_dist'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type'
+  petsc_options_value = 'lu       NONZERO'
   line_search = 'none'
 
   nl_abs_tol = 1e-10
@@ -260,28 +260,28 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
 
 [Transfers]
   [./to_sub_temp]
-    type = MultiAppProjectionTransfer
+    type = MultiAppCopyTransfer
     direction = to_multiapp
     multi_app = ntsApp
     source_variable = temp
     variable = temp
   [../]
   [./to_sub_vel_x]
-    type = MultiAppProjectionTransfer
+    type = MultiAppCopyTransfer
     direction = to_multiapp
     multi_app = ntsApp
     source_variable = vel_x
     variable = vel_x
   [../]
   [./to_sub_vel_y]
-    type = MultiAppProjectionTransfer
+    type = MultiAppCopyTransfer
     direction = to_multiapp
     multi_app = ntsApp
     source_variable = vel_y
     variable = vel_y
   [../]
   [./from_sub]
-    type = MultiAppProjectionTransfer
+    type = MultiAppCopyTransfer
     direction = from_multiapp
     multi_app = ntsApp
     source_variable = heat

@@ -12,8 +12,8 @@
 [Mesh]
     type = GeneratedMesh
     dim = 2
-    nx = 200
-    ny = 200
+    nx = 40
+    ny = 40
     xmin = 0
     xmax = 200
     ymin = 0
@@ -43,6 +43,7 @@
     nt_exp_form = false
     family = MONOMIAL
     order = CONSTANT
+    loop_precursors = false
     transient = false
     eigen = true
     scaling = 1e3
@@ -81,7 +82,7 @@
 [Materials]
   [./fuel]
     type = GenericMoltresMaterial
-    property_tables_root = '../neutron-data/benchmark_'
+    property_tables_root = '../../../property_file_dir/cnrs-benchmark/benchmark_'
     interp_type = 'linear'
   [../]
 []
