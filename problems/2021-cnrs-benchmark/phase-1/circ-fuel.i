@@ -15,8 +15,8 @@
 [Mesh]
     type = GeneratedMesh
     dim = 2
-    nx = 200
-    ny = 200
+    nx = 40
+    ny = 40
     xmin = 0
     xmax = 200
     ymin = 0
@@ -114,8 +114,8 @@
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_gasm_overlap -sub_pc_factor_shift_type -pc_gasm_blocks -sub_pc_factor_mat_solver_type'
-  petsc_options_value = 'gasm     lu           200                1                NONZERO                   16              superlu_dist'
+  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_gasm_overlap -sub_pc_factor_shift_type -pc_gasm_blocks'
+  petsc_options_value = 'gasm     lu           200                1                NONZERO                   4'
 []
 
 [Preconditioning]

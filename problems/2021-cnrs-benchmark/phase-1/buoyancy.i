@@ -24,8 +24,8 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   [./square]
     type = GeneratedMeshGenerator
     dim = 2
-    nx = 200
-    ny = 200
+    nx = 40
+    ny = 40
     xmin = 0
     xmax = 200
     ymin = 0
@@ -65,6 +65,7 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   var_name_base = group
   vacuum_boundaries = 'bottom left right top'
   create_temperature_var = false
+  transient = false
   eigen = true
   scaling = 1e3
 []
@@ -98,6 +99,16 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   [./heat]
     family = MONOMIAL
     order = FIRST
+  [../]
+[]
+
+[UserObjects]
+  [./velocities]
+    type = SolutionUserObject
+    mesh = '../phase-0/vel-field_exodus.e'
+    system_variables = 'vel_x vel_y p'
+    timestep = LATEST
+    execute_on = INITIAL
   [../]
 []
 
@@ -192,12 +203,25 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   [../]
 []
 
+[Functions]
+  [./velxf]
+    type = SolutionFunction
+    from_variable = vel_x
+    solution = velocities
+  [../]
+  [./velyf]
+    type = SolutionFunction
+    from_variable = vel_y
+    solution = velocities
+  [../]
+[]
+
 [ICs]
   [./vel_ic]
-    type = VectorConstantIC
-    x_value = 1e-15
-    y_value = 1e-15
+    type = VectorFunctionIC
     variable = vel
+    function_x = velxf
+    function_y = velyf
   [../]
 []
 
@@ -256,14 +280,15 @@ t_alpha = 2e-4  # K-1, Thermal expansion coefficient
   l_max_its = 1000
   nl_max_its = 5000
   nl_abs_tol = 1e-6
-  eig_check_tol = 1e-7
 
   free_power_iterations = 8
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_gasm_overlap -sub_pc_factor_shift_type -pc_gasm_blocks -sub_pc_factor_mat_solver_type'
-  petsc_options_value = 'gasm     lu           200                1                NONZERO                   16              superlu_dist'
+#  petsc_options_iname = '-pc_type -pc_factor_shift_type'
+#  petsc_options_value = 'lu NONZERO'
+  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_gasm_overlap -sub_pc_factor_shift_type -pc_gasm_blocks'
+  petsc_options_value = 'gasm     lu           200                1                NONZERO                   4'
   line_search = none
 []
 
