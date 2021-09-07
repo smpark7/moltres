@@ -222,4 +222,10 @@
     location = inside
     restricted_subdomains = '4'
   []
+  [./uo2]
+    type = RenameBlockGenerator
+    input = mox3_6
+    old_block_name = fuel
+    new_block_name = uo2
+  []
 []
