@@ -1,26 +1,20 @@
-#ifndef DIFFUSIONNOBCBC_H
-#define DIFFUSIONNOBCBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
-class DiffusionNoBCBC;
-
-template <>
-InputParameters validParams<DiffusionNoBCBC>();
-
 /**
  * This kernel implements the Laplacian operator:
- * $\nabla u \cdot \nabla \phi_i$
+ * \f$\nabla u \cdot \nabla \phi_i\f$
  */
 class DiffusionNoBCBC : public IntegratedBC
 {
 public:
   DiffusionNoBCBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
   virtual Real computeQpResidual() override;
 
   virtual Real computeQpJacobian() override;
 };
-
-#endif /* DIFFUSIONNOBCBC_H */

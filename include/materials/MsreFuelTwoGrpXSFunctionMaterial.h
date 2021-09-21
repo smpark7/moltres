@@ -1,5 +1,4 @@
-#ifndef MSREFUELTWOGRPXSFUNCTIONMATERIAL_H_
-#define MSREFUELTWOGRPXSFUNCTIONMATERIAL_H_
+#pragma once
 
 #include "GenericConstantMaterial.h"
 #include "SplineInterpolation.h"
@@ -7,18 +6,15 @@
 #include "MonotoneCubicInterpolation.h"
 #include "LinearInterpolation.h"
 
-class MsreFuelTwoGrpXSFunctionMaterial;
-
-template <>
-InputParameters validParams<MsreFuelTwoGrpXSFunctionMaterial>();
-
 class MsreFuelTwoGrpXSFunctionMaterial : public GenericConstantMaterial
 {
 public:
   MsreFuelTwoGrpXSFunctionMaterial(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
-  virtual void computeQpProperties();
+  virtual void computeQpProperties() override;
 
   const VariableValue & _T;
   // const MaterialProperty<Real> & _rho;
@@ -29,7 +25,8 @@ protected:
   MaterialProperty<std::vector<Real>> & _fisse;
   MaterialProperty<std::vector<Real>> & _diffcoef;
   MaterialProperty<std::vector<Real>> & _recipvel;
-  MaterialProperty<std::vector<Real>> & _chi;
+  MaterialProperty<std::vector<Real>> & _chi_t;
+  MaterialProperty<std::vector<Real>> & _chi_p;
   MaterialProperty<std::vector<Real>> & _gtransfxs;
   MaterialProperty<std::vector<Real>> & _beta_eff;
   MaterialProperty<Real> & _beta;
@@ -41,11 +38,10 @@ protected:
   MaterialProperty<std::vector<Real>> & _d_fisse_d_temp;
   MaterialProperty<std::vector<Real>> & _d_diffcoef_d_temp;
   MaterialProperty<std::vector<Real>> & _d_recipvel_d_temp;
-  MaterialProperty<std::vector<Real>> & _d_chi_d_temp;
+  MaterialProperty<std::vector<Real>> & _d_chi_t_d_temp;
+  MaterialProperty<std::vector<Real>> & _d_chi_p_d_temp;
   MaterialProperty<std::vector<Real>> & _d_gtransfxs_d_temp;
   MaterialProperty<std::vector<Real>> & _d_beta_eff_d_temp;
   MaterialProperty<Real> & _d_beta_d_temp;
   MaterialProperty<std::vector<Real>> & _d_decay_constant_d_temp;
 };
-
-#endif // MSREFUELTWOGRPXSFUNCTIONMATERIAL_H
