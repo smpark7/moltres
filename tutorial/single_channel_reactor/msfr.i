@@ -139,7 +139,7 @@ ini_neut=1e13
 
 [Executioner]
   type = Transient
-  end_time = 100
+  num_steps = 10
 
   nl_rel_tol = 1e-6
   nl_abs_tol = 1e-5
