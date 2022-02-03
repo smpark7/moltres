@@ -6,8 +6,8 @@
     xmax = 0.625
     ymin = 0
     ymax = 170
-    nx = 8
-    ny = 34
+    nx = 4
+    ny = 17
   []
   [./fuel_right]
     type = GeneratedMeshGenerator
@@ -16,8 +16,8 @@
     xmax = 5
     ymin = 0
     ymax = 170
-    nx = 8
-    ny = 34
+    nx = 4
+    ny = 17
   []
   [./moderator]
     type = GeneratedMeshGenerator
@@ -26,8 +26,8 @@
     xmax = 4.375
     ymin = 0
     ymax = 170
-    nx = 48
-    ny = 34
+    nx = 24
+    ny = 17
   []
   [./unit_mesh]
     type = StitchedMeshGenerator
@@ -56,8 +56,8 @@
     xmax = 65.625
     ymin = 0
     ymax = 170
-    nx = 8
-    ny = 34
+    nx = 4
+    ny = 17
   []
   [./mod_last]
     type = GeneratedMeshGenerator
@@ -66,8 +66,8 @@
     xmax = 69.375
     ymin = 0
     ymax = 170
-    nx = 48
-    ny = 34
+    nx = 24
+    ny = 17
   []
   [./full_mesh]
     type = StitchedMeshGenerator
