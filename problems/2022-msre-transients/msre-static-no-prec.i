@@ -30,21 +30,36 @@
   transient = false
 []
 
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    outlet_boundaries = 'fuel_top'
-    constant_velocity_values = true
-    u_def = 0
-    v_def = 0
-    w_def = 0
-    nt_exp_form = false
+[AuxVariables]
+  [./pre1]
     family = MONOMIAL
     order = CONSTANT
-    loop_precursors = false
-    transient = false
-    block = '0'
-    eigen = true
+    block = 0
+  []
+  [./pre2]
+    family = MONOMIAL
+    order = CONSTANT
+    block = 0
+  []
+  [./pre3]
+    family = MONOMIAL
+    order = CONSTANT
+    block = 0
+  []
+  [./pre4]
+    family = MONOMIAL
+    order = CONSTANT
+    block = 0
+  []
+  [./pre5]
+    family = MONOMIAL
+    order = CONSTANT
+    block = 0
+  []
+  [./pre6]
+    family = MONOMIAL
+    order = CONSTANT
+    block = 0
   []
 []
 
