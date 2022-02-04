@@ -356,15 +356,18 @@ PrecursorAction::addInflowBC(const std::string & var_name)
   else
   {
     // if using prespecified functions
-    InputParameters params = _factory.getValidParams("PostprocessorInflowBC");
+    InputParameters params = _factory.getValidParams("PostprocessorFunctionInflowBC");
     params.set<NonlinearVariableName>("variable") = var_name;
     params.set<std::vector<BoundaryName>>("boundary") =
         getParam<std::vector<BoundaryName>>("inlet_boundaries");
+    params.set<FunctionName>("vel_x_func") = getParam<FunctionName>("u_func");
+    params.set<FunctionName>("vel_y_func") = getParam<FunctionName>("v_func");
+    params.set<FunctionName>("vel_z_func") = getParam<FunctionName>("w_func");
     params.set<PostprocessorName>("postprocessor") =
         "Inlet_Average_" + var_name + "_" + _object_suffix;
 
-    std::string bc_name = "PostprocessorInflowBC_" + var_name + "_" + _object_suffix;
-    _problem->addBoundaryCondition("PostprocessorInflowBC", bc_name, params);
+    std::string bc_name = "PostprocessorFunctionInflowBC_" + var_name + "_" + _object_suffix;
+    _problem->addBoundaryCondition("PostprocessorFunctionInflowBC", bc_name, params);
   }
 }
 
@@ -395,9 +398,9 @@ PrecursorAction::addOutletPostprocessor(const std::string & var_name)
   // looping precursors requires connecting outlet of core problem
   // to the inlet of the loop subproblem. In addition, the outlet of the
   // loop must be connected to the core problem.
-  if (getParam<bool>("constant_velocity_values"))
+  if (getParam<bool>("constant_velocity_values") || !isParamValid("uvel"))
   {
-    // Area-averaged precursor conc at outlet for constant and uniform flow
+    // Area-averaged precursor conc at outlet for constant and uniform flow, or prespecified flow function
     std::string postproc_name = "Outlet_Average_" + var_name + "_" + _object_suffix;
     InputParameters params = _factory.getValidParams("SideAverageValue");
     std::vector<VariableName> varvec(1);
