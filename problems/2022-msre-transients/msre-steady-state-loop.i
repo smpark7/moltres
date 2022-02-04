@@ -7,21 +7,20 @@
 []
 
 [Mesh]
-  [./mesh]
-    type = FileMeshGenerator
-    file = 'msre-steady-state-flow_out_loopApp0_out.e'
-    use_for_exodus_restart = true
-  []
+  type = GeneratedMesh
+  dim = 1
+  nx = 100
+  xmax = 350
+  elem_type = EDGE2
 [../]
 
 [Precursors]
   [./core]
     var_name_base = pre
     outlet_boundaries = 'right'
-    constant_velocity_values = false
-    u_func = vel_func
-    v_func = 0
-    w_func = 0
+    u_def = 21.45
+    v_def = 0
+    w_def = 0
     nt_exp_form = false
     family = MONOMIAL
     order = CONSTANT
@@ -29,15 +28,7 @@
     multi_app = loopApp
     is_loopapp = true
     inlet_boundaries = 'left'
-    init_from_file = true
   [../]
-[]
-
-[Functions]
-  [./vel_func]
-    type = ParsedFunction
-    value = 'if(t<20.0, 21.45 * 0.01 * (41.55445426051471 * t^3 * exp(- 1.191429363538613  * t) + 153.9202791221457 * t^2 * exp(- 1.7549341949958999  * t)+ 109.09101346038737 * t * exp(- 1.7445792842120031  * t)+ 30.185886583872634 * exp(- 0.13241539751519363  * t) + 71.9467100180103 * exp(- 1.652095283444389 * t) - 2.1234830203699615), 1e-14)'
-  []
 []
 
 [Materials]
@@ -54,14 +45,13 @@
 
 [Executioner]
   type = Transient
-  scheme = bdf2
-  end_time = 70
+  end_time = 2000
   nl_rel_tol = 1e-6
   nl_abs_tol = 1e-8
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
-  petsc_options_value = 'lu       NONZERO               superlu_dist'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type'
+  petsc_options_value = 'lu       NONZERO'
   line_search = 'none'
   nl_max_its = 20
   l_max_its = 50
@@ -70,7 +60,17 @@
   compute_scaling_once = false
   resid_vs_jac_scaling_param = 0.1
 
-  dt = 1
+  dtmin = 1
+  dtmax = 20
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    dt = 1
+    cutback_factor = .5
+    growth_factor = 1.5
+    optimal_iterations = 1000
+    iteration_window = 4
+    linear_iteration_ratio = 1000
+  [../]
 []
 
 [Preconditioning]

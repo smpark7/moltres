@@ -74,8 +74,8 @@
   max_power_iterations = 50
 
   # fission power normalization settings
-  normalization = 'powernorm'
-  normal_factor = 1e3
+  normalization = 'bnorm'
+  normal_factor = 1
 
   xdiff = 'group1diff'
   bx_norm = 'bnorm'
@@ -85,7 +85,7 @@
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_package'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
   petsc_options_value = 'lu       NONZERO               superlu_dist'
   line_search = none
 []

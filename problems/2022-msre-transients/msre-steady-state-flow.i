@@ -11,8 +11,7 @@
 [Mesh]
   [./mesh]
     type = FileMeshGenerator
-    file = 'msre-steady-state-flow_exodus.e'
-    use_for_exodus_restart = true
+    file = 'mesh.e'
   []
 []
 
@@ -38,7 +37,6 @@
     is_loopapp = false
     inlet_boundaries = 'fuel_bottom'
     block = 0
-    init_from_file = true
   [../]
 []
 
@@ -60,27 +58,19 @@
     family = LAGRANGE
     order = FIRST
     block = 0
-    initial_from_file_var = vel_x
-    initial_from_file_timestep = LATEST
   []
   [./vel_y]
     family = LAGRANGE
     order = FIRST
     block = 0
-    initial_from_file_var = vel_y
-    initial_from_file_timestep = LATEST
   []
   [./group1]
     family = LAGRANGE
     order = FIRST
-    initial_from_file_var = group1
-    initial_from_file_timestep = LATEST
   []
   [./group2]
     family = LAGRANGE
     order = FIRST
-    initial_from_file_var = group2
-    initial_from_file_timestep = LATEST
   []
 []
 
@@ -133,7 +123,7 @@
 [Functions]
   [./vel_func]
     type = ParsedFunction
-    value = 'if(t<20.0, 21.45 * 0.01 * (41.55445426051471 * t^3 * exp(- 1.191429363538613  * t) + 153.9202791221457 * t^2 * exp(- 1.7549341949958999  * t)+ 109.09101346038737 * t * exp(- 1.7445792842120031  * t)+ 30.185886583872634 * exp(- 0.13241539751519363  * t) + 71.9467100180103 * exp(- 1.652095283444389 * t) - 2.1234830203699615), 1e-14)'
+    value = '21.45'
   []
 []
 
@@ -190,18 +180,14 @@
 
 [Executioner]
   type = Transient
-  scheme = bdf2
-  end_time = 70
+  end_time = 2000
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-#  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_asm_overlap -sub_pc_factor_shift_type'
-#  petsc_options_value = 'asm      lu           200                1               NONZERO'
-  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
-  petsc_options_value = 'lu       NONZERO               superlu_dist'
+  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_asm_overlap -sub_pc_factor_shift_type'
+  petsc_options_value = 'asm      lu           200                1               NONZERO'
 
   nl_abs_tol = 1e-8
-  l_tol = 1e-5
   line_search = none
   automatic_scaling = true
   compute_scaling_once = false
@@ -211,7 +197,20 @@
   fixed_point_abs_tol = 1e-7
   fixed_point_max_its = 5
 
-  dt = 1
+  dtmin = 1
+  dtmax = 20
+  steady_state_detection = true
+  steady_state_tolerance = 1e-12
+  steady_state_start_time = 100
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    dt = 1
+    cutback_factor = .5
+    growth_factor = 1.5
+    optimal_iterations = 1000
+    iteration_window = 4
+    linear_iteration_ratio = 1000
+  [../]
 []
 
 [Preconditioning]
@@ -236,7 +235,7 @@
     app_type = MoltresApp
     execute_on = timestep_begin
     positions = '100 0 0'
-    input_files = 'msre-coastdown-loop.i'
+    input_files = 'msre-steady-state-loop.i'
   []
   [./ntsApp]
     type = FullSolveMultiApp
