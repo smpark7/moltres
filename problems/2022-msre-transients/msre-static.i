@@ -74,8 +74,8 @@
   max_power_iterations = 50
 
   # fission power normalization settings
-  normalization = 'bnorm'
-  normal_factor = 1
+#  normalization = 'bnorm'
+#  normal_factor = 1
 
   xdiff = 'group1diff'
   bx_norm = 'bnorm'
