@@ -27,6 +27,7 @@
   pre_blocks = '0'
   create_temperature_var = false
   eigen = true
+  eigen_delayed = true
   transient = false
 []
 
@@ -101,6 +102,7 @@
   [./bnorm]
     type = ElmIntegTotFissNtsPostprocessor
     execute_on = linear
+    block = 0
   [../]
   [./tot_fissions]
     type = ElmIntegTotFissPostprocessor
