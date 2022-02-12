@@ -9,7 +9,7 @@
 [Mesh]
   type = GeneratedMesh
   dim = 1
-  nx = 100
+  nx = 70
   xmax = 350
   elem_type = EDGE2
 [../]
@@ -24,7 +24,7 @@
     w_func = 0
     nt_exp_form = false
     family = MONOMIAL
-    order = CONSTANT
+    order = FIRST
     loop_precursors = true
     multi_app = loopApp
     is_loopapp = true
@@ -32,10 +32,64 @@
   [../]
 []
 
+[Kernels]
+  [./pre1_advection]
+    type = CtrlConservativeAdvection
+    variable = pre1
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+  [./pre2_advection]
+    type = CtrlConservativeAdvection
+    variable = pre2
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+  [./pre3_advection]
+    type = CtrlConservativeAdvection
+    variable = pre3
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+  [./pre4_advection]
+    type = CtrlConservativeAdvection
+    variable = pre4
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+  [./pre5_advection]
+    type = CtrlConservativeAdvection
+    variable = pre5
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+  [./pre6_advection]
+    type = CtrlConservativeAdvection
+    variable = pre6
+    u_val = 0
+    v_val = 0
+    w_val = 0
+  []
+[]
+
 [Functions]
   [./vel_func]
     type = ParsedFunction
     value = 'if(t<10.0, 21.45 * 0.01 * (100 * ( 0.38972176921688984 / (1 + exp(- 4.142965323851681 * (t - 2.1997827088970765 ))) + 0.13469852389267972 / (1 + exp(- 15.999999999891843 * (t - 1.8229607556265044 ))) + 0.024364484449346135 / (1 + exp(- 3.3040453278344293 * (t - 8.261191902527791 ))) + 0.13064766354202037 / (1 + exp(- 15.999999999991578 * (t - 1.427099833340688 )))) + 15.999999999999998 / (1 + exp(- 3.160549381680319 * (t - 3.0457517232294262 ))) + 15.999999999999998 / (1 + exp(- 1.7598149179499631 * (t - 4.365843500245082 )))), 21.45)'
+  []
+[]
+
+[Controls]
+  [./func_control]
+    type = RealFunctionControl
+    parameter = '*/*/u_val'
+    function = 'vel_func'
+    execute_on = 'initial timestep_begin'
   []
 []
 
@@ -54,7 +108,7 @@
 [Executioner]
   type = Transient
   scheme = bdf2
-  end_time = 50
+  end_time = 150
   nl_rel_tol = 1e-6
   nl_abs_tol = 1e-8
   solve_type = 'NEWTON'
@@ -63,13 +117,14 @@
   petsc_options_value = 'lu       NONZERO               superlu_dist'
   line_search = 'none'
   nl_max_its = 20
+  nl_forced_its = 2
   l_max_its = 50
 
   automatic_scaling = true
   compute_scaling_once = false
   resid_vs_jac_scaling_param = 0.1
 
-  dt = 1
+  dt = .5
 []
 
 [Preconditioning]

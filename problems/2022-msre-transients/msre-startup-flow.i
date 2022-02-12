@@ -2,10 +2,11 @@
   num_groups = 2
   num_precursor_groups = 6
   group_fluxes = 'group1 group2'
+  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
   temperature = 922
-  sss2_input = false
   transient = true
   integrate_p_by_parts = true
+  account_delayed = true
 []
 
 [Mesh]
@@ -78,6 +79,18 @@
     initial_from_file_var = group2
     initial_from_file_timestep = LATEST
   []
+  [./group1_source]
+    family = LAGRANGE
+    order = FIRST
+    initial_from_file_var = group1_source
+    initial_from_file_timestep = LATEST
+  []
+  [./group2_source]
+    family = LAGRANGE
+    order = FIRST
+    initial_from_file_var = group2_source
+    initial_from_file_timestep = LATEST
+  []
 []
 
 [Kernels]
@@ -124,6 +137,20 @@
     block = 0
     component = y
   []
+  [./group1_normalization]
+    type = NormalizationAux
+    variable = group1
+    source_variable = group1_source
+    normalization = bnorm
+    execute_on = linear
+  []
+  [./group2_normalization]
+    type = NormalizationAux
+    variable = group2
+    source_variable = group2_source
+    normalization = bnorm
+    execute_on = linear
+  []
 []
 
 [Functions]
@@ -136,8 +163,8 @@
 [ICs]
   [./vel_ic]
     type = VectorConstantIC
-    x_value = 1e-14
-    y_value = 1e-14
+    x_value = 1e-4
+    y_value = 1e-4
     variable = vel
   []
 []
@@ -187,7 +214,7 @@
 [Executioner]
   type = Transient
   scheme = bdf2
-  end_time = 50
+  end_time = 150
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
@@ -197,6 +224,7 @@
   petsc_options_value = 'lu       NONZERO               superlu_dist'
 
   nl_abs_tol = 1e-8
+  nl_forced_its = 1
   l_tol = 1e-5
   line_search = none
   automatic_scaling = true
@@ -207,7 +235,7 @@
   fixed_point_abs_tol = 1e-7
   fixed_point_max_its = 5
 
-  dt = 1
+  dt = .5
 []
 
 [Preconditioning]
@@ -218,6 +246,10 @@
 []
 
 [Postprocessors]
+  [./bnorm]
+    type = Receiver
+    default = 1
+  []
   [./vel_y]
     type = ElementAverageValue
     block = 0
@@ -256,7 +288,15 @@
     direction = from_multiapp
     multi_app = ntsApp
     source_variable = 'group1 group2'
-    variable = 'group1 group2'
+    variable = 'group1_source group2_source'
+  []
+  [./from_nts_k_eff]
+    type = MultiAppPostprocessorTransfer
+    direction = from_multiapp
+    multi_app = ntsApp
+    from_postprocessor = bnorm
+    to_postprocessor = bnorm
+    reduction_type = average
   []
 []
 

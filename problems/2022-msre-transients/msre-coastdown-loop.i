@@ -3,7 +3,7 @@
   num_precursor_groups = 6
   temperature = 922
   group_fluxes = ''
-  sss2_input = false
+  sss2_input = true
 []
 
 [Mesh]
@@ -64,13 +64,14 @@
   petsc_options_value = 'lu       NONZERO               superlu_dist'
   line_search = 'none'
   nl_max_its = 20
+  nl_forced_its = 2
   l_max_its = 50
 
   automatic_scaling = true
   compute_scaling_once = false
   resid_vs_jac_scaling_param = 0.1
 
-  dt = 1
+  dt = .5
 []
 
 [Preconditioning]

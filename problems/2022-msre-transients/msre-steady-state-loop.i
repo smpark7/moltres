@@ -9,7 +9,7 @@
 [Mesh]
   type = GeneratedMesh
   dim = 1
-  nx = 100
+  nx = 70
   xmax = 350
   elem_type = EDGE2
 [../]
@@ -54,6 +54,7 @@
   petsc_options_value = 'lu       NONZERO'
   line_search = 'none'
   nl_max_its = 20
+  nl_forced_its = 2
   l_max_its = 50
 
   automatic_scaling = true

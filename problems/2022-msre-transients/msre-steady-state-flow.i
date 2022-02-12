@@ -2,10 +2,12 @@
   num_groups = 2
   num_precursor_groups = 6
   group_fluxes = 'group1 group2'
+  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
   temperature = 922
   sss2_input = false
   transient = true
   integrate_p_by_parts = true
+  account_delayed = true
 []
 
 [Mesh]
@@ -72,6 +74,14 @@
     family = LAGRANGE
     order = FIRST
   []
+  [./group1_source]
+    family = LAGRANGE
+    order = FIRST
+  []
+  [./group2_source]
+    family = LAGRANGE
+    order = FIRST
+  []
 []
 
 [Kernels]
@@ -117,6 +127,20 @@
     vector_variable = vel
     block = 0
     component = y
+  []
+  [./group1_normalization]
+    type = NormalizationAux
+    variable = group1
+    source_variable = group1_source
+    normalization = bnorm
+    execute_on = linear
+  []
+  [./group2_normalization]
+    type = NormalizationAux
+    variable = group2
+    source_variable = group2_source
+    normalization = bnorm
+    execute_on = linear
   []
 []
 
@@ -188,6 +212,7 @@
   petsc_options_value = 'asm      lu           200                1               NONZERO'
 
   nl_abs_tol = 1e-8
+  nl_forced_its = 1
   line_search = none
   automatic_scaling = true
   compute_scaling_once = false
@@ -227,6 +252,10 @@
     variable = vel_y
     execute_on = TIMESTEP_END
   []
+  [./bnorm]
+    type = Receiver
+    default = 1
+  []
 []
 
 [MultiApps]
@@ -259,7 +288,15 @@
     direction = from_multiapp
     multi_app = ntsApp
     source_variable = 'group1 group2'
-    variable = 'group1 group2'
+    variable = 'group1_source group2_source'
+  []
+  [./from_nts_k_eff]
+    type = MultiAppPostprocessorTransfer
+    direction = from_multiapp
+    multi_app = ntsApp
+    from_postprocessor = bnorm
+    to_postprocessor = bnorm
+    reduction_type = average
   []
 []
 
