@@ -63,6 +63,8 @@ NtAction::validParams()
       "Whether the temperature variable should use discontinuous basis functions.");
   params.addParam<bool>(
       "eigen", false, "Whether to run an eigen- instead of a transient- simulation.");
+  params.addParam<bool>(
+      "eigen_delayed", "Whether to use the eigen kernel for delayed neutron source.");
   params.addRequiredParam<bool>("account_delayed", "Whether to account for delayed neutrons.");
   params.addRequiredParam<bool>("sss2_input",
                                 "Whether the input follows sss2 form scattering matrices.");
@@ -245,7 +247,9 @@ NtAction::act()
 
       if (getParam<bool>("account_delayed"))
       {
-        if (!getParam<bool>("eigen"))
+        bool use_eigen_delayed = isParamValid("eigen_delayed") ?
+            getParam<bool>("eigen_delayed") : getParam<bool>("eigen");
+        if (!use_eigen_delayed)
         {
           // not the eigenkernel:
           InputParameters params = _factory.getValidParams("DelayedNeutronSource");
