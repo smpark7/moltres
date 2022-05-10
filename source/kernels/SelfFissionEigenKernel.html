@@ -1,379 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>SelfFissionEigenKernel | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="e70d9777-dd36-4a41-8203-bcbed4f1130b" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="224dabdb-2dd5-4761-a3bb-15aabc83caac" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="784a39cd-a8a6-473d-a237-6ccb7c1b5475" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="04a39a07-80f9-4406-8024-b58a3913a38e"><i class="material-icons">menu</i></a><ul class="sidenav" id="04a39a07-80f9-4406-8024-b58a3913a38e"><li><a href="#!" class="dropdown-trigger" data-target="78d15d4f-902b-4c88-99d5-cd4a27b8c619" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="9ed9b119-8012-4cde-b769-b91fe2516b46" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="b17231f4-ff88-4f9e-b371-a6d502626a7b" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="e70d9777-dd36-4a41-8203-bcbed4f1130b"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="224dabdb-2dd5-4761-a3bb-15aabc83caac"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="784a39cd-a8a6-473d-a237-6ccb7c1b5475"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="78d15d4f-902b-4c88-99d5-cd4a27b8c619"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="9ed9b119-8012-4cde-b769-b91fe2516b46"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="b17231f4-ff88-4f9e-b371-a6d502626a7b"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">kernels</span><a href="#" class="breadcrumb">SelfFissionEigenKernel</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="4c7cd310-6c51-487c-a18f-6ab45cfe3450" data-section-level="1" data-section-text="SelfFissionEigenKernel"><h1 id="selffissioneigenkernel">SelfFissionEigenKernel</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p><p>The SelfFissionEigenKernel has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></p></div></div></div><p></p><section class="scrollspy" id="7bac26d8-e881-4e9e-964a-a471d61a9d77" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="0152fd81-73f2-4de3-a120-bd6e6a8a1ca8" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="e165e985-7c8a-4545-a9c0-bf4cf89e346c" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="3f20573d-323e-409a-9da0-b577cc77e09f" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">nu_f</span><span class="moose-parameter-header-description">The number of neutrons produced per fission.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The number of neutrons produced per fission.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">sigma_f</span><span class="moose-parameter-header-description">The macroscopic fission cross section.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The macroscopic fission cross section.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="b782e7df-da67-4c54-8acc-bd54bf51892b" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">block</span><span class="moose-parameter-header-description">The list of blocks (ids or names) that this object will be applied</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;SubdomainName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The list of blocks (ids or names) that this object will be applied</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">displacements</span><span class="moose-parameter-header-description">The displacements</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The displacements</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">eigen</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Use for eigenvalue problem (true) or source problem (false)</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Use for eigenvalue problem (true) or source problem (false)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">eigen_postprocessor</span><span class="moose-parameter-header-default">1</span><span class="moose-parameter-header-description">The name of the postprocessor that provides the eigenvalue.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>1</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>PostprocessorName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the postprocessor that provides the eigenvalue.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="e001add9-5165-4066-9213-c63623f6d34d" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">diag_save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this Kernel's diagonal Jacobian contributions to. Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this Kernel's diagonal Jacobian contributions to. Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this Kernel's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this Kernel's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="db315298-3889-4719-bcb7-622a94919471" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="34bc19f8-06e9-44be-96e4-090b9e79c210" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#a71547c0-3e79-46d1-b4f8-5e069bba664b">(problems/msr-2x2-reflective-bcs.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#b5da6fa4-69c2-4e24-a436-624f309215f8">(problems/msr.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#6616cd2d-597b-430c-8036-4c8f22bdcef4">(problems/msr-small-vacuum.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#ac139b36-bf4a-41cc-9d11-318b852868b0">(problems/msr-10x10-vacuum.i)</a></li></ul></section></section><div class="moose-modal modal" id="a71547c0-3e79-46d1-b4f8-5e069bba664b"><div class="modal-content"><h4>(problems/msr-2x2-reflective-bcs.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
-  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr-small.msh&#x27;
-[../]
-
-[Variables]
-  [./u]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-  [./v]
-    order = FIRST
-    family = LAGRANGE
-    eigen = true
-  [../]
-[]
-
-[Kernels]
-  [./diff_u]
-    type = MatDiffusion
-    variable = u
-    prop_name = d_u
-  [../]
-  [./diff_v]
-    type = MatDiffusion
-    variable = v
-    prop_name = d_v
-  [../]
-  [./sigma_r_u]
-    type = SigmaR
-    variable = u
-    sigma_r = sigma_r_u
-  [../]
-  [./sigma_r_v]
-    type = SigmaR
-    variable = v
-    sigma_r = sigma_r_v
-  [../]
-  [./inscatter_v]
-    type = InScatter
-    variable = v
-    scattered_group = u
-    sigma_s = sigma_12
-  [../]
-
-  [./fission_source_u_from_v]
-    type = CoupledFissionEigenKernel
-    variable = u
-    fissioning_group = v
-    nu_f = nu_f_v
-    sigma_f = sigma_f_v
-  [../]
-  [./fission_source_u_from_u]
-    type = SelfFissionEigenKernel
-    variable = u
-    nu_f = nu_f_u
-    sigma_f = sigma_f_u
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericConstantMaterial
-    block = &#x27;fuel&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
-    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
-  [../]
-  [./moder]
-    type = GenericConstantMaterial
-    block = &#x27;moder&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
-    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
-  [../]
-[]
-
-# [BCs]
-#   [./homogeneous_u]
-#     type = DirichletBC
-#     variable = u
-#     boundary = &#x27;boundary&#x27;
-#     value = 0
-#   [../]
-#   [./homogeneous_v]
-#     type = DirichletBC
-#     variable = v
-#     boundary = &#x27;boundary&#x27;
-#     value = 0
-#   [../]
-# []
-
-[Executioner]
-  type = NonlinearEigen
-
-  bx_norm = &#x27;vnorm&#x27;
-
-  free_power_iterations = 2
-  source_abs_tol = 1e-12
-  source_rel_tol = 1e-50
-  k0 = 1.0
-  output_after_power_iterations = true
-
-  #Preconditioned JFNK (default)
-  solve_type = &#x27;PJFNK&#x27;
-[]
-
-[Postprocessors]
-  [./vnorm]
-    type = ElementIntegralVariablePostprocessor
-    variable = v
-    # execute on residual is important for nonlinear eigen solver!
-    execute_on = linear
-  [../]
-
-  [./udiff]
-    type = ElementL2Diff
-    variable = u
-    outputs = console
-  [../]
-[]
-
-[Outputs]
-  [./out]
-    type = Exodus
-    execute_on = &#x27;timestep_end&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="b5da6fa4-69c2-4e24-a436-624f309215f8"><div class="modal-content"><h4>(problems/msr.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
-  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr.msh&#x27;
-[../]
-
-[Variables]
-  [./u]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-  [./v]
-    order = FIRST
-    family = LAGRANGE
-    eigen = true
-  [../]
-[]
-
-[Kernels]
-  [./diff_u]
-    type = MatDiffusion
-    variable = u
-    prop_name = d_u
-  [../]
-  [./diff_v]
-    type = MatDiffusion
-    variable = v
-    prop_name = d_v
-  [../]
-  [./sigma_r_u]
-    type = SigmaR
-    variable = u
-    sigma_r = sigma_r_u
-  [../]
-  [./sigma_r_v]
-    type = SigmaR
-    variable = v
-    sigma_r = sigma_r_v
-  [../]
-  [./inscatter_v]
-    type = InScatter
-    variable = v
-    scattered_group = u
-    sigma_s = sigma_12
-  [../]
-
-  [./fission_source_u_from_v]
-    type = CoupledFissionEigenKernel
-    variable = u
-    fissioning_group = v
-    nu_f = nu_f_v
-    sigma_f = sigma_f_v
-  [../]
-  [./fission_source_u_from_u]
-    type = SelfFissionEigenKernel
-    variable = u
-    nu_f = nu_f_u
-    sigma_f = sigma_f_u
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericConstantMaterial
-    block = &#x27;fuel&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
-    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
-  [../]
-  [./moder]
-    type = GenericConstantMaterial
-    block = &#x27;moder&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
-    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
-  [../]
-[]
-
-# [BCs]
-#   [./homogeneous_u]
-#     type = DirichletBC
-#     variable = u
-#     boundary = &#x27;boundary&#x27;
-#     value = 0
-#   [../]
-#   [./homogeneous_v]
-#     type = DirichletBC
-#     variable = v
-#     boundary = &#x27;boundary&#x27;
-#     value = 0
-#   [../]
-# []
-
-[Executioner]
-  type = NonlinearEigen
-
-  bx_norm = &#x27;vnorm&#x27;
-
-  free_power_iterations = 2
-  source_abs_tol = 1e-12
-  source_rel_tol = 1e-50
-  k0 = 1.0
-  output_after_power_iterations = true
-
-  #Preconditioned JFNK (default)
-  solve_type = &#x27;PJFNK&#x27;
-[]
-
-[Postprocessors]
-  [./vnorm]
-    type = ElementIntegralVariablePostprocessor
-    variable = v
-    # execute on residual is important for nonlinear eigen solver!
-    execute_on = linear
-  [../]
-
-  [./udiff]
-    type = ElementL2Diff
-    variable = u
-    outputs = console
-  [../]
-[]
-
-[Outputs]
-  [./out]
-    type = Exodus
-    execute_on = &#x27;timestep_end&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="6616cd2d-597b-430c-8036-4c8f22bdcef4"><div class="modal-content"><h4>(problems/msr-small-vacuum.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
-  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr-small.msh&#x27;
-[../]
-
-[Variables]
-  [./u]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-  [./v]
-    order = FIRST
-    family = LAGRANGE
-    eigen = true
-  [../]
-[]
-
-[Kernels]
-  [./diff_u]
-    type = MatDiffusion
-    variable = u
-    prop_name = d_u
-  [../]
-  [./diff_v]
-    type = MatDiffusion
-    variable = v
-    prop_name = d_v
-  [../]
-  [./sigma_r_u]
-    type = SigmaR
-    variable = u
-    sigma_r = sigma_r_u
-  [../]
-  [./sigma_r_v]
-    type = SigmaR
-    variable = v
-    sigma_r = sigma_r_v
-  [../]
-  [./inscatter_v]
-    type = InScatter
-    variable = v
-    scattered_group = u
-    sigma_s = sigma_12
-  [../]
-
-  [./fission_source_u_from_v]
-    type = CoupledFissionEigenKernel
-    variable = u
-    fissioning_group = v
-    nu_f = nu_f_v
-    sigma_f = sigma_f_v
-  [../]
-  [./fission_source_u_from_u]
-    type = SelfFissionEigenKernel
-    variable = u
-    nu_f = nu_f_u
-    sigma_f = sigma_f_u
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericConstantMaterial
-    block = &#x27;fuel&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
-    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
-  [../]
-  [./moder]
-    type = GenericConstantMaterial
-    block = &#x27;moder&#x27;
-    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
-    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
-  [../]
-[]
-
-[BCs]
-  [./homogeneous_u]
-    type = VacuumBC
-    variable = u
-    boundary = &#x27;boundary&#x27;
-    alpha = .5941650
-  [../]
-  [./homogeneous_v]
-    type = VacuumBC
-    variable = v
-    boundary = &#x27;boundary&#x27;
-    alpha = .9912190
-  [../]
-[]
-
-[Executioner]
-  type = NonlinearEigen
-
-  bx_norm = &#x27;vnorm&#x27;
-
-  free_power_iterations = 2
-  source_abs_tol = 1e-12
-  source_rel_tol = 1e-50
-  k0 = 1.0
-  output_after_power_iterations = true
-
-  #Preconditioned JFNK (default)
-  solve_type = &#x27;PJFNK&#x27;
-[]
-
-[Postprocessors]
-  [./vnorm]
-    type = ElementIntegralVariablePostprocessor
-    variable = v
-    # execute on residual is important for nonlinear eigen solver!
-    execute_on = linear
-  [../]
-
-  [./udiff]
-    type = ElementL2Diff
-    variable = u
-    outputs = console
-  [../]
-[]
-
-[Outputs]
-  [./out]
-    type = Exodus
-    execute_on = &#x27;timestep_end&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="ac139b36-bf4a-41cc-9d11-318b852868b0"><div class="modal-content"><h4>(problems/msr-10x10-vacuum.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+<!DOCTYPE html><head><meta charset="UTF-8"><title>SelfFissionEigenKernel | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="175e1c60-57b3-45f5-8b87-448d5ef8c0b5" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="8a13e37c-f4a5-49fd-9b1f-df2d60474ad2" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="502d7cae-d0db-44e1-a963-95df9a30d632" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="ffb76333-2df5-4cdc-baeb-62031fb98f1d"><i class="material-icons">menu</i></a><ul class="sidenav" id="ffb76333-2df5-4cdc-baeb-62031fb98f1d"><li><a href="#!" class="dropdown-trigger" data-target="cc76147c-43c0-4705-a211-581ac755289d" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="bd4726fd-5c42-4b57-a47e-e9815119021b" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="85a037ac-9302-4cd8-ac95-1f94281aea01" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="175e1c60-57b3-45f5-8b87-448d5ef8c0b5"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="8a13e37c-f4a5-49fd-9b1f-df2d60474ad2"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="502d7cae-d0db-44e1-a963-95df9a30d632"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="cc76147c-43c0-4705-a211-581ac755289d"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="bd4726fd-5c42-4b57-a47e-e9815119021b"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="85a037ac-9302-4cd8-ac95-1f94281aea01"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">kernels</span><a href="#" class="breadcrumb">SelfFissionEigenKernel</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="79520347-ada2-47aa-b035-5e4fb5e2d19b" data-section-level="1" data-section-text="SelfFissionEigenKernel"><h1 id="selffissioneigenkernel">SelfFissionEigenKernel</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p><p>The SelfFissionEigenKernel has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></p></div></div></div><p></p><section class="scrollspy" id="7d29b774-a105-484c-aefc-1d26e749b3d6" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="323c2732-b299-4c99-b0d8-8daa2af2583d" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="85504cd2-4575-4265-8bbf-a142e0400cf4" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="d6f5a4c1-fdae-4e5b-a937-6309596abe6b" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">nu_f</span><span class="moose-parameter-header-description">The number of neutrons produced per fission.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The number of neutrons produced per fission.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">sigma_f</span><span class="moose-parameter-header-description">The macroscopic fission cross section.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The macroscopic fission cross section.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="0d075852-3cd0-42d1-bf3a-f2f8e802d314" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">block</span><span class="moose-parameter-header-description">The list of blocks (ids or names) that this object will be applied</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;SubdomainName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The list of blocks (ids or names) that this object will be applied</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">displacements</span><span class="moose-parameter-header-description">The displacements</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The displacements</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">eigen</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Use for eigenvalue problem (true) or source problem (false)</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Use for eigenvalue problem (true) or source problem (false)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">eigen_postprocessor</span><span class="moose-parameter-header-default">1</span><span class="moose-parameter-header-description">The name of the postprocessor that provides the eigenvalue.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>1</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>PostprocessorName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the postprocessor that provides the eigenvalue.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="4172ccb1-72af-4278-b768-f22b9cdf8e73" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">diag_save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this Kernel's diagonal Jacobian contributions to. Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this Kernel's diagonal Jacobian contributions to. Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this Kernel's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this Kernel's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="0b04fb60-b667-46a9-8227-c5b31b9a32dd" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="e5da77ab-4b21-46e8-a504-3e29637ae85e" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#8c6935f1-0775-4aa2-9d51-0d49ea849f77">(problems/msr-10x10-vacuum.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#7716025f-d580-464a-91b4-94f7fbe06571">(problems/msr.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#9d5891d9-9a49-43f1-9c74-8f3996c7fc62">(problems/msr-small-vacuum.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#2087c055-ec86-416e-8609-8ddb4d213e73">(problems/msr-2x2-reflective-bcs.i)</a></li></ul></section></section><div class="moose-modal modal" id="8c6935f1-0775-4aa2-9d51-0d49ea849f77"><div class="modal-content"><h4>(problems/msr-10x10-vacuum.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
   file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr-10x10.msh&#x27;
 [../]
 
@@ -508,4 +133,379 @@
     execute_on = &#x27;timestep_end&#x27;
   [../]
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#7bac26d8-e881-4e9e-964a-a471d61a9d77" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#0152fd81-73f2-4de3-a120-bd6e6a8a1ca8" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#e165e985-7c8a-4545-a9c0-bf4cf89e346c" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#34bc19f8-06e9-44be-96e4-090b9e79c210" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="7716025f-d580-464a-91b4-94f7fbe06571"><div class="modal-content"><h4>(problems/msr.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr.msh&#x27;
+[../]
+
+[Variables]
+  [./u]
+    order = FIRST
+    family = LAGRANGE
+  [../]
+  [./v]
+    order = FIRST
+    family = LAGRANGE
+    eigen = true
+  [../]
+[]
+
+[Kernels]
+  [./diff_u]
+    type = MatDiffusion
+    variable = u
+    prop_name = d_u
+  [../]
+  [./diff_v]
+    type = MatDiffusion
+    variable = v
+    prop_name = d_v
+  [../]
+  [./sigma_r_u]
+    type = SigmaR
+    variable = u
+    sigma_r = sigma_r_u
+  [../]
+  [./sigma_r_v]
+    type = SigmaR
+    variable = v
+    sigma_r = sigma_r_v
+  [../]
+  [./inscatter_v]
+    type = InScatter
+    variable = v
+    scattered_group = u
+    sigma_s = sigma_12
+  [../]
+
+  [./fission_source_u_from_v]
+    type = CoupledFissionEigenKernel
+    variable = u
+    fissioning_group = v
+    nu_f = nu_f_v
+    sigma_f = sigma_f_v
+  [../]
+  [./fission_source_u_from_u]
+    type = SelfFissionEigenKernel
+    variable = u
+    nu_f = nu_f_u
+    sigma_f = sigma_f_u
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericConstantMaterial
+    block = &#x27;fuel&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
+    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
+  [../]
+  [./moder]
+    type = GenericConstantMaterial
+    block = &#x27;moder&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
+    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
+  [../]
+[]
+
+# [BCs]
+#   [./homogeneous_u]
+#     type = DirichletBC
+#     variable = u
+#     boundary = &#x27;boundary&#x27;
+#     value = 0
+#   [../]
+#   [./homogeneous_v]
+#     type = DirichletBC
+#     variable = v
+#     boundary = &#x27;boundary&#x27;
+#     value = 0
+#   [../]
+# []
+
+[Executioner]
+  type = NonlinearEigen
+
+  bx_norm = &#x27;vnorm&#x27;
+
+  free_power_iterations = 2
+  source_abs_tol = 1e-12
+  source_rel_tol = 1e-50
+  k0 = 1.0
+  output_after_power_iterations = true
+
+  #Preconditioned JFNK (default)
+  solve_type = &#x27;PJFNK&#x27;
+[]
+
+[Postprocessors]
+  [./vnorm]
+    type = ElementIntegralVariablePostprocessor
+    variable = v
+    # execute on residual is important for nonlinear eigen solver!
+    execute_on = linear
+  [../]
+
+  [./udiff]
+    type = ElementL2Diff
+    variable = u
+    outputs = console
+  [../]
+[]
+
+[Outputs]
+  [./out]
+    type = Exodus
+    execute_on = &#x27;timestep_end&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="9d5891d9-9a49-43f1-9c74-8f3996c7fc62"><div class="modal-content"><h4>(problems/msr-small-vacuum.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr-small.msh&#x27;
+[../]
+
+[Variables]
+  [./u]
+    order = FIRST
+    family = LAGRANGE
+  [../]
+  [./v]
+    order = FIRST
+    family = LAGRANGE
+    eigen = true
+  [../]
+[]
+
+[Kernels]
+  [./diff_u]
+    type = MatDiffusion
+    variable = u
+    prop_name = d_u
+  [../]
+  [./diff_v]
+    type = MatDiffusion
+    variable = v
+    prop_name = d_v
+  [../]
+  [./sigma_r_u]
+    type = SigmaR
+    variable = u
+    sigma_r = sigma_r_u
+  [../]
+  [./sigma_r_v]
+    type = SigmaR
+    variable = v
+    sigma_r = sigma_r_v
+  [../]
+  [./inscatter_v]
+    type = InScatter
+    variable = v
+    scattered_group = u
+    sigma_s = sigma_12
+  [../]
+
+  [./fission_source_u_from_v]
+    type = CoupledFissionEigenKernel
+    variable = u
+    fissioning_group = v
+    nu_f = nu_f_v
+    sigma_f = sigma_f_v
+  [../]
+  [./fission_source_u_from_u]
+    type = SelfFissionEigenKernel
+    variable = u
+    nu_f = nu_f_u
+    sigma_f = sigma_f_u
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericConstantMaterial
+    block = &#x27;fuel&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
+    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
+  [../]
+  [./moder]
+    type = GenericConstantMaterial
+    block = &#x27;moder&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
+    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
+  [../]
+[]
+
+[BCs]
+  [./homogeneous_u]
+    type = VacuumBC
+    variable = u
+    boundary = &#x27;boundary&#x27;
+    alpha = .5941650
+  [../]
+  [./homogeneous_v]
+    type = VacuumBC
+    variable = v
+    boundary = &#x27;boundary&#x27;
+    alpha = .9912190
+  [../]
+[]
+
+[Executioner]
+  type = NonlinearEigen
+
+  bx_norm = &#x27;vnorm&#x27;
+
+  free_power_iterations = 2
+  source_abs_tol = 1e-12
+  source_rel_tol = 1e-50
+  k0 = 1.0
+  output_after_power_iterations = true
+
+  #Preconditioned JFNK (default)
+  solve_type = &#x27;PJFNK&#x27;
+[]
+
+[Postprocessors]
+  [./vnorm]
+    type = ElementIntegralVariablePostprocessor
+    variable = v
+    # execute on residual is important for nonlinear eigen solver!
+    execute_on = linear
+  [../]
+
+  [./udiff]
+    type = ElementL2Diff
+    variable = u
+    outputs = console
+  [../]
+[]
+
+[Outputs]
+  [./out]
+    type = Exodus
+    execute_on = &#x27;timestep_end&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="2087c055-ec86-416e-8609-8ddb4d213e73"><div class="modal-content"><h4>(problems/msr-2x2-reflective-bcs.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  file = &#x27;/home/lindsayad/gdrive/gmsh-scripts/msr-small.msh&#x27;
+[../]
+
+[Variables]
+  [./u]
+    order = FIRST
+    family = LAGRANGE
+  [../]
+  [./v]
+    order = FIRST
+    family = LAGRANGE
+    eigen = true
+  [../]
+[]
+
+[Kernels]
+  [./diff_u]
+    type = MatDiffusion
+    variable = u
+    prop_name = d_u
+  [../]
+  [./diff_v]
+    type = MatDiffusion
+    variable = v
+    prop_name = d_v
+  [../]
+  [./sigma_r_u]
+    type = SigmaR
+    variable = u
+    sigma_r = sigma_r_u
+  [../]
+  [./sigma_r_v]
+    type = SigmaR
+    variable = v
+    sigma_r = sigma_r_v
+  [../]
+  [./inscatter_v]
+    type = InScatter
+    variable = v
+    scattered_group = u
+    sigma_s = sigma_12
+  [../]
+
+  [./fission_source_u_from_v]
+    type = CoupledFissionEigenKernel
+    variable = u
+    fissioning_group = v
+    nu_f = nu_f_v
+    sigma_f = sigma_f_v
+  [../]
+  [./fission_source_u_from_u]
+    type = SelfFissionEigenKernel
+    variable = u
+    nu_f = nu_f_u
+    sigma_f = sigma_f_u
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericConstantMaterial
+    block = &#x27;fuel&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u   sigma_f_u  nu_f_v   sigma_f_v&#x27;
+    prop_values  =  &#x27;.5941650  .9912190  3.2802e-3  1.8537e-2  1.6001e-3  2.43575  8.7632e-4  2.43620  1.3699e-2&#x27;
+  [../]
+  [./moder]
+    type = GenericConstantMaterial
+    block = &#x27;moder&#x27;
+    prop_names   =  &#x27;d_u       d_v       sigma_r_u  sigma_r_v  sigma_12   nu_f_u  sigma_f_u  nu_f_v  sigma_f_v&#x27;
+    prop_values  =  &#x27;.8277580  .0307684  3.0658e-3  2.3705e-3  2.2285e-3  0       0          0       0&#x27;
+  [../]
+[]
+
+# [BCs]
+#   [./homogeneous_u]
+#     type = DirichletBC
+#     variable = u
+#     boundary = &#x27;boundary&#x27;
+#     value = 0
+#   [../]
+#   [./homogeneous_v]
+#     type = DirichletBC
+#     variable = v
+#     boundary = &#x27;boundary&#x27;
+#     value = 0
+#   [../]
+# []
+
+[Executioner]
+  type = NonlinearEigen
+
+  bx_norm = &#x27;vnorm&#x27;
+
+  free_power_iterations = 2
+  source_abs_tol = 1e-12
+  source_rel_tol = 1e-50
+  k0 = 1.0
+  output_after_power_iterations = true
+
+  #Preconditioned JFNK (default)
+  solve_type = &#x27;PJFNK&#x27;
+[]
+
+[Postprocessors]
+  [./vnorm]
+    type = ElementIntegralVariablePostprocessor
+    variable = v
+    # execute on residual is important for nonlinear eigen solver!
+    execute_on = linear
+  [../]
+
+  [./udiff]
+    type = ElementL2Diff
+    variable = u
+    outputs = console
+  [../]
+[]
+
+[Outputs]
+  [./out]
+    type = Exodus
+    execute_on = &#x27;timestep_end&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#7d29b774-a105-484c-aefc-1d26e749b3d6" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#323c2732-b299-4c99-b0d8-8daa2af2583d" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#85504cd2-4575-4265-8bbf-a142e0400cf4" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#e5da77ab-4b21-46e8-a504-3e29637ae85e" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
