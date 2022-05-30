@@ -108,7 +108,7 @@
 [Executioner]
   type = Transient
   scheme = bdf2
-  end_time = 150
+  end_time = 50
   nl_rel_tol = 1e-6
   nl_abs_tol = 1e-8
   solve_type = 'NEWTON'
@@ -124,7 +124,7 @@
   compute_scaling_once = false
   resid_vs_jac_scaling_param = 0.1
 
-  dt = .5
+  dt = .1
 []
 
 [Preconditioning]

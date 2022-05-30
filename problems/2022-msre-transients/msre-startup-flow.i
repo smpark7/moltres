@@ -214,7 +214,7 @@
 [Executioner]
   type = Transient
   scheme = bdf2
-  end_time = 150
+  end_time = 50
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
@@ -235,7 +235,7 @@
   fixed_point_abs_tol = 1e-7
   fixed_point_max_its = 5
 
-  dt = .5
+  dt = .1
 []
 
 [Preconditioning]

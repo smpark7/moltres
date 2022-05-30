@@ -12,7 +12,7 @@
 [Mesh]
   [./mesh]
     type = FileMeshGenerator
-    file = 'mesh.e'
+    file = 'mesh-y-refine.e'
   []
 []
 
