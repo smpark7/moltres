@@ -20,7 +20,7 @@ mats = {
             'DECAY_CONSTANT': np.array([.0124378, .0306300, .111474,
                                 .302248, 1.17229, 3.07474]),
             'sigma_tr': np.array([.233433, .264024]),
-            'sigma_a': np.array([.00379970, .0270469]),
+            'sigma_a': np.array([.00369720, .0270469]),
             'kappa_fission': np.array([4.05462e-14, 6.76535e-13])
         },
         'temp': [922]
@@ -47,8 +47,7 @@ mats = {
 for mat in mats:
     for t in mats[mat]['temp']:
         temp = str(t)
-        mats[mat][temp]['DIFFCOEF'] = 1 / 3 / (mats[mat][temp]['sigma_a'] +
-                                         mats[mat][temp]['sigma_tr'])
+        mats[mat][temp]['DIFFCOEF'] = 1 / 3 / mats[mat][temp]['sigma_tr']
         mats[mat][temp]['REMXS'] = mats[mat][temp]['sigma_a']
         out_scatter = np.zeros(groups)
         for i in range(groups):
