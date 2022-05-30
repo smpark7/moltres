@@ -61,10 +61,10 @@ plt.savefig('coast-down-fraction.png', dpi=300)
 
 # %% Start-up Moltres data
 t, rho, df, qm = get_rho('msre-static_csv.csv',
-                     'msre-static_csv.csv',
-                     'msre-startup-prec-refine-flow_csv (2).csv',
-                     'ref_start_up_reactivity.csv',
-                     'qm_start_up_reactivity.csv')
+                         'msre-static_csv.csv',
+                         'msre-startup-flow_csv.csv',
+                         'ref_start_up_reactivity.csv',
+                         'qm_start_up_p1_reactivity.csv')
 
 np.savetxt('moltres_start_up_reactivity.csv', (t, rho), delimiter=',')
 
