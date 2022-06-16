@@ -1,4 +1,829 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>LimitK | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="22e2d3c3-eb55-4223-91c8-fa0252a0cd8f" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="f3100ccb-1230-490f-9bf7-a767aaa311a4" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="04eec189-b55b-48f1-b483-6ebea702185e" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="370b80cd-9007-4610-9e5c-177d4679811c"><i class="material-icons">menu</i></a><ul class="sidenav" id="370b80cd-9007-4610-9e5c-177d4679811c"><li><a href="#!" class="dropdown-trigger" data-target="cd520de7-7493-4817-afb6-2d7d95154965" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="5b7325d8-806d-46ef-8bb5-02737a9062c0" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="1f8e69eb-2219-4b8c-a1cb-a780bf45ad8d" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="22e2d3c3-eb55-4223-91c8-fa0252a0cd8f"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="f3100ccb-1230-490f-9bf7-a767aaa311a4"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="04eec189-b55b-48f1-b483-6ebea702185e"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="cd520de7-7493-4817-afb6-2d7d95154965"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="5b7325d8-806d-46ef-8bb5-02737a9062c0"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="1f8e69eb-2219-4b8c-a1cb-a780bf45ad8d"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">postprocessors</span><a href="#" class="breadcrumb">LimitK</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="9d6c95d4-4114-4d32-ad3f-d29a745fc1a7" data-section-level="1" data-section-text="LimitK"><h1 id="limitk">LimitK</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p><p>The LimitK has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></p></div></div></div><p>Reports the timestep size</p><section class="scrollspy" id="ca938562-5889-4a0b-8519-b727a2f1b2df" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="f2dfb765-6a7d-47d2-83a3-869147f5132e" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="e1741c14-93ec-4d47-8281-8f67315d4524" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="9e433f04-fb9f-4073-ba35-e8f3fadeaa23" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">cutback_factor</span><span class="moose-parameter-header-description">How much to cut the time step if multiplication is too high.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>How much to cut the time step if multiplication is too high.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">growth_factor</span><span class="moose-parameter-header-description">How much to grow the time step if multiplication is ok.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>How much to grow the time step if multiplication is ok.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">k_postprocessor</span><span class="moose-parameter-header-description">The name of the postprocessor providing k values.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>PostprocessorName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the postprocessor providing k values.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">k_threshold</span><span class="moose-parameter-header-description">The maximum k value before we start cutting time steps.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The maximum k value before we start cutting time steps.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="67c08c69-9e5d-4daa-af24-0aeb94d0b4d1" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">execute_on</span><span class="moose-parameter-header-default">TIMESTEP_END</span><span class="moose-parameter-header-description">The list of flag(s) indicating when this object should be executed, the available options include NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>TIMESTEP_END</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>ExecFlagEnum</p><p class="moose-parameter-description-options"><span>Options:</span>NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM, TRANSFER</p><p class="moose-parameter-description"><span>Description:</span>The list of flag(s) indicating when this object should be executed, the available options include NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="9344b667-fde7-43fc-ab63-dfeb91c79f51" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">allow_duplicate_execution_on_initial</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">In the case where this UserObject is depended upon by an initial condition, allow it to be executed twice during the initial setup (once before the IC and again after mesh adaptivity (if applicable).</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>In the case where this UserObject is depended upon by an initial condition, allow it to be executed twice during the initial setup (once before the IC and again after mesh adaptivity (if applicable).</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_postaux</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in POSTAUX</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in POSTAUX</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_preaux</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in PREAUX</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in PREAUX</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_preic</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in PREIC during initial setup</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in PREIC during initial setup</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">outputs</span><span class="moose-parameter-header-description">Vector of output names were you would like to restrict the output of variables(s) associated with this object</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;OutputName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Vector of output names were you would like to restrict the output of variables(s) associated with this object</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section></section><section class="scrollspy" id="8951d111-7efd-4309-a64d-441f0c735b83" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#71eec8a2-0853-48a9-baed-97f3c0114c80">(problems/picard/nts_no_pres.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#4b91d02b-596e-47a0-976c-6b448299249c">(problems/picard/tmp_nts.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#e8b802e4-8867-466d-aa28-dff98bc78bdb">(problems/2017_annals_pub_msre_compare/2group.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0692f1c9-57de-4cfd-8fb0-744826bf7d15">(problems/rodded2D/rodded.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0e7fe6d1-e580-4d37-8322-93c09bbc4658">(problems/publication_level_cases/twod_control_rod_yank/rodded.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#1169b130-2a2c-4647-b780-465b80f526c1">(problems/2017_annals_pub_msre_compare/auto_diff_rho.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#500de7e9-a027-4e57-ae3b-8438139d2d13">(problems/2017_annals_pub_msre_compare/4group.i)</a></li></ul></section></section><div class="moose-modal modal" id="71eec8a2-0853-48a9-baed-97f3c0114c80"><div class="modal-content"><h4>(problems/picard/nts_no_pres.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+<!DOCTYPE html><head><meta charset="UTF-8"><title>LimitK | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="10670173-da2c-41cb-ab9a-3f0d1c362841" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d0169dc5-5a6c-4c1a-8fc7-a91174bdee82" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="be9b2f73-4b2d-4bea-99c4-527520e3ce70" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="fb7588ac-84b4-4fad-8e74-27a127fc36e6"><i class="material-icons">menu</i></a><ul class="sidenav" id="fb7588ac-84b4-4fad-8e74-27a127fc36e6"><li><a href="#!" class="dropdown-trigger" data-target="dc4118e7-9a24-4bc0-9179-d0151d277d8f" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="6fb9a771-7f4b-48c9-86b4-b6a43cb38806" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="20d2b23a-b3f8-4697-980e-4fe3e5afea59" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="10670173-da2c-41cb-ab9a-3f0d1c362841"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="d0169dc5-5a6c-4c1a-8fc7-a91174bdee82"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="be9b2f73-4b2d-4bea-99c4-527520e3ce70"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="dc4118e7-9a24-4bc0-9179-d0151d277d8f"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="6fb9a771-7f4b-48c9-86b4-b6a43cb38806"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="20d2b23a-b3f8-4697-980e-4fe3e5afea59"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">postprocessors</span><a href="#" class="breadcrumb">LimitK</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="ae283655-295a-4354-aecb-be80057cb062" data-section-level="1" data-section-text="LimitK"><h1 id="limitk">LimitK</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p><p>The LimitK has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></p></div></div></div><p>Reports the timestep size</p><section class="scrollspy" id="90d375d5-86fe-42f0-8b0e-ff12df9dd4ad" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="47a69fba-7ab6-4559-85f0-7f4f75d815d7" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="ceb0d0ef-d4c5-4093-96a9-5807d5702b84" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="7bd68c9a-92df-4c5c-9bbf-26f5010030f5" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">cutback_factor</span><span class="moose-parameter-header-description">How much to cut the time step if multiplication is too high.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>How much to cut the time step if multiplication is too high.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">growth_factor</span><span class="moose-parameter-header-description">How much to grow the time step if multiplication is ok.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>How much to grow the time step if multiplication is ok.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">k_postprocessor</span><span class="moose-parameter-header-description">The name of the postprocessor providing k values.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>PostprocessorName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The name of the postprocessor providing k values.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">k_threshold</span><span class="moose-parameter-header-description">The maximum k value before we start cutting time steps.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>The maximum k value before we start cutting time steps.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="08a38f04-bfbd-4d49-b31e-dab8f8a66047" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">execute_on</span><span class="moose-parameter-header-default">TIMESTEP_END</span><span class="moose-parameter-header-description">The list of flag(s) indicating when this object should be executed, the available options include NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>TIMESTEP_END</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>ExecFlagEnum</p><p class="moose-parameter-description-options"><span>Options:</span>NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM, TRANSFER</p><p class="moose-parameter-description"><span>Description:</span>The list of flag(s) indicating when this object should be executed, the available options include NONE, INITIAL, LINEAR, NONLINEAR, TIMESTEP_END, TIMESTEP_BEGIN, FINAL, CUSTOM.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="125d28cc-fc19-4a42-b62b-ec9d85a3cc93" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">allow_duplicate_execution_on_initial</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">In the case where this UserObject is depended upon by an initial condition, allow it to be executed twice during the initial setup (once before the IC and again after mesh adaptivity (if applicable).</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>In the case where this UserObject is depended upon by an initial condition, allow it to be executed twice during the initial setup (once before the IC and again after mesh adaptivity (if applicable).</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_postaux</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in POSTAUX</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in POSTAUX</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_preaux</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in PREAUX</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in PREAUX</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_preic</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Forces the UserObject to be executed in PREIC during initial setup</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Forces the UserObject to be executed in PREIC during initial setup</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">outputs</span><span class="moose-parameter-header-description">Vector of output names were you would like to restrict the output of variables(s) associated with this object</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;OutputName&gt;</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Vector of output names were you would like to restrict the output of variables(s) associated with this object</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-options"><span>Options:</span></p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section></section><section class="scrollspy" id="ad786507-b007-48e0-8050-a0220f280708" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#9a940840-f1ac-455b-8704-7b74aa872016">(problems/2017_annals_pub_msre_compare/auto_diff_rho.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#41973dda-224e-4098-b6e8-4dd760ad5bc4">(problems/2017_annals_pub_msre_compare/4group.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#c76d67ea-04b5-455e-9295-d25049c2e455">(problems/2017_annals_pub_msre_compare/2group.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#f10da29b-c5a8-4d05-82df-801f93e6e596">(problems/picard/nts_no_pres.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#6375d1ea-55e3-4da7-a495-268ac84780ec">(problems/publication_level_cases/twod_control_rod_yank/rodded.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#5b570824-a704-4b92-ac98-2f6ae4d23f28">(problems/rodded2D/rodded.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0ea2757b-b721-4903-8aad-a7012ba8d01b">(problems/picard/tmp_nts.i)</a></li></ul></section></section><div class="moose-modal modal" id="9a940840-f1ac-455b-8704-7b74aa872016"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/auto_diff_rho.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+gamma_frac=.075
+R=70.1675
+H=162.56
+
+[GlobalParams]
+  num_groups = 4
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
+  temperature = temp
+  sss2_input = true
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  account_delayed = true
+  nt_scale = ${nt_scale}
+[]
+
+[Mesh]
+  file = &#x27;2d_lattice_structured.msh&#x27;
+[]
+
+[Problem]
+  coord_type = RZ
+[]
+
+[Variables]
+  [./temp]
+    initial_condition = ${ini_temp}
+    scaling = 1e-4
+  [../]
+[]
+
+[AuxVariables]
+  [./power_density]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+[]
+
+[Precursors]
+  [./pres]
+    var_name_base = pre
+    block = &#x27;fuel&#x27;
+    outlet_boundaries = &#x27;fuel_tops&#x27;
+    u_def = 0
+    v_def = ${flow_velocity}
+    w_def = 0
+    nt_exp_form = false
+    loop_precursors = false
+    family = MONOMIAL
+    order = CONSTANT
+    # jac_test = true
+  [../]
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
+  create_temperature_var = false
+  scaling = 1e-4
+  pre_blocks = &#x27;fuel&#x27;
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  [./temp_source_fuel]
+    type = TransientFissionHeatSource
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+  [./temp_source_mod]
+    type = GammaHeatSource
+    variable = temp
+    block = &#x27;moder&#x27;
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    gamma = gamma_func
+  [../]
+  [./temp_diffusion]
+    type = MatDiffusion
+    diffusivity = &#x27;k&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_fuel]
+    type = ConservativeTemperatureAdvection
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+[]
+
+[BCs]
+  [./temp_diri_cg]
+    boundary = &#x27;fuel_bottoms outer_wall&#x27;
+    type = FlexiblePostprocessorDirichletBC
+    postprocessor = coreEndTemp
+    offset = -27.8
+    variable = temp
+  [../]
+  # [./temp_diri_cg]
+  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
+  #   type = FunctionDirichletBC
+  #   function = &#x27;temp_bc_func&#x27;
+  #   variable = temp
+  # [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;fuel_tops&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+  [../]
+[]
+
+[AuxKernels]
+  [./fuel]
+    block = &#x27;fuel&#x27;
+    type = FissionHeatSourceTransientAux
+    variable = power_density
+  [../]
+  [./moderator]
+    block = &#x27;moder&#x27;
+    type = ModeratorHeatSourceTransientAux
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    variable = power_density
+    gamma = gamma_func
+  [../]
+[]
+
+[Functions]
+  [./temp_bc_func]
+    type = ParsedFunction
+    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
+  [../]
+  [./gamma_func]
+    type = ParsedFunction
+    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_fuel_rod0_&#x27;
+    interp_type = &#x27;spline&#x27;
+    block = &#x27;fuel&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+    controller_gain = 0
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;fuel&#x27;
+  [../]
+  [./moder]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_moder_rod0_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;moder&#x27;
+    controller_gain = 0
+  [../]
+  [./rho_moder]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;moder&#x27;
+  [../]
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 6e-6
+
+  solve_type = &#x27;PJFNK&#x27;
+  line_search = none
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+
+  dtmin = 1e-5
+  [./TimeStepper]
+    type = PostprocessorDT
+    postprocessor = limit_k
+    dt = 1e-3
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Postprocessors]
+  [./group1_current]
+    type = IntegralNewVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./group1_old]
+    type = IntegralOldVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./multiplication]
+    type = DivisionPostprocessor
+    value1 = group1_current
+    value2 = group1_old
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;fuel&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./temp_moder]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;moder&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./average_fission_heat]
+    type = AverageFissionHeat
+    execute_on = &#x27;linear nonlinear&#x27;
+    outputs = &#x27;csv console&#x27;
+    block = &#x27;fuel&#x27;
+  [../]
+  [./coreEndTemp]
+    type = SideAverageValue
+    variable = temp
+    boundary = &#x27;fuel_tops&#x27;
+    outputs = &#x27;csv console&#x27;
+    execute_on = &#x27;linear nonlinear&#x27;
+  [../]
+  [./limit_k]
+    type = LimitK
+    execute_on = &#x27;timestep_end&#x27;
+    k_postprocessor = multiplication
+    growth_factor = 1.2
+    cutback_factor = .4
+    k_threshold = 1.5
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  csv = true
+  exodus = true
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="41973dda-224e-4098-b6e8-4dd760ad5bc4"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/4group.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+gamma_frac=.075
+R=73
+H=162.56
+
+[GlobalParams]
+  num_groups = 4
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
+  temperature = temp
+  sss2_input = true
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  account_delayed = true
+  nt_scale = ${nt_scale}
+[]
+
+[Mesh]
+  file = &#x27;2d_lattice_structured.msh&#x27;
+[]
+
+[Problem]
+  coord_type = RZ
+[]
+
+[Variables]
+  [./temp]
+    initial_condition = ${ini_temp}
+    scaling = 1e-4
+  [../]
+[]
+
+[AuxVariables]
+  [./power_density]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+[]
+
+[Precursors]
+  [./pres]
+    var_name_base = pre
+    block = &#x27;fuel&#x27;
+    outlet_boundaries = &#x27;fuel_tops&#x27;
+    u_def = 0
+    v_def = ${flow_velocity}
+    w_def = 0
+    nt_exp_form = false
+    loop_precursors = false
+    family = MONOMIAL
+    order = CONSTANT
+    # jac_test = true
+  [../]
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
+  create_temperature_var = false
+  scaling = 1e-4
+  pre_blocks = &#x27;fuel&#x27;
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  [./temp_source_fuel]
+    type = TransientFissionHeatSource
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+  [./temp_source_mod]
+    type = GammaHeatSource
+    variable = temp
+    block = &#x27;moder&#x27;
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    gamma = gamma_func
+  [../]
+  [./temp_diffusion]
+    type = MatDiffusion
+    diffusivity = &#x27;k&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_fuel]
+    type = ConservativeTemperatureAdvection
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+[]
+
+[BCs]
+  [./temp_diri_cg]
+    boundary = &#x27;fuel_bottoms outer_wall&#x27;
+    type = FlexiblePostprocessorDirichletBC
+    postprocessor = coreEndTemp
+    offset = -27.8
+    variable = temp
+  [../]
+  # [./temp_diri_cg]
+  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
+  #   type = FunctionDirichletBC
+  #   function = &#x27;temp_bc_func&#x27;
+  #   variable = temp
+  # [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;fuel_tops&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+  [../]
+[]
+
+[AuxKernels]
+  [./fuel]
+    block = &#x27;fuel&#x27;
+    type = FissionHeatSourceTransientAux
+    variable = power_density
+  [../]
+  [./moderator]
+    block = &#x27;moder&#x27;
+    type = ModeratorHeatSourceTransientAux
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    variable = power_density
+    gamma = gamma_func
+  [../]
+[]
+
+[Functions]
+  [./temp_bc_func]
+    type = ParsedFunction
+    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
+  [../]
+  [./gamma_func]
+    type = ParsedFunction
+    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_fuel_rod0_&#x27;
+    interp_type = &#x27;spline&#x27;
+    block = &#x27;fuel&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+    controller_gain = 0
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;fuel&#x27;
+  [../]
+  [./moder]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_moder_rod0_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;moder&#x27;
+    controller_gain = 0
+  [../]
+  [./rho_moder]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;moder&#x27;
+  [../]
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 6e-6
+
+  solve_type = &#x27;PJFNK&#x27;
+  line_search = none
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+
+  dtmin = 1e-5
+  [./TimeStepper]
+    type = PostprocessorDT
+    postprocessor = limit_k
+    dt = 1e-3
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Postprocessors]
+  [./group1_current]
+    type = IntegralNewVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./group1_old]
+    type = IntegralOldVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./multiplication]
+    type = DivisionPostprocessor
+    value1 = group1_current
+    value2 = group1_old
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;fuel&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./temp_moder]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;moder&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./average_fission_heat]
+    type = AverageFissionHeat
+    execute_on = &#x27;linear nonlinear&#x27;
+    outputs = &#x27;csv console&#x27;
+    block = &#x27;fuel&#x27;
+  [../]
+  [./coreEndTemp]
+    type = SideAverageValue
+    variable = temp
+    boundary = &#x27;fuel_tops&#x27;
+    outputs = &#x27;csv console&#x27;
+    execute_on = &#x27;linear nonlinear&#x27;
+  [../]
+  [./limit_k]
+    type = LimitK
+    execute_on = &#x27;timestep_end&#x27;
+    k_postprocessor = multiplication
+    growth_factor = 1.2
+    cutback_factor = .4
+    k_threshold = 1.5
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  csv = true
+  exodus = true
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="c76d67ea-04b5-455e-9295-d25049c2e455"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/2group.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+gamma_frac=.075
+R=73
+H=162.56
+
+[GlobalParams]
+  num_groups = 2
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;group1 group2&#x27;
+  temperature = temp
+  sss2_input = true
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  account_delayed = true
+  nt_scale = ${nt_scale}
+[]
+
+[Mesh]
+  file = &#x27;2d_lattice_structured.msh&#x27;
+[]
+
+[Problem]
+  coord_type = RZ
+[]
+
+[Variables]
+  [./temp]
+    initial_condition = ${ini_temp}
+    scaling = 1e-4
+  [../]
+[]
+
+[AuxVariables]
+  [./power_density]
+    order = CONSTANT
+    family = MONOMIAL
+  [../]
+[]
+
+[Precursors]
+  [./pres]
+    var_name_base = pre
+    block = &#x27;fuel&#x27;
+    outlet_boundaries = &#x27;fuel_tops&#x27;
+    u_def = 0
+    v_def = ${flow_velocity}
+    w_def = 0
+    nt_exp_form = false
+    loop_precursors = false
+    family = MONOMIAL
+    order = CONSTANT
+    # jac_test = true
+  [../]
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
+  create_temperature_var = false
+  scaling = 1e-4
+  pre_blocks = &#x27;fuel&#x27;
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  [./temp_source_fuel]
+    type = TransientFissionHeatSource
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+  [./temp_source_mod]
+    type = GammaHeatSource
+    variable = temp
+    block = &#x27;moder&#x27;
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    gamma = gamma_func
+  [../]
+  [./temp_diffusion]
+    type = MatDiffusion
+    diffusivity = &#x27;k&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_fuel]
+    type = ConservativeTemperatureAdvection
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+[]
+
+[BCs]
+  [./temp_diri_cg]
+    boundary = &#x27;fuel_bottoms outer_wall&#x27;
+    type = FlexiblePostprocessorDirichletBC
+    postprocessor = coreEndTemp
+    offset = -27.8
+    variable = temp
+  [../]
+  # [./temp_diri_cg]
+  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
+  #   type = FunctionDirichletBC
+  #   function = &#x27;temp_bc_func&#x27;
+  #   variable = temp
+  # [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;fuel_tops&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+  [../]
+[]
+
+[AuxKernels]
+  [./fuel]
+    block = &#x27;fuel&#x27;
+    type = FissionHeatSourceTransientAux
+    variable = power_density
+  [../]
+  [./moderator]
+    block = &#x27;moder&#x27;
+    type = ModeratorHeatSourceTransientAux
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+    variable = power_density
+    gamma = gamma_func
+  [../]
+[]
+
+[Functions]
+  [./temp_bc_func]
+    type = ParsedFunction
+    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
+  [../]
+  [./gamma_func]
+    type = ParsedFunction
+    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../property_file_dir/serp3d2group0.78eV/2g0.78eV_fuel_&#x27;
+    interp_type = &#x27;spline&#x27;
+    block = &#x27;fuel&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+    controller_gain = 0
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;fuel&#x27;
+  [../]
+  [./moder]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../property_file_dir/serp3d2group0.78eV/2g0.78eV_moder_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;moder&#x27;
+    controller_gain = 0
+  [../]
+  [./rho_moder]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;moder&#x27;
+  [../]
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 6e-6
+
+  solve_type = &#x27;PJFNK&#x27;
+  line_search = none
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+
+  dtmin = 1e-5
+  [./TimeStepper]
+    type = PostprocessorDT
+    postprocessor = limit_k
+    dt = 1e-3
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Postprocessors]
+  [./group1_current]
+    type = IntegralNewVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./group1_old]
+    type = IntegralOldVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./multiplication]
+    type = DivisionPostprocessor
+    value1 = group1_current
+    value2 = group1_old
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;fuel&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./temp_moder]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;moder&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./average_fission_heat]
+    type = AverageFissionHeat
+    execute_on = &#x27;linear nonlinear&#x27;
+    outputs = &#x27;csv console&#x27;
+    block = &#x27;fuel&#x27;
+  [../]
+  [./coreEndTemp]
+    type = SideAverageValue
+    variable = temp
+    boundary = &#x27;fuel_tops&#x27;
+    outputs = &#x27;csv console&#x27;
+    execute_on = &#x27;linear nonlinear&#x27;
+  [../]
+  [./limit_k]
+    type = LimitK
+    execute_on = &#x27;timestep_end&#x27;
+    k_postprocessor = multiplication
+    growth_factor = 1.2
+    cutback_factor = .4
+    k_threshold = 1.5
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  csv = true
+  exodus = true
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="f10da29b-c5a8-4d05-82df-801f93e6e596"><div class="modal-content"><h4>(problems/picard/nts_no_pres.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 nt_scale=1e13
 ini_temp=922
 diri_temp=922
@@ -238,7 +1063,541 @@ diri_temp=922
     variable = group2
   [../]
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="4b91d02b-596e-47a0-976c-6b448299249c"><div class="modal-content"><h4>(problems/picard/tmp_nts.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="6375d1ea-55e3-4da7-a495-268ac84780ec"><div class="modal-content"><h4>(problems/publication_level_cases/twod_control_rod_yank/rodded.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+
+[GlobalParams]
+  num_groups = 4
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
+  temperature = temp
+  sss2_input = true
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  account_delayed = true
+[]
+
+[Mesh]
+  file = &#x27;2d_rodded_lattice.msh&#x27;
+[../]
+
+[Problem]
+  coord_type = RZ
+  kernel_coverage_check = false
+[]
+
+[Variables]
+  [./temp]
+    initial_condition = ${ini_temp}
+    scaling = 1e-4
+  [../]
+  [./rodPosition]
+    family = SCALAR
+    order = FIRST
+    initial_condition = 0.0
+  [../]
+[]
+
+[Precursors]
+  [./pres]
+    var_name_base = pre
+    block = &#x27;fuel&#x27;
+    outlet_boundaries = &#x27;fuel_tops&#x27;
+    u_def = 0
+    v_def = ${flow_velocity}
+    w_def = 0
+    nt_exp_form = false
+    family = MONOMIAL
+    order = CONSTANT
+    # jac_test = true
+  [../]
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall cRod_top cRod_bot&#x27;
+  create_temperature_var = false
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  [./temp_source_fuel]
+    type = TransientFissionHeatSource
+    variable = temp
+    nt_scale=${nt_scale}
+    block = &#x27;fuel&#x27;
+  [../]
+  [./temp_source_mod]
+    type = GammaHeatSource
+    variable = temp
+    gamma = .0144 # Cammi .0144
+    block = &#x27;moder&#x27;
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+  [../]
+  [./temp_diffusion]
+    type = MatDiffusion
+    diffusivity = &#x27;k&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_fuel]
+    type = ConservativeTemperatureAdvection
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+[]
+
+[ScalarKernels]
+  [./tdRodPos]
+    type = ODETimeDerivative
+    variable = rodPosition
+  [../]
+  [./rodposForce]
+    type = ParsedODEKernel
+    function = &#x27;rodPosition - 100&#x27;
+    variable = rodPosition
+  [../]
+[]
+
+[BCs]
+  [./temp_diri_cg]
+    boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
+    type = FunctionDirichletBC
+    function = &#x27;temp_bc_func&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;fuel_tops&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+  [../]
+[]
+
+[Functions]
+  [./temp_bc_func]
+    type = ParsedFunction
+    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gfuel_&#x27;
+    interp_type = &#x27;spline&#x27;
+    block = &#x27;fuel&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;fuel&#x27;
+  [../]
+  [./moder]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;moder&#x27;
+  [../]
+  [./rho_moder]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;moder&#x27;
+  [../]
+  [./cRod]
+    type = RoddedMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;cRod&#x27;
+    rodDimension = &#x27;y&#x27;
+    rodPosition = rodPosition
+    absorb_factor = 1e6 # how much more absorbing than usual in absorbing region?
+  [../]
+  [./rho_crod]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;cRod&#x27;
+  [../]
+
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-6
+
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  solve_type = &#x27;PJFNK&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+  line_search = &#x27;none&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+  [./TimeStepper]
+    type = PostprocessorDT
+    postprocessor = limit_k
+    dt = 0.1
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+    # ksp_norm = none
+  [../]
+[]
+
+[Postprocessors]
+  [./group1_current]
+    type = IntegralNewVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./group1_old]
+    type = IntegralOldVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./multiplication]
+    type = DivisionPostprocessor
+    value1 = group1_current
+    value2 = group1_old
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;fuel&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./temp_moder]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;moder&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./average_fission_heat]
+     type = AverageFissionHeat
+     nt_scale = ${nt_scale}
+     execute_on = &#x27;linear nonlinear&#x27;
+     outputs = &#x27;console&#x27;
+     block = &#x27;fuel&#x27;
+  [../]
+  [./limit_k]
+    type = LimitK
+    execute_on = &#x27;timestep_end&#x27;
+    k_postprocessor = multiplication
+    growth_factor = 1.2
+    cutback_factor = .4
+    k_threshold = 1.5
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  csv = true
+  exodus = true
+  execute_on = &#x27;timestep_end final&#x27;
+  file_base = &#x27;out&#x27;
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="5b570824-a704-4b92-ac98-2f6ae4d23f28"><div class="modal-content"><h4>(problems/rodded2D/rodded.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+
+[GlobalParams]
+  num_groups = 4
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
+  temperature = temp
+  sss2_input = true
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  account_delayed = true
+[]
+
+[Mesh]
+  file = &#x27;2d_rodded_lattice.msh&#x27;
+[../]
+
+[Problem]
+  coord_type = RZ
+  kernel_coverage_check = false
+[]
+
+[Variables]
+  [./temp]
+    initial_condition = ${ini_temp}
+    scaling = 1e-4
+  [../]
+  [./rodPosition]
+    family = SCALAR
+    order = FIRST
+    initial_condition = 0.0
+  [../]
+[]
+
+[Precursors]
+  [./pres]
+    var_name_base = pre
+    block = &#x27;fuel&#x27;
+    outlet_boundaries = &#x27;fuel_tops&#x27;
+    u_def = 0
+    v_def = ${flow_velocity}
+    w_def = 0
+    nt_exp_form = false
+    family = MONOMIAL
+    order = CONSTANT
+    # jac_test = true
+  [../]
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall cRod_top cRod_bot&#x27;
+  create_temperature_var = false
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  [./temp_source_fuel]
+    type = TransientFissionHeatSource
+    variable = temp
+    nt_scale=${nt_scale}
+    block = &#x27;fuel&#x27;
+  [../]
+  [./temp_source_mod]
+    type = GammaHeatSource
+    variable = temp
+    gamma = .0144 # Cammi .0144
+    block = &#x27;moder&#x27;
+    average_fission_heat = &#x27;average_fission_heat&#x27;
+  [../]
+  [./temp_diffusion]
+    type = MatDiffusion
+    diffusivity = &#x27;k&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_fuel]
+    type = ConservativeTemperatureAdvection
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+    variable = temp
+    block = &#x27;fuel&#x27;
+  [../]
+[]
+
+[ScalarKernels]
+  [./tdRodPos]
+    type = ODETimeDerivative
+    variable = rodPosition
+  [../]
+  [./rodposForce]
+    type = ParsedODEKernel
+    function = &#x27;rodPosition - 100&#x27;
+    variable = rodPosition
+  [../]
+[]
+
+[BCs]
+  [./temp_diri_cg]
+    boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
+    type = FunctionDirichletBC
+    function = &#x27;temp_bc_func&#x27;
+    variable = temp
+  [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;fuel_tops&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;0 ${flow_velocity} 0&#x27;
+  [../]
+[]
+
+[Functions]
+  [./temp_bc_func]
+    type = ParsedFunction
+    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gfuel_&#x27;
+    interp_type = &#x27;spline&#x27;
+    block = &#x27;fuel&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;fuel&#x27;
+  [../]
+  [./moder]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;moder&#x27;
+  [../]
+  [./rho_moder]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;moder&#x27;
+  [../]
+  [./cRod]
+    type = RoddedMaterial
+    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
+    block = &#x27;cRod&#x27;
+    rodDimension = &#x27;y&#x27;
+    rodPosition = rodPosition
+    absorb_factor = 1e6 # how much more absorbing than usual in absorbing region?
+  [../]
+  [./rho_crod]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+    block = &#x27;cRod&#x27;
+  [../]
+
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-6
+
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  solve_type = &#x27;PJFNK&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+  line_search = &#x27;none&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+  [./TimeStepper]
+    type = PostprocessorDT
+    postprocessor = limit_k
+    dt = 0.1
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+    # ksp_norm = none
+  [../]
+[]
+
+[Postprocessors]
+  [./group1_current]
+    type = IntegralNewVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./group1_old]
+    type = IntegralOldVariablePostprocessor
+    variable = group1
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./multiplication]
+    type = DivisionPostprocessor
+    value1 = group1_current
+    value2 = group1_old
+    outputs = &#x27;console csv&#x27;
+  [../]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;fuel&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./temp_moder]
+    type = ElementAverageValue
+    variable = temp
+    block = &#x27;moder&#x27;
+    outputs = &#x27;csv console&#x27;
+  [../]
+  [./average_fission_heat]
+     type = AverageFissionHeat
+     nt_scale = ${nt_scale}
+     execute_on = &#x27;linear nonlinear&#x27;
+     outputs = &#x27;console&#x27;
+     block = &#x27;fuel&#x27;
+  [../]
+  [./limit_k]
+    type = LimitK
+    execute_on = &#x27;timestep_end&#x27;
+    k_postprocessor = multiplication
+    growth_factor = 1.2
+    cutback_factor = .4
+    k_threshold = 1.5
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  csv = true
+  exodus = true
+  execute_on = &#x27;timestep_end final&#x27;
+  file_base = &#x27;out&#x27;
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0ea2757b-b721-4903-8aad-a7012ba8d01b"><div class="modal-content"><h4>(problems/picard/tmp_nts.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 nt_scale=1e13
 ini_temp=922
 diri_temp=922
@@ -548,1363 +1907,4 @@ diri_temp=922
 #     max = 1.5
 #   [../]
 # []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="e8b802e4-8867-466d-aa28-dff98bc78bdb"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/2group.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-gamma_frac=.075
-R=73
-H=162.56
-
-[GlobalParams]
-  num_groups = 2
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;group1 group2&#x27;
-  temperature = temp
-  sss2_input = true
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  account_delayed = true
-  nt_scale = ${nt_scale}
-[]
-
-[Mesh]
-  file = &#x27;2d_lattice_structured.msh&#x27;
-[]
-
-[Problem]
-  coord_type = RZ
-[]
-
-[Variables]
-  [./temp]
-    initial_condition = ${ini_temp}
-    scaling = 1e-4
-  [../]
-[]
-
-[AuxVariables]
-  [./power_density]
-    order = CONSTANT
-    family = MONOMIAL
-  [../]
-[]
-
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    block = &#x27;fuel&#x27;
-    outlet_boundaries = &#x27;fuel_tops&#x27;
-    u_def = 0
-    v_def = ${flow_velocity}
-    w_def = 0
-    nt_exp_form = false
-    loop_precursors = false
-    family = MONOMIAL
-    order = CONSTANT
-    # jac_test = true
-  [../]
-[]
-
-[Nt]
-  var_name_base = group
-  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
-  create_temperature_var = false
-  scaling = 1e-4
-  pre_blocks = &#x27;fuel&#x27;
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  [./temp_source_fuel]
-    type = TransientFissionHeatSource
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-  [./temp_source_mod]
-    type = GammaHeatSource
-    variable = temp
-    block = &#x27;moder&#x27;
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    gamma = gamma_func
-  [../]
-  [./temp_diffusion]
-    type = MatDiffusion
-    diffusivity = &#x27;k&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_fuel]
-    type = ConservativeTemperatureAdvection
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-[]
-
-[BCs]
-  [./temp_diri_cg]
-    boundary = &#x27;fuel_bottoms outer_wall&#x27;
-    type = FlexiblePostprocessorDirichletBC
-    postprocessor = coreEndTemp
-    offset = -27.8
-    variable = temp
-  [../]
-  # [./temp_diri_cg]
-  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
-  #   type = FunctionDirichletBC
-  #   function = &#x27;temp_bc_func&#x27;
-  #   variable = temp
-  # [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;fuel_tops&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-  [../]
-[]
-
-[AuxKernels]
-  [./fuel]
-    block = &#x27;fuel&#x27;
-    type = FissionHeatSourceTransientAux
-    variable = power_density
-  [../]
-  [./moderator]
-    block = &#x27;moder&#x27;
-    type = ModeratorHeatSourceTransientAux
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    variable = power_density
-    gamma = gamma_func
-  [../]
-[]
-
-[Functions]
-  [./temp_bc_func]
-    type = ParsedFunction
-    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
-  [../]
-  [./gamma_func]
-    type = ParsedFunction
-    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../property_file_dir/serp3d2group0.78eV/2g0.78eV_fuel_&#x27;
-    interp_type = &#x27;spline&#x27;
-    block = &#x27;fuel&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-    controller_gain = 0
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;fuel&#x27;
-  [../]
-  [./moder]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../property_file_dir/serp3d2group0.78eV/2g0.78eV_moder_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;moder&#x27;
-    controller_gain = 0
-  [../]
-  [./rho_moder]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;moder&#x27;
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 6e-6
-
-  solve_type = &#x27;PJFNK&#x27;
-  line_search = none
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-
-  dtmin = 1e-5
-  [./TimeStepper]
-    type = PostprocessorDT
-    postprocessor = limit_k
-    dt = 1e-3
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-  [../]
-[]
-
-[Postprocessors]
-  [./group1_current]
-    type = IntegralNewVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./group1_old]
-    type = IntegralOldVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./multiplication]
-    type = DivisionPostprocessor
-    value1 = group1_current
-    value2 = group1_old
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;fuel&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./temp_moder]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;moder&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./average_fission_heat]
-    type = AverageFissionHeat
-    execute_on = &#x27;linear nonlinear&#x27;
-    outputs = &#x27;csv console&#x27;
-    block = &#x27;fuel&#x27;
-  [../]
-  [./coreEndTemp]
-    type = SideAverageValue
-    variable = temp
-    boundary = &#x27;fuel_tops&#x27;
-    outputs = &#x27;csv console&#x27;
-    execute_on = &#x27;linear nonlinear&#x27;
-  [../]
-  [./limit_k]
-    type = LimitK
-    execute_on = &#x27;timestep_end&#x27;
-    k_postprocessor = multiplication
-    growth_factor = 1.2
-    cutback_factor = .4
-    k_threshold = 1.5
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  csv = true
-  exodus = true
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0692f1c9-57de-4cfd-8fb0-744826bf7d15"><div class="modal-content"><h4>(problems/rodded2D/rodded.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-
-[GlobalParams]
-  num_groups = 4
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
-  temperature = temp
-  sss2_input = true
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  account_delayed = true
-[]
-
-[Mesh]
-  file = &#x27;2d_rodded_lattice.msh&#x27;
-[../]
-
-[Problem]
-  coord_type = RZ
-  kernel_coverage_check = false
-[]
-
-[Variables]
-  [./temp]
-    initial_condition = ${ini_temp}
-    scaling = 1e-4
-  [../]
-  [./rodPosition]
-    family = SCALAR
-    order = FIRST
-    initial_condition = 0.0
-  [../]
-[]
-
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    block = &#x27;fuel&#x27;
-    outlet_boundaries = &#x27;fuel_tops&#x27;
-    u_def = 0
-    v_def = ${flow_velocity}
-    w_def = 0
-    nt_exp_form = false
-    family = MONOMIAL
-    order = CONSTANT
-    # jac_test = true
-  [../]
-[]
-
-[Nt]
-  var_name_base = group
-  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall cRod_top cRod_bot&#x27;
-  create_temperature_var = false
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  [./temp_source_fuel]
-    type = TransientFissionHeatSource
-    variable = temp
-    nt_scale=${nt_scale}
-    block = &#x27;fuel&#x27;
-  [../]
-  [./temp_source_mod]
-    type = GammaHeatSource
-    variable = temp
-    gamma = .0144 # Cammi .0144
-    block = &#x27;moder&#x27;
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-  [../]
-  [./temp_diffusion]
-    type = MatDiffusion
-    diffusivity = &#x27;k&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_fuel]
-    type = ConservativeTemperatureAdvection
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-[]
-
-[ScalarKernels]
-  [./tdRodPos]
-    type = ODETimeDerivative
-    variable = rodPosition
-  [../]
-  [./rodposForce]
-    type = ParsedODEKernel
-    function = &#x27;rodPosition - 100&#x27;
-    variable = rodPosition
-  [../]
-[]
-
-[BCs]
-  [./temp_diri_cg]
-    boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
-    type = FunctionDirichletBC
-    function = &#x27;temp_bc_func&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;fuel_tops&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-  [../]
-[]
-
-[Functions]
-  [./temp_bc_func]
-    type = ParsedFunction
-    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gfuel_&#x27;
-    interp_type = &#x27;spline&#x27;
-    block = &#x27;fuel&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;fuel&#x27;
-  [../]
-  [./moder]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;moder&#x27;
-  [../]
-  [./rho_moder]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;moder&#x27;
-  [../]
-  [./cRod]
-    type = RoddedMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;cRod&#x27;
-    rodDimension = &#x27;y&#x27;
-    rodPosition = rodPosition
-    absorb_factor = 1e6 # how much more absorbing than usual in absorbing region?
-  [../]
-  [./rho_crod]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;cRod&#x27;
-  [../]
-
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 1e-6
-
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  solve_type = &#x27;PJFNK&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-  line_search = &#x27;none&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-  [./TimeStepper]
-    type = PostprocessorDT
-    postprocessor = limit_k
-    dt = 0.1
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-    # ksp_norm = none
-  [../]
-[]
-
-[Postprocessors]
-  [./group1_current]
-    type = IntegralNewVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./group1_old]
-    type = IntegralOldVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./multiplication]
-    type = DivisionPostprocessor
-    value1 = group1_current
-    value2 = group1_old
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;fuel&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./temp_moder]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;moder&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./average_fission_heat]
-     type = AverageFissionHeat
-     nt_scale = ${nt_scale}
-     execute_on = &#x27;linear nonlinear&#x27;
-     outputs = &#x27;console&#x27;
-     block = &#x27;fuel&#x27;
-  [../]
-  [./limit_k]
-    type = LimitK
-    execute_on = &#x27;timestep_end&#x27;
-    k_postprocessor = multiplication
-    growth_factor = 1.2
-    cutback_factor = .4
-    k_threshold = 1.5
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  csv = true
-  exodus = true
-  execute_on = &#x27;timestep_end final&#x27;
-  file_base = &#x27;out&#x27;
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0e7fe6d1-e580-4d37-8322-93c09bbc4658"><div class="modal-content"><h4>(problems/publication_level_cases/twod_control_rod_yank/rodded.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-
-[GlobalParams]
-  num_groups = 4
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
-  temperature = temp
-  sss2_input = true
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  account_delayed = true
-[]
-
-[Mesh]
-  file = &#x27;2d_rodded_lattice.msh&#x27;
-[../]
-
-[Problem]
-  coord_type = RZ
-  kernel_coverage_check = false
-[]
-
-[Variables]
-  [./temp]
-    initial_condition = ${ini_temp}
-    scaling = 1e-4
-  [../]
-  [./rodPosition]
-    family = SCALAR
-    order = FIRST
-    initial_condition = 0.0
-  [../]
-[]
-
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    block = &#x27;fuel&#x27;
-    outlet_boundaries = &#x27;fuel_tops&#x27;
-    u_def = 0
-    v_def = ${flow_velocity}
-    w_def = 0
-    nt_exp_form = false
-    family = MONOMIAL
-    order = CONSTANT
-    # jac_test = true
-  [../]
-[]
-
-[Nt]
-  var_name_base = group
-  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall cRod_top cRod_bot&#x27;
-  create_temperature_var = false
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  [./temp_source_fuel]
-    type = TransientFissionHeatSource
-    variable = temp
-    nt_scale=${nt_scale}
-    block = &#x27;fuel&#x27;
-  [../]
-  [./temp_source_mod]
-    type = GammaHeatSource
-    variable = temp
-    gamma = .0144 # Cammi .0144
-    block = &#x27;moder&#x27;
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-  [../]
-  [./temp_diffusion]
-    type = MatDiffusion
-    diffusivity = &#x27;k&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_fuel]
-    type = ConservativeTemperatureAdvection
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-[]
-
-[ScalarKernels]
-  [./tdRodPos]
-    type = ODETimeDerivative
-    variable = rodPosition
-  [../]
-  [./rodposForce]
-    type = ParsedODEKernel
-    function = &#x27;rodPosition - 100&#x27;
-    variable = rodPosition
-  [../]
-[]
-
-[BCs]
-  [./temp_diri_cg]
-    boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
-    type = FunctionDirichletBC
-    function = &#x27;temp_bc_func&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;fuel_tops&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-  [../]
-[]
-
-[Functions]
-  [./temp_bc_func]
-    type = ParsedFunction
-    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gfuel_&#x27;
-    interp_type = &#x27;spline&#x27;
-    block = &#x27;fuel&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;fuel&#x27;
-  [../]
-  [./moder]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;moder&#x27;
-  [../]
-  [./rho_moder]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;moder&#x27;
-  [../]
-  [./cRod]
-    type = RoddedMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4gmoder_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;cRod&#x27;
-    rodDimension = &#x27;y&#x27;
-    rodPosition = rodPosition
-    absorb_factor = 1e6 # how much more absorbing than usual in absorbing region?
-  [../]
-  [./rho_crod]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;cRod&#x27;
-  [../]
-
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 1e-6
-
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  solve_type = &#x27;PJFNK&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-  line_search = &#x27;none&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-  [./TimeStepper]
-    type = PostprocessorDT
-    postprocessor = limit_k
-    dt = 0.1
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-    # ksp_norm = none
-  [../]
-[]
-
-[Postprocessors]
-  [./group1_current]
-    type = IntegralNewVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./group1_old]
-    type = IntegralOldVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./multiplication]
-    type = DivisionPostprocessor
-    value1 = group1_current
-    value2 = group1_old
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;fuel&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./temp_moder]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;moder&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./average_fission_heat]
-     type = AverageFissionHeat
-     nt_scale = ${nt_scale}
-     execute_on = &#x27;linear nonlinear&#x27;
-     outputs = &#x27;console&#x27;
-     block = &#x27;fuel&#x27;
-  [../]
-  [./limit_k]
-    type = LimitK
-    execute_on = &#x27;timestep_end&#x27;
-    k_postprocessor = multiplication
-    growth_factor = 1.2
-    cutback_factor = .4
-    k_threshold = 1.5
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  csv = true
-  exodus = true
-  execute_on = &#x27;timestep_end final&#x27;
-  file_base = &#x27;out&#x27;
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="1169b130-2a2c-4647-b780-465b80f526c1"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/auto_diff_rho.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-gamma_frac=.075
-R=70.1675
-H=162.56
-
-[GlobalParams]
-  num_groups = 4
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
-  temperature = temp
-  sss2_input = true
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  account_delayed = true
-  nt_scale = ${nt_scale}
-[]
-
-[Mesh]
-  file = &#x27;2d_lattice_structured.msh&#x27;
-[]
-
-[Problem]
-  coord_type = RZ
-[]
-
-[Variables]
-  [./temp]
-    initial_condition = ${ini_temp}
-    scaling = 1e-4
-  [../]
-[]
-
-[AuxVariables]
-  [./power_density]
-    order = CONSTANT
-    family = MONOMIAL
-  [../]
-[]
-
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    block = &#x27;fuel&#x27;
-    outlet_boundaries = &#x27;fuel_tops&#x27;
-    u_def = 0
-    v_def = ${flow_velocity}
-    w_def = 0
-    nt_exp_form = false
-    loop_precursors = false
-    family = MONOMIAL
-    order = CONSTANT
-    # jac_test = true
-  [../]
-[]
-
-[Nt]
-  var_name_base = group
-  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
-  create_temperature_var = false
-  scaling = 1e-4
-  pre_blocks = &#x27;fuel&#x27;
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  [./temp_source_fuel]
-    type = TransientFissionHeatSource
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-  [./temp_source_mod]
-    type = GammaHeatSource
-    variable = temp
-    block = &#x27;moder&#x27;
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    gamma = gamma_func
-  [../]
-  [./temp_diffusion]
-    type = MatDiffusion
-    diffusivity = &#x27;k&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_fuel]
-    type = ConservativeTemperatureAdvection
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-[]
-
-[BCs]
-  [./temp_diri_cg]
-    boundary = &#x27;fuel_bottoms outer_wall&#x27;
-    type = FlexiblePostprocessorDirichletBC
-    postprocessor = coreEndTemp
-    offset = -27.8
-    variable = temp
-  [../]
-  # [./temp_diri_cg]
-  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
-  #   type = FunctionDirichletBC
-  #   function = &#x27;temp_bc_func&#x27;
-  #   variable = temp
-  # [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;fuel_tops&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-  [../]
-[]
-
-[AuxKernels]
-  [./fuel]
-    block = &#x27;fuel&#x27;
-    type = FissionHeatSourceTransientAux
-    variable = power_density
-  [../]
-  [./moderator]
-    block = &#x27;moder&#x27;
-    type = ModeratorHeatSourceTransientAux
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    variable = power_density
-    gamma = gamma_func
-  [../]
-[]
-
-[Functions]
-  [./temp_bc_func]
-    type = ParsedFunction
-    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
-  [../]
-  [./gamma_func]
-    type = ParsedFunction
-    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_fuel_rod0_&#x27;
-    interp_type = &#x27;spline&#x27;
-    block = &#x27;fuel&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-    controller_gain = 0
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;fuel&#x27;
-  [../]
-  [./moder]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_moder_rod0_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;moder&#x27;
-    controller_gain = 0
-  [../]
-  [./rho_moder]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;moder&#x27;
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 6e-6
-
-  solve_type = &#x27;PJFNK&#x27;
-  line_search = none
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-
-  dtmin = 1e-5
-  [./TimeStepper]
-    type = PostprocessorDT
-    postprocessor = limit_k
-    dt = 1e-3
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-  [../]
-[]
-
-[Postprocessors]
-  [./group1_current]
-    type = IntegralNewVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./group1_old]
-    type = IntegralOldVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./multiplication]
-    type = DivisionPostprocessor
-    value1 = group1_current
-    value2 = group1_old
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;fuel&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./temp_moder]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;moder&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./average_fission_heat]
-    type = AverageFissionHeat
-    execute_on = &#x27;linear nonlinear&#x27;
-    outputs = &#x27;csv console&#x27;
-    block = &#x27;fuel&#x27;
-  [../]
-  [./coreEndTemp]
-    type = SideAverageValue
-    variable = temp
-    boundary = &#x27;fuel_tops&#x27;
-    outputs = &#x27;csv console&#x27;
-    execute_on = &#x27;linear nonlinear&#x27;
-  [../]
-  [./limit_k]
-    type = LimitK
-    execute_on = &#x27;timestep_end&#x27;
-    k_postprocessor = multiplication
-    growth_factor = 1.2
-    cutback_factor = .4
-    k_threshold = 1.5
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  csv = true
-  exodus = true
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="500de7e9-a027-4e57-ae3b-8438139d2d13"><div class="modal-content"><h4>(problems/2017_annals_pub_msre_compare/4group.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-gamma_frac=.075
-R=73
-H=162.56
-
-[GlobalParams]
-  num_groups = 4
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;group1 group2 group3 group4&#x27;
-  temperature = temp
-  sss2_input = true
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  account_delayed = true
-  nt_scale = ${nt_scale}
-[]
-
-[Mesh]
-  file = &#x27;2d_lattice_structured.msh&#x27;
-[]
-
-[Problem]
-  coord_type = RZ
-[]
-
-[Variables]
-  [./temp]
-    initial_condition = ${ini_temp}
-    scaling = 1e-4
-  [../]
-[]
-
-[AuxVariables]
-  [./power_density]
-    order = CONSTANT
-    family = MONOMIAL
-  [../]
-[]
-
-[Precursors]
-  [./pres]
-    var_name_base = pre
-    block = &#x27;fuel&#x27;
-    outlet_boundaries = &#x27;fuel_tops&#x27;
-    u_def = 0
-    v_def = ${flow_velocity}
-    w_def = 0
-    nt_exp_form = false
-    loop_precursors = false
-    family = MONOMIAL
-    order = CONSTANT
-    # jac_test = true
-  [../]
-[]
-
-[Nt]
-  var_name_base = group
-  vacuum_boundaries = &#x27;fuel_bottoms fuel_tops moder_bottoms moder_tops outer_wall&#x27;
-  create_temperature_var = false
-  scaling = 1e-4
-  pre_blocks = &#x27;fuel&#x27;
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  [./temp_source_fuel]
-    type = TransientFissionHeatSource
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-  [./temp_source_mod]
-    type = GammaHeatSource
-    variable = temp
-    block = &#x27;moder&#x27;
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    gamma = gamma_func
-  [../]
-  [./temp_diffusion]
-    type = MatDiffusion
-    diffusivity = &#x27;k&#x27;
-    variable = temp
-  [../]
-  [./temp_advection_fuel]
-    type = ConservativeTemperatureAdvection
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-    variable = temp
-    block = &#x27;fuel&#x27;
-  [../]
-[]
-
-[BCs]
-  [./temp_diri_cg]
-    boundary = &#x27;fuel_bottoms outer_wall&#x27;
-    type = FlexiblePostprocessorDirichletBC
-    postprocessor = coreEndTemp
-    offset = -27.8
-    variable = temp
-  [../]
-  # [./temp_diri_cg]
-  #   boundary = &#x27;moder_bottoms fuel_bottoms outer_wall&#x27;
-  #   type = FunctionDirichletBC
-  #   function = &#x27;temp_bc_func&#x27;
-  #   variable = temp
-  # [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;fuel_tops&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;0 ${flow_velocity} 0&#x27;
-  [../]
-[]
-
-[AuxKernels]
-  [./fuel]
-    block = &#x27;fuel&#x27;
-    type = FissionHeatSourceTransientAux
-    variable = power_density
-  [../]
-  [./moderator]
-    block = &#x27;moder&#x27;
-    type = ModeratorHeatSourceTransientAux
-    average_fission_heat = &#x27;average_fission_heat&#x27;
-    variable = power_density
-    gamma = gamma_func
-  [../]
-[]
-
-[Functions]
-  [./temp_bc_func]
-    type = ParsedFunction
-    value = &#x27;${ini_temp} - (${ini_temp} - ${diri_temp}) * tanh(t/1e-2)&#x27;
-  [../]
-  [./gamma_func]
-    type = ParsedFunction
-    value = &#x27;${gamma_frac} * pi^2 / 4 * cos(pi * x / (2. * ${R})) * sin(pi * y / ${H})&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_fuel_rod0_&#x27;
-    interp_type = &#x27;spline&#x27;
-    block = &#x27;fuel&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-    controller_gain = 0
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;fuel&#x27;
-  [../]
-  [./moder]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../tutorial/step01_groupConstants/MSREProperties/msre_gentry_4g_moder_rod0_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.312 1760&#x27; # Cammi 2011 at 908 K
-    block = &#x27;moder&#x27;
-    controller_gain = 0
-  [../]
-  [./rho_moder]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;1.86e-3 * exp(-1.8 * 1.0e-5 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-    block = &#x27;moder&#x27;
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 6e-6
-
-  solve_type = &#x27;PJFNK&#x27;
-  line_search = none
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-
-  dtmin = 1e-5
-  [./TimeStepper]
-    type = PostprocessorDT
-    postprocessor = limit_k
-    dt = 1e-3
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-  [../]
-[]
-
-[Postprocessors]
-  [./group1_current]
-    type = IntegralNewVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./group1_old]
-    type = IntegralOldVariablePostprocessor
-    variable = group1
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./multiplication]
-    type = DivisionPostprocessor
-    value1 = group1_current
-    value2 = group1_old
-    outputs = &#x27;console csv&#x27;
-  [../]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;fuel&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./temp_moder]
-    type = ElementAverageValue
-    variable = temp
-    block = &#x27;moder&#x27;
-    outputs = &#x27;csv console&#x27;
-  [../]
-  [./average_fission_heat]
-    type = AverageFissionHeat
-    execute_on = &#x27;linear nonlinear&#x27;
-    outputs = &#x27;csv console&#x27;
-    block = &#x27;fuel&#x27;
-  [../]
-  [./coreEndTemp]
-    type = SideAverageValue
-    variable = temp
-    boundary = &#x27;fuel_tops&#x27;
-    outputs = &#x27;csv console&#x27;
-    execute_on = &#x27;linear nonlinear&#x27;
-  [../]
-  [./limit_k]
-    type = LimitK
-    execute_on = &#x27;timestep_end&#x27;
-    k_postprocessor = multiplication
-    growth_factor = 1.2
-    cutback_factor = .4
-    k_threshold = 1.5
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  csv = true
-  exodus = true
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#ca938562-5889-4a0b-8519-b727a2f1b2df" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#f2dfb765-6a7d-47d2-83a3-869147f5132e" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#e1741c14-93ec-4d47-8281-8f67315d4524" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#8951d111-7efd-4309-a64d-441f0c735b83" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#90d375d5-86fe-42f0-8b0e-ff12df9dd4ad" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#47a69fba-7ab6-4559-85f0-7f4f75d815d7" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#ceb0d0ef-d4c5-4093-96a9-5807d5702b84" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#ad786507-b007-48e0-8050-a0220f280708" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
