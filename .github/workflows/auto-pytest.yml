@@ -21,10 +21,10 @@ jobs:
       - name: Build and Run
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.9
+          python-version: 3.8
           mamba-version: "*"
           channels: conda-forge
-          activate-environment: openmc-pyne-pytest
+          activate-environment: openmc-pyne
       - shell: bash -l {0}
         run: |
           conda deactivate
