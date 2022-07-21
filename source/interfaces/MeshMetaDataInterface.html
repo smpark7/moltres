@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>MeshMetaDataInterface | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="37840790-13e4-4d3a-b56b-04e4f13b8000" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="1c84abe1-1332-4916-a16a-59fae54ef5ab" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="b11f5a99-9540-457c-8977-ba41da025d85" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="cc9fdd80-54d7-4cde-89a5-f78f0541ce21"><i class="material-icons">menu</i></a><ul class="sidenav" id="cc9fdd80-54d7-4cde-89a5-f78f0541ce21"><li><a href="#!" class="dropdown-trigger" data-target="5bf49f2f-fd58-49c7-8da2-d3f354dc4439" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="befbfd0c-8bd4-4f66-9d58-100f13a7ed69" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="16557d1d-728f-4521-8447-06a427d21952" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="37840790-13e4-4d3a-b56b-04e4f13b8000"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="1c84abe1-1332-4916-a16a-59fae54ef5ab"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="b11f5a99-9540-457c-8977-ba41da025d85"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="5bf49f2f-fd58-49c7-8da2-d3f354dc4439"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="befbfd0c-8bd4-4f66-9d58-100f13a7ed69"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="16557d1d-728f-4521-8447-06a427d21952"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">MeshMetaDataInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="ad9bd754-9e13-48ea-a356-8fd73f62124a" data-section-level="1" data-section-text="MeshMetaDataInterface"><h1 id="meshmetadatainterface">MeshMetaDataInterface</h1><p>The MeshMetaDataInterface is used for retrieving attributes related to the mesh created during the mesh generation phase. Attributes can have arbitrary types and names and can be used by other objects to query information that might otherwise be cumbersome by just inspecting the raw mesh object. Examples include specific feature locations, dimensions, numbers of elements in a direction, etc. The interface contains templated methods for querying for the existance of specific attributes as well as retrieving those attributes.</p><section class="scrollspy" id="a5e0929c-6b87-4088-bf85-3b8784240b85" data-section-level="2" data-section-text="Availability on " Recover ""><h2 id="availability-on-recover">Availability on &quot;Recover&quot;</h2><p>One of the most important features of the MeshMetaDataInterface is it&#x27;s availablity during recover operations. Any system deriving from the interface will have access to attributes created during the initial setup phase of the simulation. This removes the need to retrieve <a href="../meshgenerators/MeshGenerator.html">MeshGenerator</a>, <a href="../../syntax/UserObjects/index.html">UserObject</a>, or <a href="../../syntax/Mesh/index.html">MooseMesh</a> objects that might contain specific APIs that store that same information.</p></section><section class="scrollspy" id="55426e31-3de2-45e5-983d-543a81496154" data-section-level="2" data-section-text="MeshGenerators"><h2 id="meshgenerators">MeshGenerators</h2><p>The MeshGenerator system is the only system that may set attributes in the mesh meta-data store. Attributes are typically written during the &quot;act&quot; phase. Here is an example of attributes written by the built-in GeneratedMeshGenerator object:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
+<!DOCTYPE html><head><meta charset="UTF-8"><title>MeshMetaDataInterface | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="0f92486f-7043-4544-bd66-79c191ef5856" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="19fb9e3f-5b3b-441c-a38e-d3d81daa6e44" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="1294d90b-1e02-49b3-90bf-b84b3d5ca919" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="25266986-27ff-4241-b157-c5ad9c3655b7"><i class="material-icons">menu</i></a><ul class="sidenav" id="25266986-27ff-4241-b157-c5ad9c3655b7"><li><a href="#!" class="dropdown-trigger" data-target="89f2774a-1154-4071-ba21-0b2b374a761e" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="4f3df44c-33ec-478b-a871-007723004d67" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="2202230c-3b88-474c-b617-cdf31acec1db" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="0f92486f-7043-4544-bd66-79c191ef5856"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="19fb9e3f-5b3b-441c-a38e-d3d81daa6e44"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="1294d90b-1e02-49b3-90bf-b84b3d5ca919"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="89f2774a-1154-4071-ba21-0b2b374a761e"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="4f3df44c-33ec-478b-a871-007723004d67"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="2202230c-3b88-474c-b617-cdf31acec1db"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">MeshMetaDataInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="2cc9753d-5ec7-4820-bacf-2fda7173a798" data-section-level="1" data-section-text="MeshMetaDataInterface"><h1 id="meshmetadatainterface">MeshMetaDataInterface</h1><p>The MeshMetaDataInterface is used for retrieving attributes related to the mesh created during the mesh generation phase. Attributes can have arbitrary types and names and can be used by other objects to query information that might otherwise be cumbersome by just inspecting the raw mesh object. Examples include specific feature locations, dimensions, numbers of elements in a direction, etc. The interface contains templated methods for querying for the existence of specific attributes as well as retrieving those attributes.</p><section class="scrollspy" id="1e7db699-eefe-40a5-ade0-b64ac4c3e816" data-section-level="2" data-section-text="Availability on " Recover ""><h2 id="availability-on-recover">Availability on &quot;Recover&quot;</h2><p>One of the most important features of the MeshMetaDataInterface is it&#x27;s availability during recover operations. Any system deriving from the interface will have access to attributes created during the initial setup phase of the simulation. This removes the need to retrieve <a href="../meshgenerators/MeshGenerator.html">MeshGenerator</a>, <a href="../../syntax/UserObjects/index.html">UserObject</a>, or <a href="../../syntax/Mesh/index.html">MooseMesh</a> objects that might contain specific APIs that store that same information.</p></section><section class="scrollspy" id="86e97d23-db02-4417-a55b-d1c14a7eae4d" data-section-level="2" data-section-text="MeshGenerators"><h2 id="meshgenerators">MeshGenerators</h2><p>The MeshGenerator system is the only system that may set attributes in the mesh meta-data store. Attributes are typically written during the &quot;act&quot; phase. Here is an example of attributes written by the built-in GeneratedMeshGenerator object:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
 #include &quot;GeneratedMeshGenerator.h&quot;
 #include &quot;CastUniquePointer.h&quot;
 
@@ -15,8 +15,6 @@
 #include &lt;cmath&gt; // provides round, not std::round (see http://www.cplusplus.com/reference/cmath/round/)
 
 registerMooseObject(&quot;MooseApp&quot;, GeneratedMeshGenerator);
-
-defineLegacyParams(GeneratedMeshGenerator);
 
 InputParameters
 GeneratedMeshGenerator::validParams()
@@ -44,6 +42,8 @@ GeneratedMeshGenerator::validParams()
                              &quot;The type of element from libMesh to &quot;
                              &quot;generate (default: linear element for &quot;
                              &quot;requested dimension)&quot;);
+  params.addParam&lt;std::vector&lt;SubdomainID&gt;&gt;(&quot;subdomain_ids&quot;, &quot;Subdomain IDs, default to all zero&quot;);
+
   params.addParam&lt;bool&gt;(
       &quot;gauss_lobatto_grid&quot;,
       false,
@@ -92,6 +92,7 @@ GeneratedMeshGenerator::GeneratedMeshGenerator(const InputParameters &amp; param
     _ymax(declareMeshProperty(&quot;ymax&quot;, getParam&lt;Real&gt;(&quot;ymax&quot;))),
     _zmin(declareMeshProperty(&quot;zmin&quot;, getParam&lt;Real&gt;(&quot;zmin&quot;))),
     _zmax(declareMeshProperty(&quot;zmax&quot;, getParam&lt;Real&gt;(&quot;zmax&quot;))),
+    _has_subdomain_ids(isParamValid(&quot;subdomain_ids&quot;)),
     _gauss_lobatto_grid(getParam&lt;bool&gt;(&quot;gauss_lobatto_grid&quot;)),
     _bias_x(getParam&lt;Real&gt;(&quot;bias_x&quot;)),
     _bias_y(getParam&lt;Real&gt;(&quot;bias_y&quot;)),
@@ -178,6 +179,23 @@ GeneratedMeshGenerator::generate()
       break;
   }
 
+  if (_has_subdomain_ids)
+  {
+    auto &amp; bids = getParam&lt;std::vector&lt;SubdomainID&gt;&gt;(&quot;subdomain_ids&quot;);
+    if (bids.size() != _nx * _ny * _nz)
+      paramError(&quot;subdomain_ids&quot;,
+                 &quot;Size must equal to the product of number of elements in all directions&quot;);
+    for (auto &amp; elem : mesh-&gt;element_ptr_range())
+    {
+      const Point p = elem-&gt;vertex_average();
+      unsigned int ix = std::floor((p(0) - _xmin) / (_xmax - _xmin) * _nx);
+      unsigned int iy = std::floor((p(1) - _ymin) / (_ymax - _ymin) * _ny);
+      unsigned int iz = std::floor((p(2) - _zmin) / (_zmax - _zmin) * _nz);
+      unsigned int i = iz * _nx * _ny + iy * _nx + ix;
+      elem-&gt;subdomain_id() = bids[i];
+    }
+  }
+
   // rename and shift boundaries
   BoundaryInfo &amp; boundary_info = mesh-&gt;get_boundary_info();
   const auto &amp; mesh_boundary_ids = boundary_info.get_boundary_ids();
@@ -216,8 +234,9 @@ GeneratedMeshGenerator::generate()
     for (unsigned int dir = 0; dir &lt; LIBMESH_DIM; ++dir)
     {
       pows[dir].resize(nelem[dir] + 1);
-      for (unsigned int i = 0; i &lt; pows[dir].size(); ++i)
-        pows[dir][i] = std::pow(bias[dir], static_cast&lt;int&gt;(i));
+      pows[dir][0] = 1.0;
+      for (unsigned int i = 1; i &lt; pows[dir].size(); ++i)
+        pows[dir][i] = pows[dir][i - 1] * bias[dir];
     }
 
     // Loop over the nodes and move them to the desired location
@@ -284,7 +303,7 @@ GeneratedMeshGenerator::generate()
 
   return dynamic_pointer_cast&lt;MeshBase&gt;(mesh);
 }
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#45da014d-c87b-4855-8222-d376262e72b7">(moose/framework/src/meshgenerators/GeneratedMeshGenerator.C)</a></section></section><div class="moose-modal modal" id="45da014d-c87b-4855-8222-d376262e72b7"><div class="modal-content"><h4>(moose/framework/src/meshgenerators/GeneratedMeshGenerator.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#077ae889-f0fa-4da2-9c3b-d5a366bb0fb7">(moose/framework/src/meshgenerators/GeneratedMeshGenerator.C)</a></section></section><div class="moose-modal modal" id="077ae889-f0fa-4da2-9c3b-d5a366bb0fb7"><div class="modal-content"><h4>(moose/framework/src/meshgenerators/GeneratedMeshGenerator.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -310,8 +329,6 @@ GeneratedMeshGenerator::generate()
 
 registerMooseObject(&quot;MooseApp&quot;, GeneratedMeshGenerator);
 
-defineLegacyParams(GeneratedMeshGenerator);
-
 InputParameters
 GeneratedMeshGenerator::validParams()
 {
@@ -338,6 +355,8 @@ GeneratedMeshGenerator::validParams()
                              &quot;The type of element from libMesh to &quot;
                              &quot;generate (default: linear element for &quot;
                              &quot;requested dimension)&quot;);
+  params.addParam&lt;std::vector&lt;SubdomainID&gt;&gt;(&quot;subdomain_ids&quot;, &quot;Subdomain IDs, default to all zero&quot;);
+
   params.addParam&lt;bool&gt;(
       &quot;gauss_lobatto_grid&quot;,
       false,
@@ -386,6 +405,7 @@ GeneratedMeshGenerator::GeneratedMeshGenerator(const InputParameters &amp; param
     _ymax(declareMeshProperty(&quot;ymax&quot;, getParam&lt;Real&gt;(&quot;ymax&quot;))),
     _zmin(declareMeshProperty(&quot;zmin&quot;, getParam&lt;Real&gt;(&quot;zmin&quot;))),
     _zmax(declareMeshProperty(&quot;zmax&quot;, getParam&lt;Real&gt;(&quot;zmax&quot;))),
+    _has_subdomain_ids(isParamValid(&quot;subdomain_ids&quot;)),
     _gauss_lobatto_grid(getParam&lt;bool&gt;(&quot;gauss_lobatto_grid&quot;)),
     _bias_x(getParam&lt;Real&gt;(&quot;bias_x&quot;)),
     _bias_y(getParam&lt;Real&gt;(&quot;bias_y&quot;)),
@@ -472,6 +492,23 @@ GeneratedMeshGenerator::generate()
       break;
   }
 
+  if (_has_subdomain_ids)
+  {
+    auto &amp; bids = getParam&lt;std::vector&lt;SubdomainID&gt;&gt;(&quot;subdomain_ids&quot;);
+    if (bids.size() != _nx * _ny * _nz)
+      paramError(&quot;subdomain_ids&quot;,
+                 &quot;Size must equal to the product of number of elements in all directions&quot;);
+    for (auto &amp; elem : mesh-&gt;element_ptr_range())
+    {
+      const Point p = elem-&gt;vertex_average();
+      unsigned int ix = std::floor((p(0) - _xmin) / (_xmax - _xmin) * _nx);
+      unsigned int iy = std::floor((p(1) - _ymin) / (_ymax - _ymin) * _ny);
+      unsigned int iz = std::floor((p(2) - _zmin) / (_zmax - _zmin) * _nz);
+      unsigned int i = iz * _nx * _ny + iy * _nx + ix;
+      elem-&gt;subdomain_id() = bids[i];
+    }
+  }
+
   // rename and shift boundaries
   BoundaryInfo &amp; boundary_info = mesh-&gt;get_boundary_info();
   const auto &amp; mesh_boundary_ids = boundary_info.get_boundary_ids();
@@ -510,8 +547,9 @@ GeneratedMeshGenerator::generate()
     for (unsigned int dir = 0; dir &lt; LIBMESH_DIM; ++dir)
     {
       pows[dir].resize(nelem[dir] + 1);
-      for (unsigned int i = 0; i &lt; pows[dir].size(); ++i)
-        pows[dir][i] = std::pow(bias[dir], static_cast&lt;int&gt;(i));
+      pows[dir][0] = 1.0;
+      for (unsigned int i = 1; i &lt; pows[dir].size(); ++i)
+        pows[dir][i] = pows[dir][i - 1] * bias[dir];
     }
 
     // Loop over the nodes and move them to the desired location
@@ -578,4 +616,4 @@ GeneratedMeshGenerator::generate()
 
   return dynamic_pointer_cast&lt;MeshBase&gt;(mesh);
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#a5e0929c-6b87-4088-bf85-3b8784240b85" class="tooltipped" data-position="left" data-tooltip="Availability on " Recover "">Availability on " Recover "</a></li><li><a href="#55426e31-3de2-45e5-983d-543a81496154" class="tooltipped" data-position="left" data-tooltip="MeshGenerators">MeshGenerators</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#1e7db699-eefe-40a5-ade0-b64ac4c3e816" class="tooltipped" data-position="left" data-tooltip="Availability on " Recover "">Availability on " Recover "</a></li><li><a href="#86e97d23-db02-4417-a55b-d1c14a7eae4d" class="tooltipped" data-position="left" data-tooltip="MeshGenerators">MeshGenerators</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>

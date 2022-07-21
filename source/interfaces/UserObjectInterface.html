@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>UserObjectInterface | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="523218e1-0dc0-4e60-9913-7e15c91d2cf7" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d676e7e6-261d-48e1-8895-91c082e30555" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="ab3f9f49-95e5-4608-ae6b-d7733d9c9808" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="a4c274fb-a928-46eb-8fd1-d65224640c9a"><i class="material-icons">menu</i></a><ul class="sidenav" id="a4c274fb-a928-46eb-8fd1-d65224640c9a"><li><a href="#!" class="dropdown-trigger" data-target="9e5382cd-a47d-4d95-9fca-a36cc06ebac9" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="03cb73f5-c18b-41d7-93db-e96a539439db" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="783e1321-6636-4a34-9b7f-291e74c4232e" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="523218e1-0dc0-4e60-9913-7e15c91d2cf7"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="d676e7e6-261d-48e1-8895-91c082e30555"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="ab3f9f49-95e5-4608-ae6b-d7733d9c9808"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="9e5382cd-a47d-4d95-9fca-a36cc06ebac9"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="03cb73f5-c18b-41d7-93db-e96a539439db"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="783e1321-6636-4a34-9b7f-291e74c4232e"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">UserObjectInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="3e391743-2b4e-4919-b600-5d99b8524f9c" data-section-level="1" data-section-text="UserObjectInterface"><h1 id="userobjectinterface">UserObjectInterface</h1><p>The UserObjectInterface defines the methods used for retrieving const references to the specific types of UserObjects. This is done with templated methods so that use of the UserObject does not require a dynamic cast. Many objects in MOOSE support the retrieval of these references so that custom UserObject APIs may be used in calculations. UserObjects are generally executed after most other systems in MOOSE so these values are often lagged when being used in another calculation.</p><section class="scrollspy" id="90f12689-acf6-4437-badd-8031ca701d1d" data-section-level="2" data-section-text="End Use API"><h2 id="end-use-api">End Use API</h2><p>Most objects in MOOSE will retrieve UserObjects through special macro functions found here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
+<!DOCTYPE html><head><meta charset="UTF-8"><title>UserObjectInterface | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="6bfbfc49-e6b8-46b3-89a5-72a886783659" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="7263ccb2-6a75-4998-8a31-f1370653d4d2" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="b02d6c38-9a54-402f-bfef-f63f58ec3d80" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="8f4447e1-7755-46ef-bd68-9f279bf619cd"><i class="material-icons">menu</i></a><ul class="sidenav" id="8f4447e1-7755-46ef-bd68-9f279bf619cd"><li><a href="#!" class="dropdown-trigger" data-target="8cd9f13c-22f4-4d92-9e7c-22a16f614cbc" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="80c5605e-62c7-4ceb-8d58-c2de8fe11c10" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="5b6d5a0d-9d8f-4e0b-8647-696d06010582" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="6bfbfc49-e6b8-46b3-89a5-72a886783659"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="7263ccb2-6a75-4998-8a31-f1370653d4d2"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="b02d6c38-9a54-402f-bfef-f63f58ec3d80"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="8cd9f13c-22f4-4d92-9e7c-22a16f614cbc"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="80c5605e-62c7-4ceb-8d58-c2de8fe11c10"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="5b6d5a0d-9d8f-4e0b-8647-696d06010582"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">UserObjectInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="f8857958-a296-433f-9432-ac12e37775e7" data-section-level="1" data-section-text="UserObjectInterface"><h1 id="userobjectinterface">UserObjectInterface</h1><p>The UserObjectInterface defines the methods used for retrieving const references to the specific types of UserObjects. This is done with templated methods so that use of the UserObject does not require a dynamic cast. Many objects in MOOSE support the retrieval of these references so that custom UserObject APIs may be used in calculations. UserObjects are generally executed after most other systems in MOOSE so these values are often lagged when being used in another calculation.</p><section class="scrollspy" id="d8f2436e-e923-40f0-adc9-24a33bf5939f" data-section-level="2" data-section-text="End Use API"><h2 id="end-use-api">End Use API</h2><p>Most objects in MOOSE will retrieve UserObjects through special macro functions found here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
 #pragma once
 
 // MOOSE includes
@@ -50,32 +50,47 @@ public:
   /**
    * Get an user object with a given parameter \p param_name
    * @param param_name The name of the parameter key of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with name associated with the parameter \p param_name
    */
   template &lt;class T&gt;
-  const T &amp; getUserObject(const std::string &amp; param_name) const;
+  const T &amp; getUserObject(const std::string &amp; param_name, bool is_dependency = true) const;
 
   /**
    * Get an user object with the name \p object_name
    * @param object_name The name of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with the name \p object_name
    */
   template &lt;class T&gt;
-  const T &amp; getUserObjectByName(const UserObjectName &amp; object_name) const;
+  const T &amp; getUserObjectByName(const UserObjectName &amp; object_name,
+                                bool is_dependency = true) const;
 
   /**
    * Get an user object with a given parameter \p param_name
    * @param param_name The name of the parameter key of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with name associated with the parameter \p param_name
    */
-  const UserObject &amp; getUserObjectBase(const std::string &amp; param_name) const;
+  const UserObject &amp; getUserObjectBase(const std::string &amp; param_name,
+                                       bool is_dependency = true) const;
 
   /**
    * Get an user object with the name \p object_name
    * @param object_name The name of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with the name \p object_name
    */
-  const UserObject &amp; getUserObjectBaseByName(const UserObjectName &amp; object_name) const;
+  const UserObject &amp; getUserObjectBaseByName(const UserObjectName &amp; object_name,
+                                             bool is_dependency = true) const;
 
 protected:
   /**
@@ -134,16 +149,17 @@ UserObjectInterface::castUserObject(const UserObject &amp; uo_base,
 
 template &lt;class T&gt;
 const T &amp;
-UserObjectInterface::getUserObject(const std::string &amp; param_name) const
+UserObjectInterface::getUserObject(const std::string &amp; param_name, const bool is_dependency) const
 {
-  return castUserObject&lt;T&gt;(getUserObjectBase(param_name), param_name);
+  return castUserObject&lt;T&gt;(getUserObjectBase(param_name, is_dependency), param_name);
 }
 
 template &lt;class T&gt;
 const T &amp;
-UserObjectInterface::getUserObjectByName(const UserObjectName &amp; object_name) const
+UserObjectInterface::getUserObjectByName(const UserObjectName &amp; object_name,
+                                         const bool is_dependency) const
 {
-  return castUserObject&lt;T&gt;(getUserObjectBaseByName(object_name));
+  return castUserObject&lt;T&gt;(getUserObjectBaseByName(object_name, is_dependency));
 }
 
 template &lt;class T&gt;
@@ -161,8 +177,8 @@ UserObjectInterface::hasUserObjectByName(const UserObjectName &amp; object_name)
     return false;
   return dynamic_cast&lt;const T *&gt;(&amp;_uoi_feproblem.getUserObjectBase(object_name));
 }
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#ac874b34-a979-4aa9-ab4d-eaebefe795a4">(moose/framework/include/userobject/UserObjectInterface.h)</a><p>Typical usage looks like this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">    _elem_uo(getUserObject&lt;ElementUOProvider&gt;(&quot;element_user_object&quot;)),
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#d1c4c176-2939-454f-8f19-c9da7da568e1">(moose/framework/src/auxkernels/ElementUOAux.C)</a></section></section><div class="moose-modal modal" id="ac874b34-a979-4aa9-ab4d-eaebefe795a4"><div class="modal-content"><h4>(moose/framework/include/userobject/UserObjectInterface.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#51a66154-4f40-42b9-b5b6-b66133aa2880">(moose/framework/include/userobject/UserObjectInterface.h)</a><p>Typical usage looks like this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">    _elem_uo(getUserObject&lt;ElementUOProvider&gt;(&quot;element_user_object&quot;)),
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#df16475b-6f3b-4e4b-a91e-acdd95b4a58f">(moose/framework/src/auxkernels/ElementUOAux.C)</a></section></section><div class="moose-modal modal" id="51a66154-4f40-42b9-b5b6-b66133aa2880"><div class="modal-content"><h4>(moose/framework/include/userobject/UserObjectInterface.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -222,32 +238,47 @@ public:
   /**
    * Get an user object with a given parameter \p param_name
    * @param param_name The name of the parameter key of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with name associated with the parameter \p param_name
    */
   template &lt;class T&gt;
-  const T &amp; getUserObject(const std::string &amp; param_name) const;
+  const T &amp; getUserObject(const std::string &amp; param_name, bool is_dependency = true) const;
 
   /**
    * Get an user object with the name \p object_name
    * @param object_name The name of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with the name \p object_name
    */
   template &lt;class T&gt;
-  const T &amp; getUserObjectByName(const UserObjectName &amp; object_name) const;
+  const T &amp; getUserObjectByName(const UserObjectName &amp; object_name,
+                                bool is_dependency = true) const;
 
   /**
    * Get an user object with a given parameter \p param_name
    * @param param_name The name of the parameter key of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with name associated with the parameter \p param_name
    */
-  const UserObject &amp; getUserObjectBase(const std::string &amp; param_name) const;
+  const UserObject &amp; getUserObjectBase(const std::string &amp; param_name,
+                                       bool is_dependency = true) const;
 
   /**
    * Get an user object with the name \p object_name
    * @param object_name The name of the user object to retrieve
+   * @param is_dependency Whether the user object we are retrieving should be viewed as a
+   * dependency, e.g. whether the retrieved user object should be sorted and executed before this
+   * object (if we are a user object)
    * @return The user object with the name \p object_name
    */
-  const UserObject &amp; getUserObjectBaseByName(const UserObjectName &amp; object_name) const;
+  const UserObject &amp; getUserObjectBaseByName(const UserObjectName &amp; object_name,
+                                             bool is_dependency = true) const;
 
 protected:
   /**
@@ -306,16 +337,17 @@ UserObjectInterface::castUserObject(const UserObject &amp; uo_base,
 
 template &lt;class T&gt;
 const T &amp;
-UserObjectInterface::getUserObject(const std::string &amp; param_name) const
+UserObjectInterface::getUserObject(const std::string &amp; param_name, const bool is_dependency) const
 {
-  return castUserObject&lt;T&gt;(getUserObjectBase(param_name), param_name);
+  return castUserObject&lt;T&gt;(getUserObjectBase(param_name, is_dependency), param_name);
 }
 
 template &lt;class T&gt;
 const T &amp;
-UserObjectInterface::getUserObjectByName(const UserObjectName &amp; object_name) const
+UserObjectInterface::getUserObjectByName(const UserObjectName &amp; object_name,
+                                         const bool is_dependency) const
 {
-  return castUserObject&lt;T&gt;(getUserObjectBaseByName(object_name));
+  return castUserObject&lt;T&gt;(getUserObjectBaseByName(object_name, is_dependency));
 }
 
 template &lt;class T&gt;
@@ -333,7 +365,7 @@ UserObjectInterface::hasUserObjectByName(const UserObjectName &amp; object_name)
     return false;
   return dynamic_cast&lt;const T *&gt;(&amp;_uoi_feproblem.getUserObjectBase(object_name));
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="d1c4c176-2939-454f-8f19-c9da7da568e1"><div class="modal-content"><h4>(moose/framework/src/auxkernels/ElementUOAux.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="df16475b-6f3b-4e4b-a91e-acdd95b4a58f"><div class="modal-content"><h4>(moose/framework/src/auxkernels/ElementUOAux.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -393,4 +425,4 @@ ElementUOAux::computeValue()
   else
     return _elem_uo.getElementalValueReal(_current_elem-&gt;id(), _field_name);
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#90f12689-acf6-4437-badd-8031ca701d1d" class="tooltipped" data-position="left" data-tooltip="End Use API">End Use API</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#d8f2436e-e923-40f0-adc9-24a33bf5939f" class="tooltipped" data-position="left" data-tooltip="End Use API">End Use API</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
