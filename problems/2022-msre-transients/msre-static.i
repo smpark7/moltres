@@ -119,7 +119,7 @@
   dtmin = 1
   dtmax = 20
   steady_state_detection = true
-  steady_state_tolerance = 1e-12
+  steady_state_tolerance = 1e-10
   steady_state_start_time = 100
   [./TimeStepper]
     type = IterationAdaptiveDT
