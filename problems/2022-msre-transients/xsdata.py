@@ -19,7 +19,7 @@ mats = {
                                    .00258174, .000760071, .000262749]),
             'DECAY_CONSTANT': np.array([.0124378, .0306300, .111474,
                                 .302248, 1.17229, 3.07474]),
-            'sigma_tr': np.array([.233433, .264024]),
+            'sigma_tr': np.array([.272167, .277652]),
             'sigma_a': np.array([.00369720, .0270469]),
             'kappa_fission': np.array([4.05462e-14, 6.76535e-13])
         },
@@ -36,8 +36,8 @@ mats = {
             'RECIPVEL': np.array([9.98046e-8, 2.07824e-6]),
             'BETA_EFF': np.array([0, 0, 0, 0, 0, 0]),
             'DECAY_CONSTANT': np.array([0, 0, 0, 0, 0, 0]),
-            'sigma_tr': np.array([.338400, .433088]),
-            'sigma_a': np.array([1.41127e-5, 1.44339e-4]),
+            'sigma_tr': np.array([.398086, .458590]),
+            'sigma_a': np.array([1.41139e-5, 1.44342e-4]),
             'kappa_fission': np.array([0, 0])
         },
         'temp': [922]
