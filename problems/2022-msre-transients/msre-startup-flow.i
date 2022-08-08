@@ -163,8 +163,8 @@
 [ICs]
   [./vel_ic]
     type = VectorConstantIC
-    x_value = 1e-4
-    y_value = 1e-4
+    x_value = 1e-14
+    y_value = 1e-14
     variable = vel
   []
 []
@@ -235,7 +235,7 @@
   fixed_point_abs_tol = 1e-7
   fixed_point_max_its = 5
 
-  dt = .1
+  dt = .2
 []
 
 [Preconditioning]
