@@ -12,7 +12,7 @@
 [Mesh]
   [./mesh]
     type = FileMeshGenerator
-    file = 'mesh.e'
+    file = 'mesh-y-refine.e'
   []
 []
 
@@ -44,7 +44,7 @@
     loop_precursors = false
     transient = false
     block = '0'
-    scaling = 1e3
+#    scaling = 1e3
   []
 []
 
@@ -82,6 +82,7 @@
   k0 = 1
   l_max_its = 100
   eig_check_tol = 1e-6
+  sol_check_tol = 1e-6
 
   automatic_scaling = true
   compute_scaling_once = false
@@ -89,10 +90,10 @@
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_asm_overlap -sub_pc_factor_shift_type'
-  petsc_options_value = 'asm      lu           200                1               NONZERO'
-#  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
-#  petsc_options_value = 'lu       NONZERO               superlu_dist'
+#  petsc_options_iname = '-pc_type -sub_pc_type -ksp_gmres_restart -pc_asm_overlap -sub_pc_factor_shift_type'
+#  petsc_options_value = 'asm      lu           200                1               NONZERO'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
+  petsc_options_value = 'lu       NONZERO               superlu_dist'
   line_search = none
 []
 
