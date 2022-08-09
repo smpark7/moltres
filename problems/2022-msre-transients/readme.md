@@ -70,6 +70,6 @@ time-step for the primary (\*_exodus.e), nts (\*_out_ntsApp0_exodus.e), and loop
 
 ## Changelog
 
-9/8/2022
+###### 9/8/2022
 - `2nd` label for 2nd-order MONOMIAL discretization for DNPs.
 - `v2` label for modified flow speed of 18.085cm/s and 285cm outer loop
