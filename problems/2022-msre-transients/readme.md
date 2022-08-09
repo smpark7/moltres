@@ -65,5 +65,11 @@ during the start-up transient.
 
 The CSV output files report the k value for every time-step as `bnorm`. The
 Exodus output files show the neutron fluxes & precursor concentrations at every
-time-step for the primary (*_exodus.e), nts (*_out_ntsApp0_exodus.e), and loop
-(*_out_loopApp0_exodus.e) simulations.
+time-step for the primary (\*_exodus.e), nts (\*_out_ntsApp0_exodus.e), and loop
+(\*_out_loopApp0_exodus.e) simulations.
+
+## Changelog
+
+9/8/2022
+- `2nd` label for 2nd-order MONOMIAL discretization for DNPs.
+- `v2` label for modified flow speed of 18.085cm/s and 285cm outer loop
