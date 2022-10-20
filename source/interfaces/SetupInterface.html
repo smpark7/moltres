@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>SetupInterface execute on | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="c59bfc89-0c84-4182-a0cd-989f2f462299" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="89a5c56e-0c41-408d-bdf7-0d5deca75748" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="357dece6-6219-4816-8975-af8581d2a3f4" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="aac8b737-523a-4d9f-926e-f4fe266fd7b2"><i class="material-icons">menu</i></a><ul class="sidenav" id="aac8b737-523a-4d9f-926e-f4fe266fd7b2"><li><a href="#!" class="dropdown-trigger" data-target="2052bac0-0256-475c-be77-d8e543f85fac" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="258b7685-8049-4fe2-8e8b-4b86f4343c19" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="5952c6a1-9c77-4e95-a774-5030c537d009" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="c59bfc89-0c84-4182-a0cd-989f2f462299"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="89a5c56e-0c41-408d-bdf7-0d5deca75748"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="357dece6-6219-4816-8975-af8581d2a3f4"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="2052bac0-0256-475c-be77-d8e543f85fac"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="258b7685-8049-4fe2-8e8b-4b86f4343c19"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="5952c6a1-9c77-4e95-a774-5030c537d009"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">SetupInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="bfa8d5df-0f73-4a48-9570-496f569cb709" data-section-level="1" data-section-text="SetupInterface ( execute _ on )"><h1 id="setupinterface-execute-on">SetupInterface (execute_on)</h1><p>Most user-facing objects in MOOSE inherit from the SetupInterface class. This class provides two features to objects. Foremost, it provides the the &quot;execute_on&quot; parameter, which, as the name suggests, dictates when the object is to be executed. Secondly, it adds virtual setup methods that allow derived classes to perform setup applications prior to execution.</p><section class="scrollspy" id="4a979d4d-22ac-45c3-a917-6bfb082d395a" data-section-level="2" data-section-text="Execute On"><h2 id="execute-on">Execute On</h2><p>Any object inheriting from the SetupInterface, that adds the <code>SetupInterface::validParams()</code> within its own parameters, will have an &quot;execute_on&quot; parameter that can be set to various flags, the most common (default) flags are listed below.</p><div form="['left', 'left']" recursive class="moose-table-div"><table><thead><tr><th style=";text-align:left">Execute Flag</th><th style=";text-align:left">Description</th></tr></thead><tbody><tr><td style=";text-align:left">NONE</td><td style=";text-align:left">Never executed.</td></tr></tbody><tbody><tr><td style=";text-align:left">INITIAL</td><td style=";text-align:left">Prior to the first time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">LINEAR</td><td style=";text-align:left">Prior to each residual evaluation.</td></tr></tbody><tbody><tr><td style=";text-align:left">NONLINEAR</td><td style=";text-align:left">Prior to each Jacobian evaluation.</td></tr></tbody><tbody><tr><td style=";text-align:left">TIMESTEP_END</td><td style=";text-align:left">After the solve for each time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">TIMESTEP_BEGIN</td><td style=";text-align:left">Prior to the solve for each time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">FINAL</td><td style=";text-align:left">At the end of the entire simulation.</td></tr></tbody><tbody><tr><td style=";text-align:left">CUSTOM</td><td style=";text-align:left">At user specified instants.</td></tr></tbody><tbody><tr><td style=";text-align:left">ALWAYS</td><td style=";text-align:left">Union of all the above flags.</td></tr></tbody></table></div><p>The &quot;execute_on&quot; parameter can be set to a single flag or multiple flags. For example, it may be desirable to only execute an object initially because the state of the auxiliary computation does not vary. In the input file snippet below, the <a href="../auxkernels/ElementLengthAux.html">ElementLengthAux</a> computation only needs to be computed initially, thus the &quot;exeucte_on&quot; parameter is set as such.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[AuxKernels]
+<!DOCTYPE html><head><meta charset="UTF-8"><title>SetupInterface execute on | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="ed0e1a96-04fb-433c-b316-7968b716b7d2" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="76402b0b-8b0e-4f1d-8543-8023f3b19133" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d2cd6342-3058-4513-ab09-88717d7ab285" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="794591d9-dcee-451a-80a4-cfaa4d7c9bc1"><i class="material-icons">menu</i></a><ul class="sidenav" id="794591d9-dcee-451a-80a4-cfaa4d7c9bc1"><li><a href="#!" class="dropdown-trigger" data-target="f42c734b-5a16-4878-a454-6a8df1e4054e" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="44768f8a-19f6-4769-9314-d5a62ac2bd82" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="06a31d3c-d9f7-42be-adb6-48eaa894235b" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="ed0e1a96-04fb-433c-b316-7968b716b7d2"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="76402b0b-8b0e-4f1d-8543-8023f3b19133"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="d2cd6342-3058-4513-ab09-88717d7ab285"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="f42c734b-5a16-4878-a454-6a8df1e4054e"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="44768f8a-19f6-4769-9314-d5a62ac2bd82"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="06a31d3c-d9f7-42be-adb6-48eaa894235b"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">interfaces</span><a href="#" class="breadcrumb">SetupInterface</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="8e008ebb-59d1-4c5b-967f-d6a2a1d71afc" data-section-level="1" data-section-text="SetupInterface ( execute _ on )"><h1 id="setupinterface-execute-on">SetupInterface (execute_on)</h1><p>Most user-facing objects in MOOSE inherit from the SetupInterface class. This class provides two features to objects. Foremost, it provides the the &quot;execute_on&quot; parameter, which, as the name suggests, dictates when the object is to be executed. Secondly, it adds virtual setup methods that allow derived classes to perform setup applications prior to execution.</p><section class="scrollspy" id="1632526a-9ed1-4960-af73-ec3198a4a35a" data-section-level="2" data-section-text="Execute On"><h2 id="execute-on">Execute On</h2><p>Any object inheriting from the SetupInterface, that adds the <code>SetupInterface::validParams()</code> within its own parameters, will have an &quot;execute_on&quot; parameter that can be set to various flags, the most common (default) flags are listed below.</p><div form="['left', 'left']" recursive class="moose-table-div"><table><thead><tr><th style=";text-align:left">Execute Flag</th><th style=";text-align:left">Description</th></tr></thead><tbody><tr><td style=";text-align:left">NONE</td><td style=";text-align:left">Never executed.</td></tr></tbody><tbody><tr><td style=";text-align:left">INITIAL</td><td style=";text-align:left">Prior to the first time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">LINEAR</td><td style=";text-align:left">Prior to each residual evaluation.</td></tr></tbody><tbody><tr><td style=";text-align:left">NONLINEAR</td><td style=";text-align:left">Prior to each Jacobian evaluation.</td></tr></tbody><tbody><tr><td style=";text-align:left">TIMESTEP_END</td><td style=";text-align:left">After the solve for each time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">TIMESTEP_BEGIN</td><td style=";text-align:left">Prior to the solve for each time step.</td></tr></tbody><tbody><tr><td style=";text-align:left">FINAL</td><td style=";text-align:left">At the end of the entire simulation.</td></tr></tbody><tbody><tr><td style=";text-align:left">CUSTOM</td><td style=";text-align:left">At user specified instants.</td></tr></tbody><tbody><tr><td style=";text-align:left">ALWAYS</td><td style=";text-align:left">Union of all the above flags.</td></tr></tbody></table></div><p>The &quot;execute_on&quot; parameter can be set to a single flag or multiple flags. For example, it may be desirable to only execute an object initially because the state of the auxiliary computation does not vary. In the input file snippet below, the <a href="../auxkernels/ElementLengthAux.html">ElementLengthAux</a> computation only needs to be computed initially, thus the &quot;exeucte_on&quot; parameter is set as such.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[AuxKernels]
   [./min]
     type = ElementLengthAux
     variable = min
@@ -12,7 +12,7 @@
     execute_on = initial
   [../]
 [../]
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#4e219ca6-8a52-4447-b42b-901c2d8155e9">(moose/test/tests/auxkernels/element_length/element_length.i)</a><p>Alternatively, it is often desirable to run a computation with multiple execute flags. For example, in the input file snippet below a <a href="../controls/TimePeriod.html">TimePeriod</a> control object that is responsible for enabling in <a href="../../syntax/Dampers/index.html">Damper</a> object needs to be run initially and prior to each timestep to guarantee that the damper is enabled when desired.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[Controls]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#4b9bf64b-82be-40df-b85e-4303dbdb7155">(moose/test/tests/auxkernels/element_length/element_length.i)</a><p>Alternatively, it is often desirable to run a computation with multiple execute flags. For example, in the input file snippet below a <a href="../controls/TimePeriod.html">TimePeriod</a> control object that is responsible for enabling in <a href="../../syntax/Dampers/index.html">Damper</a> object needs to be run initially and prior to each timestep to guarantee that the damper is enabled when desired.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[Controls]
   [./damping_control]
     type = TimePeriod
     disable_objects = &#x27;*::const_damp&#x27;
@@ -20,7 +20,7 @@
     execute_on = &#x27;initial timestep_begin&#x27;
   [../]
 []
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#949e9fbe-a2a7-4fe2-8e5e-f1343f5cddd3">(moose/test/tests/controls/time_periods/dampers/control.i)</a><p>Depending on the system these options or others will be available, since as discussed in <a href="SetupInterface.html#creating-custom-execute-flags">Creating Custom Execute Flags</a> custom flags may be added. The complete list of execution flags is provided by MOOSE are listed in the &quot;registerExecFlags&quot; function.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#345a9310-414d-4fd1-8195-48edfdd02236">(moose/test/tests/controls/time_periods/dampers/control.i)</a><p>Depending on the system these options or others will be available, since as discussed in <a href="SetupInterface.html#creating-custom-execute-flags">Creating Custom Execute Flags</a> custom flags may be added. The complete list of execution flags is provided by MOOSE are listed in the &quot;registerExecFlags&quot; function.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
 #ifdef HAVE_GPERFTOOLS
 #include &quot;gperftools/profiler.h&quot;
 #include &quot;gperftools/heap-profiler.h&quot;
@@ -64,6 +64,7 @@
 #include &quot;CommonOutputAction.h&quot;
 #include &quot;CastUniquePointer.h&quot;
 #include &quot;NullExecutor.h&quot;
+#include &quot;ExecFlagRegistry.h&quot;
 
 // Regular expression includes
 #include &quot;pcrecpp.h&quot;
@@ -90,11 +91,11 @@
 #include &lt;thread&gt;
 
 #define QUOTE(macro) stringifyName(macro)
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#bd3c2f5c-f232-436a-a704-049014f7e15b">(moose/framework/src/base/MooseApp.C)</a></section><section class="scrollspy" id="42de0c8e-85af-4ea0-b112-c4427909b715" data-section-level="2" data-section-text="Modifying Execute On"><h2 id="modifying-execute-on">Modifying Execute On</h2><p>When creating objects that inherit from SetupInterface it is possible to set, add, or remove available execute flags by retrieving and then modifying the <code>ExecFlagEnum</code> parameter. For example, consider the snippet below (see <a class="moose-source-filename tooltipped modal-trigger" href="#07ec6163-9d15-4a9d-a6f5-b615ba4a3880">Output.C</a>).</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">  ExecFlagEnum &amp; exec_enum = params.set&lt;ExecFlagEnum&gt;(&quot;execute_on&quot;, true);
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#3f02c41d-ea4b-4962-8a2b-6379f92cb19e">(moose/framework/src/base/MooseApp.C)</a></section><section class="scrollspy" id="a99b92a2-8cbd-43b0-ab4c-4425c985c1e1" data-section-level="2" data-section-text="Modifying Execute On"><h2 id="modifying-execute-on">Modifying Execute On</h2><p>When creating objects that inherit from SetupInterface it is possible to set, add, or remove available execute flags by retrieving and then modifying the <code>ExecFlagEnum</code> parameter. For example, consider the snippet below (see <a class="moose-source-filename tooltipped modal-trigger" href="#ec555bd5-70a9-4e9e-833c-b8ea4da0136c">Output.C</a>).</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">  ExecFlagEnum &amp; exec_enum = params.set&lt;ExecFlagEnum&gt;(&quot;execute_on&quot;, true);
   exec_enum = Output::getDefaultExecFlagEnum();
   exec_enum = {EXEC_INITIAL, EXEC_TIMESTEP_END};
   params.setDocString(&quot;execute_on&quot;, exec_enum.getDocString());
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#1e23ca8d-dbb5-4d5d-9267-94fb44ab0e57">(moose/framework/src/outputs/Output.C)</a><p>First, the &quot;execute_on&quot; is retrieved for modification by using the &quot;set&quot; method. Notice, that a second boolean argument is passed to &quot;set&quot;, this second flag enables &quot;quiet mode&quot;. Quiet mode will modify the parameter silently as if the default was the modified parameter. In this case, the parameter will be listed as un-modified by the user. That is, <code>InputParameters::isParamSetByUser</code> returns false, if quiet mode is not enabled this method would return true.</p><p>Second, the two new execution flags are added (<code>EXEC_FINAL</code> and <code>EXEC_FAILED</code>), therefore these additional options are available to all classes (all Output objects in this case) that inherit from this object.</p><p>Third, the default active flags are set to <code>EXEC_INITIAL</code> and <code>EXEC_TIMESTEP_END</code>, which are the defaults for all Output objects.</p><p>Finally, the documentation string for the &quot;execute_on&quot; parameter for the Output objects is update to reflect the changes made to the parameter. The <code>ExecFlagEnum</code> has a convenience function that generates a documentation string that includes the available options in the string.</p></section><section class="scrollspy" id="3a41be10-bd17-4d3a-8eaa-44d55c856d94" data-section-level="2" data-section-text="Virtual Setup Methods"><h2 id="virtual-setup-methods">Virtual Setup Methods</h2><p>The SetupInterface includes virtual methods that correspond to the primary execute flags with MOOSE, these methods are listed in the header as shown here.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">static InputParameters validParams();
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#87604356-9f91-41eb-9585-4757c89a20b6">(moose/framework/src/outputs/Output.C)</a><p>First, the &quot;execute_on&quot; is retrieved for modification by using the &quot;set&quot; method. Notice, that a second boolean argument is passed to &quot;set&quot;, this second flag enables &quot;quiet mode&quot;. Quiet mode will modify the parameter silently as if the default was the modified parameter. In this case, the parameter will be listed as un-modified by the user. That is, <code>InputParameters::isParamSetByUser</code> returns false, if quiet mode is not enabled this method would return true.</p><p>Second, the two new execution flags are added (<code>EXEC_FINAL</code> and <code>EXEC_FAILED</code>), therefore these additional options are available to all classes (all Output objects in this case) that inherit from this object.</p><p>Third, the default active flags are set to <code>EXEC_INITIAL</code> and <code>EXEC_TIMESTEP_END</code>, which are the defaults for all Output objects.</p><p>Finally, the documentation string for the &quot;execute_on&quot; parameter for the Output objects is update to reflect the changes made to the parameter. The <code>ExecFlagEnum</code> has a convenience function that generates a documentation string that includes the available options in the string.</p></section><section class="scrollspy" id="5a6dd7cc-fe72-4031-9078-158a8eb2440a" data-section-level="2" data-section-text="Virtual Setup Methods"><h2 id="virtual-setup-methods">Virtual Setup Methods</h2><p>The SetupInterface includes virtual methods that correspond to the primary execute flags with MOOSE, these methods are listed in the header as shown here.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">static InputParameters validParams();
 /**
 * Gets called at the beginning of the simulation before this object is asked to do its job
 */
@@ -116,7 +117,7 @@ virtual void residualSetup();
 * object is asked to do its job
 */
 virtual void subdomainSetup();
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#4b335833-06a4-47cd-b4c7-81782f2099dd">(moose/framework/include/interfaces/SetupInterface.h)</a><p>In general, these methods should be utilized to perform &quot;setup&quot; procedures prior to the calls to execute for the corresponding execute flag.</p><div class="card moose-alert moose-alert-note"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">comment</i><span class="moose-alert-title-brand">note</span></div><div class="card-content"><div class="moose-alert-content"><p>A few of the methods were created prior to the execute flags, thus the names do not correspond but they remain as is to keep the API consistent: the &quot;jacobianSetup&quot; methods is called prior to the &quot;NONLINEAR&quot; execute flag and the &quot;residualSetup&quot; is called prior to the &quot;LINEAR&quot; execute flag.</p></div></div></div></section><section class="scrollspy" id="4a3866f0-31ac-4678-976b-2a5fe4eadb21" data-section-level="2" data-section-text="Creating Custom Execute Flags"><h2 id="creating-custom-execute-flags">Creating Custom Execute Flags</h2><p>It is possible to create custom execute flags for an application. To create at utilize a custom execute flag the following steps should be followed.</p><section id="eba305ef-2734-4ae9-8b93-5a861de1a255" data-section-level="3" data-section-text="1 . Declare and Define an Execute Flag"><h3 id="1-declare-and-define-an-execute-flag">1. Declare and Define an Execute Flag</h3><p>Within your application a new global <code>const</code> should be declared in a header file. For example, within the <code>LevelSetApp</code> within MOOSE modules, there is a header (LevelSetTypes.h) that declares a new flag (<code>EXEC_ADAPT_MESH</code>).</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#2812c0eb-d85c-48a2-b7b7-5a458efbc048">(moose/framework/include/interfaces/SetupInterface.h)</a><p>In general, these methods should be utilized to perform &quot;setup&quot; procedures prior to the calls to execute for the corresponding execute flag.</p><div class="card moose-alert moose-alert-note"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">comment</i><span class="moose-alert-title-brand">note</span></div><div class="card-content"><div class="moose-alert-content"><p>A few of the methods were created prior to the execute flags, thus the names do not correspond but they remain as is to keep the API consistent: the &quot;jacobianSetup&quot; methods is called prior to the &quot;NONLINEAR&quot; execute flag and the &quot;residualSetup&quot; is called prior to the &quot;LINEAR&quot; execute flag.</p></div></div></div></section><section class="scrollspy" id="ad55fa58-b71a-4b31-880d-c46df3ddad05" data-section-level="2" data-section-text="Creating Custom Execute Flags"><h2 id="creating-custom-execute-flags">Creating Custom Execute Flags</h2><p>It is possible to create custom execute flags for an application. To create at utilize a custom execute flag the following steps should be followed.</p><section id="7d781fb7-0e8a-454a-bbfe-9a0cbd258b00" data-section-level="3" data-section-text="1 . Register an Execute Flag"><h3 id="1-register-an-execute-flag">1. Register an Execute Flag</h3><p>Within your application a new global <code>const</code> should be declared in a header file. For example, within the <code>LevelSetApp</code> within MOOSE modules, there is a header (LevelSetTypes.h) that declares a new flag (<code>EXEC_ADAPT_MESH</code>).</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
 #pragma once
 
 #include &quot;Moose.h&quot;
@@ -126,25 +127,20 @@ namespace LevelSet
 extern const ExecFlagType EXEC_ADAPT_MESH;
 extern const ExecFlagType EXEC_COMPUTE_MARKERS;
 }
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#28dd6bed-22ea-4c01-bc42-4b49c78d996e">(moose/modules/level_set/include/base/LevelSetTypes.h)</a><p>This new global must be defined, which occurs in the corresponding source file. When defining the new flags with a name and optionally an integer value.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#034ab0be-8f35-44da-bbdc-e8812ff16063">(moose/modules/level_set/include/base/LevelSetTypes.h)</a><p>This new global must be registered, which occurs in the corresponding source file using the <code>registerExecFlag()</code> macro defined in <code>ExecFlagRegistry.h</code>.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">
 // Level set includes
 #include &quot;LevelSetTypes.h&quot;
 
 // MOOSE includes
-#include &quot;MooseEnumItem.h&quot;
+#include &quot;ExecFlagRegistry.h&quot;
 
-const ExecFlagType LevelSet::EXEC_ADAPT_MESH(&quot;ADAPT_MESH&quot;);
-const ExecFlagType LevelSet::EXEC_COMPUTE_MARKERS(&quot;COMPUTE_MARKERS&quot;, 1234);
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#1030fa9c-0619-4792-a58c-317f41c13e8e">(moose/modules/level_set/src/base/LevelSetTypes.C)</a></section><section id="811522e6-76d6-4a0f-b82b-1933cc78de70" data-section-level="3" data-section-text="2 . Register the Execute Flag"><h3 id="2-register-the-execute-flag">2. Register the Execute Flag</h3><p>After the new flag(s) are declared and defined, it must be registered with MOOSE. This is accomplished in similar fashion as object registration, simply add the newly created flag by calling <code>registerExecFlag</code> with the <code>registerExecFlags</code> function of your application.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">LevelSetApp::registerExecFlags(Factory &amp; factory)
-{
-  mooseDeprecated(&quot;use registerAll instead of registerExecFlags&quot;);
-  registerExecFlagsInner(factory);
-}
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#19c0cb3a-f1c0-45ac-8e80-a9a201f2f64a">(moose/modules/level_set/src/base/LevelSetApp.C)</a><div class="card moose-alert moose-alert-note"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">comment</i><span class="moose-alert-title-brand">note</span></div><div class="card-content"><div class="moose-alert-content"><p>If your application does not have a <code>registerExecFlags</code> function, it must be created. This can be done automatically by running the <code>add_exec_flag_registration.py</code> that is located in the scripts directory within MOOSE.</p></div></div></div></section><section id="317db187-4ff5-41a2-80f7-0594b87fcc7f" data-section-level="3" data-section-text="3 . Add the Execute Flag to InputParameters"><h3 id="3-add-the-execute-flag-to-inputparameters">3. Add the Execute Flag to InputParameters</h3><p>After a flag is registered, it must be made available to the object(s) in which are desired to be executed with the custom flag. This is done by adding this new flag to an existing objects valid parameters. For example, the following adds the <code>EXEC_ADAPT_MESH</code> flag to a <code>Transfer</code> object.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">ExecFlagEnum &amp; exec = params.set&lt;ExecFlagEnum&gt;(&quot;execute_on&quot;);
+const ExecFlagType LevelSet::EXEC_ADAPT_MESH = registerExecFlag(&quot;ADAPT_MESH&quot;);
+const ExecFlagType LevelSet::EXEC_COMPUTE_MARKERS = registerExecFlag(&quot;COMPUTE_MARKERS&quot;);
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#a605c1ef-cf3b-4dcf-9463-47006b22de29">(moose/modules/level_set/src/base/LevelSetTypes.C)</a></section><section id="2d955905-4bce-415a-9fd7-8ec2e7446698" data-section-level="3" data-section-text="2 . Add the Execute Flag to InputParameters"><h3 id="2-add-the-execute-flag-to-inputparameters">2. Add the Execute Flag to InputParameters</h3><p>After a flag is registered, it must be made available to the object(s) in which are desired to be executed with the custom flag. This is done by adding this new flag to an existing objects valid parameters. For example, the following adds the <code>EXEC_ADAPT_MESH</code> flag to a <code>Transfer</code> object.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">ExecFlagEnum &amp; exec = params.set&lt;ExecFlagEnum&gt;(&quot;execute_on&quot;);
 exec.addAvailableFlags(LevelSet::EXEC_ADAPT_MESH, LevelSet::EXEC_COMPUTE_MARKERS);
 exec = {LevelSet::EXEC_COMPUTE_MARKERS, LevelSet::EXEC_ADAPT_MESH};
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#e930ed51-0712-4677-a789-2fc0f02fb21d">(moose/modules/level_set/src/transfers/LevelSetMeshRefinementTransfer.C)</a></section><section id="cfa66dac-9a19-418c-9208-12df2be6b281" data-section-level="3" data-section-text="4 . Use the Execute Flag"><h3 id="4-use-the-execute-flag">4. Use the Execute Flag</h3><p>Depending on what type of custom computation is desired, various MOOSE execution calls accept execution flags, which will spawn calculations. For example, the <code>LevelSetProblem</code> contains a custom method that uses the <code>EXEC_ADAPT_MESH</code> flag to preform an additional <a href="../../syntax/Transfers/index.html"><code>MultiAppTransfer</code></a> execution.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">execMultiAppTransfers(LevelSet::EXEC_ADAPT_MESH, MultiAppTransfer::TO_MULTIAPP);
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#a74843ee-f21e-44ca-a069-32de56733592">(moose/modules/level_set/src/base/LevelSetProblem.C)</a></section></section></section><div class="moose-modal modal" id="4e219ca6-8a52-4447-b42b-901c2d8155e9"><div class="modal-content"><h4>(moose/test/tests/auxkernels/element_length/element_length.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#afc54b9d-e6ce-425b-baf6-c39175bda582">(moose/modules/level_set/src/transfers/LevelSetMeshRefinementTransfer.C)</a></section><section id="44ec0571-dca3-4005-9af1-0f7556b61e82" data-section-level="3" data-section-text="3 . Use the Execute Flag"><h3 id="3-use-the-execute-flag">3. Use the Execute Flag</h3><p>Depending on what type of custom computation is desired, various MOOSE execution calls accept execution flags, which will spawn calculations. For example, the <code>LevelSetProblem</code> contains a custom method that uses the <code>EXEC_ADAPT_MESH</code> flag to preform an additional <a href="../../syntax/Transfers/index.html"><code>MultiAppTransfer</code></a> execution.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">execMultiAppTransfers(LevelSet::EXEC_ADAPT_MESH, MultiAppTransfer::TO_MULTIAPP);
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#dd54330c-b11b-4828-887c-a51f6fcada31">(moose/modules/level_set/src/base/LevelSetProblem.C)</a></section></section></section><div class="moose-modal modal" id="4b9bf64b-82be-40df-b85e-4303dbdb7155"><div class="modal-content"><h4>(moose/test/tests/auxkernels/element_length/element_length.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
   type = GeneratedMesh
   dim = 2
   nx = 10
@@ -190,7 +186,7 @@ exec = {LevelSet::EXEC_COMPUTE_MARKERS, LevelSet::EXEC_ADAPT_MESH};
   execute_on = &#x27;TIMESTEP_END&#x27;
   exodus = true
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="949e9fbe-a2a7-4fe2-8e5e-f1343f5cddd3"><div class="modal-content"><h4>(moose/test/tests/controls/time_periods/dampers/control.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="345a9310-414d-4fd1-8195-48edfdd02236"><div class="modal-content"><h4>(moose/test/tests/controls/time_periods/dampers/control.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
   type = GeneratedMesh
   dim = 2
   nx = 10
@@ -264,7 +260,7 @@ exec = {LevelSet::EXEC_COMPUTE_MARKERS, LevelSet::EXEC_ADAPT_MESH};
     execute_on = &#x27;initial timestep_begin&#x27;
   [../]
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="bd3c2f5c-f232-436a-a704-049014f7e15b"><div class="modal-content"><h4>(moose/framework/src/base/MooseApp.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="3f02c41d-ea4b-4962-8a2b-6379f92cb19e"><div class="modal-content"><h4>(moose/framework/src/base/MooseApp.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -316,6 +312,7 @@ exec = {LevelSet::EXEC_COMPUTE_MARKERS, LevelSet::EXEC_ADAPT_MESH};
 #include &quot;CommonOutputAction.h&quot;
 #include &quot;CastUniquePointer.h&quot;
 #include &quot;NullExecutor.h&quot;
+#include &quot;ExecFlagRegistry.h&quot;
 
 // Regular expression includes
 #include &quot;pcrecpp.h&quot;
@@ -442,8 +439,10 @@ MooseApp::validParams()
   params.addCommandLineParam&lt;unsigned int&gt;(
       &quot;n_threads&quot;, &quot;--n-threads=&lt;n&gt;&quot;, 1, &quot;Runs the specified number of threads per process&quot;);
 
-  params.addCommandLineParam&lt;bool&gt;(
-      &quot;warn_unused&quot;, &quot;-w --warn-unused&quot;, false, &quot;Warn about unused input file options&quot;);
+  params.addCommandLineParam&lt;bool&gt;(&quot;allow_unused&quot;,
+                                   &quot;-w --allow-unused&quot;,
+                                   false,
+                                   &quot;Warn about unused input file options instead of erroring.&quot;);
   params.addCommandLineParam&lt;bool&gt;(&quot;error_unused&quot;,
                                    &quot;-e --error-unused&quot;,
                                    false,
@@ -620,7 +619,7 @@ MooseApp::MooseApp(InputParameters parameters)
     _null_executor(NULL),
     _use_nonlinear(true),
     _use_eigen_value(false),
-    _enable_unused_check(WARN_UNUSED),
+    _enable_unused_check(ERROR_UNUSED),
     _factory(*this),
     _error_overridden(false),
     _ready_to_exit(false),
@@ -647,6 +646,7 @@ MooseApp::MooseApp(InputParameters parameters)
     _master_displaced_mesh(isParamValid(&quot;_master_displaced_mesh&quot;)
                                ? parameters.get&lt;const MooseMesh *&gt;(&quot;_master_displaced_mesh&quot;)
                                : nullptr),
+    _execute_flags(moose::internal::getExecFlagRegistry().getFlags()),
     _automatic_automatic_scaling(getParam&lt;bool&gt;(&quot;automatic_automatic_scaling&quot;)),
     _executing_mesh_generators(false),
     _popped_final_mesh_generator(false)
@@ -745,8 +745,8 @@ MooseApp::MooseApp(InputParameters parameters)
   _the_warehouse-&gt;registerAttribute&lt;AttribBoundaries&gt;(&quot;boundaries&quot;, 0);
   _the_warehouse-&gt;registerAttribute&lt;AttribThread&gt;(&quot;thread&quot;, 0);
   _the_warehouse-&gt;registerAttribute&lt;AttribPreIC&gt;(&quot;pre_ic&quot;, 0);
-  _the_warehouse-&gt;registerAttribute&lt;AttribPreAux&gt;(&quot;pre_aux&quot;, 0);
-  _the_warehouse-&gt;registerAttribute&lt;AttribPostAux&gt;(&quot;post_aux&quot;, 0);
+  _the_warehouse-&gt;registerAttribute&lt;AttribPreAux&gt;(&quot;pre_aux&quot;);
+  _the_warehouse-&gt;registerAttribute&lt;AttribPostAux&gt;(&quot;post_aux&quot;);
   _the_warehouse-&gt;registerAttribute&lt;AttribName&gt;(&quot;name&quot;, &quot;dummy&quot;);
   _the_warehouse-&gt;registerAttribute&lt;AttribSystem&gt;(&quot;system&quot;, &quot;dummy&quot;);
   _the_warehouse-&gt;registerAttribute&lt;AttribVar&gt;(&quot;variable&quot;, -1);
@@ -897,14 +897,6 @@ MooseApp::setupOptions()
 {
   TIME_SECTION(&quot;setupOptions&quot;, 5, &quot;Setting Up Options&quot;);
 
-  // MOOSE was updated to have the ability to register execution flags in similar fashion as
-  // objects. However, this change requires all *App.C/h files to be updated with the new
-  // registerExecFlags method. To avoid breaking all applications the default MOOSE flags
-  // are added if nothing has been added to this point. In the future this could go away or
-  // perhaps be a warning.
-  if (_execute_flags.items().empty())
-    Moose::registerExecFlags(_factory);
-
   // Print the header, this is as early as possible
   auto hdr = header();
   if (hdr.length() != 0)
@@ -916,7 +908,7 @@ MooseApp::setupOptions()
 
   if (getParam&lt;bool&gt;(&quot;error_unused&quot;))
     setCheckUnusedFlag(true);
-  else if (getParam&lt;bool&gt;(&quot;warn_unused&quot;))
+  else if (getParam&lt;bool&gt;(&quot;allow_unused&quot;))
     setCheckUnusedFlag(false);
 
   if (getParam&lt;bool&gt;(&quot;error_override&quot;))
@@ -1230,6 +1222,7 @@ MooseApp::setupOptions()
     {
       _syntax.registerTaskName(&quot;mesh_only&quot;, true);
       _syntax.addDependency(&quot;mesh_only&quot;, &quot;setup_mesh_complete&quot;);
+      _syntax.addDependency(&quot;determine_system_type&quot;, &quot;mesh_only&quot;);
       _action_warehouse.setFinalTask(&quot;mesh_only&quot;);
     }
     else if (isParamValid(&quot;split_mesh&quot;))
@@ -1237,6 +1230,7 @@ MooseApp::setupOptions()
       _split_mesh = true;
       _syntax.registerTaskName(&quot;split_mesh&quot;, true);
       _syntax.addDependency(&quot;split_mesh&quot;, &quot;setup_mesh_complete&quot;);
+      _syntax.addDependency(&quot;determine_system_type&quot;, &quot;split_mesh&quot;);
       _action_warehouse.setFinalTask(&quot;split_mesh&quot;);
     }
     _action_warehouse.build();
@@ -1448,16 +1442,7 @@ MooseApp::restore(std::shared_ptr&lt;Backup&gt; backup, bool for_restart)
 void
 MooseApp::setCheckUnusedFlag(bool warn_is_error)
 {
-  /**
-   * _enable_unused_check is initialized to WARN_UNUSED. If an application chooses to promote
-   * this value to ERROR_UNUSED programmatically prior to running the simulation, we certainly
-   * don&#x27;t want to allow it to fall back. Therefore, we won&#x27;t set it if it&#x27;s already at the
-   * highest value (i.e. error). If however a developer turns it off, it can still be turned on.
-   */
-  if (_enable_unused_check != ERROR_UNUSED || warn_is_error)
-    _enable_unused_check = warn_is_error ? ERROR_UNUSED : WARN_UNUSED;
-  else
-    mooseInfo(&quot;Ignoring request to turn off or warn about unused parameters.\n&quot;);
+  _enable_unused_check = warn_is_error ? ERROR_UNUSED : WARN_UNUSED;
 }
 
 void
@@ -2303,11 +2288,25 @@ MooseApp::createMeshGeneratorOrder()
                    &quot;spelling mistake or forget to include it &quot;
                    &quot;in your input file?&quot;);
 
-      resolver.insertDependency(it.second, depend_it-&gt;second);
+      resolver.addEdge(depend_it-&gt;second, it.second);
     }
   }
 
-  _ordered_generators = resolver.getSortedValuesSets();
+  try
+  {
+    _ordered_generators = resolver.getSortedValuesSets();
+  }
+  catch (CyclicDependencyException&lt;std::shared_ptr&lt;MeshGenerator&gt;&gt; &amp; e)
+  {
+    const auto &amp; cycle = e.getCyclicDependencies();
+    std::vector&lt;std::string&gt; names;
+    names.reserve(cycle.size());
+    for (const auto &amp; mg : cycle)
+      names.push_back(mg-&gt;name());
+
+    mooseError(&quot;Cyclic dependencies detected in mesh generation: &quot;,
+               MooseUtils::join(names, &quot; &lt;- &quot;));
+  }
 
   if (_ordered_generators.size())
   {
@@ -2595,27 +2594,6 @@ MooseApp::createMinimalApp()
   }
 
   _action_warehouse.build();
-}
-
-void
-MooseApp::addExecFlag(const ExecFlagType &amp; flag)
-{
-  if (flag.id() == MooseEnumItem::INVALID_ID)
-  {
-    // It is desired that users when creating ExecFlagTypes should not worry about needing
-    // to assign a name and an ID. However, the ExecFlagTypes created by users are global
-    // constants and the ID to be assigned can&#x27;t be known at construction time of this global
-    // constant, it is only known when it is added to this object (ExecFlagEnum). Therefore,
-    // this const cast allows the ID to be set after construction. This was the lesser of two
-    // evils: const_cast or friend class with mutable members.
-    ExecFlagType &amp; non_const_flag = const_cast&lt;ExecFlagType &amp;&gt;(flag);
-    auto it = _execute_flags.find(flag.name());
-    if (it != _execute_flags.items().end())
-      non_const_flag.setID(it-&gt;id());
-    else
-      non_const_flag.setID(_execute_flags.getNextValidID());
-  }
-  _execute_flags.addAvailableFlags(flag);
 }
 
 bool
@@ -3084,7 +3062,7 @@ MooseApp::createRecoverablePerfGraph()
              registerRestartableData(&quot;perf_graph&quot;, std::move(perf_graph), 0, false))
       .set();
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="07ec6163-9d15-4a9d-a6f5-b615ba4a3880"><div class="modal-content"><h4>(moose/framework/src/outputs/Output.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="ec555bd5-70a9-4e9e-833c-b8ea4da0136c"><div class="modal-content"><h4>(moose/framework/src/outputs/Output.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3361,7 +3339,7 @@ Output::advancedExecuteOn() const
   mooseError(&quot;The output object &quot;, name(), &quot; is not an AdvancedOutput, use isAdvanced() to check.&quot;);
   return _advanced_execute_on;
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="1e23ca8d-dbb5-4d5d-9267-94fb44ab0e57"><div class="modal-content"><h4>(moose/framework/src/outputs/Output.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="87604356-9f91-41eb-9585-4757c89a20b6"><div class="modal-content"><h4>(moose/framework/src/outputs/Output.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3638,7 +3616,7 @@ Output::advancedExecuteOn() const
   mooseError(&quot;The output object &quot;, name(), &quot; is not an AdvancedOutput, use isAdvanced() to check.&quot;);
   return _advanced_execute_on;
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="4b335833-06a4-47cd-b4c7-81782f2099dd"><div class="modal-content"><h4>(moose/framework/include/interfaces/SetupInterface.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="2812c0eb-d85c-48a2-b7b7-5a458efbc048"><div class="modal-content"><h4>(moose/framework/include/interfaces/SetupInterface.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3699,25 +3677,6 @@ public:
    */
   const ExecFlagEnum &amp; getExecuteOnEnum() const;
 
-  /**
-   * (DEPRECATED) Get the execution flag for the object
-   * TODO: ExecFlagType
-   */
-  virtual const std::vector&lt;ExecFlagType&gt; &amp; execFlags() const;
-
-  /**
-   * (DEPRECATED) Build and return the execution flags as a bitfield
-   * TODO: ExecFlagType
-   */
-  ExecFlagType execBitFlags() const;
-
-  /**
-   * (DEPRECATED) Returns the available options for the &#x27;execute_on&#x27; input parameters
-   * TODO: ExecFlagType
-   * @return A MooseEnum with the available &#x27;execute_on&#x27; options, the default is &#x27;residual&#x27;
-   */
-  static ExecFlagEnum getExecuteOptions();
-
 private:
   /// Empty ExecFlagEnum for the case when the &quot;execute_on&quot; parameter is not included. This
   /// is private because others should not be messing with it.
@@ -3727,16 +3686,13 @@ protected:
   /// Execute settings for this oejct.
   const ExecFlagEnum &amp; _execute_enum;
 
-  /// (DEPRECATED) execution flag (when is the object executed/evaluated) TODO: ExecFlagType
-  const std::vector&lt;ExecFlagType&gt; _exec_flags;
-
   /// Reference to FEProblemBase
   const ExecFlagType &amp; _current_execute_flag;
 
   // FEProblemBase::addMultiApp needs to reset the execution flags
   friend class FEProblemBase;
 };
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="28dd6bed-22ea-4c01-bc42-4b49c78d996e"><div class="modal-content"><h4>(moose/modules/level_set/include/base/LevelSetTypes.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="034ab0be-8f35-44da-bbdc-e8812ff16063"><div class="modal-content"><h4>(moose/modules/level_set/include/base/LevelSetTypes.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3754,7 +3710,7 @@ namespace LevelSet
 extern const ExecFlagType EXEC_ADAPT_MESH;
 extern const ExecFlagType EXEC_COMPUTE_MARKERS;
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="1030fa9c-0619-4792-a58c-317f41c13e8e"><div class="modal-content"><h4>(moose/modules/level_set/src/base/LevelSetTypes.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="a605c1ef-cf3b-4dcf-9463-47006b22de29"><div class="modal-content"><h4>(moose/modules/level_set/src/base/LevelSetTypes.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3767,101 +3723,11 @@ extern const ExecFlagType EXEC_COMPUTE_MARKERS;
 #include &quot;LevelSetTypes.h&quot;
 
 // MOOSE includes
-#include &quot;MooseEnumItem.h&quot;
+#include &quot;ExecFlagRegistry.h&quot;
 
-const ExecFlagType LevelSet::EXEC_ADAPT_MESH(&quot;ADAPT_MESH&quot;);
-const ExecFlagType LevelSet::EXEC_COMPUTE_MARKERS(&quot;COMPUTE_MARKERS&quot;, 1234);
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="19c0cb3a-f1c0-45ac-8e80-a9a201f2f64a"><div class="modal-content"><h4>(moose/modules/level_set/src/base/LevelSetApp.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
-// https://www.mooseframework.org
-//
-// All rights reserved, see COPYRIGHT for full restrictions
-// https://github.com/idaholab/moose/blob/master/COPYRIGHT
-//
-// Licensed under LGPL 2.1, please see LICENSE for details
-// https://www.gnu.org/licenses/lgpl-2.1.html
-
-#include &quot;Moose.h&quot;
-#include &quot;LevelSetApp.h&quot;
-#include &quot;AppFactory.h&quot;
-#include &quot;MooseSyntax.h&quot;
-#include &quot;LevelSetTypes.h&quot;
-
-InputParameters
-LevelSetApp::validParams()
-{
-  InputParameters params = MooseApp::validParams();
-
-  params.addClassDescription(
-      &quot;Application containing object necessary to solve the level set equation.&quot;);
-
-  params.set&lt;bool&gt;(&quot;automatic_automatic_scaling&quot;) = false;
-
-  params.set&lt;bool&gt;(&quot;use_legacy_material_output&quot;) = false;
-
-  return params;
-}
-
-registerKnownLabel(&quot;LevelSetApp&quot;);
-
-LevelSetApp::LevelSetApp(InputParameters parameters) : MooseApp(parameters)
-{
-  srand(processor_id());
-  LevelSetApp::registerAll(_factory, _action_factory, _syntax);
-}
-
-void
-LevelSetApp::registerApps()
-{
-  registerApp(LevelSetApp);
-}
-
-static void
-registerExecFlagsInner(Factory &amp; factory)
-{
-  registerExecFlag(LevelSet::EXEC_ADAPT_MESH);
-  registerExecFlag(LevelSet::EXEC_COMPUTE_MARKERS);
-}
-
-void
-LevelSetApp::registerAll(Factory &amp; f, ActionFactory &amp; af, Syntax &amp; /*s*/)
-{
-  Registry::registerObjectsTo(f, {&quot;LevelSetApp&quot;});
-  Registry::registerActionsTo(af, {&quot;LevelSetApp&quot;});
-  registerExecFlagsInner(f);
-}
-
-void
-LevelSetApp::registerObjects(Factory &amp; factory)
-{
-  mooseDeprecated(&quot;use registerAll instead of registerObjects&quot;);
-  Registry::registerObjectsTo(factory, {&quot;LevelSetApp&quot;});
-}
-
-void
-LevelSetApp::associateSyntax(Syntax &amp; /*syntax*/, ActionFactory &amp; action_factory)
-{
-  mooseDeprecated(&quot;use registerAll instead of associateSyntax&quot;);
-  Registry::registerActionsTo(action_factory, {&quot;LevelSetApp&quot;});
-}
-void
-LevelSetApp::registerExecFlags(Factory &amp; factory)
-{
-  mooseDeprecated(&quot;use registerAll instead of registerExecFlags&quot;);
-  registerExecFlagsInner(factory);
-}
-
-// Dynamic Library Entry Points - DO NOT MODIFY
-extern &quot;C&quot; void
-LevelSetApp__registerAll(Factory &amp; f, ActionFactory &amp; af, Syntax &amp; s)
-{
-  LevelSetApp::registerAll(f, af, s);
-}
-extern &quot;C&quot; void
-LevelSetApp__registerApps()
-{
-  LevelSetApp::registerApps();
-}
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="e930ed51-0712-4677-a789-2fc0f02fb21d"><div class="modal-content"><h4>(moose/modules/level_set/src/transfers/LevelSetMeshRefinementTransfer.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+const ExecFlagType LevelSet::EXEC_ADAPT_MESH = registerExecFlag(&quot;ADAPT_MESH&quot;);
+const ExecFlagType LevelSet::EXEC_COMPUTE_MARKERS = registerExecFlag(&quot;COMPUTE_MARKERS&quot;);
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="afc54b9d-e6ce-425b-baf6-c39175bda582"><div class="modal-content"><h4>(moose/modules/level_set/src/transfers/LevelSetMeshRefinementTransfer.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3944,7 +3810,7 @@ LevelSetMeshRefinementTransfer::execute()
       }
   }
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="a74843ee-f21e-44ca-a069-32de56733592"><div class="modal-content"><h4>(moose/modules/level_set/src/base/LevelSetProblem.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="dd54330c-b11b-4828-887c-a51f6fcada31"><div class="modal-content"><h4>(moose/modules/level_set/src/base/LevelSetProblem.C)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -3990,4 +3856,4 @@ LevelSetProblem::adaptMesh()
   setCurrentExecuteOnFlag(EXEC_NONE);
   return adapt;
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#4a979d4d-22ac-45c3-a917-6bfb082d395a" class="tooltipped" data-position="left" data-tooltip="Execute On">Execute On</a></li><li><a href="#42de0c8e-85af-4ea0-b112-c4427909b715" class="tooltipped" data-position="left" data-tooltip="Modifying Execute On">Modifying Execute On</a></li><li><a href="#3a41be10-bd17-4d3a-8eaa-44d55c856d94" class="tooltipped" data-position="left" data-tooltip="Virtual Setup Methods">Virtual Setup Methods</a></li><li><a href="#4a3866f0-31ac-4678-976b-2a5fe4eadb21" class="tooltipped" data-position="left" data-tooltip="Creating Custom Execute Flags">Creating Custom Execute Flags</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#1632526a-9ed1-4960-af73-ec3198a4a35a" class="tooltipped" data-position="left" data-tooltip="Execute On">Execute On</a></li><li><a href="#a99b92a2-8cbd-43b0-ab4c-4425c985c1e1" class="tooltipped" data-position="left" data-tooltip="Modifying Execute On">Modifying Execute On</a></li><li><a href="#5a6dd7cc-fe72-4031-9078-158a8eb2440a" class="tooltipped" data-position="left" data-tooltip="Virtual Setup Methods">Virtual Setup Methods</a></li><li><a href="#ad55fa58-b71a-4b31-880d-c46df3ddad05" class="tooltipped" data-position="left" data-tooltip="Creating Custom Execute Flags">Creating Custom Execute Flags</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>

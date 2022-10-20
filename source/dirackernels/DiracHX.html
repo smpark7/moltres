@@ -1,402 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>DiracHX | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="849b8f8f-2104-49e1-a967-f0b6c70c918b" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="0c30449c-a8c8-4dd3-819d-ebbaf2f6e9dc" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="7919bee0-b082-492c-9ea9-75022449267a" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="dd7cd1e0-a013-4cc7-a955-527ad48fc70f"><i class="material-icons">menu</i></a><ul class="sidenav" id="dd7cd1e0-a013-4cc7-a955-527ad48fc70f"><li><a href="#!" class="dropdown-trigger" data-target="73414e3b-f312-4570-a3cb-388b4fc8b183" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="33107dd2-2fe7-4fc5-b11d-cb879de43b31" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d95da28d-d4d5-4f02-95f3-65d6dbb2370c" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="849b8f8f-2104-49e1-a967-f0b6c70c918b"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="0c30449c-a8c8-4dd3-819d-ebbaf2f6e9dc"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="7919bee0-b082-492c-9ea9-75022449267a"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="73414e3b-f312-4570-a3cb-388b4fc8b183"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="33107dd2-2fe7-4fc5-b11d-cb879de43b31"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="d95da28d-d4d5-4f02-95f3-65d6dbb2370c"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">dirackernels</span><a href="#" class="breadcrumb">DiracHX</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="52a237aa-a3f3-4b08-808c-a03c0abaf3c6" data-section-level="1" data-section-text="DiracHX"><h1 id="dirachx">DiracHX</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p>The DiracHX has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></div></div></div><p></p><section class="scrollspy" id="6fc95fa2-0d3e-4009-a8e9-211c7e4088d6" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="7856d429-521a-4b3b-9aef-bc1d6cdcba04" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="35fb4a41-4290-4313-b4df-85617d67f5e3" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="61e78fc2-32de-476e-a64a-00a1260cb0f8" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">point</span><span class="moose-parameter-header-description">The x,y,z coordinates of the point</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>libMesh::Point</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The x,y,z coordinates of the point</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">power</span><span class="moose-parameter-header-description">HX Power in Watts</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>HX Power in Watts</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="44b8e5a7-1b87-42c3-bfa8-b3ac1e4e8f47" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">block</span><span class="moose-parameter-header-description">The list of blocks (ids or names) that this object will be applied</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;SubdomainName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The list of blocks (ids or names) that this object will be applied</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">point_not_found_behavior</span><span class="moose-parameter-header-default">IGNORE</span><span class="moose-parameter-header-description">By default (IGNORE), it is ignored if an added point cannot be located in the specified subdomains. If this option is set to ERROR, this situation will result in an error. If this option is set to WARNING, then a warning will be issued.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>IGNORE</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>ERROR, WARNING, IGNORE</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>By default (IGNORE), it is ignored if an added point cannot be located in the specified subdomains. If this option is set to ERROR, this situation will result in an error. If this option is set to WARNING, then a warning will be issued.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="b7b25c1c-dc23-4801-886b-91b4478fabd4" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">drop_duplicate_points</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">By default points added to a DiracKernel are dropped if a point at the same locationhas been added before. If this option is set to false duplicate points are retainedand contribute to residual and Jacobian.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>By default points added to a DiracKernel are dropped if a point at the same locationhas been added before. If this option is set to false duplicate points are retainedand contribute to residual and Jacobian.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="3538b971-8c71-4c86-aa04-0e233911cc59" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="652a0696-be46-4ad7-b796-955bc086815c" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#14fffa64-2ecf-429d-aea0-a2e8fd96c846">(problems/LOSCA/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0f5515ac-a3c1-48ca-ab97-5a7470966cd9">(tests/diracHX/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#9128074f-4d05-4bf8-a804-07ad6537bce0">(problems/LOSCA/HXFailure/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#8e3df6af-a3b7-40ae-b2b4-41bbff6ed163">(problems/publication_level_cases/LOSCA/HXFail/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#25b1343d-a5f2-4451-9293-137751bd011f">(problems/publication_level_cases/LOSCA/sub.i)</a></li></ul></section></section><div class="moose-modal modal" id="14fffa64-2ecf-429d-aea0-a2e8fd96c846"><div class="modal-content"><h4>(problems/LOSCA/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
-nt_scale=1e13
-ini_temp=922
-diri_temp=922
-
-[GlobalParams]
-  num_groups = 0
-  num_precursor_groups = 6
-  use_exp_form = false
-  group_fluxes = &#x27;&#x27;
-  temperature = temp
-  sss2_input = false
-  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
-  # account_delayed = true
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 1
-  nx = 600
-  xmax = 500
-  elem_type = EDGE2
-[../]
-
-[Variables]
-  [./temp]
-    initial_condition = 930 #approx steady outlet of other problem
-    scaling = 1e-4
-    family = MONOMIAL
-    order = CONSTANT
-  [../]
-[]
-
-[Precursors]
- [./core]
-  var_name_base = pre
-  outlet_boundaries = &#x27;right&#x27;
-  u_def = ${flow_velocity}
-  v_def = 0
-  w_def = 0
-  nt_exp_form = false
-  family = MONOMIAL
-  order = CONSTANT
-  loop_precursors = true
-  multi_app = loopApp
-  is_loopapp = true
-  inlet_boundaries = left
-
- [../]
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-  # [./temp_source_fuel]
-  #   type = TransientFissionHeatSource
-  #   variable = temp
-  #   nt_scale=${nt_scale}
-  # [../]
-  # [./temp_source_mod]
-  #   type = GammaHeatSource
-  #   variable = temp
-  #   gamma = .0144 # Cammi .0144
-  #   block = &#x27;moder&#x27;
-  #   average_fission_heat = &#x27;average_fission_heat&#x27;
-  # [../]
-  # [./temp_diffusion]
-  #   type = MatDiffusion
-  #   diffusivity = &#x27;k&#x27;
-  #   variable = temp
-  # [../]
-  # [./temp_advection_fuel]
-  #   type = ConservativeTemperatureAdvection
-  #   velocity = &#x27;${flow_velocity} 0 0&#x27;
-  #   variable = temp
-  # [../]
-[]
-
-[DGKernels]
-  [./temp_adv]
-    type = DGTemperatureAdvection
-    variable = temp
-    velocity = &#x27;${flow_velocity} 0 0&#x27;
-  [../]
-[]
-
-
-[DiracKernels]
-  [./heat_exchanger]
-    type = DiracHX
-    variable = temp
-    power = 4e3 # see controls
-    point = &#x27;250 0 0&#x27;
-  [../]
-[]
-
-
-[BCs]
-  [./fuel_bottoms_looped]
-    boundary = &#x27;left&#x27;
-    type = PostprocessorTemperatureInflowBC
-    postprocessor = coreEndTemp
-    variable = temp
-    uu = ${flow_velocity}
-  [../]
-  # [./diri]
-  #   boundary = &#x27;left&#x27;
-  #   type = DirichletBC
-  #   variable = temp
-  #   value = 930
-  # [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;right&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;${flow_velocity} 0 0&#x27;
-  [../]
-[]
-
-[Materials]
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../property_file_dir/newt_msre_fuel_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 10000
-
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 1e-6
-
-  solve_type = &#x27;PJFNK&#x27;
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  petsc_options_iname = &#x27;-pc_type&#x27;
-  petsc_options_value = &#x27;lu&#x27;
-  line_search = &#x27;none&#x27;
-
-  nl_max_its = 30
-  l_max_its = 100
-
-  dtmin = 1e-5
-  # dtmax = 1
-  # dt = 1e-3
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    dt = 1e-3
-    cutback_factor = 0.4
-    growth_factor = 1.2
-    optimal_iterations = 20
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-  [../]
-[]
-
-[Postprocessors]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    outputs = &#x27;exodus console&#x27;
-  [../]
-  [./loopEndTemp]
-    type = SideAverageValue
-    variable = temp
-    boundary = &#x27;right&#x27;
-  [../]
-  [./coreEndTemp]
-    type = Receiver
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  [./exodus]
-    type = Exodus
-    file_base = &#x27;sub&#x27;
-    execute_on = &#x27;timestep_begin&#x27;
-  [../]
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-
-# connect inlet and outlet to multiapp
-# [Transfers]
-#   [./to_core]
-#     type = MultiAppPostprocessorTransfer
-#     multi_app = MoltresApp
-#     from_postprocessor = loopEndTemp
-#     to_postprocessor = inlet_mean_temp
-#     direction = to_multiapp
-#   [../]
-#   [./from_core]
-#     type = MultiAppPostprocessorTransfer
-#     multi_app = MoltresApp
-#     from_postprocessor = coreEndTemp
-#     to_postprocessor = coreEndTemp
-#     direction = to_multiapp
-#   [../]
-# []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0f5515ac-a3c1-48ca-ab97-5a7470966cd9"><div class="modal-content"><h4>(tests/diracHX/sub.i)</h4><pre class="moose-pre"><code class="language-text"># test that diracHX, DG kernels for heat transport are working
-# test does a sinusoid heat removal in the loop
-# Courant # = 0.5
-
-flow_velocity=0.5 # cm/s. See MSRE-properties.ods
-
-[GlobalParams]
-  num_groups = 0
-  num_precursor_groups = 6
-  group_fluxes = &#x27;&#x27;
-  temperature = temp
-  sss2_input = false
-  # account_delayed = true
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 1
-  nx = 100
-  xmax = 100
-  elem_type = EDGE2
-[../]
-
-[Variables]
-  [./temp]
-    initial_condition = 930 #approx steady outlet of other problem
-    scaling = 1e-4
-    family = MONOMIAL
-    order = CONSTANT
-  [../]
-[]
-
-[Precursors]
- [./core]
-  var_name_base = pre
-  outlet_boundaries = &#x27;right&#x27;
-  u_def = ${flow_velocity}
-  v_def = 0
-  w_def = 0
-  nt_exp_form = false
-  loop_precursors = false
-  family = MONOMIAL
-  order = FIRST
- [../]
-[]
-
-[Kernels]
-  # Temperature
-  [./temp_time_derivative]
-    type = MatINSTemperatureTimeDerivative
-    variable = temp
-  [../]
-[]
-
-[DGKernels]
-  [./temp_adv]
-    type = DGTemperatureAdvection
-    variable = temp
-    velocity = &#x27;${flow_velocity} 0 0&#x27;
-  [../]
-[]
-
-
-[DiracKernels]
-  [./heat_exchanger]
-    type = DiracHX
-    variable = temp
-    power = 100 # see controls
-    point = &#x27;50 0 0&#x27;
-  [../]
-[]
-
-
-[BCs]
-  [./fuel_bottoms_looped]
-    boundary = &#x27;left&#x27;
-    type = TemperatureInflowBC
-    variable = temp
-    uu = ${flow_velocity}
-    vv = 0
-    ww = 0
-    inlet_conc = 930
-  [../]
-  [./temp_advection_outlet]
-    boundary = &#x27;right&#x27;
-    type = TemperatureOutflowBC
-    variable = temp
-    velocity = &#x27;${flow_velocity} 0 0&#x27;
-  [../]
-[]
-
-[Functions]
-  [./heatRemovalFcn]
-    type = ParsedFunction
-    value = &#x27;1e2 + 1e2 * sin(t/5) &#x27; # start losing cooling at t=50s
-  [../]
-[]
-
-[Controls]
-  [./hxFuncCtrl]
-    type = RealFunctionControl
-    parameter = DiracKernels/heat_exchanger/power
-    function = heatRemovalFcn
-    execute_on = &#x27;initial timestep_begin&#x27;
-  [../]
-[]
-
-[Materials]
-  # need GenericMoltresMaterial so that DECAY_CONSTANT can be obtained
-  [./fuel]
-    type = GenericMoltresMaterial
-    property_tables_root = &#x27;../../property_file_dir/newt_msre_fuel_&#x27;
-    interp_type = &#x27;spline&#x27;
-    prop_names = &#x27;k cp&#x27;
-    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
-  [../]
-  [./rho_fuel]
-    type = DerivativeParsedMaterial
-    f_name = rho
-    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
-    args = &#x27;temp&#x27;
-    derivative_order = 1
-  [../]
-[]
-
-[Executioner]
-  type = Transient
-  end_time = 100
-
-  nl_rel_tol = 1e-8
-  nl_abs_tol = 1e-8
-  scheme = crank-nicolson
-
-  solve_type = &#x27;NEWTON&#x27;
-  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
-  petsc_options_iname = &#x27;-pc_type -sub_pc_type -pc_asm_overlap -sub_ksp_type -snes_linesearch_minlambda&#x27;
-  petsc_options_value = &#x27;asm      lu           1               preonly       1e-3&#x27;
-
-  [./TimeStepper]
-    type = ConstantDT
-    dt = 1
-  [../]
-[]
-
-[Preconditioning]
-  [./SMP]
-    type = SMP
-    full = true
-  [../]
-[]
-
-[Postprocessors]
-  [./temp_fuel]
-    type = ElementAverageValue
-    variable = temp
-    outputs = &#x27;exodus console&#x27;
-  [../]
-  [./loopEndTemp]
-    type = SideAverageValue
-    variable = temp
-    boundary = &#x27;right&#x27;
-  [../]
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = true
-  [./exodus]
-    type = Exodus
-    file_base = &#x27;sub&#x27;
-    execute_on = &#x27;timestep_begin&#x27;
-  [../]
-[]
-
-[Debug]
-  show_var_residual_norms = true
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="9128074f-4d05-4bf8-a804-07ad6537bce0"><div class="modal-content"><h4>(problems/LOSCA/HXFailure/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+<!DOCTYPE html><head><meta charset="UTF-8"><title>DiracHX | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="22687c63-1a10-431c-8b04-1e58bebaed31" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="f4edb2cb-9520-4593-95eb-62e0c47a69a4" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="942585dd-c996-4918-b902-4642ea6f1559" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="1f147a77-26fd-4f44-924c-79f24e32c8f7"><i class="material-icons">menu</i></a><ul class="sidenav" id="1f147a77-26fd-4f44-924c-79f24e32c8f7"><li><a href="#!" class="dropdown-trigger" data-target="1e03c5d1-4934-4a25-903f-ade02b97aaa3" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="9bcb1feb-b892-47ac-8fad-7e40316f4149" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="41cea950-4888-46c2-9ffe-9f43cbfa7b94" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="22687c63-1a10-431c-8b04-1e58bebaed31"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="f4edb2cb-9520-4593-95eb-62e0c47a69a4"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="942585dd-c996-4918-b902-4642ea6f1559"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="1e03c5d1-4934-4a25-903f-ade02b97aaa3"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="9bcb1feb-b892-47ac-8fad-7e40316f4149"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="41cea950-4888-46c2-9ffe-9f43cbfa7b94"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">dirackernels</span><a href="#" class="breadcrumb">DiracHX</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="164123ff-4e0c-4ee9-9e16-6c92128de94f" data-section-level="1" data-section-text="DiracHX"><h1 id="dirachx">DiracHX</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p>The DiracHX has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></div></div></div><p></p><section class="scrollspy" id="edd78577-f5da-4b92-a326-c8b25857b421" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="0e4ddcee-51f8-4d6d-b94b-4373b3018c7f" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="8a988da1-002e-4edc-bcf6-3f5b2f68fd77" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="000353f1-707a-4a8c-9a12-f16fbb28ff66" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">point</span><span class="moose-parameter-header-description">The x,y,z coordinates of the point</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>libMesh::Point</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The x,y,z coordinates of the point</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">power</span><span class="moose-parameter-header-description">HX Power in Watts</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>HX Power in Watts</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="c743137f-ddc4-45f3-b574-e8912473fc59" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">block</span><span class="moose-parameter-header-description">The list of blocks (ids or names) that this object will be applied</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;SubdomainName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The list of blocks (ids or names) that this object will be applied</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">point_not_found_behavior</span><span class="moose-parameter-header-default">IGNORE</span><span class="moose-parameter-header-description">By default (IGNORE), it is ignored if an added point cannot be located in the specified subdomains. If this option is set to ERROR, this situation will result in an error. If this option is set to WARNING, then a warning will be issued.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>IGNORE</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>ERROR, WARNING, IGNORE</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>By default (IGNORE), it is ignored if an added point cannot be located in the specified subdomains. If this option is set to ERROR, this situation will result in an error. If this option is set to WARNING, then a warning will be issued.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="96b85c31-d60d-48af-a779-f48c3191fecf" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">drop_duplicate_points</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">By default points added to a DiracKernel are dropped if a point at the same locationhas been added before. If this option is set to false duplicate points are retainedand contribute to residual and Jacobian.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>By default points added to a DiracKernel are dropped if a point at the same locationhas been added before. If this option is set to false duplicate points are retainedand contribute to residual and Jacobian.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="1cee9c15-2390-4b55-a78b-184772876e0b" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="4012ca70-1c63-49dd-852d-b90ba07b807a" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#5b73e70b-f20c-49b5-8991-67ada4ca14ce">(problems/LOSCA/HXFailure/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#2d862a2f-889f-4ff7-9af4-59f4b6048c15">(problems/publication_level_cases/LOSCA/HXFail/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#1bf6de16-ed2d-4e2f-85e7-67c2a02c9827">(problems/LOSCA/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#7be5474c-108a-42a2-b383-dc6f5041421d">(tests/diracHX/sub.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#ffc5928e-c31e-4bd0-89b6-b9a58fcbf212">(problems/publication_level_cases/LOSCA/sub.i)</a></li></ul></section></section><div class="moose-modal modal" id="5b73e70b-f20c-49b5-8991-67ada4ca14ce"><div class="modal-content"><h4>(problems/LOSCA/HXFailure/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 nt_scale=1e13
 ini_temp=922
 diri_temp=922
@@ -613,7 +215,7 @@ diri_temp=922
 [Debug]
   show_var_residual_norms = true
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="8e3df6af-a3b7-40ae-b2b4-41bbff6ed163"><div class="modal-content"><h4>(problems/publication_level_cases/LOSCA/HXFail/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="2d862a2f-889f-4ff7-9af4-59f4b6048c15"><div class="modal-content"><h4>(problems/publication_level_cases/LOSCA/HXFail/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 nt_scale=1e13
 ini_temp=922
 diri_temp=922
@@ -826,7 +428,405 @@ diri_temp=922
 [Debug]
   show_var_residual_norms = true
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="25b1343d-a5f2-4451-9293-137751bd011f"><div class="modal-content"><h4>(problems/publication_level_cases/LOSCA/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="1bf6de16-ed2d-4e2f-85e7-67c2a02c9827"><div class="modal-content"><h4>(problems/LOSCA/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+nt_scale=1e13
+ini_temp=922
+diri_temp=922
+
+[GlobalParams]
+  num_groups = 0
+  num_precursor_groups = 6
+  use_exp_form = false
+  group_fluxes = &#x27;&#x27;
+  temperature = temp
+  sss2_input = false
+  pre_concs = &#x27;pre1 pre2 pre3 pre4 pre5 pre6&#x27;
+  # account_delayed = true
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 1
+  nx = 600
+  xmax = 500
+  elem_type = EDGE2
+[../]
+
+[Variables]
+  [./temp]
+    initial_condition = 930 #approx steady outlet of other problem
+    scaling = 1e-4
+    family = MONOMIAL
+    order = CONSTANT
+  [../]
+[]
+
+[Precursors]
+ [./core]
+  var_name_base = pre
+  outlet_boundaries = &#x27;right&#x27;
+  u_def = ${flow_velocity}
+  v_def = 0
+  w_def = 0
+  nt_exp_form = false
+  family = MONOMIAL
+  order = CONSTANT
+  loop_precursors = true
+  multi_app = loopApp
+  is_loopapp = true
+  inlet_boundaries = left
+
+ [../]
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+  # [./temp_source_fuel]
+  #   type = TransientFissionHeatSource
+  #   variable = temp
+  #   nt_scale=${nt_scale}
+  # [../]
+  # [./temp_source_mod]
+  #   type = GammaHeatSource
+  #   variable = temp
+  #   gamma = .0144 # Cammi .0144
+  #   block = &#x27;moder&#x27;
+  #   average_fission_heat = &#x27;average_fission_heat&#x27;
+  # [../]
+  # [./temp_diffusion]
+  #   type = MatDiffusion
+  #   diffusivity = &#x27;k&#x27;
+  #   variable = temp
+  # [../]
+  # [./temp_advection_fuel]
+  #   type = ConservativeTemperatureAdvection
+  #   velocity = &#x27;${flow_velocity} 0 0&#x27;
+  #   variable = temp
+  # [../]
+[]
+
+[DGKernels]
+  [./temp_adv]
+    type = DGTemperatureAdvection
+    variable = temp
+    velocity = &#x27;${flow_velocity} 0 0&#x27;
+  [../]
+[]
+
+
+[DiracKernels]
+  [./heat_exchanger]
+    type = DiracHX
+    variable = temp
+    power = 4e3 # see controls
+    point = &#x27;250 0 0&#x27;
+  [../]
+[]
+
+
+[BCs]
+  [./fuel_bottoms_looped]
+    boundary = &#x27;left&#x27;
+    type = PostprocessorTemperatureInflowBC
+    postprocessor = coreEndTemp
+    variable = temp
+    uu = ${flow_velocity}
+  [../]
+  # [./diri]
+  #   boundary = &#x27;left&#x27;
+  #   type = DirichletBC
+  #   variable = temp
+  #   value = 930
+  # [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;right&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;${flow_velocity} 0 0&#x27;
+  [../]
+[]
+
+[Materials]
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../property_file_dir/newt_msre_fuel_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+  [../]
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 10000
+
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-6
+
+  solve_type = &#x27;PJFNK&#x27;
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  petsc_options_iname = &#x27;-pc_type&#x27;
+  petsc_options_value = &#x27;lu&#x27;
+  line_search = &#x27;none&#x27;
+
+  nl_max_its = 30
+  l_max_its = 100
+
+  dtmin = 1e-5
+  # dtmax = 1
+  # dt = 1e-3
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    dt = 1e-3
+    cutback_factor = 0.4
+    growth_factor = 1.2
+    optimal_iterations = 20
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Postprocessors]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    outputs = &#x27;exodus console&#x27;
+  [../]
+  [./loopEndTemp]
+    type = SideAverageValue
+    variable = temp
+    boundary = &#x27;right&#x27;
+  [../]
+  [./coreEndTemp]
+    type = Receiver
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  [./exodus]
+    type = Exodus
+    file_base = &#x27;sub&#x27;
+    execute_on = &#x27;timestep_begin&#x27;
+  [../]
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+
+# connect inlet and outlet to multiapp
+# [Transfers]
+#   [./to_core]
+#     type = MultiAppPostprocessorTransfer
+#     multi_app = MoltresApp
+#     from_postprocessor = loopEndTemp
+#     to_postprocessor = inlet_mean_temp
+#     direction = to_multiapp
+#   [../]
+#   [./from_core]
+#     type = MultiAppPostprocessorTransfer
+#     multi_app = MoltresApp
+#     from_postprocessor = coreEndTemp
+#     to_postprocessor = coreEndTemp
+#     direction = to_multiapp
+#   [../]
+# []
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="7be5474c-108a-42a2-b383-dc6f5041421d"><div class="modal-content"><h4>(tests/diracHX/sub.i)</h4><pre class="moose-pre"><code class="language-text"># test that diracHX, DG kernels for heat transport are working
+# test does a sinusoid heat removal in the loop
+# Courant # = 0.5
+
+flow_velocity=0.5 # cm/s. See MSRE-properties.ods
+
+[GlobalParams]
+  num_groups = 0
+  num_precursor_groups = 6
+  group_fluxes = &#x27;&#x27;
+  temperature = temp
+  sss2_input = false
+  # account_delayed = true
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 1
+  nx = 100
+  xmax = 100
+  elem_type = EDGE2
+[../]
+
+[Variables]
+  [./temp]
+    initial_condition = 930 #approx steady outlet of other problem
+    scaling = 1e-4
+    family = MONOMIAL
+    order = CONSTANT
+  [../]
+[]
+
+[Precursors]
+ [./core]
+  var_name_base = pre
+  outlet_boundaries = &#x27;right&#x27;
+  u_def = ${flow_velocity}
+  v_def = 0
+  w_def = 0
+  nt_exp_form = false
+  loop_precursors = false
+  family = MONOMIAL
+  order = FIRST
+ [../]
+[]
+
+[Kernels]
+  # Temperature
+  [./temp_time_derivative]
+    type = MatINSTemperatureTimeDerivative
+    variable = temp
+  [../]
+[]
+
+[DGKernels]
+  [./temp_adv]
+    type = DGTemperatureAdvection
+    variable = temp
+    velocity = &#x27;${flow_velocity} 0 0&#x27;
+  [../]
+[]
+
+
+[DiracKernels]
+  [./heat_exchanger]
+    type = DiracHX
+    variable = temp
+    power = 100 # see controls
+    point = &#x27;50 0 0&#x27;
+  [../]
+[]
+
+
+[BCs]
+  [./fuel_bottoms_looped]
+    boundary = &#x27;left&#x27;
+    type = TemperatureInflowBC
+    variable = temp
+    uu = ${flow_velocity}
+    vv = 0
+    ww = 0
+    inlet_conc = 930
+  [../]
+  [./temp_advection_outlet]
+    boundary = &#x27;right&#x27;
+    type = TemperatureOutflowBC
+    variable = temp
+    velocity = &#x27;${flow_velocity} 0 0&#x27;
+  [../]
+[]
+
+[Functions]
+  [./heatRemovalFcn]
+    type = ParsedFunction
+    value = &#x27;1e2 + 1e2 * sin(t/5) &#x27; # start losing cooling at t=50s
+  [../]
+[]
+
+[Controls]
+  [./hxFuncCtrl]
+    type = RealFunctionControl
+    parameter = DiracKernels/heat_exchanger/power
+    function = heatRemovalFcn
+    execute_on = &#x27;initial timestep_begin&#x27;
+  [../]
+[]
+
+[Materials]
+  # need GenericMoltresMaterial so that DECAY_CONSTANT can be obtained
+  [./fuel]
+    type = GenericMoltresMaterial
+    property_tables_root = &#x27;../../property_file_dir/newt_msre_fuel_&#x27;
+    interp_type = &#x27;spline&#x27;
+    prop_names = &#x27;k cp&#x27;
+    prop_values = &#x27;.0553 1967&#x27; # Robertson MSRE technical report @ 922 K
+  [../]
+  [./rho_fuel]
+    type = DerivativeParsedMaterial
+    f_name = rho
+    function = &#x27;2.146e-3 * exp(-1.8 * 1.18e-4 * (temp - 922))&#x27;
+    args = &#x27;temp&#x27;
+    derivative_order = 1
+  [../]
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 100
+
+  nl_rel_tol = 1e-8
+  nl_abs_tol = 1e-8
+  scheme = crank-nicolson
+
+  solve_type = &#x27;NEWTON&#x27;
+  petsc_options = &#x27;-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor&#x27;
+  petsc_options_iname = &#x27;-pc_type -sub_pc_type -pc_asm_overlap -sub_ksp_type -snes_linesearch_minlambda&#x27;
+  petsc_options_value = &#x27;asm      lu           1               preonly       1e-3&#x27;
+
+  [./TimeStepper]
+    type = ConstantDT
+    dt = 1
+  [../]
+[]
+
+[Preconditioning]
+  [./SMP]
+    type = SMP
+    full = true
+  [../]
+[]
+
+[Postprocessors]
+  [./temp_fuel]
+    type = ElementAverageValue
+    variable = temp
+    outputs = &#x27;exodus console&#x27;
+  [../]
+  [./loopEndTemp]
+    type = SideAverageValue
+    variable = temp
+    boundary = &#x27;right&#x27;
+  [../]
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = true
+  [./exodus]
+    type = Exodus
+    file_base = &#x27;sub&#x27;
+    execute_on = &#x27;timestep_begin&#x27;
+  [../]
+[]
+
+[Debug]
+  show_var_residual_norms = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="ffc5928e-c31e-4bd0-89b6-b9a58fcbf212"><div class="modal-content"><h4>(problems/publication_level_cases/LOSCA/sub.i)</h4><pre class="moose-pre"><code class="language-text">flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 nt_scale=1e13
 ini_temp=922
 diri_temp=922
@@ -1042,4 +1042,4 @@ diri_temp=922
 #     direction = to_multiapp
 #   [../]
 # []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#6fc95fa2-0d3e-4009-a8e9-211c7e4088d6" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#7856d429-521a-4b3b-9aef-bc1d6cdcba04" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#35fb4a41-4290-4313-b4df-85617d67f5e3" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#652a0696-be46-4ad7-b796-955bc086815c" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#edd78577-f5da-4b92-a326-c8b25857b421" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#0e4ddcee-51f8-4d6d-b94b-4373b3018c7f" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#8a988da1-002e-4edc-bcf6-3f5b2f68fd77" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#4012ca70-1c63-49dd-852d-b90ba07b807a" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
