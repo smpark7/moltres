@@ -1,4 +1,1368 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>INSSymmetryAxisBC | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="6c137b01-c2c3-4923-9f16-62ddd736a254" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="35be545c-2c2c-417a-964c-26db4b2add8d" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="930e299c-aee5-42f7-807f-d8908169cc73" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="2739d09c-73c7-4344-ad49-fc88f908c320"><i class="material-icons">menu</i></a><ul class="sidenav" id="2739d09c-73c7-4344-ad49-fc88f908c320"><li><a href="#!" class="dropdown-trigger" data-target="ae243866-04dc-4f35-a14b-02cdd9a23d07" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="e3d211ba-aafb-420b-8730-1b4c0a41e010" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="846e0bef-0042-4372-b4d0-9bdfb26ccb90" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="6c137b01-c2c3-4923-9f16-62ddd736a254"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="35be545c-2c2c-417a-964c-26db4b2add8d"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="930e299c-aee5-42f7-807f-d8908169cc73"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="ae243866-04dc-4f35-a14b-02cdd9a23d07"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="e3d211ba-aafb-420b-8730-1b4c0a41e010"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="846e0bef-0042-4372-b4d0-9bdfb26ccb90"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">bcs</span><a href="#" class="breadcrumb">INSSymmetryAxisBC</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="950d6006-8218-41ec-b131-3e235c528f83" data-section-level="1" data-section-text="INSSymmetryAxisBC"><h1 id="inssymmetryaxisbc">INSSymmetryAxisBC</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p>The INSSymmetryAxisBC has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></div></div></div><p></p><section class="scrollspy" id="dac7abf1-de43-4cdd-ae77-7a1573cf8370" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="e73c3047-cd0b-47c2-b89c-d00176ff385a" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="738a2925-2dfb-4734-bdbe-7d2cced0e874" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="95111188-398f-4402-995f-10cf7841d2e1" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">boundary</span><span class="moose-parameter-header-description">The list of boundary IDs from the mesh where this boundary condition applies</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;BoundaryName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The list of boundary IDs from the mesh where this boundary condition applies</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">component</span><span class="moose-parameter-header-description">0,1,2 depending on if we are solving the x,y,z component of the momentum equation</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>0,1,2 depending on if we are solving the x,y,z component of the momentum equation</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">mu</span><span class="moose-parameter-header-description">dynamic viscosity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>dynamic viscosity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">p</span><span class="moose-parameter-header-description">pressure</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>pressure</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">rho</span><span class="moose-parameter-header-description">density</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>density</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">u</span><span class="moose-parameter-header-description">x-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>x-velocity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="ed7c1caa-f358-4999-9bfe-3e9454088ff2" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">displacements</span><span class="moose-parameter-header-description">The displacements</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The displacements</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">integrate_p_by_parts</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Allows simulations to be run with pressure BC if set to false</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Allows simulations to be run with pressure BC if set to false</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">v</span><span class="moose-parameter-header-description">y-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>y-velocity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">w</span><span class="moose-parameter-header-description">z-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>z-velocity</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="23b07961-93c5-4499-b78c-2aee57bdf5e9" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">diag_save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this BC's diagonal jacobian contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this BC's diagonal jacobian contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this BC's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this BC's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="fa539cac-a40b-424c-9fdd-749c908fab97" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="4dbcbed9-f4b8-48c2-9ab8-6112101e1ba5" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#c48bc8c0-a6f8-4ffc-be02-a77f477a23af">(problems/fluid_flow.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#3e9a9a00-2dc9-4378-bb4f-6c0b6b7d05f9">(problems/fluid_no_pressure_bcs_XYZ_myOutflowBC_correct_look.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#c96a1a6a-d377-4bee-9f7d-88ddb2538b09">(tests/laminar_flow/outlet_pressure_bc.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0b256c66-0732-493b-b21c-d8d4e70fca8c">(problems/fluid_no_pressure_bcs_XYZ_correct_look.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#e95ca2b7-8fa4-45e3-bf16-37d7c7982ff2">(tests/laminar_flow/XYZ_p_no_parts_do_nothing_bcs.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#233520b6-0823-4901-8c14-2a549c95ba47">(tests/laminar_flow/XYZ_p_parts_do_nothing_bcs.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#4d88a171-c057-4f00-90ee-218e116eb865">(problems/fluid_flow_NS_genMesh_gold.i)</a></li></ul></section></section><div class="moose-modal modal" id="c48bc8c0-a6f8-4ffc-be02-a77f477a23af"><div class="modal-content"><h4>(problems/fluid_flow.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+<!DOCTYPE html><head><meta charset="UTF-8"><title>INSSymmetryAxisBC | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="3d8930b3-6bd4-4efb-9a54-7d051d836a5a" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="0e063479-3330-4086-9ffe-76f2a8988cf1" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="c0493587-937c-4184-8207-678bf9ad5a90" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="5f24d5b7-faaa-47d7-b438-443ef2d358ea"><i class="material-icons">menu</i></a><ul class="sidenav" id="5f24d5b7-faaa-47d7-b438-443ef2d358ea"><li><a href="#!" class="dropdown-trigger" data-target="ea56440e-13b0-4c60-a1f8-449c749c18dc" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="f856d4bd-64f3-478b-a828-222343a56974" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="9a19a018-e4ee-449d-a5ce-bcff2bef7733" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="3d8930b3-6bd4-4efb-9a54-7d051d836a5a"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="0e063479-3330-4086-9ffe-76f2a8988cf1"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="c0493587-937c-4184-8207-678bf9ad5a90"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="ea56440e-13b0-4c60-a1f8-449c749c18dc"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="f856d4bd-64f3-478b-a828-222343a56974"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="9a19a018-e4ee-449d-a5ce-bcff2bef7733"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">bcs</span><a href="#" class="breadcrumb">INSSymmetryAxisBC</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="96cfe7f3-9c37-4a77-9e1b-38944ac6cb40" data-section-level="1" data-section-text="INSSymmetryAxisBC"><h1 id="inssymmetryaxisbc">INSSymmetryAxisBC</h1><div class="card moose-alert moose-alert-construction"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">build</i><span class="moose-alert-title-brand">construction:</span>Undocumented Class</div><div class="card-content"><div class="moose-alert-content"><p>The INSSymmetryAxisBC has not been documented. The content listed below should be used as a starting point for documenting the class, which includes the typical automatic documentation associated with a MooseObject; however, what is contained is ultimately determined by what is necessary to make the documentation clear for users.</p></div></div></div><p></p><section class="scrollspy" id="7c3c846c-955a-4a95-bc0f-d1f9f15771b7" data-section-level="2" data-section-text="Overview"><h2 id="overview">Overview</h2><p></p></section><section class="scrollspy" id="b7dc37c8-917b-4e8d-bb69-4293656966f1" data-section-level="2" data-section-text="Example Input File Syntax"><h2 id="example-input-file-syntax">Example Input File Syntax</h2><p></p></section><section class="scrollspy" id="f60ea367-1aea-400c-a082-5424287ad950" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="ee5b5b6f-9833-4320-bf00-c0dfc6a09bdd" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">boundary</span><span class="moose-parameter-header-description">The list of boundary IDs from the mesh where this boundary condition applies</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;BoundaryName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The list of boundary IDs from the mesh where this boundary condition applies</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">component</span><span class="moose-parameter-header-description">0,1,2 depending on if we are solving the x,y,z component of the momentum equation</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>0,1,2 depending on if we are solving the x,y,z component of the momentum equation</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">mu</span><span class="moose-parameter-header-description">dynamic viscosity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>dynamic viscosity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">p</span><span class="moose-parameter-header-description">pressure</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>pressure</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">rho</span><span class="moose-parameter-header-description">density</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>double</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>density</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">u</span><span class="moose-parameter-header-description">x-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>x-velocity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="cd11b17b-cfc8-49f2-885b-058db27b16ea" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">displacements</span><span class="moose-parameter-header-description">The displacements</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The displacements</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">integrate_p_by_parts</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Allows simulations to be run with pressure BC if set to false</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Allows simulations to be run with pressure BC if set to false</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">v</span><span class="moose-parameter-header-description">y-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>y-velocity</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">w</span><span class="moose-parameter-header-description">z-velocity</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;VariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>z-velocity</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="50d6b7bc-a1d5-44aa-a502-9397c023ded5" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">diag_save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this BC's diagonal jacobian contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this BC's diagonal jacobian contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">save_in</span><span class="moose-parameter-header-description">The name of auxiliary variables to save this BC's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;AuxVariableName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of auxiliary variables to save this BC's residual contributions to.  Everything about that variable must match everything about this variable (the type, what blocks it's on, etc.)</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation.  Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="26ab55a1-ba6b-4a50-a3b2-dcc19ae1c0f7" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section></section><section class="scrollspy" id="a15770df-0258-41c4-80f7-eacc4e391003" data-section-level="2" data-section-text="Input Files"><h2 id="input-files">Input Files</h2><ul class="moose-list-inputs browser-default"><li><a class="moose-source-filename tooltipped modal-trigger" href="#736b8a7f-95c9-43b3-b890-b5d1696d1b7a">(tests/laminar_flow/XYZ_p_no_parts_do_nothing_bcs.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#e974dec0-f830-4788-b066-5b35a82c866f">(problems/fluid_flow_NS_genMesh_gold.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#8cf2b83a-53f4-43fc-bf03-798ccadf4d0a">(tests/laminar_flow/XYZ_p_parts_do_nothing_bcs.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#82928d77-61dd-4514-a75a-11013c9e7109">(problems/fluid_no_pressure_bcs_XYZ_myOutflowBC_correct_look.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#6e376f38-ffa1-4c2d-abdb-15114919315a">(tests/laminar_flow/outlet_pressure_bc.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#71e2fe38-bcf9-48d1-ad8c-23b101bd89d6">(problems/fluid_flow.i)</a></li><li><a class="moose-source-filename tooltipped modal-trigger" href="#0812321e-709e-46c2-aba3-9ee8b4dac270">(problems/fluid_no_pressure_bcs_XYZ_correct_look.i)</a></li></ul></section></section><div class="moose-modal modal" id="736b8a7f-95c9-43b3-b890-b5d1696d1b7a"><div class="modal-content"><h4>(tests/laminar_flow/XYZ_p_no_parts_do_nothing_bcs.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+[GlobalParams]
+  integrate_p_by_parts = false
+  gravity = &#x27;0 0 0&#x27;
+  coord_type = XYZ
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  xmin = 0
+  ymin = 0
+  # xmax = .0208
+  # ymax = .05
+  xmax = .5
+  ymax = 1
+  nx = 25
+  ny = 25
+  elem_type = QUAD9
+  # file = &#x27;2d.msh&#x27;
+[]
+
+[MeshModifiers]
+  [./bottom_left]
+    type = AddExtraNodeset
+    new_boundary = bottom_left
+    coord = &#x27;0 0&#x27;
+  [../]
+[]
+
+
+[Problem]
+  # coord_type = RZ
+[]
+
+[Preconditioning]
+  active = &#x27;Newton_FDP&#x27;
+  [./SMP_PJFNK]
+    type = SMP
+    full = true
+
+    # Preconditioned JFNK (default)
+    solve_type = &#x27;PJFNK&#x27;
+  [../]
+  [./Newton_FDP]
+    type = FDP
+    full = true
+    solve_type = &#x27;NEWTON&#x27;
+    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
+    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
+  [../]
+  [./JFNK]
+    type = SMP
+    solve_type = &#x27;JFNK&#x27;
+  [../]
+[]
+
+[Executioner]
+  solve_type = JFNK
+  # type = Transient
+  type = Steady
+  # dt = 1e-3
+  dtmin = 5e-7
+  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
+
+  # Basic GMRES/linesearch options only
+  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
+  # petsc_options_value = &#x27;300                &#x27;
+  # line_search = &#x27;none&#x27;
+
+  nl_rel_tol = 1e-8
+  # nl_abs_tol = 1e-7
+  # nl_max_its = 20
+  l_tol = 1e-3
+  l_max_its = 50
+  num_steps = 10
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    cutback_factor = 0.4
+    dt = .01
+    growth_factor = 1.2
+    optimal_iterations = 25
+  [../]
+
+[]
+
+[Debug]
+        show_var_residual_norms = true
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = false
+  [./out]
+    type = Exodus
+  []
+[]
+
+[Variables]
+  # Velocity in radial direction
+  [./u]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  # Velocity in axial direction
+  [./v]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  [./p]
+    family = LAGRANGE
+    # order = SECOND
+  [../]
+  # [./k]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+  # [./eps]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+[]
+
+[BCs]
+  # [./eps_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = eps
+  #   value = .033 # m^2/s^2
+  # [./k_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = k
+  #   value = .007 # m^2/s^2
+  [./u_in]
+    type = DirichletBC
+    boundary = bottom
+    variable = u
+    value = 0 # m/s
+  [../]
+  [./v_in]
+    type = FunctionDirichletBC
+    boundary = bottom
+    variable = v
+    function = &#x27;inlet_func&#x27;
+  [../]
+  # [./p_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = p
+  #   value = 1
+  # [../]
+  # [./p_out]
+  #   type = DirichletBC
+  #   boundary = top
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./p_corner]
+  #   type = DirichletBC
+  #   boundary = bottom_left
+  #   variable = p
+  #   value = 0
+  # [../]
+  [./u_out]
+    type = INSMomentumNoBCBCLaplaceForm
+    boundary = top
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  [./v_out]
+    type = INSMomentumNoBCBCLaplaceForm
+    boundary = top
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+  # [./u_out]
+  #   type = INSOutflowBC
+  #   boundary = top
+  #   variable = u
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 0
+  # [../]
+  # [./v_out]
+  #   type = INSOutflowBC
+  #   boundary = top
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+  [./u_axis_and_walls]
+    type = DirichletBC
+    boundary = &#x27;left right&#x27;
+    # boundary = right
+    variable = u
+    value = 0
+  [../]
+  [./v_walls]
+    type = DirichletBC
+    # boundary = right
+    boundary = &#x27;left right&#x27;
+    variable = v
+    value = 0
+  [../]
+  # [./v_axis]
+  #   type = INSSymmetryAxisBC
+  #   boundary = left
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+[]
+
+
+[Kernels]
+  # mass
+  [./mass]
+    type = INSMass
+    variable = p
+    u = u
+    v = v
+    p = p
+    # coord_type = RZ
+  [../]
+  # # r-momentum, time
+  # [./x_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = u
+  # [../]
+  # # z-momentum, time
+  # [./y_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = v
+  # [../]
+  # r-momentum, space
+  [./x_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  # z-momentum, space
+  [./y_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+[]
+
+[Functions]
+  [./inlet_func]
+    type = ParsedFunction
+    # value = &#x27;-4 * x^2 + 1&#x27;
+    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
+  [../]
+[]
+
+[Materials]
+  [./const]
+    type = GenericConstantMaterial
+    prop_names = &#x27;mu rho&#x27;
+    prop_values = &#x27;1 1&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="e974dec0-f830-4788-b066-5b35a82c866f"><div class="modal-content"><h4>(problems/fluid_flow_NS_genMesh_gold.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+[GlobalParams]
+  integrate_p_by_parts = true
+  gravity = &#x27;0 0 0&#x27;
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  xmin = 0
+  ymin = 0
+  # xmax = .0208
+  # ymax = .05
+  xmax = .5
+  ymax = 1
+  nx = 50
+  ny = 25
+  elem_type = QUAD9
+  # file = &#x27;2d.msh&#x27;
+[]
+
+[MeshModifiers]
+  [./bottom_left]
+    type = AddExtraNodeset
+    new_boundary = bottom_left
+    coord = &#x27;0 0&#x27;
+  [../]
+[]
+
+
+[Problem]
+  coord_type = RZ
+[]
+
+[Preconditioning]
+  active = &#x27;Newton_FDP&#x27;
+  [./SMP_PJFNK]
+    type = SMP
+    full = true
+
+    # Preconditioned JFNK (default)
+    solve_type = &#x27;PJFNK&#x27;
+  [../]
+  [./Newton_FDP]
+    type = FDP
+    full = true
+    solve_type = &#x27;NEWTON&#x27;
+    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
+    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
+  [../]
+  [./JFNK]
+    type = SMP
+    solve_type = &#x27;JFNK&#x27;
+  [../]
+[]
+
+[Executioner]
+  solve_type = JFNK
+  # type = Transient
+  type = Steady
+  # dt = 1e-3
+  dtmin = 5e-7
+  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
+
+  # Basic GMRES/linesearch options only
+  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
+  # petsc_options_value = &#x27;300                &#x27;
+  # line_search = &#x27;none&#x27;
+
+  nl_rel_tol = 1e-8
+  # nl_abs_tol = 1e-7
+  # nl_max_its = 20
+  l_tol = 1e-3
+  l_max_its = 50
+  num_steps = 10
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    cutback_factor = 0.4
+    dt = .01
+    growth_factor = 1.2
+    optimal_iterations = 25
+  [../]
+
+[]
+
+[Debug]
+        show_var_residual_norms = true
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = false
+  [./out]
+    type = Exodus
+  []
+[]
+
+[Variables]
+  # Velocity in radial direction
+  [./u]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  # Velocity in axial direction
+  [./v]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  [./p]
+    family = LAGRANGE
+    # order = SECOND
+  [../]
+  # [./k]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+  # [./eps]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+[]
+
+[BCs]
+  # [./eps_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = eps
+  #   value = .033 # m^2/s^2
+  # [./k_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = k
+  #   value = .007 # m^2/s^2
+  [./u_in]
+    type = DirichletBC
+    boundary = bottom
+    variable = u
+    value = 0 # m/s
+  [../]
+  [./v_in]
+    type = FunctionDirichletBC
+    boundary = bottom
+    variable = v
+    function = &#x27;inlet_func&#x27;
+  [../]
+  # [./p_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = p
+  #   value = 1
+  # [../]
+  # [./p_out]
+  #   type = DirichletBC
+  #   boundary = top
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./p_corner]
+  #   type = DirichletBC
+  #   boundary = bottom_left
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./u_out]
+  #   type = INSMomentumNoBCBCLaplaceForm
+  #   boundary = top
+  #   variable = u
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 0
+  # [../]
+  # [./v_out]
+  #   type = INSMomentumNoBCBCLaplaceForm
+  #   boundary = top
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+  [./u_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  [./v_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+  [./u_axis_and_walls]
+    type = DirichletBC
+    boundary = &#x27;left right&#x27;
+    # boundary = right
+    variable = u
+    value = 0
+  [../]
+  [./v_walls]
+    type = DirichletBC
+    boundary = right
+    # boundary = &#x27;left right&#x27;
+    variable = v
+    value = 0
+  [../]
+  # [./v_axis]
+  #   type = INSSymmetryAxisBC
+  #   boundary = left
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+[]
+
+
+[Kernels]
+  # mass
+  [./mass]
+    type = INSMass
+    variable = p
+    u = u
+    v = v
+    p = p
+  [../]
+  # # r-momentum, time
+  # [./x_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = u
+  # [../]
+  # # z-momentum, time
+  # [./y_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = v
+  # [../]
+  # r-momentum, space
+  [./x_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  # z-momentum, space
+  [./y_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+[]
+
+[Functions]
+  [./inlet_func]
+    type = ParsedFunction
+    value = &#x27;4 * (.5 - x)^2&#x27;
+    # value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
+  [../]
+[]
+
+[Materials]
+  [./const]
+    type = GenericConstantMaterial
+    prop_names = &#x27;mu rho&#x27;
+    prop_values = &#x27;1 1&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="8cf2b83a-53f4-43fc-bf03-798ccadf4d0a"><div class="modal-content"><h4>(tests/laminar_flow/XYZ_p_parts_do_nothing_bcs.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+[GlobalParams]
+  integrate_p_by_parts = true
+  gravity = &#x27;0 0 0&#x27;
+  coord_type = XYZ
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  xmin = 0
+  ymin = 0
+  # xmax = .0208
+  # ymax = .05
+  xmax = .5
+  ymax = 1
+  nx = 25
+  ny = 25
+  elem_type = QUAD9
+  # file = &#x27;2d.msh&#x27;
+[]
+
+[MeshModifiers]
+  [./bottom_left]
+    type = AddExtraNodeset
+    new_boundary = bottom_left
+    coord = &#x27;0 0&#x27;
+  [../]
+[]
+
+
+[Problem]
+  # coord_type = RZ
+[]
+
+[Preconditioning]
+  active = &#x27;Newton_FDP&#x27;
+  [./SMP_PJFNK]
+    type = SMP
+    full = true
+
+    # Preconditioned JFNK (default)
+    solve_type = &#x27;PJFNK&#x27;
+  [../]
+  [./Newton_FDP]
+    type = FDP
+    full = true
+    solve_type = &#x27;NEWTON&#x27;
+    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
+    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
+  [../]
+  [./JFNK]
+    type = SMP
+    solve_type = &#x27;JFNK&#x27;
+  [../]
+[]
+
+[Executioner]
+  solve_type = JFNK
+  # type = Transient
+  type = Steady
+  # dt = 1e-3
+  dtmin = 5e-7
+  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
+
+  # Basic GMRES/linesearch options only
+  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
+  # petsc_options_value = &#x27;300                &#x27;
+  # line_search = &#x27;none&#x27;
+
+  nl_rel_tol = 1e-8
+  # nl_abs_tol = 1e-7
+  # nl_max_its = 20
+  l_tol = 1e-3
+  l_max_its = 50
+  num_steps = 10
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    cutback_factor = 0.4
+    dt = .01
+    growth_factor = 1.2
+    optimal_iterations = 25
+  [../]
+
+[]
+
+[Debug]
+        show_var_residual_norms = true
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = false
+  [./out]
+    type = Exodus
+  []
+[]
+
+[Variables]
+  # Velocity in radial direction
+  [./u]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  # Velocity in axial direction
+  [./v]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  [./p]
+    family = LAGRANGE
+    # order = SECOND
+  [../]
+  # [./k]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+  # [./eps]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+[]
+
+[BCs]
+  # [./eps_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = eps
+  #   value = .033 # m^2/s^2
+  # [./k_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = k
+  #   value = .007 # m^2/s^2
+  [./u_in]
+    type = DirichletBC
+    boundary = bottom
+    variable = u
+    value = 0 # m/s
+  [../]
+  [./v_in]
+    type = FunctionDirichletBC
+    boundary = bottom
+    variable = v
+    function = &#x27;inlet_func&#x27;
+  [../]
+  # [./p_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = p
+  #   value = 1
+  # [../]
+  # [./p_out]
+  #   type = DirichletBC
+  #   boundary = top
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./p_corner]
+  #   type = DirichletBC
+  #   boundary = bottom_left
+  #   variable = p
+  #   value = 0
+  # [../]
+  [./u_out]
+    type = INSMomentumNoBCBCLaplaceForm
+    boundary = top
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  [./v_out]
+    type = INSMomentumNoBCBCLaplaceForm
+    boundary = top
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+  # [./u_out]
+  #   type = INSOutflowBC
+  #   boundary = top
+  #   variable = u
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 0
+  # [../]
+  # [./v_out]
+  #   type = INSOutflowBC
+  #   boundary = top
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+  [./u_axis_and_walls]
+    type = DirichletBC
+    boundary = &#x27;left right&#x27;
+    # boundary = right
+    variable = u
+    value = 0
+  [../]
+  [./v_walls]
+    type = DirichletBC
+    # boundary = right
+    boundary = &#x27;left right&#x27;
+    variable = v
+    value = 0
+  [../]
+  # [./v_axis]
+  #   type = INSSymmetryAxisBC
+  #   boundary = left
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+[]
+
+
+[Kernels]
+  # mass
+  [./mass]
+    type = INSMass
+    variable = p
+    u = u
+    v = v
+    p = p
+    # coord_type = RZ
+  [../]
+  # # r-momentum, time
+  # [./x_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = u
+  # [../]
+  # # z-momentum, time
+  # [./y_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = v
+  # [../]
+  # r-momentum, space
+  [./x_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  # z-momentum, space
+  [./y_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+[]
+
+[Functions]
+  [./inlet_func]
+    type = ParsedFunction
+    # value = &#x27;-4 * x^2 + 1&#x27;
+    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
+  [../]
+[]
+
+[Materials]
+  [./const]
+    type = GenericConstantMaterial
+    prop_names = &#x27;mu rho&#x27;
+    prop_values = &#x27;1 1&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="82928d77-61dd-4514-a75a-11013c9e7109"><div class="modal-content"><h4>(problems/fluid_no_pressure_bcs_XYZ_myOutflowBC_correct_look.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+[GlobalParams]
+  integrate_p_by_parts = true
+  gravity = &#x27;0 0 0&#x27;
+  coord_type = XYZ
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  xmin = 0
+  ymin = 0
+  # xmax = .0208
+  # ymax = .05
+  xmax = .5
+  ymax = 1
+  nx = 25
+  ny = 25
+  elem_type = QUAD9
+  # file = &#x27;2d.msh&#x27;
+[]
+
+[MeshModifiers]
+  [./bottom_left]
+    type = AddExtraNodeset
+    new_boundary = bottom_left
+    coord = &#x27;0 0&#x27;
+  [../]
+[]
+
+
+[Problem]
+  # coord_type = RZ
+[]
+
+[Preconditioning]
+  active = &#x27;Newton_FDP&#x27;
+  [./SMP_PJFNK]
+    type = SMP
+    full = true
+
+    # Preconditioned JFNK (default)
+    solve_type = &#x27;PJFNK&#x27;
+  [../]
+  [./Newton_FDP]
+    type = FDP
+    full = true
+    solve_type = &#x27;NEWTON&#x27;
+    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
+    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
+  [../]
+  [./JFNK]
+    type = SMP
+    solve_type = &#x27;JFNK&#x27;
+  [../]
+[]
+
+[Executioner]
+  solve_type = JFNK
+  # type = Transient
+  type = Steady
+  # dt = 1e-3
+  dtmin = 5e-7
+  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
+
+  # Basic GMRES/linesearch options only
+  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
+  # petsc_options_value = &#x27;300                &#x27;
+  # line_search = &#x27;none&#x27;
+
+  nl_rel_tol = 1e-8
+  # nl_abs_tol = 1e-7
+  # nl_max_its = 20
+  l_tol = 1e-3
+  l_max_its = 50
+  num_steps = 10
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    cutback_factor = 0.4
+    dt = .01
+    growth_factor = 1.2
+    optimal_iterations = 25
+  [../]
+
+[]
+
+[Debug]
+        show_var_residual_norms = true
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = false
+  [./out]
+    type = Exodus
+  []
+[]
+
+[Variables]
+  # Velocity in radial direction
+  [./u]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  # Velocity in axial direction
+  [./v]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  [./p]
+    family = LAGRANGE
+    # order = SECOND
+  [../]
+  # [./k]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+  # [./eps]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+[]
+
+[BCs]
+  # [./eps_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = eps
+  #   value = .033 # m^2/s^2
+  # [./k_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = k
+  #   value = .007 # m^2/s^2
+  [./u_in]
+    type = DirichletBC
+    boundary = bottom
+    variable = u
+    value = 0 # m/s
+  [../]
+  [./v_in]
+    type = FunctionDirichletBC
+    boundary = bottom
+    variable = v
+    function = &#x27;inlet_func&#x27;
+  [../]
+  # [./p_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = p
+  #   value = 1
+  # [../]
+  # [./p_out]
+  #   type = DirichletBC
+  #   boundary = top
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./p_corner]
+  #   type = DirichletBC
+  #   boundary = bottom_left
+  #   variable = p
+  #   value = 0
+  # [../]
+  # [./u_out]
+  #   type = INSMomentumNoBCBCLaplaceForm
+  #   boundary = top
+  #   variable = u
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 0
+  # [../]
+  # [./v_out]
+  #   type = INSMomentumNoBCBCLaplaceForm
+  #   boundary = top
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+  [./u_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  [./v_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+  [./u_axis_and_walls]
+    type = DirichletBC
+    boundary = &#x27;left right&#x27;
+    # boundary = right
+    variable = u
+    value = 0
+  [../]
+  [./v_walls]
+    type = DirichletBC
+    # boundary = right
+    boundary = &#x27;left right&#x27;
+    variable = v
+    value = 0
+  [../]
+  # [./v_axis]
+  #   type = INSSymmetryAxisBC
+  #   boundary = left
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+[]
+
+
+[Kernels]
+  # mass
+  [./mass]
+    type = INSMass
+    variable = p
+    u = u
+    v = v
+    p = p
+    # coord_type = RZ
+  [../]
+  # # r-momentum, time
+  # [./x_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = u
+  # [../]
+  # # z-momentum, time
+  # [./y_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = v
+  # [../]
+  # r-momentum, space
+  [./x_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  # z-momentum, space
+  [./y_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+[]
+
+[Functions]
+  [./inlet_func]
+    type = ParsedFunction
+    # value = &#x27;4 * (.5 - x)^2&#x27;
+    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
+  [../]
+[]
+
+[Materials]
+  [./const]
+    type = GenericConstantMaterial
+    prop_names = &#x27;mu rho&#x27;
+    prop_values = &#x27;1 1&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="6e376f38-ffa1-4c2d-abdb-15114919315a"><div class="modal-content"><h4>(tests/laminar_flow/outlet_pressure_bc.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+[GlobalParams]
+  integrate_p_by_parts = false
+  gravity = &#x27;0 0 0&#x27;
+[]
+
+[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  xmin = 0
+  ymin = 0
+  # xmax = .0208
+  # ymax = .05
+  xmax = .5
+  ymax = 1
+  nx = 25
+  ny = 25
+  elem_type = QUAD9
+[]
+
+[Problem]
+  coord_type = RZ
+[]
+
+[Preconditioning]
+  active = &#x27;Newton_FDP&#x27;
+  [./SMP_PJFNK]
+    type = SMP
+    full = true
+
+    # Preconditioned JFNK (default)
+    solve_type = &#x27;PJFNK&#x27;
+  [../]
+  [./Newton_FDP]
+    type = FDP
+    full = true
+    solve_type = &#x27;NEWTON&#x27;
+    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
+    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
+  [../]
+  [./JFNK]
+    type = SMP
+    solve_type = &#x27;JFNK&#x27;
+  [../]
+[]
+
+[Executioner]
+  solve_type = JFNK
+  # type = Transient
+  type = Steady
+  # dt = 1e-3
+  dtmin = 5e-7
+  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
+
+  # Basic GMRES/linesearch options only
+  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
+  # petsc_options_value = &#x27;300                &#x27;
+  # line_search = &#x27;none&#x27;
+
+  nl_rel_tol = 1e-8
+  # nl_abs_tol = 1e-7
+  # nl_max_its = 20
+  l_tol = 1e-3
+  l_max_its = 50
+  num_steps = 10
+  [./TimeStepper]
+    type = IterationAdaptiveDT
+    cutback_factor = 0.4
+    dt = .01
+    growth_factor = 1.2
+    optimal_iterations = 25
+  [../]
+
+[]
+
+[Debug]
+        show_var_residual_norms = true
+[]
+
+[Outputs]
+  perf_graph = true
+  print_linear_residuals = false
+  [./out]
+    type = Exodus
+  []
+[]
+
+[Variables]
+  # Velocity in radial direction
+  [./u]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  # Velocity in axial direction
+  [./v]
+    family = LAGRANGE
+    order = SECOND
+  [../]
+  [./p]
+    family = LAGRANGE
+    # order = SECOND
+  [../]
+  # [./k]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+  # [./eps]
+  #   family = LAGRANGE
+  #   order = SECOND
+  # [../]
+[]
+
+[BCs]
+  # [./eps_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = eps
+  #   value = .033 # m^2/s^2
+  # [./k_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = k
+  #   value = .007 # m^2/s^2
+  [./u_in]
+    type = DirichletBC
+    boundary = bottom
+    variable = u
+    value = 0 # m/s
+  [../]
+  [./v_in]
+    type = FunctionDirichletBC
+    boundary = bottom
+    variable = v
+    function = &#x27;inlet_func&#x27;
+  [../]
+  # [./p_in]
+  #   type = DirichletBC
+  #   boundary = bottom
+  #   variable = p
+  #   value = 1
+  # [../]
+  [./p_out]
+    type = DirichletBC
+    boundary = top
+    variable = p
+    value = 0
+  [../]
+  [./u_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  [./v_out]
+    type = INSOutflowBC
+    boundary = top
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+  [./u_axis_and_walls]
+    type = DirichletBC
+    boundary = &#x27;left right&#x27;
+    variable = u
+    value = 0
+  [../]
+  [./v_walls]
+    type = DirichletBC
+    boundary = right
+    variable = v
+    value = 0
+  [../]
+  # [./v_axis]
+  #   type = INSSymmetryAxisBC
+  #   boundary = left
+  #   variable = v
+  #   u = u
+  #   v = v
+  #   p = p
+  #   component = 1
+  # [../]
+[]
+
+
+[Kernels]
+  # mass
+  [./mass]
+    type = INSMass
+    variable = p
+    u = u
+    v = v
+    p = p
+  [../]
+  # # r-momentum, time
+  # [./x_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = u
+  # [../]
+  # # z-momentum, time
+  # [./y_momentum_time]
+  #   type = INSMomentumTimeDerivative
+  #   variable = v
+  # [../]
+  # r-momentum, space
+  [./x_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = u
+    u = u
+    v = v
+    p = p
+    component = 0
+  [../]
+  # z-momentum, space
+  [./y_momentum_space]
+    type = INSMomentumLaplaceForm
+    variable = v
+    u = u
+    v = v
+    p = p
+    component = 1
+  [../]
+[]
+
+[Functions]
+  [./inlet_func]
+    type = ParsedFunction
+    value = &#x27;1 * (1 - x)^2&#x27;
+  [../]
+[]
+
+[Materials]
+  [./const]
+    type = GenericConstantMaterial
+    prop_names = &#x27;mu rho&#x27;
+    prop_values = &#x27;1 1&#x27;
+  [../]
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="71e2fe38-bcf9-48d1-ad8c-23b101bd89d6"><div class="modal-content"><h4>(problems/fluid_flow.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
 [GlobalParams]
   integrate_p_by_parts = false
   gravity = &#x27;0 0 0&#x27;
@@ -280,530 +1644,7 @@
     prop_values = &#x27;1 1&#x27;
   [../]
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="3e9a9a00-2dc9-4378-bb4f-6c0b6b7d05f9"><div class="modal-content"><h4>(problems/fluid_no_pressure_bcs_XYZ_myOutflowBC_correct_look.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
-[GlobalParams]
-  integrate_p_by_parts = true
-  gravity = &#x27;0 0 0&#x27;
-  coord_type = XYZ
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 2
-  xmin = 0
-  ymin = 0
-  # xmax = .0208
-  # ymax = .05
-  xmax = .5
-  ymax = 1
-  nx = 25
-  ny = 25
-  elem_type = QUAD9
-  # file = &#x27;2d.msh&#x27;
-[]
-
-[MeshModifiers]
-  [./bottom_left]
-    type = AddExtraNodeset
-    new_boundary = bottom_left
-    coord = &#x27;0 0&#x27;
-  [../]
-[]
-
-
-[Problem]
-  # coord_type = RZ
-[]
-
-[Preconditioning]
-  active = &#x27;Newton_FDP&#x27;
-  [./SMP_PJFNK]
-    type = SMP
-    full = true
-
-    # Preconditioned JFNK (default)
-    solve_type = &#x27;PJFNK&#x27;
-  [../]
-  [./Newton_FDP]
-    type = FDP
-    full = true
-    solve_type = &#x27;NEWTON&#x27;
-    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
-    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
-  [../]
-  [./JFNK]
-    type = SMP
-    solve_type = &#x27;JFNK&#x27;
-  [../]
-[]
-
-[Executioner]
-  solve_type = JFNK
-  # type = Transient
-  type = Steady
-  # dt = 1e-3
-  dtmin = 5e-7
-  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
-
-  # Basic GMRES/linesearch options only
-  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
-  # petsc_options_value = &#x27;300                &#x27;
-  # line_search = &#x27;none&#x27;
-
-  nl_rel_tol = 1e-8
-  # nl_abs_tol = 1e-7
-  # nl_max_its = 20
-  l_tol = 1e-3
-  l_max_its = 50
-  num_steps = 10
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    cutback_factor = 0.4
-    dt = .01
-    growth_factor = 1.2
-    optimal_iterations = 25
-  [../]
-
-[]
-
-[Debug]
-        show_var_residual_norms = true
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = false
-  [./out]
-    type = Exodus
-  []
-[]
-
-[Variables]
-  # Velocity in radial direction
-  [./u]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  # Velocity in axial direction
-  [./v]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  [./p]
-    family = LAGRANGE
-    # order = SECOND
-  [../]
-  # [./k]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-  # [./eps]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-[]
-
-[BCs]
-  # [./eps_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = eps
-  #   value = .033 # m^2/s^2
-  # [./k_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = k
-  #   value = .007 # m^2/s^2
-  [./u_in]
-    type = DirichletBC
-    boundary = bottom
-    variable = u
-    value = 0 # m/s
-  [../]
-  [./v_in]
-    type = FunctionDirichletBC
-    boundary = bottom
-    variable = v
-    function = &#x27;inlet_func&#x27;
-  [../]
-  # [./p_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = p
-  #   value = 1
-  # [../]
-  # [./p_out]
-  #   type = DirichletBC
-  #   boundary = top
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./p_corner]
-  #   type = DirichletBC
-  #   boundary = bottom_left
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./u_out]
-  #   type = INSMomentumNoBCBCLaplaceForm
-  #   boundary = top
-  #   variable = u
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 0
-  # [../]
-  # [./v_out]
-  #   type = INSMomentumNoBCBCLaplaceForm
-  #   boundary = top
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-  [./u_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  [./v_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-  [./u_axis_and_walls]
-    type = DirichletBC
-    boundary = &#x27;left right&#x27;
-    # boundary = right
-    variable = u
-    value = 0
-  [../]
-  [./v_walls]
-    type = DirichletBC
-    # boundary = right
-    boundary = &#x27;left right&#x27;
-    variable = v
-    value = 0
-  [../]
-  # [./v_axis]
-  #   type = INSSymmetryAxisBC
-  #   boundary = left
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-[]
-
-
-[Kernels]
-  # mass
-  [./mass]
-    type = INSMass
-    variable = p
-    u = u
-    v = v
-    p = p
-    # coord_type = RZ
-  [../]
-  # # r-momentum, time
-  # [./x_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = u
-  # [../]
-  # # z-momentum, time
-  # [./y_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = v
-  # [../]
-  # r-momentum, space
-  [./x_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  # z-momentum, space
-  [./y_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-[]
-
-[Functions]
-  [./inlet_func]
-    type = ParsedFunction
-    # value = &#x27;4 * (.5 - x)^2&#x27;
-    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
-  [../]
-[]
-
-[Materials]
-  [./const]
-    type = GenericConstantMaterial
-    prop_names = &#x27;mu rho&#x27;
-    prop_values = &#x27;1 1&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="c96a1a6a-d377-4bee-9f7d-88ddb2538b09"><div class="modal-content"><h4>(tests/laminar_flow/outlet_pressure_bc.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
-[GlobalParams]
-  integrate_p_by_parts = false
-  gravity = &#x27;0 0 0&#x27;
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 2
-  xmin = 0
-  ymin = 0
-  # xmax = .0208
-  # ymax = .05
-  xmax = .5
-  ymax = 1
-  nx = 25
-  ny = 25
-  elem_type = QUAD9
-[]
-
-[Problem]
-  coord_type = RZ
-[]
-
-[Preconditioning]
-  active = &#x27;Newton_FDP&#x27;
-  [./SMP_PJFNK]
-    type = SMP
-    full = true
-
-    # Preconditioned JFNK (default)
-    solve_type = &#x27;PJFNK&#x27;
-  [../]
-  [./Newton_FDP]
-    type = FDP
-    full = true
-    solve_type = &#x27;NEWTON&#x27;
-    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
-    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
-  [../]
-  [./JFNK]
-    type = SMP
-    solve_type = &#x27;JFNK&#x27;
-  [../]
-[]
-
-[Executioner]
-  solve_type = JFNK
-  # type = Transient
-  type = Steady
-  # dt = 1e-3
-  dtmin = 5e-7
-  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
-
-  # Basic GMRES/linesearch options only
-  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
-  # petsc_options_value = &#x27;300                &#x27;
-  # line_search = &#x27;none&#x27;
-
-  nl_rel_tol = 1e-8
-  # nl_abs_tol = 1e-7
-  # nl_max_its = 20
-  l_tol = 1e-3
-  l_max_its = 50
-  num_steps = 10
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    cutback_factor = 0.4
-    dt = .01
-    growth_factor = 1.2
-    optimal_iterations = 25
-  [../]
-
-[]
-
-[Debug]
-        show_var_residual_norms = true
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = false
-  [./out]
-    type = Exodus
-  []
-[]
-
-[Variables]
-  # Velocity in radial direction
-  [./u]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  # Velocity in axial direction
-  [./v]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  [./p]
-    family = LAGRANGE
-    # order = SECOND
-  [../]
-  # [./k]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-  # [./eps]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-[]
-
-[BCs]
-  # [./eps_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = eps
-  #   value = .033 # m^2/s^2
-  # [./k_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = k
-  #   value = .007 # m^2/s^2
-  [./u_in]
-    type = DirichletBC
-    boundary = bottom
-    variable = u
-    value = 0 # m/s
-  [../]
-  [./v_in]
-    type = FunctionDirichletBC
-    boundary = bottom
-    variable = v
-    function = &#x27;inlet_func&#x27;
-  [../]
-  # [./p_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = p
-  #   value = 1
-  # [../]
-  [./p_out]
-    type = DirichletBC
-    boundary = top
-    variable = p
-    value = 0
-  [../]
-  [./u_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  [./v_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-  [./u_axis_and_walls]
-    type = DirichletBC
-    boundary = &#x27;left right&#x27;
-    variable = u
-    value = 0
-  [../]
-  [./v_walls]
-    type = DirichletBC
-    boundary = right
-    variable = v
-    value = 0
-  [../]
-  # [./v_axis]
-  #   type = INSSymmetryAxisBC
-  #   boundary = left
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-[]
-
-
-[Kernels]
-  # mass
-  [./mass]
-    type = INSMass
-    variable = p
-    u = u
-    v = v
-    p = p
-  [../]
-  # # r-momentum, time
-  # [./x_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = u
-  # [../]
-  # # z-momentum, time
-  # [./y_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = v
-  # [../]
-  # r-momentum, space
-  [./x_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  # z-momentum, space
-  [./y_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-[]
-
-[Functions]
-  [./inlet_func]
-    type = ParsedFunction
-    value = &#x27;1 * (1 - x)^2&#x27;
-  [../]
-[]
-
-[Materials]
-  [./const]
-    type = GenericConstantMaterial
-    prop_names = &#x27;mu rho&#x27;
-    prop_values = &#x27;1 1&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0b256c66-0732-493b-b21c-d8d4e70fca8c"><div class="modal-content"><h4>(problems/fluid_no_pressure_bcs_XYZ_correct_look.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="0812321e-709e-46c2-aba3-9ee8b4dac270"><div class="modal-content"><h4>(problems/fluid_no_pressure_bcs_XYZ_correct_look.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
 [GlobalParams]
   integrate_p_by_parts = true
   gravity = &#x27;0 0 0&#x27;
@@ -1084,845 +1925,4 @@
     prop_values = &#x27;1 1&#x27;
   [../]
 []
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="e95ca2b7-8fa4-45e3-bf16-37d7c7982ff2"><div class="modal-content"><h4>(tests/laminar_flow/XYZ_p_no_parts_do_nothing_bcs.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
-[GlobalParams]
-  integrate_p_by_parts = false
-  gravity = &#x27;0 0 0&#x27;
-  coord_type = XYZ
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 2
-  xmin = 0
-  ymin = 0
-  # xmax = .0208
-  # ymax = .05
-  xmax = .5
-  ymax = 1
-  nx = 25
-  ny = 25
-  elem_type = QUAD9
-  # file = &#x27;2d.msh&#x27;
-[]
-
-[MeshModifiers]
-  [./bottom_left]
-    type = AddExtraNodeset
-    new_boundary = bottom_left
-    coord = &#x27;0 0&#x27;
-  [../]
-[]
-
-
-[Problem]
-  # coord_type = RZ
-[]
-
-[Preconditioning]
-  active = &#x27;Newton_FDP&#x27;
-  [./SMP_PJFNK]
-    type = SMP
-    full = true
-
-    # Preconditioned JFNK (default)
-    solve_type = &#x27;PJFNK&#x27;
-  [../]
-  [./Newton_FDP]
-    type = FDP
-    full = true
-    solve_type = &#x27;NEWTON&#x27;
-    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
-    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
-  [../]
-  [./JFNK]
-    type = SMP
-    solve_type = &#x27;JFNK&#x27;
-  [../]
-[]
-
-[Executioner]
-  solve_type = JFNK
-  # type = Transient
-  type = Steady
-  # dt = 1e-3
-  dtmin = 5e-7
-  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
-
-  # Basic GMRES/linesearch options only
-  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
-  # petsc_options_value = &#x27;300                &#x27;
-  # line_search = &#x27;none&#x27;
-
-  nl_rel_tol = 1e-8
-  # nl_abs_tol = 1e-7
-  # nl_max_its = 20
-  l_tol = 1e-3
-  l_max_its = 50
-  num_steps = 10
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    cutback_factor = 0.4
-    dt = .01
-    growth_factor = 1.2
-    optimal_iterations = 25
-  [../]
-
-[]
-
-[Debug]
-        show_var_residual_norms = true
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = false
-  [./out]
-    type = Exodus
-  []
-[]
-
-[Variables]
-  # Velocity in radial direction
-  [./u]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  # Velocity in axial direction
-  [./v]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  [./p]
-    family = LAGRANGE
-    # order = SECOND
-  [../]
-  # [./k]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-  # [./eps]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-[]
-
-[BCs]
-  # [./eps_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = eps
-  #   value = .033 # m^2/s^2
-  # [./k_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = k
-  #   value = .007 # m^2/s^2
-  [./u_in]
-    type = DirichletBC
-    boundary = bottom
-    variable = u
-    value = 0 # m/s
-  [../]
-  [./v_in]
-    type = FunctionDirichletBC
-    boundary = bottom
-    variable = v
-    function = &#x27;inlet_func&#x27;
-  [../]
-  # [./p_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = p
-  #   value = 1
-  # [../]
-  # [./p_out]
-  #   type = DirichletBC
-  #   boundary = top
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./p_corner]
-  #   type = DirichletBC
-  #   boundary = bottom_left
-  #   variable = p
-  #   value = 0
-  # [../]
-  [./u_out]
-    type = INSMomentumNoBCBCLaplaceForm
-    boundary = top
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  [./v_out]
-    type = INSMomentumNoBCBCLaplaceForm
-    boundary = top
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-  # [./u_out]
-  #   type = INSOutflowBC
-  #   boundary = top
-  #   variable = u
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 0
-  # [../]
-  # [./v_out]
-  #   type = INSOutflowBC
-  #   boundary = top
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-  [./u_axis_and_walls]
-    type = DirichletBC
-    boundary = &#x27;left right&#x27;
-    # boundary = right
-    variable = u
-    value = 0
-  [../]
-  [./v_walls]
-    type = DirichletBC
-    # boundary = right
-    boundary = &#x27;left right&#x27;
-    variable = v
-    value = 0
-  [../]
-  # [./v_axis]
-  #   type = INSSymmetryAxisBC
-  #   boundary = left
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-[]
-
-
-[Kernels]
-  # mass
-  [./mass]
-    type = INSMass
-    variable = p
-    u = u
-    v = v
-    p = p
-    # coord_type = RZ
-  [../]
-  # # r-momentum, time
-  # [./x_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = u
-  # [../]
-  # # z-momentum, time
-  # [./y_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = v
-  # [../]
-  # r-momentum, space
-  [./x_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  # z-momentum, space
-  [./y_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-[]
-
-[Functions]
-  [./inlet_func]
-    type = ParsedFunction
-    # value = &#x27;-4 * x^2 + 1&#x27;
-    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
-  [../]
-[]
-
-[Materials]
-  [./const]
-    type = GenericConstantMaterial
-    prop_names = &#x27;mu rho&#x27;
-    prop_values = &#x27;1 1&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="233520b6-0823-4901-8c14-2a549c95ba47"><div class="modal-content"><h4>(tests/laminar_flow/XYZ_p_parts_do_nothing_bcs.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
-[GlobalParams]
-  integrate_p_by_parts = true
-  gravity = &#x27;0 0 0&#x27;
-  coord_type = XYZ
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 2
-  xmin = 0
-  ymin = 0
-  # xmax = .0208
-  # ymax = .05
-  xmax = .5
-  ymax = 1
-  nx = 25
-  ny = 25
-  elem_type = QUAD9
-  # file = &#x27;2d.msh&#x27;
-[]
-
-[MeshModifiers]
-  [./bottom_left]
-    type = AddExtraNodeset
-    new_boundary = bottom_left
-    coord = &#x27;0 0&#x27;
-  [../]
-[]
-
-
-[Problem]
-  # coord_type = RZ
-[]
-
-[Preconditioning]
-  active = &#x27;Newton_FDP&#x27;
-  [./SMP_PJFNK]
-    type = SMP
-    full = true
-
-    # Preconditioned JFNK (default)
-    solve_type = &#x27;PJFNK&#x27;
-  [../]
-  [./Newton_FDP]
-    type = FDP
-    full = true
-    solve_type = &#x27;NEWTON&#x27;
-    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
-    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
-  [../]
-  [./JFNK]
-    type = SMP
-    solve_type = &#x27;JFNK&#x27;
-  [../]
-[]
-
-[Executioner]
-  solve_type = JFNK
-  # type = Transient
-  type = Steady
-  # dt = 1e-3
-  dtmin = 5e-7
-  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
-
-  # Basic GMRES/linesearch options only
-  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
-  # petsc_options_value = &#x27;300                &#x27;
-  # line_search = &#x27;none&#x27;
-
-  nl_rel_tol = 1e-8
-  # nl_abs_tol = 1e-7
-  # nl_max_its = 20
-  l_tol = 1e-3
-  l_max_its = 50
-  num_steps = 10
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    cutback_factor = 0.4
-    dt = .01
-    growth_factor = 1.2
-    optimal_iterations = 25
-  [../]
-
-[]
-
-[Debug]
-        show_var_residual_norms = true
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = false
-  [./out]
-    type = Exodus
-  []
-[]
-
-[Variables]
-  # Velocity in radial direction
-  [./u]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  # Velocity in axial direction
-  [./v]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  [./p]
-    family = LAGRANGE
-    # order = SECOND
-  [../]
-  # [./k]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-  # [./eps]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-[]
-
-[BCs]
-  # [./eps_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = eps
-  #   value = .033 # m^2/s^2
-  # [./k_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = k
-  #   value = .007 # m^2/s^2
-  [./u_in]
-    type = DirichletBC
-    boundary = bottom
-    variable = u
-    value = 0 # m/s
-  [../]
-  [./v_in]
-    type = FunctionDirichletBC
-    boundary = bottom
-    variable = v
-    function = &#x27;inlet_func&#x27;
-  [../]
-  # [./p_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = p
-  #   value = 1
-  # [../]
-  # [./p_out]
-  #   type = DirichletBC
-  #   boundary = top
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./p_corner]
-  #   type = DirichletBC
-  #   boundary = bottom_left
-  #   variable = p
-  #   value = 0
-  # [../]
-  [./u_out]
-    type = INSMomentumNoBCBCLaplaceForm
-    boundary = top
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  [./v_out]
-    type = INSMomentumNoBCBCLaplaceForm
-    boundary = top
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-  # [./u_out]
-  #   type = INSOutflowBC
-  #   boundary = top
-  #   variable = u
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 0
-  # [../]
-  # [./v_out]
-  #   type = INSOutflowBC
-  #   boundary = top
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-  [./u_axis_and_walls]
-    type = DirichletBC
-    boundary = &#x27;left right&#x27;
-    # boundary = right
-    variable = u
-    value = 0
-  [../]
-  [./v_walls]
-    type = DirichletBC
-    # boundary = right
-    boundary = &#x27;left right&#x27;
-    variable = v
-    value = 0
-  [../]
-  # [./v_axis]
-  #   type = INSSymmetryAxisBC
-  #   boundary = left
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-[]
-
-
-[Kernels]
-  # mass
-  [./mass]
-    type = INSMass
-    variable = p
-    u = u
-    v = v
-    p = p
-    # coord_type = RZ
-  [../]
-  # # r-momentum, time
-  # [./x_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = u
-  # [../]
-  # # z-momentum, time
-  # [./y_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = v
-  # [../]
-  # r-momentum, space
-  [./x_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  # z-momentum, space
-  [./y_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-[]
-
-[Functions]
-  [./inlet_func]
-    type = ParsedFunction
-    # value = &#x27;-4 * x^2 + 1&#x27;
-    value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
-  [../]
-[]
-
-[Materials]
-  [./const]
-    type = GenericConstantMaterial
-    prop_names = &#x27;mu rho&#x27;
-    prop_values = &#x27;1 1&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="4d88a171-c057-4f00-90ee-218e116eb865"><div class="modal-content"><h4>(problems/fluid_flow_NS_genMesh_gold.i)</h4><pre class="moose-pre"><code class="language-text"># Model emulating Cammi et. al.
-[GlobalParams]
-  integrate_p_by_parts = true
-  gravity = &#x27;0 0 0&#x27;
-[]
-
-[Mesh]
-  type = GeneratedMesh
-  dim = 2
-  xmin = 0
-  ymin = 0
-  # xmax = .0208
-  # ymax = .05
-  xmax = .5
-  ymax = 1
-  nx = 50
-  ny = 25
-  elem_type = QUAD9
-  # file = &#x27;2d.msh&#x27;
-[]
-
-[MeshModifiers]
-  [./bottom_left]
-    type = AddExtraNodeset
-    new_boundary = bottom_left
-    coord = &#x27;0 0&#x27;
-  [../]
-[]
-
-
-[Problem]
-  coord_type = RZ
-[]
-
-[Preconditioning]
-  active = &#x27;Newton_FDP&#x27;
-  [./SMP_PJFNK]
-    type = SMP
-    full = true
-
-    # Preconditioned JFNK (default)
-    solve_type = &#x27;PJFNK&#x27;
-  [../]
-  [./Newton_FDP]
-    type = FDP
-    full = true
-    solve_type = &#x27;NEWTON&#x27;
-    petsc_options_iname = &#x27;-pc_type -pc_factor_shift_type -pc_factor_shift_amount -ksp_type&#x27;
-    petsc_options_value = &#x27;lu NONZERO 1.e-10 preonly&#x27;
-  [../]
-  [./JFNK]
-    type = SMP
-    solve_type = &#x27;JFNK&#x27;
-  [../]
-[]
-
-[Executioner]
-  solve_type = JFNK
-  # type = Transient
-  type = Steady
-  # dt = 1e-3
-  dtmin = 5e-7
-  petsc_options = &#x27;-snes_converged_reason -snes_linesearch_monitor -ksp_converged_reason&#x27;
-
-  # Basic GMRES/linesearch options only
-  # petsc_options_iname = &#x27;-ksp_gmres_restart &#x27;
-  # petsc_options_value = &#x27;300                &#x27;
-  # line_search = &#x27;none&#x27;
-
-  nl_rel_tol = 1e-8
-  # nl_abs_tol = 1e-7
-  # nl_max_its = 20
-  l_tol = 1e-3
-  l_max_its = 50
-  num_steps = 10
-  [./TimeStepper]
-    type = IterationAdaptiveDT
-    cutback_factor = 0.4
-    dt = .01
-    growth_factor = 1.2
-    optimal_iterations = 25
-  [../]
-
-[]
-
-[Debug]
-        show_var_residual_norms = true
-[]
-
-[Outputs]
-  perf_graph = true
-  print_linear_residuals = false
-  [./out]
-    type = Exodus
-  []
-[]
-
-[Variables]
-  # Velocity in radial direction
-  [./u]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  # Velocity in axial direction
-  [./v]
-    family = LAGRANGE
-    order = SECOND
-  [../]
-  [./p]
-    family = LAGRANGE
-    # order = SECOND
-  [../]
-  # [./k]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-  # [./eps]
-  #   family = LAGRANGE
-  #   order = SECOND
-  # [../]
-[]
-
-[BCs]
-  # [./eps_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = eps
-  #   value = .033 # m^2/s^2
-  # [./k_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = k
-  #   value = .007 # m^2/s^2
-  [./u_in]
-    type = DirichletBC
-    boundary = bottom
-    variable = u
-    value = 0 # m/s
-  [../]
-  [./v_in]
-    type = FunctionDirichletBC
-    boundary = bottom
-    variable = v
-    function = &#x27;inlet_func&#x27;
-  [../]
-  # [./p_in]
-  #   type = DirichletBC
-  #   boundary = bottom
-  #   variable = p
-  #   value = 1
-  # [../]
-  # [./p_out]
-  #   type = DirichletBC
-  #   boundary = top
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./p_corner]
-  #   type = DirichletBC
-  #   boundary = bottom_left
-  #   variable = p
-  #   value = 0
-  # [../]
-  # [./u_out]
-  #   type = INSMomentumNoBCBCLaplaceForm
-  #   boundary = top
-  #   variable = u
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 0
-  # [../]
-  # [./v_out]
-  #   type = INSMomentumNoBCBCLaplaceForm
-  #   boundary = top
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-  [./u_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  [./v_out]
-    type = INSOutflowBC
-    boundary = top
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-  [./u_axis_and_walls]
-    type = DirichletBC
-    boundary = &#x27;left right&#x27;
-    # boundary = right
-    variable = u
-    value = 0
-  [../]
-  [./v_walls]
-    type = DirichletBC
-    boundary = right
-    # boundary = &#x27;left right&#x27;
-    variable = v
-    value = 0
-  [../]
-  # [./v_axis]
-  #   type = INSSymmetryAxisBC
-  #   boundary = left
-  #   variable = v
-  #   u = u
-  #   v = v
-  #   p = p
-  #   component = 1
-  # [../]
-[]
-
-
-[Kernels]
-  # mass
-  [./mass]
-    type = INSMass
-    variable = p
-    u = u
-    v = v
-    p = p
-  [../]
-  # # r-momentum, time
-  # [./x_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = u
-  # [../]
-  # # z-momentum, time
-  # [./y_momentum_time]
-  #   type = INSMomentumTimeDerivative
-  #   variable = v
-  # [../]
-  # r-momentum, space
-  [./x_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = u
-    u = u
-    v = v
-    p = p
-    component = 0
-  [../]
-  # z-momentum, space
-  [./y_momentum_space]
-    type = INSMomentumLaplaceForm
-    variable = v
-    u = u
-    v = v
-    p = p
-    component = 1
-  [../]
-[]
-
-[Functions]
-  [./inlet_func]
-    type = ParsedFunction
-    value = &#x27;4 * (.5 - x)^2&#x27;
-    # value = &#x27;-16 * (x - 0.25)^2 + 1&#x27;
-  [../]
-[]
-
-[Materials]
-  [./const]
-    type = GenericConstantMaterial
-    prop_names = &#x27;mu rho&#x27;
-    prop_values = &#x27;1 1&#x27;
-  [../]
-[]
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#dac7abf1-de43-4cdd-ae77-7a1573cf8370" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#e73c3047-cd0b-47c2-b89c-d00176ff385a" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#738a2925-2dfb-4734-bdbe-7d2cced0e874" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#4dbcbed9-f4b8-48c2-9ab8-6112101e1ba5" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#7c3c846c-955a-4a95-bc0f-d1f9f15771b7" class="tooltipped" data-position="left" data-tooltip="Overview">Overview</a></li><li><a href="#b7dc37c8-917b-4e8d-bb69-4293656966f1" class="tooltipped" data-position="left" data-tooltip="Example Input File Syntax">Example Input File Syntax</a></li><li><a href="#f60ea367-1aea-400c-a082-5424287ad950" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li><li><a href="#a15770df-0258-41c4-80f7-eacc4e391003" class="tooltipped" data-position="left" data-tooltip="Input Files">Input Files</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
