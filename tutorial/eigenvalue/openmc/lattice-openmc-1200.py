@@ -45,8 +45,8 @@ bot_plane = openmc.YPlane(y0=0, boundary_type="reflective")
 top_plane = openmc.YPlane(y0=1, boundary_type="reflective")
 left_plane = openmc.XPlane(x0=0, boundary_type="reflective")
 right_plane = openmc.XPlane(x0=5, boundary_type="reflective")
-itf1_plane = openmc.XPlane(x0=.625, boundary_type="transmission")
-itf2_plane = openmc.XPlane(x0=4.325, boundary_type="transmission")
+itf1_plane = openmc.XPlane(x0=.6, boundary_type="transmission")
+itf2_plane = openmc.XPlane(x0=4.4, boundary_type="transmission")
 
 all_cells = []
 

@@ -1,23 +1,22 @@
+flow_velocity=18.085
+
 [GlobalParams]
   num_groups = 2
   num_precursor_groups = 6
   use_exp_form = false
   group_fluxes = 'group1 group2'
   pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
-  temperature = 900
+  temperature = 922
   sss2_input = true
   account_delayed = true
 []
 
 [Mesh]
+  coord_type = RZ
   [mesh]
     type = FileMeshGenerator
-    file = 'mesh.e'
+    file = 'mesh_2_in.e'
   []
-[]
-
-[Problem]
-  coord_type = RZ
 []
 
 [Variables]
@@ -42,7 +41,7 @@
     outlet_boundaries = 'fuel_top'
     constant_velocity_values = true
     u_def = 0
-    v_def = 18.085
+    v_def = ${flow_velocity}
     w_def = 0
     nt_exp_form = false
     loop_precursors = false
@@ -147,8 +146,8 @@
   type = InversePowerMethod
   max_power_iterations = 50
 
-  # normalization = 'powernorm'
-  # normal_factor = 8e6
+  normalization = 'powernorm'
+  normal_factor = 8e6
 
   xdiff = 'group1diff'
   bx_norm = 'bnorm'
@@ -162,8 +161,8 @@
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_package'
-  petsc_options_value = 'lu       NONZERO               superlu_dist'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type'
+  petsc_options_value = 'lu       NONZERO'
 
   line_search = none
 []
@@ -221,6 +220,13 @@
     variable = group2
     execute_on = 'linear timestep_end'
     use_displaced_mesh = false
+  []
+  [fuel_vol]
+    type = VolumePostprocessor
+    block = 0
+  []
+  [total_vol]
+    type = VolumePostprocessor
   []
 []
 

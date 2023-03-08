@@ -10,14 +10,11 @@
 []
 
 [Mesh]
+  coord_type = RZ
   [mesh]
     type = FileMeshGenerator
     file = 'mesh.e'
   []
-[]
-
-[Problem]
-  coord_type = RZ
 []
 
 [Variables]
@@ -32,7 +29,7 @@
   [temp]
     order = FIRST
     family = LAGRANGE
-    initial_condition = 1000
+    initial_condition = 980
   []
 []
 
@@ -186,7 +183,7 @@
 [Functions]
   [temp_bc_func]
     type = ParsedFunction
-    value = '1000 - (1000-965) * tanh(t/1)'
+    value = '1000 - (1000-955) * tanh(t/5)'
   []
   [dt_func]
     type = ParsedFunction
@@ -239,18 +236,18 @@
   line_search = none
 
   dtmin = 1e-3
-  dtmax = 10
-  [TimeStepper]
-    type = FunctionDT
-    function = dt_func
-  []
+  dtmax = 8
 #  [TimeStepper]
-#    type = IterationAdaptiveDT
-#    dt = .2
-#    cutback_factor = 0.4
-#    growth_factor = 1.2
-#    optimal_iterations = 20
+#    type = FunctionDT
+#    function = dt_func
 #  []
+  [TimeStepper]
+    type = IterationAdaptiveDT
+    dt = .1
+    cutback_factor = 0.4
+    growth_factor = 1.2
+    optimal_iterations = 10
+  []
 []
 
 [Preconditioning]
