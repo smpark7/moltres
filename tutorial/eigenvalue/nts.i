@@ -1,4 +1,4 @@
-flow_velocity=18.085
+flow_velocity=17.55
 
 [GlobalParams]
   num_groups = 2
@@ -6,7 +6,7 @@ flow_velocity=18.085
   use_exp_form = false
   group_fluxes = 'group1 group2'
   pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
-  temperature = 922
+  temperature = 950
   sss2_input = true
   account_delayed = true
 []
@@ -15,7 +15,7 @@ flow_velocity=18.085
   coord_type = RZ
   [mesh]
     type = FileMeshGenerator
-    file = 'mesh_2_in.e'
+    file = 'mesh.e'
   []
 []
 
@@ -79,7 +79,7 @@ flow_velocity=18.085
     type = DelayedNeutronEigenSource
     variable = group1
     block = '0'
-    group_number=1
+    group_number = 1
   []
 
   #---------------------------------------------------------------------
@@ -158,6 +158,7 @@ flow_velocity=18.085
   automatic_scaling = true
   compute_scaling_once = false
   resid_vs_jac_scaling_param = 0.1
+  off_diagonals_in_auto_scaling = false
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
@@ -202,7 +203,6 @@ flow_velocity=18.085
     type = ElementL2Diff
     variable = group1
     execute_on = 'linear timestep_end'
-    use_displaced_mesh = false
   []
   [group2norm]
     type = ElementIntegralVariablePostprocessor
@@ -219,14 +219,6 @@ flow_velocity=18.085
     type = ElementL2Diff
     variable = group2
     execute_on = 'linear timestep_end'
-    use_displaced_mesh = false
-  []
-  [fuel_vol]
-    type = VolumePostprocessor
-    block = 0
-  []
-  [total_vol]
-    type = VolumePostprocessor
   []
 []
 

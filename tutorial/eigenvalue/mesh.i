@@ -3,29 +3,29 @@
     type = GeneratedMeshGenerator
     dim = 2
     xmin = 0
-    xmax = 0.625
+    xmax = 0.6
     ymin = 0
-    ymax = 150
+    ymax = 165
     nx = 2
     ny = 15
   []
   [./fuel_right]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 4.375
-    xmax = 5
+    xmin = 4.6
+    xmax = 5.2
     ymin = 0
-    ymax = 150
+    ymax = 165
     nx = 2
     ny = 15
   []
   [./moderator]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 0.625
-    xmax = 4.375
+    xmin = 0.6
+    xmax = 4.6
     ymin = 0
-    ymax = 150
+    ymax = 165
     nx = 6
     ny = 15
   []
@@ -40,32 +40,32 @@
     type = SubdomainBoundingBoxGenerator
     input = unit_mesh
     block_id = 1
-    bottom_left = '0.625 0 0'
-    top_right = '4.375 150 0'
+    bottom_left = '0.6 0 0'
+    top_right = '4.6 165 0'
   []
   [./patterned_mesh]
     type = PatternedMeshGenerator
     inputs = 'mod_block'
     pattern = '0 0 0 0 0 0 0 0 0 0 0 0 0'
-    x_width = 5
+    x_width = 5.2
   []
   [./fuel_last]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 65
-    xmax = 65.625
+    xmin = 67.6
+    xmax = 68.2
     ymin = 0
-    ymax = 150
+    ymax = 165
     nx = 2
     ny = 15
   []
   [./mod_last]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 65.625
-    xmax = 69.375
+    xmin = 68.2
+    xmax = 72.2
     ymin = 0
-    ymax = 150
+    ymax = 165
     nx = 6
     ny = 15
   []
@@ -80,8 +80,8 @@
     type = SubdomainBoundingBoxGenerator
     input = full_mesh
     block_id = 1
-    bottom_left = '65.625 0 0'
-    top_right = '69.375 150 0'
+    bottom_left = '68.2 0 0'
+    top_right = '72.2 165 0'
   []
   [./fuel_top_boundary]
     type = SideSetsAroundSubdomainGenerator

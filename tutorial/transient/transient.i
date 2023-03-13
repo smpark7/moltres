@@ -29,7 +29,7 @@
   [temp]
     order = FIRST
     family = LAGRANGE
-    initial_condition = 980
+    initial_condition = 1000
   []
 []
 
@@ -183,7 +183,7 @@
 [Functions]
   [temp_bc_func]
     type = ParsedFunction
-    value = '1000 - (1000-955) * tanh(t/5)'
+    value = '1000 - (1000-966) * tanh(t/1)'
   []
   [dt_func]
     type = ParsedFunction
@@ -218,35 +218,38 @@
 
 [Executioner]
   type = Transient
-  end_time = 200
+  end_time = 2000
 
   nl_rel_tol = 1e-6
-  nl_abs_tol = 1e-1
+  nl_abs_tol = 1e-4
+  nl_max_its = 20
+  steady_state_detection = true
+  steady_state_tolerance = 1e-8
 
   automatic_scaling = true
   compute_scaling_once = false
-  resid_vs_jac_scaling_param = 0.1
+  resid_vs_jac_scaling_param = .2
+  off_diagonals_in_auto_scaling = true
   scaling_group_variables = 'group1 group2; pre1 pre2 pre3 pre4 pre5 pre6; temp'
 
   solve_type = 'NEWTON'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
   petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_package'
   petsc_options_value = 'lu       NONZERO               superlu_dist'
-
   line_search = none
 
   dtmin = 1e-3
-  dtmax = 8
+#  dtmax = 10
 #  [TimeStepper]
 #    type = FunctionDT
 #    function = dt_func
 #  []
   [TimeStepper]
     type = IterationAdaptiveDT
-    dt = .1
+    dt = 1e-3
     cutback_factor = 0.4
     growth_factor = 1.2
-    optimal_iterations = 10
+    optimal_iterations = 4
   []
 []
 
