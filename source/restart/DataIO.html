@@ -1,23 +1,24 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>DataIO | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="3d390f96-585f-4027-9113-e3eb7a515da2" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="306e3fa4-521c-452a-815e-b31c2dee616b" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="bc82effc-4cc9-458f-94e5-913c772c3eac" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="20d2913c-981e-41ae-b2e7-07e80ddb5ebb"><i class="material-icons">menu</i></a><ul class="sidenav" id="20d2913c-981e-41ae-b2e7-07e80ddb5ebb"><li><a href="#!" class="dropdown-trigger" data-target="6be83626-95fe-4218-8452-bd65bab68883" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="66280f84-2bcb-468b-a1cd-374fdb0ad2b0" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="bc229b0f-53f3-43c9-a6d1-171fd9bb00e4" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="3d390f96-585f-4027-9113-e3eb7a515da2"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="306e3fa4-521c-452a-815e-b31c2dee616b"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="bc82effc-4cc9-458f-94e5-913c772c3eac"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="6be83626-95fe-4218-8452-bd65bab68883"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="66280f84-2bcb-468b-a1cd-374fdb0ad2b0"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="bc229b0f-53f3-43c9-a6d1-171fd9bb00e4"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">restart</span><a href="#" class="breadcrumb">DataIO</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="4a301ed5-881b-49b6-975b-920a793caaa6" data-section-level="1" data-section-text="DataIO"><h1 id="dataio">DataIO</h1><p>The DataIO.h/.C files contain the declaration and definitions for MOOSE&#x27;s templated <code>dataLoad/dataStore</code> methods. These methods are scattered around the framework, modules and user applications and are used to store stateful information that cannot be recalculated during a restore operation. These methods enable MOOSE&#x27;s checkpointing and restarting operations which enable several key capabilities in the MOOSE framework including:</p><ul class="browser-default"><li><p>Checkpointing -&gt; the ability to terminate an application and restart it where you left off (useful for batch cluster systems). </p></li><li><p>Picard Iteration -&gt; The ability to converge a &quot;tightly&quot; coupled multiApp simulation. </p></li><li><p>Restart -&gt; the ability to save stateful data for a restart type simulation when using checkpoint format</p></li></ul><section class="scrollspy" id="80bf356a-bb1a-41bc-a58a-d6b2fa653686" data-section-level="2" data-section-text="What is stateful data ?"><h2 id="what-is-stateful-data">What is stateful data?</h2><p>Stateful data is any value, container of values, or complex data structure that cannont be recomputed from other available information such as coupled values or field variables. Additionally, it&#x27;s not any data that is not directly owned by your object.</p><p>Here are a couple of examples to consider before defining a dataLoad/dataStore routine:</p><ul class="browser-default"><li><p>If you have an object that produces a value based on an &quot;old&quot; value of a coupled variable, your object does <strong>not</strong> contain any stateful data because it is a simple calculation based on a piece of information not owned by your object. No action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a data structure consisting of a vector of pairs of IDs and Real numbers that are computed from a Material property, your object does <strong>not</strong> contain any stateful data and no action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a simple Boolean used to indicate whether or not you have calculated some quantity before, that you set when you run some routine. Your object <strong>does</strong> contain stateful information since the state of that value depends on internal logic in your object. For this scenario, you will need to ask Moose to store your Boolean as &quot;restartableData&quot;. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>. </p></li><li><p>If your object contains a dataStructure of some custom type that you produce internally and retrieve existing values from over the coarse of the simulation, you have a stateful data and may need to define the dataLoad and dataStore functions in your object. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>, and <a href="DataIO.html#dataStore_dataLoad">dataStore/dataLoad routines</a>.</p></li></ul></section><section class="scrollspy" id="7d8245bc-65b6-4be1-a1bd-af749984be6a" data-section-level="2" data-section-text="declareRestartableData"><h2 id="declareRestartableData">declareRestartableData</h2><p>The declareRestartableData method is used to tell MOOSE that you would like to save some part of your object in a <a href="Backup.html">Backup</a> object. This method is templated and declared here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">protected:
+<!DOCTYPE html><head><meta charset="UTF-8"><title>DataIO | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="91de1f79-79c5-4d4b-8b97-74fad73bddb4" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="0e723230-70a8-45dd-89fb-b4ef478a1207" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="16bacf51-3032-4324-bc38-8589088c16f4" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="6bafeee9-9896-4fcc-833b-a9a95b11b44b"><i class="material-icons">menu</i></a><ul class="sidenav" id="6bafeee9-9896-4fcc-833b-a9a95b11b44b"><li><a href="#!" class="dropdown-trigger" data-target="91b5de32-6bc6-42f9-8828-052a5c31df41" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="c269c4ba-6d92-45e1-8bd4-5cd0d0fc6860" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="10a8a005-90d3-462e-adb9-fe3ca0d03409" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="91de1f79-79c5-4d4b-8b97-74fad73bddb4"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="0e723230-70a8-45dd-89fb-b4ef478a1207"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="16bacf51-3032-4324-bc38-8589088c16f4"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="91b5de32-6bc6-42f9-8828-052a5c31df41"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="c269c4ba-6d92-45e1-8bd4-5cd0d0fc6860"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="10a8a005-90d3-462e-adb9-fe3ca0d03409"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">restart</span><a href="#" class="breadcrumb">DataIO</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="a9c38232-fcfd-4b93-94d8-f7551d9c0759" data-section-level="1" data-section-text="DataIO"><h1 id="dataio">DataIO</h1><p>The DataIO.h/.C files contain the declaration and definitions for MOOSE&#x27;s templated <code>dataLoad/dataStore</code> methods. These methods are scattered around the framework, modules and user applications and are used to store stateful information that cannot be recalculated during a restore operation. These methods enable MOOSE&#x27;s checkpointing and restarting operations which enable several key capabilities in the MOOSE framework including:</p><ul class="browser-default"><li><p>Checkpointing -&gt; the ability to terminate an application and restart it where you left off (useful for batch cluster systems). </p></li><li><p>Picard Iteration -&gt; The ability to converge a &quot;tightly&quot; coupled multiApp simulation. </p></li><li><p>Restart -&gt; the ability to save stateful data for a restart type simulation when using checkpoint format</p></li></ul><section class="scrollspy" id="3fc30ea7-10c8-4591-9b82-fff3c57f0085" data-section-level="2" data-section-text="What is stateful data ?"><h2 id="what-is-stateful-data">What is stateful data?</h2><p>Stateful data is any value, container of values, or complex data structure that cannont be recomputed from other available information such as coupled values or field variables. Additionally, it&#x27;s not any data that is not directly owned by your object.</p><p>Here are a couple of examples to consider before defining a dataLoad/dataStore routine:</p><ul class="browser-default"><li><p>If you have an object that produces a value based on an &quot;old&quot; value of a coupled variable, your object does <strong>not</strong> contain any stateful data because it is a simple calculation based on a piece of information not owned by your object. No action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a data structure consisting of a vector of pairs of IDs and Real numbers that are computed from a Material property, your object does <strong>not</strong> contain any stateful data and no action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a simple Boolean used to indicate whether or not you have calculated some quantity before, that you set when you run some routine. Your object <strong>does</strong> contain stateful information since the state of that value depends on internal logic in your object. For this scenario, you will need to ask Moose to store your Boolean as &quot;restartableData&quot;. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>. </p></li><li><p>If your object contains a dataStructure of some custom type that you produce internally and retrieve existing values from over the coarse of the simulation, you have a stateful data and may need to define the dataLoad and dataStore functions in your object. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>, and <a href="DataIO.html#dataStore_dataLoad">dataStore/dataLoad routines</a>.</p></li></ul></section><section class="scrollspy" id="44db90f9-a51d-4d49-82d4-d1e64a705535" data-section-level="2" data-section-text="declareRestartableData"><h2 id="declareRestartableData">declareRestartableData</h2><p>The declareRestartableData method is used to tell MOOSE that you would like to save some part of your object in a <a href="Backup.html">Backup</a> object. This method is templated and declared here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">protected:
   /**
-   * Declare a piece of data as &quot;restartable&quot;.
+   * Declare a piece of data as &quot;restartable&quot; and initialize it.
    * This means that in the event of a restart this piece of data
    * will be restored back to its previous value.
    *
    * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
    *
    * @param data_name The name of the data (usually just use the same name as the member variable)
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableData(const std::string &amp; data_name);
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#e712d07f-5605-40a0-ba7c-336f39d8fa12">(moose/framework/include/restart/Restartable.h)</a><p>This method is templated, so MOOSE will return a reference to the type that you request and manage the data storage for you. For all built-in types and combinations of containers and built-in types. This is all that needs to be done. If your type or your container of types is custom, you will have to define the dataLoad and dataStore routines to tell MOOSE how to serialize your new type.</p></section><section class="scrollspy" id="217f0e4f-68e7-48e4-b691-0cfde6a4b378" data-section-level="2" data-section-text="dataStore / dataLoad routines"><h2 id="dataStore_dataLoad">dataStore/dataLoad routines</h2><p>If any object has requested a restartable piece of data that contains or is a custom type, both the dataStore and dataLoad will need to be defined. These functions describe how to serialize a custom type.</p><p>The declarations for the two methods that may need to be specialized for your application take on on a form similar to this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Load Declarations *****************
+  template &lt;typename T, typename... Args&gt;
+  T &amp; declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args);
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#63dde9be-9e36-4bd1-819a-a46eca708249">(moose/framework/include/restart/Restartable.h)</a><p>This method is templated, so MOOSE will return a reference to the type that you request and manage the data storage for you. For all built-in types and combinations of containers and built-in types. This is all that needs to be done. If your type or your container of types is custom, you will have to define the dataLoad and dataStore routines to tell MOOSE how to serialize your new type.</p></section><section class="scrollspy" id="a39f1172-e313-409c-861e-44c56de6b2c9" data-section-level="2" data-section-text="dataStore / dataLoad routines"><h2 id="dataStore_dataLoad">dataStore/dataLoad routines</h2><p>If any object has requested a restartable piece of data that contains or is a custom type, both the dataStore and dataLoad will need to be defined. These functions describe how to serialize a custom type.</p><p>The declarations for the two methods that may need to be specialized for your application take on on a form similar to this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Load Declarations *****************
 template &lt;typename T&gt;
 inline void
 dataLoad(std::istream &amp; stream, T &amp; v, void * /*context*/)
 {
   stream.read((char *)&amp;v, sizeof(v));
 }
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#a8bf5561-ea02-425c-84a7-20e7a35db1b8">(moose/framework/include/restart/DataIO.h)</a><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Store Declarations *****************
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#d749ea86-9209-4aae-8de0-41a18fb951c5">(moose/framework/include/restart/DataIO.h)</a><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Store Declarations *****************
 template &lt;typename T&gt;
 inline void
 dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
@@ -31,7 +32,7 @@ dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
                 &quot;Cannot serialize a class that is not trivially copyable!\nWrite a custom &quot;
                 &quot;dataStore() template specialization!\n\n&quot;);
 #endif
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#e60575aa-cc95-4a08-b90b-62efb674fb0a">(moose/framework/include/restart/DataIO.h)</a><section id="b5fc504c-2d54-495f-a4eb-779b2b10406b" data-section-level="3" data-section-text="Example"><h3 id="example">Example</h3><p>Typically, the serialization routine can be defined in terms of serializing the individual fields in your custom type. For example. If you had a class <code>Foo</code> that contained a few plain old data types, you&#x27;d just define the load and store terms in terms of the combination of those POD types in order.</p><pre class="moose-pre"><code class="language-c++">
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#855bb487-b0a5-46b7-af8b-74848a73ba98">(moose/framework/include/restart/DataIO.h)</a><section id="6a9b448e-f134-43f1-aafa-2248e0305459" data-section-level="3" data-section-text="Example"><h3 id="example">Example</h3><p>Typically, the serialization routine can be defined in terms of serializing the individual fields in your custom type. For example. If you had a class <code>Foo</code> that contained a few plain old data types, you&#x27;d just define the load and store terms in terms of the combination of those POD types in order.</p><pre class="moose-pre"><code class="language-c++">
 class Foo
 {
   int bar;
@@ -62,7 +63,7 @@ dataLoad(std::istream &amp; stream, Foo &amp; foo, void * context)
   loadHelper(stream, foo.baz, context);
   loadHelper(stream, foo.qux, context);
 }
-</code></pre></section></section></section><div class="moose-modal modal" id="e712d07f-5605-40a0-ba7c-336f39d8fa12"><div class="modal-content"><h4>(moose/framework/include/restart/Restartable.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></section></section></section><div class="moose-modal modal" id="63dde9be-9e36-4bd1-819a-a46eca708249"><div class="modal-content"><h4>(moose/framework/include/restart/Restartable.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -122,23 +123,19 @@ public:
               const std::string &amp; system_name,
               THREAD_ID tid);
 
-  /**
-   * Emtpy destructor
-   */
-  virtual ~Restartable() = default;
-
 protected:
   /**
-   * Declare a piece of data as &quot;restartable&quot;.
+   * Declare a piece of data as &quot;restartable&quot; and initialize it.
    * This means that in the event of a restart this piece of data
    * will be restored back to its previous value.
    *
    * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
    *
    * @param data_name The name of the data (usually just use the same name as the member variable)
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableData(const std::string &amp; data_name);
+  template &lt;typename T, typename... Args&gt;
+  T &amp; declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args);
 
   /**
    * Declare a piece of data as &quot;restartable&quot; and initialize it.
@@ -148,72 +145,15 @@ protected:
    * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
    *
    * @param data_name The name of the data (usually just use the same name as the member variable)
-   * @param init_value The initial value of the data
-   */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableData(const std::string &amp; data_name, const T &amp; init_value);
-
-  /**
-   * Declare a piece of data as &quot;restartable&quot;.
-   * This means that in the event of a restart this piece of data
-   * will be restored back to its previous value.
-   *
-   * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
-   *
-   * @param data_name The name of the data (usually just use the same name as the member variable)
    * @param context Context pointer that will be passed to the load and store functions
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableDataWithContext(const std::string &amp; data_name, void * context);
+  template &lt;typename T, typename... Args&gt;
+  T &amp;
+  declareRestartableDataWithContext(const std::string &amp; data_name, void * context, Args &amp;&amp;... args);
 
   /**
-   * Declare a piece of data as &quot;restartable&quot;.
-   * This means that in the event of a restart this piece of data
-   * will be restored back to its previous value.
-   *
-   * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
-   *
-   * @param data_name The name of the data (usually just use the same name as the member variable)
-   * @param prefix The prefix to prepend to the data_name, to retrieve data from another object.
-   * @param context Context pointer that will be passed to the load and store functions
-   */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableDataWithPrefixOverrideAndContext(const std::string &amp; data_name,
-                                                         const std::string &amp; prefix,
-                                                         void * context);
-
-  /**
-   * Declare a piece of data as &quot;restartable&quot; and initialize it.
-   * This means that in the event of a restart this piece of data
-   * will be restored back to its previous value.
-   *
-   * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
-   *
-   * @param data_name The name of the data (usually just use the same name as the member variable)
-   * @param init_value The initial value of the data
-   * @param context Context pointer that will be passed to the load and store functions
-   */
-  template &lt;typename T&gt;
-  T &amp; declareRestartableDataWithContext(const std::string &amp; data_name,
-                                        const T &amp; init_value,
-                                        void * context);
-
-  /**
-   * Declare a piece of data as &quot;recoverable&quot;.
-   * This means that in the event of a recovery this piece of data
-   * will be restored back to its previous value.
-   *
-   * Note - this data will NOT be restored on _Restart_!
-   *
-   * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
-   *
-   * @param data_name The name of the data (usually just use the same name as the member variable)
-   */
-  template &lt;typename T&gt;
-  T &amp; declareRecoverableData(const std::string &amp; data_name);
-
-  /**
-   * Declare a piece of data as &quot;restartable&quot; and initialize it.
+   * Declare a piece of data as &quot;recoverable&quot; and initialize it.
    * This means that in the event of a restart this piece of data
    * will be restored back to its previous value.
    *
@@ -222,10 +162,10 @@ protected:
    * NOTE: This returns a _reference_!  Make sure you store it in a _reference_!
    *
    * @param data_name The name of the data (usually just use the same name as the member variable)
-   * @param init_value The initial value of the data
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
-  T &amp; declareRecoverableData(const std::string &amp; data_name, const T &amp; init_value);
+  template &lt;typename T, typename... Args&gt;
+  T &amp; declareRecoverableData(const std::string &amp; data_name, Args &amp;&amp;... args);
 
   /**
    * Declare a piece of data as &quot;restartable&quot;.
@@ -236,10 +176,12 @@ protected:
    *
    * @param data_name The name of the data (usually just use the same name as the member variable)
    * @param object_name A supplied name for the object that is declaring this data.
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
+  template &lt;typename T, typename... Args&gt;
   T &amp; declareRestartableDataWithObjectName(const std::string &amp; data_name,
-                                           const std::string &amp; object_name);
+                                           const std::string &amp; object_name,
+                                           Args &amp;&amp;... args);
 
   /**
    * Declare a piece of data as &quot;restartable&quot;.
@@ -251,13 +193,22 @@ protected:
    * @param data_name The name of the data (usually just use the same name as the member variable)
    * @param object_name A supplied name for the object that is declaring this data.
    * @param context Context pointer that will be passed to the load and store functions
+   * @param args Arguments to forward to the constructor of the data
    */
-  template &lt;typename T&gt;
+  template &lt;typename T, typename... Args&gt;
   T &amp; declareRestartableDataWithObjectNameWithContext(const std::string &amp; data_name,
                                                       const std::string &amp; object_name,
-                                                      void * context);
+                                                      void * context,
+                                                      Args &amp;&amp;... args);
 
-protected:
+  /**
+   * Gets the name of a piece of restartable data given a data name, adding
+   * the system name and object name prefix.
+   *
+   * This should only be used in this interface and in testing.
+   */
+  std::string restartableName(const std::string &amp; data_name) const;
+
   /// Reference to the application
   MooseApp &amp; _restartable_app;
 
@@ -268,7 +219,7 @@ protected:
   const THREAD_ID _restartable_tid;
 
   /// Flag for toggling read only status (see ReporterData)
-  bool _restartable_read_only;
+  const bool _restartable_read_only;
 
 private:
   /// The name of the object
@@ -284,101 +235,72 @@ private:
                                               Moose::RESTARTABLE_FILTER filter);
 };
 
-template &lt;typename T&gt;
+template &lt;typename T, typename... Args&gt;
 T &amp;
-Restartable::declareRestartableData(const std::string &amp; data_name)
+Restartable::declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args)
 {
-  return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr);
+  return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr, std::forward&lt;Args&gt;(args)...);
 }
 
-template &lt;typename T&gt;
-T &amp;
-Restartable::declareRestartableData(const std::string &amp; data_name, const T &amp; init_value)
-{
-  return declareRestartableDataWithContext&lt;T&gt;(data_name, init_value, nullptr);
-}
-
-template &lt;typename T&gt;
-T &amp;
-Restartable::declareRestartableDataWithContext(const std::string &amp; data_name, void * context)
-{
-  std::string full_name = _restartable_system_name + &quot;/&quot; + _restartable_name + &quot;/&quot; + data_name;
-  auto data_ptr = std::make_unique&lt;RestartableData&lt;T&gt;&gt;(full_name, context);
-
-  // See comment in overloaded version of this function with &quot;init_value&quot;
-  auto &amp; restartable_data_ref = static_cast&lt;RestartableData&lt;T&gt; &amp;&gt;(
-      registerRestartableDataOnApp(full_name, std::move(data_ptr), _restartable_tid));
-
-  return restartable_data_ref.set();
-}
-
-template &lt;typename T&gt;
+template &lt;typename T, typename... Args&gt;
 T &amp;
 Restartable::declareRestartableDataWithContext(const std::string &amp; data_name,
-                                               const T &amp; init_value,
-                                               void * context)
+                                               void * context,
+                                               Args &amp;&amp;... args)
 {
-  std::string full_name = _restartable_system_name + &quot;/&quot; + _restartable_name + &quot;/&quot; + data_name;
+  const auto full_name = restartableName(data_name);
 
   // Here we will create the RestartableData even though we may not use this instance.
   // If it&#x27;s already in use, the App will return a reference to the existing instance and we&#x27;ll
   // return that one instead. We might refactor this to have the app create the RestartableData
   // at a later date.
-  auto data_ptr = std::make_unique&lt;RestartableData&lt;T&gt;&gt;(full_name, context);
+  auto data_ptr =
+      std::make_unique&lt;RestartableData&lt;T&gt;&gt;(full_name, context, std::forward&lt;Args&gt;(args)...);
   auto &amp; restartable_data_ref = static_cast&lt;RestartableData&lt;T&gt; &amp;&gt;(
       registerRestartableDataOnApp(full_name, std::move(data_ptr), _restartable_tid));
 
-  restartable_data_ref.set() = init_value;
   return restartable_data_ref.set();
 }
 
-template &lt;typename T&gt;
+template &lt;typename T, typename... Args&gt;
 T &amp;
 Restartable::declareRestartableDataWithObjectName(const std::string &amp; data_name,
-                                                  const std::string &amp; object_name)
+                                                  const std::string &amp; object_name,
+                                                  Args &amp;&amp;... args)
 {
-  return declareRestartableDataWithObjectNameWithContext&lt;T&gt;(data_name, object_name, nullptr);
+  return declareRestartableDataWithObjectNameWithContext&lt;T&gt;(
+      data_name, object_name, nullptr, std::forward&lt;Args&gt;(args)...);
 }
 
-template &lt;typename T&gt;
+template &lt;typename T, typename... Args&gt;
 T &amp;
 Restartable::declareRestartableDataWithObjectNameWithContext(const std::string &amp; data_name,
                                                              const std::string &amp; object_name,
-                                                             void * context)
+                                                             void * context,
+                                                             Args &amp;&amp;... args)
 {
   std::string old_name = _restartable_name;
 
   _restartable_name = object_name;
 
-  T &amp; value = declareRestartableDataWithContext&lt;T&gt;(data_name, context);
+  T &amp; value = declareRestartableDataWithContext&lt;T&gt;(data_name, context, std::forward&lt;Args&gt;(args)...);
 
   _restartable_name = old_name;
 
   return value;
 }
 
-template &lt;typename T&gt;
+template &lt;typename T, typename... Args&gt;
 T &amp;
-Restartable::declareRecoverableData(const std::string &amp; data_name)
+Restartable::declareRecoverableData(const std::string &amp; data_name, Args &amp;&amp;... args)
 {
-  std::string full_name = _restartable_system_name + &quot;/&quot; + _restartable_name + &quot;/&quot; + data_name;
+  const auto full_name = restartableName(data_name);
 
   registerRestartableNameWithFilterOnApp(full_name, Moose::RESTARTABLE_FILTER::RECOVERABLE);
 
-  return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr);
+  return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr, std::forward&lt;Args&gt;(args)...);
 }
-
-template &lt;typename T&gt;
-T &amp;
-Restartable::declareRecoverableData(const std::string &amp; data_name, const T &amp; init_value)
-{
-  std::string full_name = _restartable_system_name + &quot;/&quot; + _restartable_name + &quot;/&quot; + data_name;
-
-  registerRestartableNameWithFilterOnApp(full_name, Moose::RESTARTABLE_FILTER::RECOVERABLE);
-
-  return declareRestartableDataWithContext&lt;T&gt;(data_name, init_value, nullptr);
-}
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="a8bf5561-ea02-425c-84a7-20e7a35db1b8"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="d749ea86-9209-4aae-8de0-41a18fb951c5"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -1365,7 +1287,7 @@ public:
 } // namespace libMesh
 
 #endif
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="e60575aa-cc95-4a08-b90b-62efb674fb0a"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="855bb487-b0a5-46b7-af8b-74848a73ba98"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -2352,4 +2274,4 @@ public:
 } // namespace libMesh
 
 #endif
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#80bf356a-bb1a-41bc-a58a-d6b2fa653686" class="tooltipped" data-position="left" data-tooltip="What is stateful data ?">What is stateful data ?</a></li><li><a href="#7d8245bc-65b6-4be1-a1bd-af749984be6a" class="tooltipped" data-position="left" data-tooltip="declareRestartableData">declareRestartableData</a></li><li><a href="#217f0e4f-68e7-48e4-b691-0cfde6a4b378" class="tooltipped" data-position="left" data-tooltip="dataStore / dataLoad routines">dataStore / dataLoad routines</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#3fc30ea7-10c8-4591-9b82-fff3c57f0085" class="tooltipped" data-position="left" data-tooltip="What is stateful data ?">What is stateful data ?</a></li><li><a href="#44db90f9-a51d-4d49-82d4-d1e64a705535" class="tooltipped" data-position="left" data-tooltip="declareRestartableData">declareRestartableData</a></li><li><a href="#a39f1172-e313-409c-861e-44c56de6b2c9" class="tooltipped" data-position="left" data-tooltip="dataStore / dataLoad routines">dataStore / dataLoad routines</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
