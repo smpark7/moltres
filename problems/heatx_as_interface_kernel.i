@@ -1,4 +1,4 @@
-flow_velocity=21.7 # cm/s. See MSRE-properties.ods
+flow_velocity = 21.7 # cm/s. See MSRE-properties.ods
 
 [Mesh]
   type = GeneratedMesh
@@ -6,44 +6,44 @@ flow_velocity=21.7 # cm/s. See MSRE-properties.ods
   nx = 600
   xmax = 500
   elem_type = EDGE2
-[../]
+[]
 
 [MeshModifiers]
-  [./box]
+  [box]
     type = SubdomainBoundingBox
     bottom_left = '250 0 0'
     top_right = '500 1 0'
     block_id = 1
-  [../]
-  [./interface]
+  []
+  [interface]
     type = SideSetsBetweenSubdomains
     master_block = '0'
     paired_block = '1'
     new_boundary = 'master0_interface'
     depends_on = 'box'
-  [../]
-  [./interface_again]
+  []
+  [interface_again]
     type = SideSetsBetweenSubdomains
     master_block = '1'
     paired_block = '0'
     new_boundary = 'master1_interface'
     depends_on = 'box'
-  [../]
+  []
 []
 
 [Variables]
-  [./temp]
+  [temp]
     initial_condition = 930 #approx steady outlet of other problem
     family = MONOMIAL
     order = CONSTANT
     block = 0
-  [../]
-  [./temp_right]
+  []
+  [temp_right]
     initial_condition = 930 #approx steady outlet of other problem
     family = MONOMIAL
     order = CONSTANT
     block = 1
-  [../]
+  []
 []
 
 [Problem]
@@ -65,54 +65,54 @@ flow_velocity=21.7 # cm/s. See MSRE-properties.ods
 []
 
 [DGKernels]
-  [./temp_adv]
+  [temp_adv]
     type = DGTemperatureAdvection
     variable = temp
     velocity = '${flow_velocity} 0 0'
     block = 0
-  [../]
-  [./temp_right_adv]
+  []
+  [temp_right_adv]
     type = DGTemperatureAdvection
     variable = temp_right
     velocity = '${flow_velocity} 0 0'
     block = 1
-  [../]
+  []
 []
 
 [InterfaceKernels]
-  [./interface]
+  [interface]
     type = InterTemperatureAdvection
     variable = temp_right
     neighbor_var = temp
     boundary = master1_interface
     velocity = '${flow_velocity} 0 0'
     heat_source = -4e3
-  [../]
+  []
 []
 
 [BCs]
-  [./fuel_bottoms_looped]
+  [fuel_bottoms_looped]
     boundary = 'left'
     type = TemperatureInflowBC
     inlet_conc = 930
     variable = temp
     uu = ${flow_velocity}
-  [../]
-  [./temp_advection_outlet]
+  []
+  [temp_advection_outlet]
     boundary = 'right'
     type = TemperatureOutflowBC
     variable = temp_right
     velocity = '${flow_velocity} 0 0'
-  [../]
+  []
 []
 
 [Materials]
-  [./fuel]
+  [fuel]
     type = GenericConstantMaterial
     prop_names = 'cp rho'
     prop_values = '1967 2.146e-3' # Robertson MSRE technical report @ 922 K
     block = '0 1'
-  [../]
+  []
 []
 
 [Executioner]
@@ -139,24 +139,24 @@ flow_velocity=21.7 # cm/s. See MSRE-properties.ods
   petsc_options_iname = '-pc_type'
   petsc_options_value = 'lu'
 
-nl_max_its = 30
+  nl_max_its = 30
   l_max_its = 100
 
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Outputs]
   perf_graph = true
   print_linear_residuals = true
-  [./exodus]
+  [exodus]
     type = Exodus
-  [../]
+  []
 []
 
 [Debug]

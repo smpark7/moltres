@@ -8,60 +8,60 @@
 []
 
 [MeshModifiers]
-  [./subdomains]
+  [subdomains]
     type = SubdomainBoundingBox
     bottom_left = '0.12 0.12 0'
     block_id = 1
     top_right = '0.92 0.92 0'
-  [../]
+  []
 []
 
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [Kernels]
-  [./diff]
+  [diff]
     type = MatDiffusion
     variable = u
     diffusivity = 'k'
     block = '0 1'
-  [../]
-  [./time]
+  []
+  [time]
     type = TimeDerivative
     variable = u
-  [../]
+  []
 []
 
 [BCs]
-  [./left]
+  [left]
     type = DirichletBC
     variable = u
     boundary = left
     value = 0
-  [../]
-  [./right]
+  []
+  [right]
     type = DirichletBC
     variable = u
     boundary = right
     value = 1
-  [../]
+  []
 []
 
 [Materials]
-  [./outside]
+  [outside]
     type = GenericConstantMaterial
     block = 0
     prop_names = 'k'
     prop_values = 1
-  [../]
-  [./inside]
+  []
+  [inside]
     type = GenericConstantMaterial
     block = 1
     prop_names = 'k'
     prop_values = 0.1
-  [../]
+  []
 []
 
 [Executioner]

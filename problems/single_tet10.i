@@ -3,42 +3,42 @@
 []
 
 [Kernels]
-  [./diffus]
+  [diffus]
     type = Diffusion
     variable = u
-  [../]
-  [./force]
+  []
+  [force]
     type = UserForcingFunction
     variable = u
     function = ffn
-  [../]
+  []
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '-6'
-  [../]
-  [./soln]
+  []
+  [soln]
     type = ParsedFunction
     value = 'x^2 + y^2 + z^2'
-  [../]
+  []
 []
 
 [BCs]
-  [./all]
+  [all]
     type = FunctionDirichletBC
     function = 'soln'
     boundary = 'boundary'
     variable = u
-  [../]
+  []
 []
 
 [Variables]
-  [./u]
+  [u]
     family = LAGRANGE
     order = SECOND
-  [../]
+  []
 []
 
 [Executioner]
@@ -47,7 +47,7 @@
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []

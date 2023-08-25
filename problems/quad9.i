@@ -7,44 +7,44 @@
 []
 
 [Kernels]
-  [./diffus]
+  [diffus]
     type = Diffusion
     variable = u
-  [../]
-  [./force]
+  []
+  [force]
     type = UserForcingFunction
     variable = u
     function = ffn
-  [../]
+  []
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '-2'
-  [../]
+  []
 []
 
 [BCs]
-  [./left]
+  [left]
     type = DirichletBC
     value = 0
     boundary = 'left'
     variable = u
-  [../]
-  [./right]
+  []
+  [right]
     type = DirichletBC
     value = 1
     boundary = 'right'
     variable = u
-  [../]
+  []
 []
 
 [Variables]
-  [./u]
+  [u]
     family = LAGRANGE
     order = SECOND
-  [../]
+  []
 []
 
 [Executioner]
@@ -53,7 +53,7 @@
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []

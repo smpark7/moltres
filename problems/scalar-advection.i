@@ -24,39 +24,39 @@
   #   type = TimeDerivative
   #   variable = u
   # [../]
-  [./source]
+  [source]
     type = UserForcingFunction
     variable = u
     function = 'forcing_func'
-  [../]
+  []
 []
 
 [DGKernels]
-  [./concentration]
+  [concentration]
     type = DGConvection
     variable = u
     velocity = '1 0 0'
-  [../]
+  []
 []
 
 [BCs]
-  [./concentration]
+  [concentration]
     type = DGConvectionOutflow
     boundary = 'left right'
     variable = u
     velocity = '1 0 0'
-  [../]
+  []
 []
 
 [Problem]
   # coord_type = RZ
-[../]
+[]
 
 [Variables]
-  [./u]
+  [u]
     family = MONOMIAL
     order = CONSTANT
-  [../]
+  []
 []
 
 [Executioner]
@@ -79,22 +79,22 @@
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
     execute_on = 'timestep_end'
-  [../]
+  []
 []

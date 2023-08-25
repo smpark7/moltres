@@ -6,49 +6,49 @@
 []
 
 [Kernels]
-  [./diff]
+  [diff]
     type = Diffusion
     variable = u
-  [../]
-  [./advection]
+  []
+  [advection]
     type = ConservativeAdvection
     variable = u
     velocity = '0 1 0'
-  [../]
-  [./source]
+  []
+  [source]
     type = UserForcingFunction
     variable = u
     function = 'forcing_func'
-  [../]
+  []
 []
 
 [BCs]
-  [./inlet]
+  [inlet]
     type = DirichletBC
     value = 0
     boundary = 'bottom'
     variable = u
-  [../]
-  [./out_diffusion]
+  []
+  [out_diffusion]
     type = DiffusionNoBCBC
     variable = u
     boundary = 'top'
-  [../]
-  [./out_advection]
+  []
+  [out_advection]
     type = ConservativeAdvectionNoBCBC
     variable = u
     boundary = 'top'
     velocity = '0 1 0'
-  [../]
+  []
 []
 
 [Problem]
   # coord_type = RZ
-[../]
+[]
 
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [Executioner]
@@ -61,22 +61,22 @@
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
     execute_on = 'timestep_end'
-  [../]
+  []
 []

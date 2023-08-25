@@ -35,26 +35,25 @@
 
 [Mesh]
   file = outermesh.msh
-#  block_id = '0'
- parallel_type = DISTRIBUTED
-#  displacements = 'disp_x disp_y'
+  #  block_id = '0'
+  parallel_type = DISTRIBUTED
+  #  displacements = 'disp_x disp_y'
 []
 
-
 [Variables]
-  [./p]
-  [../]
+  [p]
+  []
 []
 
 [AuxVariables]
-  [./vel_p]
-  [../]
-  [./accel_p]
-  [../]
-  [./accel_x_in]
-  [../]
-  [./accel_y_in]
-  [../]
+  [vel_p]
+  []
+  [accel_p]
+  []
+  [accel_x_in]
+  []
+  [accel_y_in]
+  []
 []
 
 [Kernels]
@@ -68,27 +67,27 @@
   #   eta=0.0
   # [../]
 
-  [./diff_p]
+  [diff_p]
     type = Diffusion
     variable = p
     Diffusivity = Diff
-  [../]
+  []
 
-#  [./source_p]
-#     type = SourceMonopole
-#     variable = p
-#     coord = '0.0 2.02 0.0'
-#     size  = 0.002
-#     fL = 8.33e-2
-#     t1 = 0.07
-#     tRT = 0.01
-#     tL  = 0.8
-#     p0  = 0.10
-#     d1  = 9
-#     upcoeff = 12.2189
-#     downcoeff = 0.9404
-#     rho_c = 1e-3
-#  [../]
+  #  [./source_p]
+  #     type = SourceMonopole
+  #     variable = p
+  #     coord = '0.0 2.02 0.0'
+  #     size  = 0.002
+  #     fL = 8.33e-2
+  #     t1 = 0.07
+  #     tRT = 0.01
+  #     tL  = 0.8
+  #     p0  = 0.10
+  #     d1  = 9
+  #     upcoeff = 12.2189
+  #     downcoeff = 0.9404
+  #     rho_c = 1e-3
+  #  [../]
 []
 
 # [AuxKernels]
@@ -110,48 +109,47 @@
 
 # []
 
-
 [BCs]
-  [./top]
+  [top]
     type = NeumannBC
     variable = p
     boundary = top2
     # some_val = accel_y_in
     # Reyold  = 1.0
-  [../]
+  []
 
-  [./left]
+  [left]
     type = NeumannBC
     variable = p
     boundary = left2
     # some_val = accel_x_in
     # Reyold  = -1.0
-  [../]
+  []
 
-   [./right]
+  [right]
     type = NeumannBC
     variable = p
     boundary = right2
     # some_val = accel_x_in
     # Reyold  = 1.0
-  [../]
+  []
 
-  [./bottom]
+  [bottom]
     type = NeumannBC
     variable = p
     boundary = bottom2
     # some_val = accel_y_in
     # Reyold  = -1.0
-  [../]
+  []
 
 []
 
 [Materials]
-  [./density]
+  [density]
     type = GenericConstantMaterial
     prop_names = 'density Diff'
     prop_values = '444.44 1000'
-  [../]
+  []
 []
 
 [Executioner]
@@ -165,15 +163,15 @@
 
 [Outputs]
   csv = true
-  [./console]
-        type = Console
-        max_rows = 10
-  [../]
-  [./exodus]
-        type = Exodus
-        interval = 5
-        file_base = AcousticOutNew
-  [../]
+  [console]
+    type = Console
+    max_rows = 10
+  []
+  [exodus]
+    type = Exodus
+    interval = 5
+    file_base = AcousticOutNew
+  []
 []
 
 #[MultiApps]

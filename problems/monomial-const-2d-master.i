@@ -10,40 +10,38 @@
   elem_type = QUAD4
 []
 
-
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [AuxVariables]
-  [./from_sub]
+  [from_sub]
     family = MONOMIAL
     order = CONSTANT
-  [../]
+  []
 []
 
 [Kernels]
-  [./u_diff]
+  [u_diff]
     type = Diffusion
     variable = u
-  [../]
+  []
 []
 
-
 [BCs]
-  [./u_inlet]
+  [u_inlet]
     boundary = 'left'
     variable = u
     value = 1
     type = DirichletBC
-  [../]
-  [./u_outlet]
+  []
+  [u_outlet]
     boundary = 'right'
     variable = u
     value = 0
     type = DirichletBC
-  [../]
+  []
 []
 
 [Debug]
@@ -51,12 +49,12 @@
 []
 
 [Preconditioning]
-  [./SMP_PJFNK]
+  [SMP_PJFNK]
     type = SMP
     full = true
     solve_type = NEWTON
     ksp_norm = none
-  [../]
+  []
 []
 
 [Executioner]
@@ -81,21 +79,21 @@
 []
 
 [MultiApps]
-  [./sub_horizontal]
+  [sub_horizontal]
     type = FullSolveMultiApp
     app_type = MoltresApp
     input_files = monomial-const-2d.i
     execute_on = 'initial'
-  [../]
+  []
 []
 
 [Transfers]
-  [./vel_x_horizontal]
+  [vel_x_horizontal]
     type = MultiAppNearestNodeTransfer
     direction = from_multiapp
     multi_app = sub_horizontal
     source_variable = u
     variable = from_sub
     execute_on = 'initial'
-  [../]
+  []
 []

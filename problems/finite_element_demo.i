@@ -5,29 +5,29 @@
 []
 
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [Kernels]
-  [./diff]
+  [diff]
     type = Diffusion
     variable = u
-  [../]
-  [./force]
+  []
+  [force]
     type = UserForcingFunction
     variable = u
     function = 'ffn'
-  [../]
+  []
 []
 
 [BCs]
-  [./bounds]
+  [bounds]
     type = FunctionDirichletBC
     function = 'soln'
     variable = u
     boundary = 'left right'
-  [../]
+  []
 []
 
 [Executioner]
@@ -36,18 +36,18 @@
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '-e^x'
-  [../]
-  [./soln]
+  []
+  [soln]
     type = ParsedFunction
     value = 'e^x'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []

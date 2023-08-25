@@ -6,32 +6,32 @@
 []
 
 [Kernels]
-  [./diffusion]
+  [diffusion]
     type = Diffusion
     variable = u
-  [../]
+  []
 []
 
 [BCs]
-  [./diri_left]
+  [diri_left]
     type = DirichletBC
     boundary = 'left'
     value = 1
     variable = u
-  [../]
-  [./diri_right]
+  []
+  [diri_right]
     type = DirichletBC
     boundary = 'right'
     value = 0
     variable = u
-  [../]
+  []
 []
 
 [Variables]
-  [./u]
+  [u]
     family = LAGRANGE
     order = SECOND
-  [../]
+  []
 []
 
 [Executioner]
@@ -40,10 +40,10 @@
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Outputs]

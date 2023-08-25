@@ -6,33 +6,33 @@
 []
 
 [Variables]
-  [./diffused]
+  [diffused]
     order = FIRST
     family = LAGRANGE
-  [../]
+  []
 []
 
 [Kernels]
-  [./diff]
+  [diff]
     type = Diffusion
     variable = diffused
-  [../]
+  []
 []
 
 [BCs]
-  [./bottom]
+  [bottom]
     type = DirichletBC
     variable = diffused
     boundary = 'bottom'
     value = 1
-  [../]
+  []
 
-  [./top]
+  [top]
     type = DirichletBC
     variable = diffused
     boundary = 'top'
     value = 0
-  [../]
+  []
 []
 
 [Executioner]

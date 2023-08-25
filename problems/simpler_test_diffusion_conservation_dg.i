@@ -5,44 +5,44 @@
 []
 
 [Variables]
-  [./u]
+  [u]
     family = MONOMIAL
     order = FIRST
     initial_condition = 922
-  [../]
+  []
 []
 
 [Kernels]
-  [./time]
+  [time]
     type = TimeDerivative
     variable = u
-  [../]
-  [./diff]
+  []
+  [diff]
     type = Diffusion
     variable = u
-  [../]
+  []
 []
 
 [DGKernels]
   active = 'dg_diff'
 
-  [./dg_diff]
+  [dg_diff]
     type = DGDiffusion
     variable = u
     epsilon = -1
     sigma = 6
-  [../]
+  []
 []
 
 [BCs]
-  [./all]
+  [all]
     type = DGFunctionDiffusionDirichletBC
     variable = u
     boundary = 'left right'
     function = 'ffn'
     epsilon = -1
     sigma = 6
-  [../]
+  []
 []
 
 [Executioner]
@@ -53,14 +53,14 @@
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '922 + 500*tanh(t/1e-6)'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []

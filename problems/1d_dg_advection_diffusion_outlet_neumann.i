@@ -15,46 +15,46 @@ k_coeff = 1
   #   type = TimeDerivative
   #   variable = u
   # [../]
-  [./source]
+  [source]
     type = UserForcingFunction
     variable = u
     function = 'forcing_func'
-  [../]
-  [./convection]
+  []
+  [convection]
     type = ConservativeAdvection
     variable = u
     velocity = '1 0 0'
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = MatDiffusion
     variable = u
     prop_name = 'k'
-  [../]
+  []
 []
 
 [DGKernels]
-  [./convection]
+  [convection]
     type = DGConvection
     variable = u
     velocity = '1 0 0'
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = DGMatDiffusion
     variable = u
     prop_name = 'k'
     sigma = 6
     epsilon = -1
-  [../]
+  []
 []
 
 [BCs]
-  [./advection]
+  [advection]
     type = DGConvectionOutflow
     boundary = 'left right'
     variable = u
     velocity = '1 0 0'
-  [../]
-  [./diffusion_left]
+  []
+  [diffusion_left]
     type = DGFunctionMatDiffusionDirichletBC
     boundary = 'left'
     variable = u
@@ -62,7 +62,7 @@ k_coeff = 1
     epsilon = -1
     function = 'boundary_left_func'
     prop_name = 'k'
-  [../]
+  []
   # [./diffusion_right]
   #   type = DGFunctionMatDiffusionDirichletBC
   #   boundary = 'right'
@@ -75,22 +75,22 @@ k_coeff = 1
 []
 
 [Problem]
-[../]
+[]
 
 [Variables]
-  [./u]
+  [u]
     family = MONOMIAL
     order = FIRST
-  [../]
+  []
 []
 
 [Materials]
-  [./test]
+  [test]
     block = 0
     type = GenericConstantMaterial
     prop_names = 'k'
     prop_values = ${k_coeff}
-  [../]
+  []
 []
 
 [Executioner]
@@ -113,37 +113,36 @@ k_coeff = 1
   petsc_options_iname = '-pc_type -ksp_type -snes_linesearch_minlambda'
   petsc_options_value = 'lu preonly 1e-3'
 
-
   solve_type = 'NEWTON'
   nl_rel_tol = 1e-2
   nl_max_its = 50
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = FDP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
-  [./boundary_left_func]
+  []
+  [boundary_left_func]
     type = ParsedFunction
     value = '0'
-  [../]
-  [./boundary_right_func]
+  []
+  [boundary_right_func]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
     execute_on = 'timestep_end initial'
-  [../]
+  []
 []

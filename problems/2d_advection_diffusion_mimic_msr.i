@@ -1,62 +1,62 @@
-flow_velocity=1
-sigma_val=6
+flow_velocity = 1
+sigma_val = 6
 
 [Mesh]
   file = two_block_mesh_mimic_msr.msh
 []
 
 [Kernels]
-  [./time]
+  [time]
     type = TimeDerivative
     variable = u
-  [../]
-  [./source]
+  []
+  [source]
     type = UserForcingFunction
     variable = u
     function = 'forcing_func'
     block = 'fuel'
-  [../]
-  [./convection]
+  []
+  [convection]
     type = ConservativeAdvection
     variable = u
     velocity = '0 ${flow_velocity} 0'
     block = 'fuel'
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = MatDiffusion
     variable = u
     prop_name = 'k'
-  [../]
+  []
 []
 
 [Problem]
   coord_type = RZ
-[../]
+[]
 
 [DGKernels]
-  [./convection]
+  [convection]
     type = DGConvection
     variable = u
     velocity = '0 ${flow_velocity} 0'
     block = 'fuel'
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = DGDiffusion
     variable = u
     diff = 'k'
     sigma = ${sigma_val}
     epsilon = -1
-  [../]
+  []
 []
 
 [BCs]
-  [./advection]
+  [advection]
     type = OutflowBC
     boundary = 'fuel_top'
     variable = u
     velocity = '0 ${flow_velocity} 0'
-  [../]
-  [./diffusion_left]
+  []
+  [diffusion_left]
     type = DGFunctionDiffusionDirichletBC
     boundary = 'fuel_bottom graphite_bottom'
     variable = u
@@ -64,29 +64,29 @@ sigma_val=6
     epsilon = -1
     function = 'boundary_left_func'
     diff = 'k'
-  [../]
+  []
 []
 
 [Variables]
-  [./u]
+  [u]
     family = L2_LAGRANGE
     order = FIRST
-  [../]
+  []
 []
 
 [Materials]
-  [./fuel]
+  [fuel]
     block = 'fuel'
     type = GenericConstantMaterial
     prop_names = 'k'
     prop_values = '1'
-  [../]
-  [./moder]
+  []
+  [moder]
     block = 'moder'
     type = GenericConstantMaterial
     prop_names = 'k'
     prop_values = '2'
-  [../]
+  []
 []
 
 [Executioner]
@@ -104,32 +104,32 @@ sigma_val=6
   nl_max_its = 40
 
   dtmin = 1e-5
-  [./TimeStepper]
+  [TimeStepper]
     type = IterationAdaptiveDT
     cutback_factor = 0.4
     dt = 1e-4
     growth_factor = 1.2
     optimal_iterations = 20
-  [../]
+  []
 
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
-  [./boundary_left_func]
+  []
+  [boundary_left_func]
     type = ParsedFunction
     value = '0'
-  [../]
+  []
 []
 
 [Outputs]

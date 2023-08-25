@@ -11,55 +11,55 @@ k_coeff = 1
   #   type = TimeDerivative
   #   variable = u
   # [../]
-  [./source]
+  [source]
     type = UserForcingFunction
     variable = u
     function = 'forcing_func'
-  [../]
-  [./convection]
+  []
+  [convection]
     type = ConservativeAdvection
     variable = u
     velocity = '1 0 0'
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = MatDiffusion
     variable = u
     prop_name = 'k'
-  [../]
+  []
 []
 
 [BCs]
-  [./advection]
+  [advection]
     type = DGConvectionOutflow
     boundary = 'right'
     variable = u
     velocity = '1 0 0'
-  [../]
-  [./dirichlet_left]
+  []
+  [dirichlet_left]
     type = DirichletBC
     value = 0
     boundary = 'left'
     variable = u
-  [../]
+  []
 []
 
 [Problem]
-[../]
+[]
 
 [Variables]
-  [./u]
+  [u]
     family = LAGRANGE
     order = FIRST
-  [../]
+  []
 []
 
 [Materials]
-  [./test]
+  [test]
     block = 0
     type = GenericConstantMaterial
     prop_names = 'k'
     prop_values = ${k_coeff}
-  [../]
+  []
 []
 
 [Executioner]
@@ -82,7 +82,6 @@ k_coeff = 1
   petsc_options_iname = '-pc_type -ksp_type -snes_linesearch_minlambda'
   petsc_options_value = 'lu preonly 1e-3'
 
-
   solve_type = 'NEWTON'
   nl_rel_tol = 1e-2
   nl_abs_tol = 1e-10
@@ -90,22 +89,22 @@ k_coeff = 1
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
     execute_on = 'timestep_end initial'
-  [../]
+  []
 []

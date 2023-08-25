@@ -5,35 +5,35 @@
 []
 
 [Variables]
-  [./u]
+  [u]
     initial_condition = 922
-  [../]
+  []
 []
 
 [Kernels]
-  [./time]
+  [time]
     type = TimeDerivative
     variable = u
-  [../]
-  [./diff]
+  []
+  [diff]
     type = Diffusion
     variable = u
-  [../]
+  []
 []
 
 [BCs]
-  [./left]
+  [left]
     type = FunctionDirichletBC
     function = 'ffn'
     variable = u
     boundary = 'left'
-  [../]
-  [./right]
+  []
+  [right]
     type = FunctionDirichletBC
     function = 'ffn'
     variable = u
     boundary = 'right'
-  [../]
+  []
 []
 
 [Executioner]
@@ -44,14 +44,14 @@
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '922 + 500*tanh(t/1e-5)'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []

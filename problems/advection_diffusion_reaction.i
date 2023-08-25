@@ -1,5 +1,5 @@
-mu=1e-1
-velocity=1
+mu = 1e-1
+velocity = 1
 
 [GlobalParams]
   u = ${velocity}
@@ -20,20 +20,20 @@ velocity=1
   #   variable = u
   #   function = 'forcing_func'
   # [../]
-  [./convection]
+  [convection]
     type = ConservativeAdvection
     variable = u
     velocity = '${velocity} 0 0'
-  [../]
-  [./advection_supg]
+  []
+  [advection_supg]
     type = AdvectionSUPG
     variable = u
-  [../]
-  [./diffusion]
+  []
+  [diffusion]
     type = MatDiffusion
     variable = u
     diffusivity = 'mu'
-  [../]
+  []
   # [./time]
   #   type = TimeDerivative
   #   variable = u
@@ -47,31 +47,31 @@ velocity=1
   #   variable = u
   #   velocity = '1 0 0'
   # [../]
-  [./left]
+  [left]
     type = DirichletBC
     boundary = left
     variable = u
     value = 1
-  [../]
+  []
 []
 
 [Problem]
 []
 
 [Variables]
-  [./u]
+  [u]
     family = LAGRANGE
     order = FIRST
-  [../]
+  []
 []
 
 [Materials]
-  [./test]
+  [test]
     block = 0
     type = GenericConstantMaterial
     prop_names = 'mu rho'
     prop_values = '${mu} 1'
-  [../]
+  []
 []
 
 [Executioner]
@@ -97,25 +97,25 @@ velocity=1
 []
 
 [Preconditioning]
-  [./SMP]
+  [SMP]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Functions]
-  [./forcing_func]
+  [forcing_func]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Outputs]
   perf_graph = true
   print_linear_residuals = true
-  [./out]
+  [out]
     type = Exodus
     execute_on = 'timestep_end initial'
     # execute_on = 'final'
-  [../]
+  []
 []

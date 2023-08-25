@@ -1,4 +1,4 @@
-flow_velocity=100
+flow_velocity = 100
 
 [Mesh]
   type = GeneratedMesh
@@ -8,41 +8,41 @@ flow_velocity=100
 []
 
 [Variables]
-  [./u]
+  [u]
     order = FIRST
     family = MONOMIAL
     block = 0
-  [../]
+  []
 []
 
 [Kernels]
-  [./test_u]
+  [test_u]
     type = Diffusion
     variable = u
     block = 0
-  [../]
-  [./adv_u]
+  []
+  [adv_u]
     type = ConservativeAdvection
     variable = u
     velocity = '${flow_velocity} 0 0'
     block = 0
-  [../]
+  []
 []
 
 [DGKernels]
-  [./dg_advection_u]
+  [dg_advection_u]
     type = DGConvection
     variable = u
     velocity = '${flow_velocity} 0 0'
     block = 0
-  [../]
-  [./dg_diffusion_u]
+  []
+  [dg_diffusion_u]
     type = DGDiffusion
     variable = u
     sigma = 6
     epsilon = -1
     block = 0
-  [../]
+  []
 []
 
 [BCs]
@@ -53,34 +53,34 @@ flow_velocity=100
   #   inlet_conc = 1
   #   velocity = '${flow_velocity} 0 0'
   # [../]
-  [./diri_left]
+  [diri_left]
     boundary = 'left'
     type = DGFunctionDiffusionDirichletBC
     variable = u
     sigma = 6
     epsilon = -1
     function = 'inlet_val'
-  [../]
-  [./right]
+  []
+  [right]
     type = RobinBC
     variable = u
     boundary = 'right'
     velocity = ${flow_velocity}
-  [../]
+  []
 []
 
 [Functions]
-  [./inlet_val]
+  [inlet_val]
     type = ParsedFunction
     value = '1'
-  [../]
+  []
 []
 
 [Preconditioning]
-  [./fdp]
+  [fdp]
     type = SMP
     full = true
-  [../]
+  []
 []
 
 [Executioner]

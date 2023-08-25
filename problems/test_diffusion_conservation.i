@@ -3,56 +3,56 @@
 []
 
 [Variables]
-  [./u]
-  [../]
+  [u]
+  []
 []
 
 [Kernels]
-  [./time]
+  [time]
     type = TimeDerivative
     variable = u
-  [../]
-  [./diff]
+  []
+  [diff]
     type = MatDiffusion
     variable = u
     prop_name = 'diff'
-  [../]
-  [./source]
+  []
+  [source]
     type = UserForcingFunction
     function = 'ffn'
     block = 'fuel'
     variable = u
-  [../]
+  []
 []
 
 [Materials]
-  [./fuel]
+  [fuel]
     type = GenericConstantMaterial
     prop_names = 'diff'
     prop_values = '1'
     block = 'fuel'
-  [../]
-  [./moder]
+  []
+  [moder]
     type = GenericConstantMaterial
     prop_names = 'diff'
     prop_values = '10'
     block = 'mod'
-  [../]
+  []
 []
 
 [BCs]
-  [./left]
+  [left]
     type = DirichletBC
     value = 0
     variable = u
     boundary = 'left'
-  [../]
-  [./right]
+  []
+  [right]
     type = DirichletBC
     value = 0
     variable = u
     boundary = 'right'
-  [../]
+  []
 []
 
 [Executioner]
@@ -63,14 +63,14 @@
 []
 
 [Functions]
-  [./ffn]
+  [ffn]
     type = ParsedFunction
     value = '1000'
-  [../]
+  []
 []
 
 [Outputs]
-  [./out]
+  [out]
     type = Exodus
-  [../]
+  []
 []
