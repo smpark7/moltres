@@ -1,1 +1,263 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>TimeStepper System | Moltres</title><link href="../../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../../media/framework/github-logo.png" class="github-mark"></img><img src="../../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="6febd87e-7512-427f-b4b9-e2db680c7d4f" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="64159aae-d484-464b-a0d5-5719deedc3fb" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="4ead65e0-f9ad-40cc-9616-6de663de7aab" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="ce25560f-6ed7-4cb0-9075-99817b0a46ee"><i class="material-icons">menu</i></a><ul class="sidenav" id="ce25560f-6ed7-4cb0-9075-99817b0a46ee"><li><a href="#!" class="dropdown-trigger" data-target="68cb5ce8-9fa1-4983-887a-28170c90731b" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="7c4fadeb-562c-4ffb-baa1-bbdc5241b35e" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="1858706b-ef4e-4d56-8f98-49e66d9e1198" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="6febd87e-7512-427f-b4b9-e2db680c7d4f"><li><a href="../../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="64159aae-d484-464b-a0d5-5719deedc3fb"><li><a href="../../index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../../development/contributing.html">Contributing</a></li><li><a href="../../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="4ead65e0-f9ad-40cc-9616-6de663de7aab"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="68cb5ce8-9fa1-4983-887a-28170c90731b"><li><a href="../../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="7c4fadeb-562c-4ffb-baa1-bbdc5241b35e"><li><a href="../../index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../../development/contributing.html">Contributing</a></li><li><a href="../../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="1858706b-ef4e-4d56-8f98-49e66d9e1198"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href="../.." class="breadcrumb">syntax</a><a href=".." class="breadcrumb">Executioner</a><a href="." class="breadcrumb">TimeStepper</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="4cd1021a-22ed-48e6-9a22-3a85ed109700" data-section-level="1" data-section-text="TimeStepper System"><h1 id="timestepper-system">TimeStepper System</h1><p>The method used to calculate the size of the time steps is controlled by the <code>TimeStepper</code> block. There are a number of types of TimeStepper available, each of which controls the time stepping in different ways, including using fixed time stepping, time stepping based on a function, or adaptive time stepping.</p><section class="scrollspy" id="996c3e34-b5df-416a-8cf1-95f17ba8b3c3" data-section-level="2" data-section-text="Available Objects"><h2 id="available-objects">Available Objects</h2><ul class="moose-syntax-list collection with-header"><li class="collection-header">Moose App</li><li class="collection-item"><a href="../../../source/timesteppers/AB2PredictorCorrector.html">AB2PredictorCorrector</a>Implements second order Adams-Bashforth method for timestep calculation.</li><li class="collection-item"><a href="../../../source/timesteppers/CSVTimeSequenceStepper.html">CSVTimeSequenceStepper</a>Solves the Transient problem at a sequence of given time points read in a file.</li><li class="collection-item"><a href="../../../source/timesteppers/ConstantDT.html">ConstantDT</a>Timestepper that takes a constant time step size</li><li class="collection-item"><a href="../../../source/timesteppers/ExodusTimeSequenceStepper.html">ExodusTimeSequenceStepper</a>Solves the Transient problem at a sequence of time points taken from a specified exodus file.</li><li class="collection-item"><a href="../../../source/timesteppers/FunctionDT.html">FunctionDT</a>Timestepper whose steps vary over time according to a user-defined function</li><li class="collection-item"><a href="../../../source/timesteppers/IterationAdaptiveDT.html">IterationAdaptiveDT</a>Adjust the timestep based on the number of iterations</li><li class="collection-item"><a href="../../../source/timesteppers/LogConstantDT.html">LogConstantDT</a>TimeStepper which imposes a time step constant in the logarithmic space</li><li class="collection-item"><a href="../../../source/timesteppers/PostprocessorDT.html">PostprocessorDT</a>Computes timestep based on a Postprocessor value.</li><li class="collection-item"><a href="../../../source/timesteppers/SolutionTimeAdaptiveDT.html">SolutionTimeAdaptiveDT</a>Compute simulation timestep based on actual solution time.</li><li class="collection-item"><a href="../../../source/timesteppers/TimeSequenceStepper.html">TimeSequenceStepper</a>Solves the Transient problem at a sequence of given time points.</li></ul></section><section class="scrollspy" id="0057df29-cc5c-4c3b-b86a-f054f93a457d" data-section-level="2" data-section-text="Available Actions"><h2 id="available-actions">Available Actions</h2><ul class="moose-syntax-list collection with-header"><li class="collection-header">Moose App</li><li class="collection-item"><a href="../../../source/actions/SetupTimeStepperAction.html">SetupTimeStepperAction</a>Add and initialize a TimeStepper object to the simulation.</li></ul></section></section></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#996c3e34-b5df-416a-8cf1-95f17ba8b3c3" class="tooltipped" data-position="left" data-tooltip="Available Objects">Available Objects</a></li><li><a href="#0057df29-cc5c-4c3b-b86a-f054f93a457d" class="tooltipped" data-position="left" data-tooltip="Available Actions">Available Actions</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../../js/init.js"></script><script type="text/javascript" src="../../../js/navigation.js"></script><script type="text/javascript" src="../../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../../js/search_index.js"></script><script type="text/javascript" src="../../../js/sqa_moose.js"></script>
+<!DOCTYPE html><head><meta charset="UTF-8"><title>TimeStepper System | Moltres</title><link href="../../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../../media/framework/github-logo.png" class="github-mark"></img><img src="../../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="1e13b957-209b-4b43-91ec-d6e22e2fddd5" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="f51cfbc6-9e0f-45bd-95e3-e8bc2cb5796d" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="45941592-c05f-4d1c-9791-782c06d4f8c0" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="f89dd4ae-9cba-4f91-acb7-d55b03d7a958"><i class="material-icons">menu</i></a><ul class="sidenav" id="f89dd4ae-9cba-4f91-acb7-d55b03d7a958"><li><a href="#!" class="dropdown-trigger" data-target="7bd12a2e-5342-4a32-b4f2-25f93a741feb" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="ec38c78f-5039-4c2b-8d2b-86082206f78c" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="82b79f29-993d-4f41-aee8-1dc34c46858a" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="1e13b957-209b-4b43-91ec-d6e22e2fddd5"><li><a href="../../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="f51cfbc6-9e0f-45bd-95e3-e8bc2cb5796d"><li><a href="../../index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../../development/contributing.html">Contributing</a></li><li><a href="../../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="45941592-c05f-4d1c-9791-782c06d4f8c0"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="7bd12a2e-5342-4a32-b4f2-25f93a741feb"><li><a href="../../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="ec38c78f-5039-4c2b-8d2b-86082206f78c"><li><a href="../../index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../../development/contributing.html">Contributing</a></li><li><a href="../../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="82b79f29-993d-4f41-aee8-1dc34c46858a"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href="../.." class="breadcrumb">syntax</a><a href=".." class="breadcrumb">Executioner</a><a href="." class="breadcrumb">TimeStepper</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="e9273888-7c49-445e-959d-024f76581683" data-section-level="1" data-section-text="TimeStepper System"><h1 id="timestepper-system">TimeStepper System</h1><p>The method calculates the size of the time steps using either the <code>[TimeStepper]</code> block or the <code>[TimeSteppers]</code> block. The <code>[TimeStepper]</code> block takes only one time stepper while <code>[TimeSteppers]</code> block keeps the features of <code>[TimeStepper]</code> and also supports the composed time step size with multiple time steps inputs.</p><div class="card moose-alert moose-alert-warning"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">warning</i><span class="moose-alert-title-brand">warning</span></div><div class="card-content"><div class="moose-alert-content"><p>This page and the <code>[TimeStepper]</code> block will be deprecated soon in the future.</p></div></div></div><p>When more than one time steppers are provided, the time stepper system will add a <a href="../../../source/timesteppers/CompositionDT.html">Composition TimeStepper</a> as the final time stepper of the transient simulation. The <a href="../../../source/timesteppers/CompositionDT.html">Composition TimeStepper</a> takes all input time steppers except the ones used for <a href="#136ee488-e992-4e90-9224-a3cc590ff73d" class="moose-modal-link modal-trigger">&quot;lower_bound&quot;</a> and compute the minimum time step size within <a href="#caf8dc59-79d1-4ef6-8a40-d9f26c0b251b" class="moose-modal-link modal-trigger">&quot;lower_bound&quot;</a> as the output time step size. There are a number of types of TimeStepper available. They control the time stepping in different ways, including using fixed time stepping, time stepping based on a function, or adaptive time stepping.</p><p>The time stepper system is controllable via <a href="../../Controls/index.html">Controls</a> block. The user can turn on/off the time steppers to control the usage of time steppers like make time stepper(s) only active at certain time period.</p><section class="scrollspy" id="4b6c6a31-50ea-4d5d-9dc3-f6977c54d545" data-section-level="2" data-section-text="Example input syntax"><h2 id="example-input-syntax">Example input syntax</h2><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[Executioner]
+  type = Transient
+  end_time = 0.8
+  solve_type = PJFNK
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+  # Use as many different time steppers as we could to test the compositionDT,
+  # SolutionTimeAdaptiveDT give slightly different dt per run, set rel_err = 1e-2
+  # to ensure the test won&#x27;t fail due to the small difference in the high-digit.
+  [TimeSteppers]
+    [ConstDT1]
+      type = ConstantDT
+      dt = 0.2
+    []
+
+    [FunctionDT]
+      type = FunctionDT
+      function = dts
+    []
+
+    [LogConstDT]
+      type = LogConstantDT
+      log_dt = 0.2
+      first_dt = 0.1
+    []
+
+    [IterationAdapDT]
+      type = IterationAdaptiveDT
+      dt = 0.5
+    []
+
+    [Timesequence]
+      type = TimeSequenceStepper
+      time_sequence = &#x27;0  0.25 0.3 0.5 0.8&#x27;
+    []
+
+    [PPDT]
+      type = PostprocessorDT
+      postprocessor = PostDT
+      dt = 0.1
+    []
+  []
+[]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#e4d102ad-03d5-40ef-9f32-8cb31ec499ba">(moose/test/tests/time_steppers/time_stepper_system/multiple_timesteppers.i)</a><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[Executioner]
+  type = Transient
+  end_time = 0.8
+  solve_type = PJFNK
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+
+  [TimeSteppers]
+    [ConstDT1]
+      type = ConstantDT
+      dt = 0.2
+    []
+
+    [ConstDT2]
+      type = ConstantDT
+      dt = 0.1
+    []
+  []
+[]
+
+[Controls]
+  [c1]
+    type = TimePeriod
+    enable_objects = &#x27;TimeStepper::ConstDT1&#x27;
+    disable_objects = &#x27;TimeStepper::ConstDT2&#x27;
+    start_time = &#x27;0.3&#x27;
+    end_time = &#x27;0.8&#x27;
+  []
+[]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#7c33fff0-5f9f-4ee3-9644-fa6404a6ea65">(moose/test/tests/time_steppers/time_stepper_system/active_timesteppers.i)</a></section><section class="scrollspy" id="283e2095-19ad-4ba2-a950-79418a389946" data-section-level="2" data-section-text="Available Objects"><h2 id="available-objects">Available Objects</h2><ul class="moose-syntax-list collection with-header"><li class="collection-header">Moose App</li><li class="collection-item"><a href="../../../source/timesteppers/AB2PredictorCorrector.html">AB2PredictorCorrector</a>Implements second order Adams-Bashforth method for timestep calculation.</li><li class="collection-item"><a href="../../../source/timesteppers/CSVTimeSequenceStepper.html">CSVTimeSequenceStepper</a>Solves the Transient problem at a sequence of given time points read in a file.</li><li class="collection-item"><a href="../../../source/timesteppers/CompositionDT.html">CompositionDT</a>The time stepper take all the other time steppers as input and return the minimum time step size.</li><li class="collection-item"><a href="../../../source/timesteppers/ConstantDT.html">ConstantDT</a>Timestepper that takes a constant time step size</li><li class="collection-item"><a href="../../../source/timesteppers/ExodusTimeSequenceStepper.html">ExodusTimeSequenceStepper</a>Solves the Transient problem at a sequence of time points taken from a specified exodus file.</li><li class="collection-item"><a href="../../../source/timesteppers/FunctionDT.html">FunctionDT</a>Timestepper whose steps vary over time according to a user-defined function</li><li class="collection-item"><a href="../../../source/timesteppers/IterationAdaptiveDT.html">IterationAdaptiveDT</a>Adjust the timestep based on the number of iterations</li><li class="collection-item"><a href="../../../source/timesteppers/LogConstantDT.html">LogConstantDT</a>TimeStepper which imposes a time step constant in the logarithmic space</li><li class="collection-item"><a href="../../../source/timesteppers/PostprocessorDT.html">PostprocessorDT</a>Computes timestep based on a Postprocessor value.</li><li class="collection-item"><a href="../../../source/timesteppers/SolutionTimeAdaptiveDT.html">SolutionTimeAdaptiveDT</a>Compute simulation timestep based on actual solution time.</li><li class="collection-item"><a href="../../../source/timesteppers/TimeSequenceFromTimes.html">TimeSequenceFromTimes</a>Solves the Transient problem at a sequence of time points taken from a specified Times object.</li><li class="collection-item"><a href="../../../source/timesteppers/TimeSequenceStepper.html">TimeSequenceStepper</a>Solves the Transient problem at a sequence of given time points.</li></ul></section><section class="scrollspy" id="1efc8d0e-c759-4d1d-9394-f4c717e67cca" data-section-level="2" data-section-text="Available Actions"><h2 id="available-actions">Available Actions</h2><ul class="moose-syntax-list collection with-header"><li class="collection-header">Moose App</li><li class="collection-item"><a href="../../../source/actions/AddTimeStepperAction.html">AddTimeStepperAction</a>Add a TimeStepper object to the simulation.</li></ul></section><section class="scrollspy" id="2ed38a78-4889-4815-8e85-47f8f523757f" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="54e662a6-fa95-4a67-a62a-ef5d146ee681" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">active</span><span class="moose-parameter-header-default">__all__ </span><span class="moose-parameter-header-description">If specified only the blocks named will be visited and made active</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>__all__ </p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>If specified only the blocks named will be visited and made active</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">inactive</span><span class="moose-parameter-header-description">If specified blocks matching these identifiers will be skipped.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>If specified blocks matching these identifiers will be skipped.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="670726a4-9e32-4283-b29a-92fde8c1306d" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">isObjectAction</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Indicates that this is a MooseObjectAction.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Indicates that this is a MooseObjectAction.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section></section></section><div class="moose-modal modal" id="136ee488-e992-4e90-9224-a3cc590ff73d"><div class="modal-content"><h4>lower_bound</h4><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The maximum of these TimeSteppers will form the lower bound on the time step size. A single or multiple time steppers may be specified.</p></div></div><div class="moose-modal modal" id="caf8dc59-79d1-4ef6-8a40-d9f26c0b251b"><div class="modal-content"><h4>lower_bound</h4><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The maximum of these TimeSteppers will form the lower bound on the time step size. A single or multiple time steppers may be specified.</p></div></div><div class="moose-modal modal" id="e4d102ad-03d5-40ef-9f32-8cb31ec499ba"><div class="modal-content"><h4>(moose/test/tests/time_steppers/time_stepper_system/multiple_timesteppers.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  nx = 10
+  ny = 10
+[]
+
+[Variables]
+  [u]
+  []
+[]
+
+[Kernels]
+  [diff]
+    type = CoefDiffusion
+    variable = u
+    coef = 0.1
+  []
+  [time]
+    type = TimeDerivative
+    variable = u
+  []
+[]
+
+[Functions]
+  [dts]
+    type = PiecewiseLinear
+    x = &#x27;0   0.85 2&#x27;
+    y = &#x27;0.2 0.15  0.2&#x27;
+  []
+[]
+
+[BCs]
+  [left]
+    type = DirichletBC
+    variable = u
+    boundary = left
+    value = 0
+  []
+  [right]
+    type = DirichletBC
+    variable = u
+    boundary = right
+    value = 1
+  []
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 0.8
+  solve_type = PJFNK
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+  # Use as many different time steppers as we could to test the compositionDT,
+  # SolutionTimeAdaptiveDT give slightly different dt per run, set rel_err = 1e-2
+  # to ensure the test won&#x27;t fail due to the small difference in the high-digit.
+  [TimeSteppers]
+    [ConstDT1]
+      type = ConstantDT
+      dt = 0.2
+    []
+
+    [FunctionDT]
+      type = FunctionDT
+      function = dts
+    []
+
+    [LogConstDT]
+      type = LogConstantDT
+      log_dt = 0.2
+      first_dt = 0.1
+    []
+
+    [IterationAdapDT]
+      type = IterationAdaptiveDT
+      dt = 0.5
+    []
+
+    [Timesequence]
+      type = TimeSequenceStepper
+      time_sequence  = &#x27;0  0.25 0.3 0.5 0.8&#x27;
+    []
+
+    [PPDT]
+      type = PostprocessorDT
+      postprocessor = PostDT
+      dt = 0.1
+    []
+  []
+[]
+
+[Postprocessors]
+  [timestep]
+    type = TimePostprocessor
+    execute_on = &#x27;timestep_end&#x27;
+  []
+
+  [PostDT]
+    type = ElementAverageValue
+    variable = u
+    execute_on = &#x27;initial timestep_end&#x27;
+  []
+[]
+
+[Outputs]
+  csv = true
+  file_base=&#x27;multiple_timesteppers&#x27;
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="7c33fff0-5f9f-4ee3-9644-fa6404a6ea65"><div class="modal-content"><h4>(moose/test/tests/time_steppers/time_stepper_system/active_timesteppers.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  type = GeneratedMesh
+  dim = 2
+  nx = 10
+  ny = 10
+[]
+
+[Variables]
+  [u]
+  []
+[]
+
+[Kernels]
+  [diff]
+    type = CoefDiffusion
+    variable = u
+    coef = 0.1
+  []
+  [time]
+    type = TimeDerivative
+    variable = u
+  []
+[]
+
+[BCs]
+  [left]
+    type = DirichletBC
+    variable = u
+    boundary = left
+    value = 0
+  []
+  [right]
+    type = DirichletBC
+    variable = u
+    boundary = right
+    value = 1
+  []
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 0.8
+  solve_type = PJFNK
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+
+  [TimeSteppers]
+    [ConstDT1]
+      type = ConstantDT
+      dt = 0.2
+    []
+
+    [ConstDT2]
+      type = ConstantDT
+      dt = 0.1
+    []
+  []
+[]
+
+[Controls]
+  [c1]
+    type = TimePeriod
+    enable_objects = &#x27;TimeStepper::ConstDT1&#x27;
+    disable_objects = &#x27;TimeStepper::ConstDT2&#x27;
+    start_time = &#x27;0.3&#x27;
+    end_time = &#x27;0.8&#x27;
+  []
+[]
+
+[Postprocessors]
+  [timestep]
+    type = TimePostprocessor
+    execute_on = &#x27;timestep_end&#x27;
+  []
+[]
+
+[Outputs]
+  csv = true
+  file_base=&#x27;active_timesteppers&#x27;
+[]
+
+
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#4b6c6a31-50ea-4d5d-9dc3-f6977c54d545" class="tooltipped" data-position="left" data-tooltip="Example input syntax">Example input syntax</a></li><li><a href="#283e2095-19ad-4ba2-a950-79418a389946" class="tooltipped" data-position="left" data-tooltip="Available Objects">Available Objects</a></li><li><a href="#1efc8d0e-c759-4d1d-9394-f4c717e67cca" class="tooltipped" data-position="left" data-tooltip="Available Actions">Available Actions</a></li><li><a href="#2ed38a78-4889-4815-8e85-47f8f523757f" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../../js/init.js"></script><script type="text/javascript" src="../../../js/navigation.js"></script><script type="text/javascript" src="../../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../../js/search_index.js"></script><script type="text/javascript" src="../../../js/sqa_moose.js"></script>
