@@ -3,35 +3,36 @@
     type = GeneratedMeshGenerator
     dim = 2
     xmin = 0
-    xmax = 0.625
+    xmax = 0.6
     ymin = 0
-    ymax = 150
+    ymax = 160
     nx = 2
-    ny = 15
+    ny = 16
   []
   [fuel_right]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 4.375
+    xmin = 4.4
     xmax = 5
     ymin = 0
-    ymax = 150
+    ymax = 160
     nx = 2
-    ny = 15
+    ny = 16
   []
   [moderator]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 0.625
-    xmax = 4.375
+    xmin = 0.6
+    xmax = 4.4
     ymin = 0
-    ymax = 150
+    ymax = 160
     nx = 6
-    ny = 15
+    ny = 16
   []
   [unit_mesh]
     type = StitchedMeshGenerator
     inputs = 'fuel_left moderator fuel_right'
+    prevent_boundary_ids_overlap = false
     stitch_boundaries_pairs = 'right left;
                                right left;
                                right left'
@@ -40,8 +41,8 @@
     type = SubdomainBoundingBoxGenerator
     input = unit_mesh
     block_id = 1
-    bottom_left = '0.625 0 0'
-    top_right = '4.375 150 0'
+    bottom_left = '0.6 0 0'
+    top_right = '4.4 160 0'
   []
   [patterned_mesh]
     type = PatternedMeshGenerator
@@ -53,25 +54,26 @@
     type = GeneratedMeshGenerator
     dim = 2
     xmin = 65
-    xmax = 65.625
+    xmax = 65.6
     ymin = 0
-    ymax = 150
+    ymax = 160
     nx = 2
-    ny = 15
+    ny = 16
   []
   [mod_last]
     type = GeneratedMeshGenerator
     dim = 2
-    xmin = 65.625
-    xmax = 69.375
+    xmin = 65.6
+    xmax = 69.4
     ymin = 0
-    ymax = 150
+    ymax = 160
     nx = 6
-    ny = 15
+    ny = 16
   []
   [full_mesh]
     type = StitchedMeshGenerator
     inputs = 'patterned_mesh fuel_last mod_last'
+    prevent_boundary_ids_overlap = false
     stitch_boundaries_pairs = 'right left;
                                right left;
                                right left'
@@ -80,8 +82,8 @@
     type = SubdomainBoundingBoxGenerator
     input = full_mesh
     block_id = 1
-    bottom_left = '65.625 0 0'
-    top_right = '69.375 150 0'
+    bottom_left = '65.6 0 0'
+    top_right = '69.4 160 0'
   []
   [fuel_top_boundary]
     type = SideSetsAroundSubdomainGenerator

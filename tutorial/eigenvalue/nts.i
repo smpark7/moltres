@@ -4,7 +4,7 @@
   use_exp_form = false
   group_fluxes = 'group1 group2'
   pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
-  temperature = 900
+  temperature = 922
   sss2_input = true
   account_delayed = true
 []
@@ -39,7 +39,7 @@
     outlet_boundaries = 'fuel_top'
     constant_velocity_values = true
     u_def = 0
-    v_def = 18.085
+    v_def = 17.021
     w_def = 0
     nt_exp_form = false
     loop_precursors = false

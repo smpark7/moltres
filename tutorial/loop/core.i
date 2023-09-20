@@ -1,3 +1,5 @@
+flow_velocity = 21.333
+
 [GlobalParams]
   num_groups = 2
   num_precursor_groups = 6
@@ -7,6 +9,7 @@
   temperature = temp
   sss2_input = true
   account_delayed = true
+  eigenvalue_scaling = 1.0205
 []
 
 [Mesh]
@@ -18,19 +21,20 @@
 []
 
 [Variables]
-  [group1]
-    order = FIRST
-    family = LAGRANGE
-  []
-  [group2]
-    order = FIRST
-    family = LAGRANGE
-  []
   [temp]
     order = FIRST
     family = LAGRANGE
-    initial_condition = 1000
+    initial_condition = 940
   []
+[]
+
+[Nt]
+  var_name_base = group
+  vacuum_boundaries = 'fuel_bottom mod_bottom right fuel_top mod_top'
+  pre_blocks = '0'
+  create_temperature_var = false
+  nt_ic_function = ic_func
+  eigen = false
 []
 
 [Precursors]
@@ -40,86 +44,20 @@
     order = CONSTANT
     block = 0
     outlet_boundaries = 'fuel_top'
+    inlet_boundaries = 'fuel_bottom'
     constant_velocity_values = true
     u_def = 0
-    v_def = 17.021
+    v_def = ${flow_velocity}
     w_def = 0
     nt_exp_form = false
-    loop_precursors = false
+    loop_precursors = true
+    multi_app = loop_app
+    is_loopapp = false
     transient = true
   []
 []
 
 [Kernels]
-  #---------------------------------------------------------------------
-  # Group 1 Neutronics
-  #---------------------------------------------------------------------
-  [time_group1]
-    type = NtTimeDerivative
-    variable = group1
-    group_number = 1
-  []
-  [sigma_r_group1]
-    type = SigmaR
-    variable = group1
-    group_number = 1
-  []
-  [diff_group1]
-    type = GroupDiffusion
-    variable = group1
-    group_number = 1
-  []
-  [inscatter_group1]
-    type = InScatter
-    variable = group1
-    group_number = 1
-  []
-  [fission_source_group1]
-    type = CoupledFissionKernel
-    variable = group1
-    group_number = 1
-    block = '0'
-  []
-  [delayed_group1]
-    type = DelayedNeutronSource
-    variable = group1
-    block = '0'
-    group_number = 1
-  []
-
-  #---------------------------------------------------------------------
-  # Group 2 Neutronics
-  #---------------------------------------------------------------------
-  [time_group2]
-    type = NtTimeDerivative
-    variable = group2
-    group_number = 2
-  []
-  [sigma_r_group2]
-    type = SigmaR
-    variable = group2
-    group_number = 2
-  []
-  [diff_group2]
-    type = GroupDiffusion
-    variable = group2
-    group_number = 2
-  []
-  [fission_source_group2]
-    type = CoupledFissionKernel
-    variable = group2
-    group_number = 2
-    block = '0'
-  []
-  [inscatter_group2]
-    type = InScatter
-    variable = group2
-    group_number = 2
-  []
-
-  #---------------------------------------------------------------------
-  # Temperature
-  #---------------------------------------------------------------------
   [temp_time_derivative]
     type = INSTemperatureTimeDerivative
     variable = temp
@@ -127,7 +65,7 @@
   [temp_advection_fuel]
     type = ConservativeTemperatureAdvection
     variable = temp
-    velocity = '0 17.021 0'
+    velocity = '0 ${flow_velocity} 0'
     block = '0'
   []
   [temp_diffusion]
@@ -143,51 +81,24 @@
 []
 
 [BCs]
-  [vacuum_group1]
-    type = VacuumConcBC
-    boundary = 'fuel_bottom fuel_top mod_bottom mod_top right'
-    variable = group1
-  []
-  [vacuum_group2]
-    type = VacuumConcBC
-    boundary = 'fuel_bottom fuel_top mod_bottom mod_top right'
-    variable = group2
-  []
   [temp_inlet_bc]
-    type = FunctionDirichletBC
+    type = PostprocessorDirichletBC
     variable = temp
-    boundary = 'fuel_bottom mod_bottom right'
-    function = 'temp_bc_func'
+    boundary = 'fuel_bottom right'
+    postprocessor = inlet_temp
   []
   [temp_outlet_bc]
     type = TemperatureOutflowBC
     variable = temp
     boundary = 'fuel_top'
-    velocity = '0 17.021 0'
-  []
-[]
-
-[ICs]
-  [group1_ic]
-    type = FunctionIC
-    variable = group1
-    function = ic_func
-  []
-  [group2_ic]
-    type = FunctionIC
-    variable = group2
-    function = ic_func
+    velocity = '0 ${flow_velocity} 0'
   []
 []
 
 [Functions]
   [temp_bc_func]
     type = ParsedFunction
-    expression = '1000 - (1000-950) * tanh(t/1)'
-  []
-  [dt_func]
-    type = ParsedFunction
-    expression = 'if(t<40, if(t<20, .4, 2), 8)'
+    expression = '940 - (940-908) * tanh(t/1)'
   []
   [ic_func]
     type = ParsedFunction
@@ -216,6 +127,31 @@
   []
 []
 
+[MultiApps]
+  [loop_app]
+    type = TransientMultiApp
+    app_type = MoltresApp
+    execute_on = timestep_begin
+    input_files = 'outer_loop.i'
+  []
+[]
+
+[Transfers]
+  [from_outer_loop]
+    type = MultiAppPostprocessorTransfer
+    from_multi_app = loop_app
+    from_postprocessor = loop_outlet_temp
+    to_postprocessor = inlet_temp
+    reduction_type = maximum
+  []
+  [to_outer_loop]
+    type = MultiAppPostprocessorTransfer
+    to_multi_app = loop_app
+    from_postprocessor = outlet_temp
+    to_postprocessor = loop_inlet_temp
+  []
+[]
+
 [Executioner]
   type = Transient
   end_time = 400
@@ -225,7 +161,7 @@
 
   automatic_scaling = true
   compute_scaling_once = false
-  resid_vs_jac_scaling_param = 0.2
+  resid_vs_jac_scaling_param = 0.1
   scaling_group_variables = 'group1 group2; pre1 pre2 pre3 pre4 pre5 pre6; temp'
 
   steady_state_detection = true
@@ -239,19 +175,20 @@
 
   line_search = none
 
-  dtmin = 1e-3
-  dtmax = 8
+  dtmin = 1e-2
+  dtmax = 2
+#  [TimeStepper]
+#    type = FunctionDT
+#    function = dt_func
+#  []
   [TimeStepper]
-    type = FunctionDT
-    function = dt_func
+    type = IterationAdaptiveDT
+    dt = 1e-2
+    cutback_factor = 0.4
+    growth_factor = 1.2
+    optimal_iterations = 5
+    iteration_window = 1
   []
-  #  [TimeStepper]
-  #    type = IterationAdaptiveDT
-  #    dt = .2
-  #    cutback_factor = 0.4
-  #    growth_factor = 1.2
-  #    optimal_iterations = 20
-  #  []
 []
 
 [Preconditioning]
@@ -276,14 +213,13 @@
     execute_on = linear
   []
   [inlet_temp]
-    type = SideAverageValue
-    variable = temp
-    boundary = fuel_bottom
+    type = Receiver
   []
   [outlet_temp]
     type = SideAverageValue
     variable = temp
     boundary = fuel_top
+    execute_on = 'initial timestep_end'
   []
 []
 
