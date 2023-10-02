@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><meta charset="UTF-8"><title>DataIO | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="bb345fcb-d814-4474-bfda-9eee45fa450a" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="fb6ec827-b813-47b1-b052-1bd82f84bd3d" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="a2252e92-c775-4eed-bb09-581139d365c6" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="c67fffbf-c8d4-44b9-b443-7b97ab90950a"><i class="material-icons">menu</i></a><ul class="sidenav" id="c67fffbf-c8d4-44b9-b443-7b97ab90950a"><li><a href="#!" class="dropdown-trigger" data-target="6a0373ab-7ac3-4e86-992d-0c63abecdd6c" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d8e5e5b3-1d0f-4177-90c9-4fb40c87afc9" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="e93c67fc-c429-4f1b-a1b2-bdb7972d6f37" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="bb345fcb-d814-4474-bfda-9eee45fa450a"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="fb6ec827-b813-47b1-b052-1bd82f84bd3d"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="a2252e92-c775-4eed-bb09-581139d365c6"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="6a0373ab-7ac3-4e86-992d-0c63abecdd6c"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="d8e5e5b3-1d0f-4177-90c9-4fb40c87afc9"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="e93c67fc-c429-4f1b-a1b2-bdb7972d6f37"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">restart</span><a href="#" class="breadcrumb">DataIO</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="0ecd9729-597e-4007-a1c3-a4fc193b3c8f" data-section-level="1" data-section-text="DataIO"><h1 id="dataio">DataIO</h1><p>The DataIO.h/.C files contain the declaration and definitions for MOOSE&#x27;s templated <code>dataLoad/dataStore</code> methods. These methods are scattered around the framework, modules and user applications and are used to store stateful information that cannot be recalculated during a restore operation. These methods enable MOOSE&#x27;s checkpointing and restarting operations which enable several key capabilities in the MOOSE framework including:</p><ul class="browser-default"><li><p>Checkpointing -&gt; the ability to terminate an application and restart it where you left off (useful for batch cluster systems). </p></li><li><p>Picard Iteration -&gt; The ability to converge a &quot;tightly&quot; coupled multiApp simulation. </p></li><li><p>Restart -&gt; the ability to save stateful data for a restart type simulation when using checkpoint format</p></li></ul><section class="scrollspy" id="6db0a6fd-9222-47d7-84a2-9963c2ad4920" data-section-level="2" data-section-text="What is stateful data ?"><h2 id="what-is-stateful-data">What is stateful data?</h2><p>Stateful data is any value, container of values, or complex data structure that cannont be recomputed from other available information such as coupled values or field variables. Additionally, it&#x27;s not any data that is not directly owned by your object.</p><p>Here are a couple of examples to consider before defining a dataLoad/dataStore routine:</p><ul class="browser-default"><li><p>If you have an object that produces a value based on an &quot;old&quot; value of a coupled variable, your object does <strong>not</strong> contain any stateful data because it is a simple calculation based on a piece of information not owned by your object. No action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a data structure consisting of a vector of pairs of IDs and Real numbers that are computed from a Material property, your object does <strong>not</strong> contain any stateful data and no action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a simple Boolean used to indicate whether or not you have calculated some quantity before, that you set when you run some routine. Your object <strong>does</strong> contain stateful information since the state of that value depends on internal logic in your object. For this scenario, you will need to ask Moose to store your Boolean as &quot;restartableData&quot;. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>. </p></li><li><p>If your object contains a dataStructure of some custom type that you produce internally and retrieve existing values from over the coarse of the simulation, you have a stateful data and may need to define the dataLoad and dataStore functions in your object. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>, and <a href="DataIO.html#dataStore_dataLoad">dataStore/dataLoad routines</a>.</p></li></ul></section><section class="scrollspy" id="6bb92bf5-61e8-43f4-b867-8eeb023f5394" data-section-level="2" data-section-text="declareRestartableData"><h2 id="declareRestartableData">declareRestartableData</h2><p>The declareRestartableData method is used to tell MOOSE that you would like to save some part of your object in a <a href="Backup.html">Backup</a> object. This method is templated and declared here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">protected:
+<!DOCTYPE html><head><meta charset="UTF-8"><title>DataIO | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="324e3e0a-49eb-4c98-91e9-0749ac20592b" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="a4ed3af9-7f4e-46d4-9e57-98fb10e47b32" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="61c8af57-3fa4-490d-8753-eb3db7d3dc6b" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="0f7e5a80-c4a8-49b8-847e-fc15cd0cf03c"><i class="material-icons">menu</i></a><ul class="sidenav" id="0f7e5a80-c4a8-49b8-847e-fc15cd0cf03c"><li><a href="#!" class="dropdown-trigger" data-target="878a12de-46df-4768-859c-c8a8203ab677" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="ff58f873-bbc7-40e4-b548-2c1488e4f821" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="fe445f44-cd88-4cb1-9af5-d9465d4d8f57" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="324e3e0a-49eb-4c98-91e9-0749ac20592b"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="a4ed3af9-7f4e-46d4-9e57-98fb10e47b32"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="61c8af57-3fa4-490d-8753-eb3db7d3dc6b"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="878a12de-46df-4768-859c-c8a8203ab677"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="ff58f873-bbc7-40e4-b548-2c1488e4f821"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="fe445f44-cd88-4cb1-9af5-d9465d4d8f57"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">restart</span><a href="#" class="breadcrumb">DataIO</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="3df019bf-f8b2-4242-aca3-079a6de59e2a" data-section-level="1" data-section-text="DataIO"><h1 id="dataio">DataIO</h1><p>The DataIO.h/.C files contain the declaration and definitions for MOOSE&#x27;s templated <code>dataLoad/dataStore</code> methods. These methods are scattered around the framework, modules and user applications and are used to store stateful information that cannot be recalculated during a restore operation. These methods enable MOOSE&#x27;s checkpointing and restarting operations which enable several key capabilities in the MOOSE framework including:</p><ul class="browser-default"><li><p>Checkpointing -&gt; the ability to terminate an application and restart it where you left off (useful for batch cluster systems). </p></li><li><p>Picard Iteration -&gt; The ability to converge a &quot;tightly&quot; coupled multiApp simulation. </p></li><li><p>Restart -&gt; the ability to save stateful data for a restart type simulation when using checkpoint format</p></li></ul><section class="scrollspy" id="f727dc8b-8100-4c17-9601-4c83574686d0" data-section-level="2" data-section-text="What is stateful data ?"><h2 id="what-is-stateful-data">What is stateful data?</h2><p>Stateful data is any value, container of values, or complex data structure that cannont be recomputed from other available information such as coupled values or field variables. Additionally, it&#x27;s not any data that is not directly owned by your object.</p><p>Here are a couple of examples to consider before defining a dataLoad/dataStore routine:</p><ul class="browser-default"><li><p>If you have an object that produces a value based on an &quot;old&quot; value of a coupled variable, your object does <strong>not</strong> contain any stateful data because it is a simple calculation based on a piece of information not owned by your object. No action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a data structure consisting of a vector of pairs of IDs and Real numbers that are computed from a Material property, your object does <strong>not</strong> contain any stateful data and no action is necessary for your object to be &quot;restartable&quot;. </p></li><li><p>If your object has a simple Boolean used to indicate whether or not you have calculated some quantity before, that you set when you run some routine. Your object <strong>does</strong> contain stateful information since the state of that value depends on internal logic in your object. For this scenario, you will need to ask Moose to store your Boolean as &quot;restartableData&quot;. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>. </p></li><li><p>If your object contains a dataStructure of some custom type that you produce internally and retrieve existing values from over the coarse of the simulation, you have a stateful data and may need to define the dataLoad and dataStore functions in your object. See <a href="DataIO.html#declareRestartableData">declareRestartableData</a>, and <a href="DataIO.html#dataStore_dataLoad">dataStore/dataLoad routines</a>.</p></li></ul></section><section class="scrollspy" id="ed0f173b-d285-419e-af94-a9d93e273d13" data-section-level="2" data-section-text="declareRestartableData"><h2 id="declareRestartableData">declareRestartableData</h2><p>The declareRestartableData method is used to tell MOOSE that you would like to save some part of your object in a <a href="Backup.html">Backup</a> object. This method is templated and declared here:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">protected:
   /**
    * Declare a piece of data as &quot;restartable&quot; and initialize it.
    * This means that in the event of a restart this piece of data
@@ -11,14 +11,15 @@
    */
   template &lt;typename T, typename... Args&gt;
   T &amp; declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args);
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#562c8a34-eb68-49f1-8c19-9c35dabdff20">(moose/framework/include/restart/Restartable.h)</a><p>This method is templated, so MOOSE will return a reference to the type that you request and manage the data storage for you. For all built-in types and combinations of containers and built-in types. This is all that needs to be done. If your type or your container of types is custom, you will have to define the dataLoad and dataStore routines to tell MOOSE how to serialize your new type.</p></section><section class="scrollspy" id="73fd87fa-773c-43a0-bb0a-8638b9795604" data-section-level="2" data-section-text="dataStore / dataLoad routines"><h2 id="dataStore_dataLoad">dataStore/dataLoad routines</h2><p>If any object has requested a restartable piece of data that contains or is a custom type, both the dataStore and dataLoad will need to be defined. These functions describe how to serialize a custom type.</p><p>The declarations for the two methods that may need to be specialized for your application take on on a form similar to this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Load Declarations *****************
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#2fbf3142-b6a7-46ba-8b2f-ab57df68e208">(moose/framework/include/restart/Restartable.h)</a><p>This method is templated, so MOOSE will return a reference to the type that you request and manage the data storage for you. For all built-in types and combinations of containers and built-in types. This is all that needs to be done. If your type or your container of types is custom, you will have to define the dataLoad and dataStore routines to tell MOOSE how to serialize your new type.</p></section><section class="scrollspy" id="4d0ba11f-b850-4053-84ea-7b5932ea36b8" data-section-level="2" data-section-text="dataStore / dataLoad routines"><h2 id="dataStore_dataLoad">dataStore/dataLoad routines</h2><p>If any object has requested a restartable piece of data that contains or is a custom type, both the dataStore and dataLoad will need to be defined. These functions describe how to serialize a custom type.</p><p>The declarations for the two methods that may need to be specialized for your application take on on a form similar to this:</p><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Load Declarations *****************
 template &lt;typename T&gt;
 inline void
 dataLoad(std::istream &amp; stream, T &amp; v, void * /*context*/)
 {
   stream.read((char *)&amp;v, sizeof(v));
+  mooseAssert(!stream.bad(), &quot;Failed to load&quot;);
 }
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#4c07c81d-3d6e-4e3e-ab03-6d81ec1f4db1">(moose/framework/include/restart/DataIO.h)</a><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Store Declarations *****************
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#18dcfde5-1bef-4dcb-9a21-dfb42f2f496a">(moose/framework/include/restart/DataIO.h)</a><pre class="moose-pre" style="max-height:350px;"><code class="language-cpp">// *************** Global Store Declarations *****************
 template &lt;typename T&gt;
 inline void
 dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
@@ -32,7 +33,7 @@ dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
                 &quot;Cannot serialize a class that is not trivially copyable!\nWrite a custom &quot;
                 &quot;dataStore() template specialization!\n\n&quot;);
 #endif
-</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#4efde580-2ae0-4d57-9b44-9b2f20cfa97d">(moose/framework/include/restart/DataIO.h)</a><section id="cacde5bb-7d12-4213-bdb3-b391b1232e10" data-section-level="3" data-section-text="Example"><h3 id="example">Example</h3><p>Typically, the serialization routine can be defined in terms of serializing the individual fields in your custom type. For example. If you had a class <code>Foo</code> that contained a few plain old data types, you&#x27;d just define the load and store terms in terms of the combination of those POD types in order.</p><pre class="moose-pre"><code class="language-c++">
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#66a1ade5-29f4-47ec-8bf0-15555d3b9dc9">(moose/framework/include/restart/DataIO.h)</a><section id="42888c19-a07b-4573-bb74-070bc30c4ded" data-section-level="3" data-section-text="Example"><h3 id="example">Example</h3><p>Typically, the serialization routine can be defined in terms of serializing the individual fields in your custom type. For example. If you had a class <code>Foo</code> that contained a few plain old data types, you&#x27;d just define the load and store terms in terms of the combination of those POD types in order.</p><pre class="moose-pre"><code class="language-c++">
 class Foo
 {
   int bar;
@@ -63,7 +64,7 @@ dataLoad(std::istream &amp; stream, Foo &amp; foo, void * context)
   loadHelper(stream, foo.baz, context);
   loadHelper(stream, foo.qux, context);
 }
-</code></pre></section></section></section><div class="moose-modal modal" id="562c8a34-eb68-49f1-8c19-9c35dabdff20"><div class="modal-content"><h4>(moose/framework/include/restart/Restartable.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></section></section></section><div class="moose-modal modal" id="2fbf3142-b6a7-46ba-8b2f-ab57df68e208"><div class="modal-content"><h4>(moose/framework/include/restart/Restartable.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -93,6 +94,42 @@ class MooseMesh;
 class Restartable
 {
 public:
+  /**
+   * Wrapper class for restartable data that is &quot;managed.&#x27;
+   *
+   * Managed here means that the destruction of the data
+   * is managed by the reciever and not the app.
+   *
+   * When this wrapper is destructed, the underlying
+   * restartable data is also destructed. This allows for
+   * proper construction ordered destruction.
+   */
+  template &lt;typename T&gt;
+  class ManagedValue
+  {
+  public:
+    ManagedValue&lt;T&gt;(RestartableData&lt;T&gt; &amp; value) : _value(value) {}
+
+    /**
+     * Destructor.
+     *
+     * Destructs the managed restartable data.
+     */
+    ~ManagedValue&lt;T&gt;() { _value.reset(); }
+
+    /**
+     * Get the restartable value.
+     */
+    ///@{
+    const T &amp; get() const { return _value.get(); }
+    T &amp; set() { return _value.set(); }
+    ///@}
+
+  private:
+    /// The underlying data
+    RestartableData&lt;T&gt; &amp; _value;
+  };
+
   /**
    * Class constructor
    *
@@ -147,6 +184,25 @@ protected:
    */
   template &lt;typename T, typename... Args&gt;
   T &amp; declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args);
+
+  /**
+   * Declares a piece of &quot;managed&quot; restartable data and initialize it.
+   *
+   * Here, &quot;managed&quot; restartable data means that the caller can destruct this data
+   * upon destruction of the return value of this method. Therefore, this
+   * ManagedValue&lt;T&gt; wrapper should survive after the final calls to dataStore()
+   * for it. That is... at the very end.
+   *
+   * This is needed for objects whose destruction ordering is important, and
+   * enables natural c++ destruction in reverse construction order of the object
+   * that declares it.
+   *
+   * See delcareRestartableData and declareRestartableDataWithContext for more information.
+   */
+  template &lt;typename T, typename... Args&gt;
+  ManagedValue&lt;T&gt; declareManagedRestartableDataWithContext(const std::string &amp; data_name,
+                                                           void * context,
+                                                           Args &amp;&amp;... args);
 
   /**
    * Declare a piece of data as &quot;restartable&quot; and initialize it
@@ -253,8 +309,7 @@ private:
   std::string _restartable_name;
 
   /// Helper function for actually registering the restartable data.
-  RestartableDataValue &amp; registerRestartableDataOnApp(const std::string &amp; name,
-                                                      std::unique_ptr&lt;RestartableDataValue&gt; data,
+  RestartableDataValue &amp; registerRestartableDataOnApp(std::unique_ptr&lt;RestartableDataValue&gt; data,
                                                       THREAD_ID tid) const;
 
   /// Helper function for actually registering the restartable data.
@@ -280,6 +335,17 @@ T &amp;
 Restartable::declareRestartableData(const std::string &amp; data_name, Args &amp;&amp;... args)
 {
   return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr, std::forward&lt;Args&gt;(args)...);
+}
+
+template &lt;typename T, typename... Args&gt;
+Restartable::ManagedValue&lt;T&gt;
+Restartable::declareManagedRestartableDataWithContext(const std::string &amp; data_name,
+                                                      void * context,
+                                                      Args &amp;&amp;... args)
+{
+  auto &amp; data_ptr =
+      declareRestartableDataHelper&lt;T&gt;(data_name, context, std::forward&lt;Args&gt;(args)...);
+  return Restartable::ManagedValue&lt;T&gt;(data_ptr);
 }
 
 template &lt;typename T, typename... Args&gt;
@@ -313,7 +379,7 @@ Restartable::declareRestartableDataHelper(const std::string &amp; data_name,
   auto data_ptr =
       std::make_unique&lt;RestartableData&lt;T&gt;&gt;(full_name, context, std::forward&lt;Args&gt;(args)...);
   auto &amp; restartable_data_ref = static_cast&lt;RestartableData&lt;T&gt; &amp;&gt;(
-      registerRestartableDataOnApp(full_name, std::move(data_ptr), _restartable_tid));
+      registerRestartableDataOnApp(std::move(data_ptr), _restartable_tid));
 
   return restartable_data_ref;
 }
@@ -356,7 +422,7 @@ Restartable::declareRecoverableData(const std::string &amp; data_name, Args &amp
 
   return declareRestartableDataWithContext&lt;T&gt;(data_name, nullptr, std::forward&lt;Args&gt;(args)...);
 }
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="4c07c81d-3d6e-4e3e-ab03-6d81ec1f4db1"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="18dcfde5-1bef-4dcb-9a21-dfb42f2f496a"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -372,7 +438,6 @@ Restartable::declareRecoverableData(const std::string &amp; data_name, Args &amp
 #include &quot;MooseTypes.h&quot;
 #include &quot;HashMap.h&quot;
 #include &quot;MooseError.h&quot;
-#include &quot;Backup.h&quot;
 #include &quot;RankTwoTensor.h&quot;
 #include &quot;RankThreeTensor.h&quot;
 #include &quot;RankFourTensor.h&quot;
@@ -527,6 +592,7 @@ dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
 
   // Moose::out&lt;&lt;&quot;Generic dataStore&quot;&lt;&lt;std::endl;
   stream.write((char *)&amp;v, sizeof(v));
+  mooseAssert(!stream.bad(), &quot;Failed to store&quot;);
 }
 
 template &lt;typename T&gt;
@@ -554,7 +620,7 @@ dataStore(std::ostream &amp; stream, std::vector&lt;T&gt; &amp; v, void * contex
 {
   // First store the size of the vector
   unsigned int size = v.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
     storeHelper(stream, v[i], context);
@@ -584,7 +650,7 @@ dataStore(std::ostream &amp; stream, std::set&lt;T&gt; &amp; s, void * context)
 {
   // First store the size of the set
   unsigned int size = s.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::set&lt;T&gt;::iterator it = s.begin();
   typename std::set&lt;T&gt;::iterator end = s.end();
@@ -602,7 +668,7 @@ dataStore(std::ostream &amp; stream, std::list&lt;T&gt; &amp; l, void * context)
 {
   // First store the size of the set
   unsigned int size = l.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::list&lt;T&gt;::iterator it = l.begin();
   typename std::list&lt;T&gt;::iterator end = l.end();
@@ -620,7 +686,7 @@ dataStore(std::ostream &amp; stream, std::deque&lt;T&gt; &amp; l, void * context
 {
   // First store the size of the container
   unsigned int size = l.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::deque&lt;T&gt;::iterator it = l.begin();
   typename std::deque&lt;T&gt;::iterator end = l.end();
@@ -638,7 +704,7 @@ dataStore(std::ostream &amp; stream, std::map&lt;T, U&gt; &amp; m, void * contex
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::map&lt;T, U&gt;::iterator it = m.begin();
   typename std::map&lt;T, U&gt;::iterator end = m.end();
@@ -659,7 +725,7 @@ dataStore(std::ostream &amp; stream, std::unordered_map&lt;T, U&gt; &amp; m, voi
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::unordered_map&lt;T, U&gt;::iterator it = m.begin();
   typename std::unordered_map&lt;T, U&gt;::iterator end = m.end();
@@ -680,7 +746,7 @@ dataStore(std::ostream &amp; stream, HashMap&lt;T, U&gt; &amp; m, void * context
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename HashMap&lt;T, U&gt;::iterator it = m.begin();
   typename HashMap&lt;T, U&gt;::iterator end = m.end();
@@ -718,8 +784,6 @@ template &lt;&gt;
 void dataStore(std::ostream &amp; stream, Node *&amp; n, void * context);
 template &lt;&gt;
 void dataStore(std::ostream &amp; stream, std::stringstream &amp; s, void * context);
-template &lt;&gt;
-void dataStore(std::ostream &amp; stream, std::stringstream *&amp; s, void * context);
 template &lt;&gt;
 void dataStore(std::ostream &amp; stream, DualReal &amp; dn, void * context);
 template &lt;&gt;
@@ -768,7 +832,7 @@ void
 dataStore(std::ostream &amp; stream, DenseVector&lt;T&gt; &amp; v, void * context)
 {
   unsigned int m = v.size();
-  stream.write((char *)&amp;m, sizeof(m));
+  dataStore(stream, m, nullptr);
   for (unsigned int i = 0; i &lt; v.size(); i++)
   {
     T r = v(i);
@@ -834,6 +898,7 @@ inline void
 dataLoad(std::istream &amp; stream, T &amp; v, void * /*context*/)
 {
   stream.read((char *)&amp;v, sizeof(v));
+  mooseAssert(!stream.bad(), &quot;Failed to load&quot;);
 }
 
 template &lt;typename T&gt;
@@ -859,7 +924,7 @@ dataLoad(std::istream &amp; stream, std::vector&lt;T&gt; &amp; v, void * context
 {
   // First read the size of the vector
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   v.resize(size);
 
@@ -891,7 +956,7 @@ dataLoad(std::istream &amp; stream, std::set&lt;T&gt; &amp; s, void * context)
 {
   // First read the size of the set
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -907,7 +972,7 @@ dataLoad(std::istream &amp; stream, std::list&lt;T&gt; &amp; l, void * context)
 {
   // First read the size of the set
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -923,7 +988,7 @@ dataLoad(std::istream &amp; stream, std::deque&lt;T&gt; &amp; l, void * context)
 {
   // First read the size of the container
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -941,7 +1006,7 @@ dataLoad(std::istream &amp; stream, std::map&lt;T, U&gt; &amp; m, void * context
 
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -961,7 +1026,7 @@ dataLoad(std::istream &amp; stream, std::unordered_map&lt;T, U&gt; &amp; m, void
 
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -979,7 +1044,7 @@ dataLoad(std::istream &amp; stream, HashMap&lt;T, U&gt; &amp; m, void * context)
 {
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1014,8 +1079,6 @@ template &lt;&gt;
 void dataLoad(std::istream &amp; stream, Node *&amp; e, void * context);
 template &lt;&gt;
 void dataLoad(std::istream &amp; stream, std::stringstream &amp; s, void * context);
-template &lt;&gt;
-void dataLoad(std::istream &amp; stream, std::stringstream *&amp; s, void * context);
 template &lt;&gt;
 void dataLoad(std::istream &amp; stream, DualReal &amp; dn, void * context);
 template &lt;&gt;
@@ -1063,7 +1126,7 @@ void
 dataLoad(std::istream &amp; stream, DenseVector&lt;T&gt; &amp; v, void * context)
 {
   unsigned int n = 0;
-  stream.read((char *)&amp;n, sizeof(n));
+  dataLoad(stream, n, nullptr);
   v.resize(n);
   for (unsigned int i = 0; i &lt; n; i++)
   {
@@ -1252,27 +1315,6 @@ loadHelper(std::istream &amp; stream, HashMap&lt;P, Q&gt; &amp; data, void * con
   dataLoad(stream, data, context);
 }
 
-// Specializations for Backup type
-template &lt;&gt;
-inline void
-dataStore(std::ostream &amp; stream, Backup *&amp; backup, void * context)
-{
-  dataStore(stream, backup-&gt;_system_data, context);
-
-  for (unsigned int i = 0; i &lt; backup-&gt;_restartable_data.size(); i++)
-    dataStore(stream, backup-&gt;_restartable_data[i], context);
-}
-
-template &lt;&gt;
-inline void
-dataLoad(std::istream &amp; stream, Backup *&amp; backup, void * context)
-{
-  dataLoad(stream, backup-&gt;_system_data, context);
-
-  for (unsigned int i = 0; i &lt; backup-&gt;_restartable_data.size(); i++)
-    dataLoad(stream, backup-&gt;_restartable_data[i], context);
-}
-
 void dataLoad(std::istream &amp; stream, Point &amp; p, void * context);
 
 #ifndef TIMPI_HAVE_STRING_PACKING
@@ -1347,7 +1389,63 @@ public:
 } // namespace libMesh
 
 #endif
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="4efde580-2ae0-4d57-9b44-9b2f20cfa97d"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
+
+/**
+ * Stores the data \p v in a &quot;skippable&quot; sense. That is, when it is loaded,
+ * its data can be skipped through.
+ *
+ * The resulting data _must_ be loaded with dataLoadSkippable or dataLoadSkip.
+ */
+template &lt;typename T&gt;
+void dataStoreSkippable(std::ostream &amp; stream, T &amp; v, void * context);
+/**
+ * Loads a piece of &quot;skippable&quot; data. See dataStoreSkippable.
+ */
+template &lt;typename T&gt;
+void dataLoadSkippable(std::istream &amp; stream, T &amp; v, void * context);
+/**
+ * Skips a piece of &quot;skippable&quot; data. See dataStoreSkippable.
+ */
+void dataLoadSkip(std::istream &amp; stream);
+
+template &lt;typename T&gt;
+inline void
+dataStoreSkippable(std::ostream &amp; stream, T &amp; v, void * context)
+{
+  std::stringstream data_stream;
+  dataStore(data_stream, v, context);
+
+  // We have an extra std::size_t value because the store of
+  // std::stringstream also stores the size
+  std::size_t data_stream_size =
+      static_cast&lt;std::size_t&gt;(data_stream.tellp()) + sizeof(std::size_t);
+  dataStore(stream, data_stream_size, nullptr);
+
+  dataStore(stream, data_stream, nullptr);
+}
+
+template &lt;typename T&gt;
+inline void
+dataLoadSkippable(std::istream &amp; stream, T &amp; v, void * context)
+{
+  std::size_t data_stream_size;
+  dataLoad(stream, data_stream_size, nullptr);
+
+  std::stringstream data_stream;
+  dataLoad(stream, data_stream, nullptr);
+
+  dataLoad(data_stream, v, context);
+}
+
+inline void
+dataLoadSkip(std::istream &amp; stream)
+{
+  std::size_t data_stream_size;
+  dataLoad(stream, data_stream_size, nullptr);
+
+  stream.seekg(data_stream_size, std::ios::cur);
+}
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="66a1ade5-29f4-47ec-8bf0-15555d3b9dc9"><div class="modal-content"><h4>(moose/framework/include/restart/DataIO.h)</h4><pre class="moose-pre"><code class="language-cpp">// This file is part of the MOOSE framework
 // https://www.mooseframework.org
 //
 // All rights reserved, see COPYRIGHT for full restrictions
@@ -1363,7 +1461,6 @@ public:
 #include &quot;MooseTypes.h&quot;
 #include &quot;HashMap.h&quot;
 #include &quot;MooseError.h&quot;
-#include &quot;Backup.h&quot;
 #include &quot;RankTwoTensor.h&quot;
 #include &quot;RankThreeTensor.h&quot;
 #include &quot;RankFourTensor.h&quot;
@@ -1518,6 +1615,7 @@ dataStore(std::ostream &amp; stream, T &amp; v, void * /*context*/)
 
   // Moose::out&lt;&lt;&quot;Generic dataStore&quot;&lt;&lt;std::endl;
   stream.write((char *)&amp;v, sizeof(v));
+  mooseAssert(!stream.bad(), &quot;Failed to store&quot;);
 }
 
 template &lt;typename T&gt;
@@ -1545,7 +1643,7 @@ dataStore(std::ostream &amp; stream, std::vector&lt;T&gt; &amp; v, void * contex
 {
   // First store the size of the vector
   unsigned int size = v.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
     storeHelper(stream, v[i], context);
@@ -1575,7 +1673,7 @@ dataStore(std::ostream &amp; stream, std::set&lt;T&gt; &amp; s, void * context)
 {
   // First store the size of the set
   unsigned int size = s.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::set&lt;T&gt;::iterator it = s.begin();
   typename std::set&lt;T&gt;::iterator end = s.end();
@@ -1593,7 +1691,7 @@ dataStore(std::ostream &amp; stream, std::list&lt;T&gt; &amp; l, void * context)
 {
   // First store the size of the set
   unsigned int size = l.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::list&lt;T&gt;::iterator it = l.begin();
   typename std::list&lt;T&gt;::iterator end = l.end();
@@ -1611,7 +1709,7 @@ dataStore(std::ostream &amp; stream, std::deque&lt;T&gt; &amp; l, void * context
 {
   // First store the size of the container
   unsigned int size = l.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::deque&lt;T&gt;::iterator it = l.begin();
   typename std::deque&lt;T&gt;::iterator end = l.end();
@@ -1629,7 +1727,7 @@ dataStore(std::ostream &amp; stream, std::map&lt;T, U&gt; &amp; m, void * contex
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::map&lt;T, U&gt;::iterator it = m.begin();
   typename std::map&lt;T, U&gt;::iterator end = m.end();
@@ -1650,7 +1748,7 @@ dataStore(std::ostream &amp; stream, std::unordered_map&lt;T, U&gt; &amp; m, voi
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename std::unordered_map&lt;T, U&gt;::iterator it = m.begin();
   typename std::unordered_map&lt;T, U&gt;::iterator end = m.end();
@@ -1671,7 +1769,7 @@ dataStore(std::ostream &amp; stream, HashMap&lt;T, U&gt; &amp; m, void * context
 {
   // First store the size of the map
   unsigned int size = m.size();
-  stream.write((char *)&amp;size, sizeof(size));
+  dataStore(stream, size, nullptr);
 
   typename HashMap&lt;T, U&gt;::iterator it = m.begin();
   typename HashMap&lt;T, U&gt;::iterator end = m.end();
@@ -1709,8 +1807,6 @@ template &lt;&gt;
 void dataStore(std::ostream &amp; stream, Node *&amp; n, void * context);
 template &lt;&gt;
 void dataStore(std::ostream &amp; stream, std::stringstream &amp; s, void * context);
-template &lt;&gt;
-void dataStore(std::ostream &amp; stream, std::stringstream *&amp; s, void * context);
 template &lt;&gt;
 void dataStore(std::ostream &amp; stream, DualReal &amp; dn, void * context);
 template &lt;&gt;
@@ -1759,7 +1855,7 @@ void
 dataStore(std::ostream &amp; stream, DenseVector&lt;T&gt; &amp; v, void * context)
 {
   unsigned int m = v.size();
-  stream.write((char *)&amp;m, sizeof(m));
+  dataStore(stream, m, nullptr);
   for (unsigned int i = 0; i &lt; v.size(); i++)
   {
     T r = v(i);
@@ -1825,6 +1921,7 @@ inline void
 dataLoad(std::istream &amp; stream, T &amp; v, void * /*context*/)
 {
   stream.read((char *)&amp;v, sizeof(v));
+  mooseAssert(!stream.bad(), &quot;Failed to load&quot;);
 }
 
 template &lt;typename T&gt;
@@ -1850,7 +1947,7 @@ dataLoad(std::istream &amp; stream, std::vector&lt;T&gt; &amp; v, void * context
 {
   // First read the size of the vector
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   v.resize(size);
 
@@ -1882,7 +1979,7 @@ dataLoad(std::istream &amp; stream, std::set&lt;T&gt; &amp; s, void * context)
 {
   // First read the size of the set
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1898,7 +1995,7 @@ dataLoad(std::istream &amp; stream, std::list&lt;T&gt; &amp; l, void * context)
 {
   // First read the size of the set
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1914,7 +2011,7 @@ dataLoad(std::istream &amp; stream, std::deque&lt;T&gt; &amp; l, void * context)
 {
   // First read the size of the container
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1932,7 +2029,7 @@ dataLoad(std::istream &amp; stream, std::map&lt;T, U&gt; &amp; m, void * context
 
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1952,7 +2049,7 @@ dataLoad(std::istream &amp; stream, std::unordered_map&lt;T, U&gt; &amp; m, void
 
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -1970,7 +2067,7 @@ dataLoad(std::istream &amp; stream, HashMap&lt;T, U&gt; &amp; m, void * context)
 {
   // First read the size of the map
   unsigned int size = 0;
-  stream.read((char *)&amp;size, sizeof(size));
+  dataLoad(stream, size, nullptr);
 
   for (unsigned int i = 0; i &lt; size; i++)
   {
@@ -2005,8 +2102,6 @@ template &lt;&gt;
 void dataLoad(std::istream &amp; stream, Node *&amp; e, void * context);
 template &lt;&gt;
 void dataLoad(std::istream &amp; stream, std::stringstream &amp; s, void * context);
-template &lt;&gt;
-void dataLoad(std::istream &amp; stream, std::stringstream *&amp; s, void * context);
 template &lt;&gt;
 void dataLoad(std::istream &amp; stream, DualReal &amp; dn, void * context);
 template &lt;&gt;
@@ -2054,7 +2149,7 @@ void
 dataLoad(std::istream &amp; stream, DenseVector&lt;T&gt; &amp; v, void * context)
 {
   unsigned int n = 0;
-  stream.read((char *)&amp;n, sizeof(n));
+  dataLoad(stream, n, nullptr);
   v.resize(n);
   for (unsigned int i = 0; i &lt; n; i++)
   {
@@ -2243,27 +2338,6 @@ loadHelper(std::istream &amp; stream, HashMap&lt;P, Q&gt; &amp; data, void * con
   dataLoad(stream, data, context);
 }
 
-// Specializations for Backup type
-template &lt;&gt;
-inline void
-dataStore(std::ostream &amp; stream, Backup *&amp; backup, void * context)
-{
-  dataStore(stream, backup-&gt;_system_data, context);
-
-  for (unsigned int i = 0; i &lt; backup-&gt;_restartable_data.size(); i++)
-    dataStore(stream, backup-&gt;_restartable_data[i], context);
-}
-
-template &lt;&gt;
-inline void
-dataLoad(std::istream &amp; stream, Backup *&amp; backup, void * context)
-{
-  dataLoad(stream, backup-&gt;_system_data, context);
-
-  for (unsigned int i = 0; i &lt; backup-&gt;_restartable_data.size(); i++)
-    dataLoad(stream, backup-&gt;_restartable_data[i], context);
-}
-
 void dataLoad(std::istream &amp; stream, Point &amp; p, void * context);
 
 #ifndef TIMPI_HAVE_STRING_PACKING
@@ -2338,4 +2412,60 @@ public:
 } // namespace libMesh
 
 #endif
-</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#6db0a6fd-9222-47d7-84a2-9963c2ad4920" class="tooltipped" data-position="left" data-tooltip="What is stateful data ?">What is stateful data ?</a></li><li><a href="#6bb92bf5-61e8-43f4-b867-8eeb023f5394" class="tooltipped" data-position="left" data-tooltip="declareRestartableData">declareRestartableData</a></li><li><a href="#73fd87fa-773c-43a0-bb0a-8638b9795604" class="tooltipped" data-position="left" data-tooltip="dataStore / dataLoad routines">dataStore / dataLoad routines</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
+
+/**
+ * Stores the data \p v in a &quot;skippable&quot; sense. That is, when it is loaded,
+ * its data can be skipped through.
+ *
+ * The resulting data _must_ be loaded with dataLoadSkippable or dataLoadSkip.
+ */
+template &lt;typename T&gt;
+void dataStoreSkippable(std::ostream &amp; stream, T &amp; v, void * context);
+/**
+ * Loads a piece of &quot;skippable&quot; data. See dataStoreSkippable.
+ */
+template &lt;typename T&gt;
+void dataLoadSkippable(std::istream &amp; stream, T &amp; v, void * context);
+/**
+ * Skips a piece of &quot;skippable&quot; data. See dataStoreSkippable.
+ */
+void dataLoadSkip(std::istream &amp; stream);
+
+template &lt;typename T&gt;
+inline void
+dataStoreSkippable(std::ostream &amp; stream, T &amp; v, void * context)
+{
+  std::stringstream data_stream;
+  dataStore(data_stream, v, context);
+
+  // We have an extra std::size_t value because the store of
+  // std::stringstream also stores the size
+  std::size_t data_stream_size =
+      static_cast&lt;std::size_t&gt;(data_stream.tellp()) + sizeof(std::size_t);
+  dataStore(stream, data_stream_size, nullptr);
+
+  dataStore(stream, data_stream, nullptr);
+}
+
+template &lt;typename T&gt;
+inline void
+dataLoadSkippable(std::istream &amp; stream, T &amp; v, void * context)
+{
+  std::size_t data_stream_size;
+  dataLoad(stream, data_stream_size, nullptr);
+
+  std::stringstream data_stream;
+  dataLoad(stream, data_stream, nullptr);
+
+  dataLoad(data_stream, v, context);
+}
+
+inline void
+dataLoadSkip(std::istream &amp; stream)
+{
+  std::size_t data_stream_size;
+  dataLoad(stream, data_stream_size, nullptr);
+
+  stream.seekg(data_stream_size, std::ios::cur);
+}
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#f727dc8b-8100-4c17-9601-4c83574686d0" class="tooltipped" data-position="left" data-tooltip="What is stateful data ?">What is stateful data ?</a></li><li><a href="#ed0f173b-d285-419e-af94-a9d93e273d13" class="tooltipped" data-position="left" data-tooltip="declareRestartableData">declareRestartableData</a></li><li><a href="#4d0ba11f-b850-4053-84ea-7b5932ea36b8" class="tooltipped" data-position="left" data-tooltip="dataStore / dataLoad routines">dataStore / dataLoad routines</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
