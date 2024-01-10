@@ -1,0 +1,231 @@
+<!DOCTYPE html><head><meta charset="UTF-8"><title>FVDiffusion | Moltres</title><link href="../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><link href="../../contrib/katex/katex.min.css" type="text/css" rel="stylesheet"></link><link href="../../css/katex_moose.css" type="text/css" rel="stylesheet"></link><link href="../../css/moltres.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../contrib/jquery/jquery.min.js"></script><script type="text/javascript" src="../../contrib/katex/katex.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">Moltres</a><a href="https://github.com/arfc/moltres" class="right"><img src="../../media/framework/github-logo.png" class="github-mark"></img><img src="../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="11d95060-e4a7-435a-ab39-d4af4a60faa4" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="d0029072-b925-4b8d-9900-44aa9fb8232c" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="fdbd02db-e3f9-43d1-abec-9b5edaf0feca" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#" class="sidenav-trigger" data-target="63514705-b490-4e3d-a106-2e4baf58a6a8"><i class="material-icons">menu</i></a><ul class="sidenav" id="63514705-b490-4e3d-a106-2e4baf58a6a8"><li><a href="#!" class="dropdown-trigger" data-target="bee9366d-52e1-47ea-a7b0-bfbb3053410b" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="a359fade-4efe-4a08-ac45-b0d4252c894a" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="42935d51-550b-4c57-bc30-3c3ca71b3163" data-constrainWidth="false">Help<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../citing.html">Citing</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="11d95060-e4a7-435a-ab39-d4af4a60faa4"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="d0029072-b925-4b8d-9900-44aa9fb8232c"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="fdbd02db-e3f9-43d1-abec-9b5edaf0feca"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul><ul class="dropdown-content" id="bee9366d-52e1-47ea-a7b0-bfbb3053410b"><li><a href="../../getting_started/installation.html">Install Moltres</a></li><li><a href="../../getting_started/tutorials.html">Tutorials</a></li></ul><ul class="dropdown-content" id="a359fade-4efe-4a08-ac45-b0d4252c894a"><li><a href="../../syntax/index.html">Moltres Syntax</a></li><li><a href="https://mooseframework.inl.gov/source/index.html">MOOSE Syntax</a></li><li><a href="../../doxygen/classes.html">Moltres Doxygen</a></li><li><a href="https://mooseframework.inl.gov/docs/doxygen/moose/classes.html">MOOSE Doxygen</a></li><li><a href="../../development/contributing.html">Contributing</a></li><li><a href="../../publications.html">List of Publications</a></li></ul><ul class="dropdown-content" id="42935d51-550b-4c57-bc30-3c3ca71b3163"><li><a href="https://github.com/arfc/moltres/discussions">Moltres Discussion Forum</a></li><li><a href="https://github.com/idaholab/moose/discussions">MOOSE Discussion Forum</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="row"><div class="col l12"><div class="input-field"><input type_="text" onkeyup="mooseSearch()" placeholder="/index.md" id="moose-search-box"></input></div></div><div><div class="col s12" id="moose-search-results"></div></div></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="col hide-on-med-and-down l12"><nav class="breadcrumb-nav"><div class="nav-wrapper"><a href=".." class="breadcrumb">source</a><span class="breadcrumb">fvkernels</span><a href="#" class="breadcrumb">FVDiffusion</a></div></nav></div></div><div class="row"><div class="moose-content col s12 m12 l10"><section id="d64b2a58-e59c-4a04-8d53-94958847724b" data-section-level="1" data-section-text="FVDiffusion"><h1 id="fvdiffusion">FVDiffusion</h1><p>Computes residual for diffusion operator for finite volume method.</p><p>The steady-state diffusion equation on a domain <span class="moose-katex-inline-equation" id="moose-equation-c48a9a1a-49dd-412f-acbb-42d7d79c78be"><script>var element = document.getElementById("moose-equation-c48a9a1a-49dd-412f-acbb-42d7d79c78be");katex.render("\\Omega", element, {displayMode:false,throwOnError:false});</script></span> is defined as</p><span class="moose-katex-block-equation"><span class="moose-katex-equation table-cell" id="moose-equation-b10f1e29-69d4-4072-99ff-bf1cc726031b"></span><script>var element = document.getElementById("moose-equation-b10f1e29-69d4-4072-99ff-bf1cc726031b");katex.render("-\\nabla \\cdot D \\nabla u = 0 \\in \\Omega.", element, {displayMode:true,throwOnError:false});</script></span><p>with <span class="moose-katex-inline-equation" id="moose-equation-a79e0504-13f5-444a-8234-aabdeba5d199"><script>var element = document.getElementById("moose-equation-a79e0504-13f5-444a-8234-aabdeba5d199");katex.render("D", element, {displayMode:false,throwOnError:false});</script></span> the diffusion coefficient or diffusivity. <span class="moose-katex-inline-equation" id="moose-equation-1ac08fa7-fd77-490e-8884-54b2bbd03cab"><script>var element = document.getElementById("moose-equation-1ac08fa7-fd77-490e-8884-54b2bbd03cab");katex.render("D", element, {displayMode:false,throwOnError:false});</script></span> has to be supplied as material property to this kernel.</p><p>The diffusion term is integrated using the divergence theorem, turning it from a volumetric second order derivative term into a first order derivative integrated over a surface.</p><span class="moose-katex-block-equation"><span class="moose-katex-equation table-cell" id="moose-equation-5616c9c7-0f83-4972-b522-7e688f51b64f"></span><script>var element = document.getElementById("moose-equation-5616c9c7-0f83-4972-b522-7e688f51b64f");katex.render("\\int_{element} -\\nabla \\cdot D \\nabla u = \\sum_{elem faces f} -D_f \\nabla u_f \\cdot \\vec{n_f} area_f", element, {displayMode:true,throwOnError:false});</script></span><p>where <span class="moose-katex-inline-equation" id="moose-equation-cde4d2f2-a935-4b93-9beb-9e3575e340fa"><script>var element = document.getElementById("moose-equation-cde4d2f2-a935-4b93-9beb-9e3575e340fa");katex.render("\\vec{n_f}", element, {displayMode:false,throwOnError:false});</script></span> is the surface normal on each side of the element considered.</p><p>The diffusion coefficient can be interpolated to the surface using two approaches:</p><ul class="browser-default"><li><p><strong>Simple arithmetic average:</strong> <span class="moose-katex-inline-equation" id="moose-equation-4efdff56-5166-4c47-9c54-6ddb99dd3d47"><script>var element = document.getElementById("moose-equation-4efdff56-5166-4c47-9c54-6ddb99dd3d47");katex.render("D_f = w_1 D_1 + (1-w_1) D_2", element, {displayMode:false,throwOnError:false});</script></span> (with <span class="moose-katex-inline-equation" id="moose-equation-eb168aed-3bd0-473f-ad44-4cfd611dcc7c"><script>var element = document.getElementById("moose-equation-eb168aed-3bd0-473f-ad44-4cfd611dcc7c");katex.render("D_1", element, {displayMode:false,throwOnError:false});</script></span>, <span class="moose-katex-inline-equation" id="moose-equation-1c83dc6e-c1bb-4600-9cf4-36315c1437f9"><script>var element = document.getElementById("moose-equation-1c83dc6e-c1bb-4600-9cf4-36315c1437f9");katex.render("D_2", element, {displayMode:false,throwOnError:false});</script></span> being the diffusion coefficient in the neighboring cells respectively) </p></li><li><p><strong>Simple harmonic average:</strong> <span class="moose-katex-inline-equation" id="moose-equation-4bfaec0a-c2b6-4aed-bebb-7f07ba66f99e"><script>var element = document.getElementById("moose-equation-4bfaec0a-c2b6-4aed-bebb-7f07ba66f99e");katex.render("D_f = \\frac{1}{\\frac{w_1}{D_1} + \\frac{1 - w_1}{D_2}}", element, {displayMode:false,throwOnError:false});</script></span>, which yields better results if the diffusion coefficients are positive and discontinuous. This is due to the fact that this scheme preserves flux continuity in the face-normal direction on orthogonal grids.</p></li></ul><p>The interpolation method can be set using the <a href="#c79efcf1-472e-438b-ae05-16ca80ada377" class="moose-modal-link modal-trigger">&quot;coeff_interp_method&quot;</a> parameter, and is defaulted to <code>harmonic</code> due to its superior accuracy for discontinuous diffusion coefficients. Simple tests cases with discontinuous diffusion coefficients (see below) indicate that using harmonic interpolation yields a second-order accurate scheme for orthogonal and 1D meshes and close to second-order accurate scheme for slightly non-orthogonal meshes. At the same time, using a simple arithmetic average for the interpolation of discontinuous diffusion coefficients yields a first order scheme.</p><div class="card moose-alert moose-alert-note"><div class="card-title moose-alert-title"><i class="material-icons moose-inline-icon">comment</i><span class="moose-alert-title-brand">note</span></div><div class="card-content"><div class="moose-alert-content"><p>This kernel leverages the automatic differentiation system, so the Jacobian is computed at the same time as the residual and need not be defined separately.</p></div></div></div><section class="scrollspy" id="d382bfad-88ab-4d36-9a22-befa4ea1ee15" data-section-level="2" data-section-text="Example input syntax"><h2 id="example-input-syntax">Example input syntax</h2><p>This example shows a simple 1D diffusion problem with two variables defined on two subdomains. Because of the limits of the legacy material system, the two material properties have to have different names, otherwise it is not clear what the boundary value of the diffusion coefficient should be.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[Mesh]
+  [gen]
+    type = GeneratedMeshGenerator
+    dim = 1
+    nx = 20
+    xmax = 2
+  []
+  [subdomain1]
+    input = gen
+    type = SubdomainBoundingBoxGenerator
+    bottom_left = &#x27;1.0 0 0&#x27;
+    block_id = 1
+    top_right = &#x27;2.0 1.0 0&#x27;
+  []
+  [left_right]
+    input = subdomain1
+    type = SideSetsBetweenSubdomainsGenerator
+    primary_block = &#x27;0&#x27;
+    paired_block = &#x27;1&#x27;
+    new_boundary = &#x27;left_right&#x27;
+  []
+  [right_left]
+    input = left_right
+    type = SideSetsBetweenSubdomainsGenerator
+    primary_block = &#x27;1&#x27;
+    paired_block = &#x27;0&#x27;
+    new_boundary = &#x27;right_left&#x27;
+  []
+[]
+
+[Variables]
+  [left]
+    family = MONOMIAL
+    order = CONSTANT
+    fv = true
+    block = 0
+  []
+  [right]
+    family = MONOMIAL
+    order = CONSTANT
+    fv = true
+    block = 1
+  []
+[]
+
+[FVKernels]
+  [left]
+    type = FVDiffusion
+    variable = left
+    coeff = coeff_left
+    block = 0
+    coeff_interp_method = average
+  []
+  [right]
+    type = FVDiffusion
+    variable = right
+    coeff = coeff_right
+    block = 1
+    coeff_interp_method = average
+  []
+[]
+
+[FVBCs]
+  [left]
+    type = FVDirichletBC
+    variable = left
+    boundary = left
+    value = 0
+  []
+  [left_right]
+    type = FVDirichletBC
+    variable = left
+    boundary = left_right
+    value = 1
+  []
+  [right_left]
+    type = FVDirichletBC
+    variable = right
+    boundary = right_left
+    value = 0
+  []
+  [right]
+    type = FVDirichletBC
+    variable = right
+    boundary = right
+    value = 1
+  []
+[]
+
+[Materials]
+  [left]
+    type = ADGenericFunctorMaterial
+    prop_names = &#x27;coeff_left&#x27;
+    prop_values = &#x27;1&#x27;
+    block = 0
+  []
+  [right]
+    type = ADGenericFunctorMaterial
+    prop_names = &#x27;coeff_right&#x27;
+    prop_values = &#x27;1&#x27;
+    block = 1
+  []
+[]
+
+[Executioner]
+  type = Steady
+  solve_type = &#x27;NEWTON&#x27;
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+  line_search = &#x27;none&#x27;
+[]
+
+[Outputs]
+  exodus = true
+[]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#1041582a-5f44-4582-bc29-93bd18305631">(moose/test/tests/fvkernels/block-restriction/1d.i)</a></section><section class="scrollspy" id="bffab23e-7aa9-4456-bee9-0be16407c831" data-section-level="2" data-section-text="Input Parameters"><h2 id="input-parameters">Input Parameters</h2><section id="6893f301-5f9c-448e-9395-2ea948be74b5" data-section-level="3" data-section-text="Required Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">coeff</span><span class="moose-parameter-header-description">diffusion coefficient</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MooseFunctorName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>diffusion coefficient</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">variable</span><span class="moose-parameter-header-description">The name of the variable that this residual object operates on</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>NonlinearVariableName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The name of the variable that this residual object operates on</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Required Parameters</h3></summary></details></section><section id="6c7e4fcc-1983-4490-8207-afb59918a2bb" data-section-level="3" data-section-text="Optional Parameters" data-details-open="open"><details class="moose-section-content" open="open"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">block</span><span class="moose-parameter-header-description">The list of blocks (ids or names) that this object will be applied</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;SubdomainName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The list of blocks (ids or names) that this object will be applied</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">coeff_interp_method</span><span class="moose-parameter-header-default">harmonic</span><span class="moose-parameter-header-description">Switch that can select face interpolation method for diffusion coefficients.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>harmonic</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>average, harmonic</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Switch that can select face interpolation method for diffusion coefficients.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">prop_getter_suffix</span><span class="moose-parameter-header-description">An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MaterialPropertyName</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>An optional suffix parameter that can be appended to any attempt to retrieve/get material properties. The suffix will be prepended with a '_' character.</p></div></li></ul><summary><h3 data-details-open="open"><span class="moose-section-icon"></span>Optional Parameters</h3></summary></details></section><section id="2db3330d-6c64-484a-95d6-1403aac07e39" data-section-level="3" data-section-text="Tagging Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">absolute_value_vector_tags</span><span class="moose-parameter-header-description">The tags for the vectors this residual object should fill with the absolute value of the residual contribution</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tags for the vectors this residual object should fill with the absolute value of the residual contribution</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_matrix_tags</span><span class="moose-parameter-header-description">The extra tags for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">extra_vector_tags</span><span class="moose-parameter-header-description">The extra tags for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;TagName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The extra tags for the vectors this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">matrix_tags</span><span class="moose-parameter-header-default">system</span><span class="moose-parameter-header-description">The tag for the matrices this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>system</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, system</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the matrices this Kernel should fill</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">vector_tags</span><span class="moose-parameter-header-default">nontime</span><span class="moose-parameter-header-description">The tag for the vectors this Kernel should fill</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>nontime</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MultiMooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>nontime, time</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The tag for the vectors this Kernel should fill</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Tagging Parameters</h3></summary></details></section><section id="97ffbccd-fad4-4903-9dd5-c9b96e9fbb56" data-section-level="3" data-section-text="Boundary Execution Modification Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">boundaries_to_avoid</span><span class="moose-parameter-header-description">The set of sidesets to not execute this FVFluxKernel on. This takes precedence over force_boundary_execution to restrict to less external boundaries. By default flux kernels are executed on all internal boundaries and Dirichlet boundary conditions.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;BoundaryName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The set of sidesets to not execute this FVFluxKernel on. This takes precedence over force_boundary_execution to restrict to less external boundaries. By default flux kernels are executed on all internal boundaries and Dirichlet boundary conditions.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">boundaries_to_force</span><span class="moose-parameter-header-description">The set of sidesets to force execution of this FVFluxKernel on. Setting force_boundary_execution to true is equivalent to listing all external mesh boundaries in this parameter.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;BoundaryName&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The set of sidesets to force execution of this FVFluxKernel on. Setting force_boundary_execution to true is equivalent to listing all external mesh boundaries in this parameter.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">force_boundary_execution</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether to force execution of this object on all external boundaries.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether to force execution of this object on all external boundaries.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Boundary Execution Modification Parameters</h3></summary></details></section><section id="57c7ffc2-69ad-49a2-b6c9-03900817b3e1" data-section-level="3" data-section-text="Advanced Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">control_tags</span><span class="moose-parameter-header-description">Adds user-defined labels for accessing object parameters via control logic.</span></div><div class="collapsible-body"><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>std::vector&lt;std::string&gt;</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Adds user-defined labels for accessing object parameters via control logic.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">enable</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Set the enabled status of the MooseObject.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>Yes</p><p class="moose-parameter-description"><span>Description:</span>Set the enabled status of the MooseObject.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">implicit</span><span class="moose-parameter-header-default">True</span><span class="moose-parameter-header-description">Determines whether this object is calculated using an implicit or explicit form</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>True</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Determines whether this object is calculated using an implicit or explicit form</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">seed</span><span class="moose-parameter-header-default">0</span><span class="moose-parameter-header-description">The seed for the master random number generator</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>0</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned int</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The seed for the master random number generator</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_displaced_mesh</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether or not this object should use the displaced mesh for computation. Note that in the case this is true but no displacements are provided in the Mesh block the undisplaced mesh will still be used.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Advanced Parameters</h3></summary></details></section><section id="1ecdb8e3-45ab-40a2-8d4b-1ad30a90fd09" data-section-level="3" data-section-text="Parallel Ghosting Parameters" data-details-open="close"><details class="moose-section-content"><ul class="collapsible" data-collapsible="expandable"><li><div class="collapsible-header"><span class="moose-parameter-name">ghost_layers</span><span class="moose-parameter-header-default">2</span><span class="moose-parameter-header-description">The number of layers of elements to ghost.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>2</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>unsigned short</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>The number of layers of elements to ghost.</p></div></li><li><div class="collapsible-header"><span class="moose-parameter-name">use_point_neighbors</span><span class="moose-parameter-header-default">False</span><span class="moose-parameter-header-description">Whether to use point neighbors, which introduces additional ghosting to that used for simple face neighbors.</span></div><div class="collapsible-body"><p class="moose-parameter-description-default"><span>Default:</span>False</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>bool</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Whether to use point neighbors, which introduces additional ghosting to that used for simple face neighbors.</p></div></li></ul><summary><h3 data-details-open="close"><span class="moose-section-icon"></span>Parallel Ghosting Parameters</h3></summary></details></section></section></section><div class="moose-modal modal" id="c79efcf1-472e-438b-ae05-16ca80ada377"><div class="modal-content"><h4>coeff_interp_method</h4><p class="moose-parameter-description-default"><span>Default:</span>harmonic</p><p class="moose-parameter-description-cpptype"><span>C++ Type:</span>MooseEnum</p><p class="moose-parameter-description-options"><span>Options:</span>average, harmonic</p><p class="moose-parameter-description-controllable"><span>Controllable:</span>No</p><p class="moose-parameter-description"><span>Description:</span>Switch that can select face interpolation method for diffusion coefficients.</p></div></div><div class="moose-modal modal" id="1041582a-5f44-4582-bc29-93bd18305631"><div class="modal-content"><h4>(moose/test/tests/fvkernels/block-restriction/1d.i)</h4><pre class="moose-pre"><code class="language-text">[Mesh]
+  [gen]
+    type = GeneratedMeshGenerator
+    dim = 1
+    nx = 20
+    xmax = 2
+  []
+  [subdomain1]
+    input = gen
+    type = SubdomainBoundingBoxGenerator
+    bottom_left = &#x27;1.0 0 0&#x27;
+    block_id = 1
+    top_right = &#x27;2.0 1.0 0&#x27;
+  []
+  [left_right]
+    input = subdomain1
+    type = SideSetsBetweenSubdomainsGenerator
+    primary_block = &#x27;0&#x27;
+    paired_block = &#x27;1&#x27;
+    new_boundary = &#x27;left_right&#x27;
+  []
+  [right_left]
+    input = left_right
+    type = SideSetsBetweenSubdomainsGenerator
+    primary_block = &#x27;1&#x27;
+    paired_block = &#x27;0&#x27;
+    new_boundary = &#x27;right_left&#x27;
+  []
+[]
+
+[Variables]
+  [left]
+    family = MONOMIAL
+    order = CONSTANT
+    fv = true
+    block = 0
+  []
+  [right]
+    family = MONOMIAL
+    order = CONSTANT
+    fv = true
+    block = 1
+  []
+[]
+
+[FVKernels]
+  [left]
+    type = FVDiffusion
+    variable = left
+    coeff = coeff_left
+    block = 0
+    coeff_interp_method = average
+  []
+  [right]
+    type = FVDiffusion
+    variable = right
+    coeff = coeff_right
+    block = 1
+    coeff_interp_method = average
+  []
+[]
+
+[FVBCs]
+  [left]
+    type = FVDirichletBC
+    variable = left
+    boundary = left
+    value = 0
+  []
+  [left_right]
+    type = FVDirichletBC
+    variable = left
+    boundary = left_right
+    value = 1
+  []
+  [right_left]
+    type = FVDirichletBC
+    variable = right
+    boundary = right_left
+    value = 0
+  []
+  [right]
+    type = FVDirichletBC
+    variable = right
+    boundary = right
+    value = 1
+  []
+[]
+
+[Materials]
+  [left]
+    type = ADGenericFunctorMaterial
+    prop_names = &#x27;coeff_left&#x27;
+    prop_values = &#x27;1&#x27;
+    block = 0
+  []
+  [right]
+    type = ADGenericFunctorMaterial
+    prop_names = &#x27;coeff_right&#x27;
+    prop_values = &#x27;1&#x27;
+    block = 1
+  []
+[]
+
+[Executioner]
+  type = Steady
+  solve_type = &#x27;NEWTON&#x27;
+  petsc_options_iname = &#x27;-pc_type -pc_hypre_type&#x27;
+  petsc_options_value = &#x27;hypre boomeramg&#x27;
+  line_search = &#x27;none&#x27;
+[]
+
+[Outputs]
+  exodus = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div><div class="col hide-on-med-and-down l2"><div class="toc-wrapper pin-top"><ul class="section table-of-contents"><li><a href="#d382bfad-88ab-4d36-9a22-befa4ea1ee15" class="tooltipped" data-position="left" data-tooltip="Example input syntax">Example input syntax</a></li><li><a href="#bffab23e-7aa9-4456-bee9-0be16407c831" class="tooltipped" data-position="left" data-tooltip="Input Parameters">Input Parameters</a></li></ul></div></div></div></div></main></div></body><script type="text/javascript" src="../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../js/init.js"></script><script type="text/javascript" src="../../js/navigation.js"></script><script type="text/javascript" src="../../contrib/fuse/fuse.min.js"></script><script type="text/javascript" src="../../js/search_index.js"></script><script type="text/javascript" src="../../js/sqa_moose.js"></script>
