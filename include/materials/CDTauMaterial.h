@@ -175,14 +175,14 @@ CDTauMaterialTempl<T>::computeHMin()
       for (const auto & disp_num : _displacements)
       {
         diff(dimension)
-            .derivatives()[disp_num * _fe_problem.getNonlinearSystemBase().getMaxVarNDofsPerElem() +
+            .derivatives()[disp_num * _fe_problem.getNonlinearSystemBase(0).getMaxVarNDofsPerElem() +
                            n_outer] = 1.;
         diff(dimension++)
-            .derivatives()[disp_num * _fe_problem.getNonlinearSystemBase().getMaxVarNDofsPerElem() +
+            .derivatives()[disp_num * _fe_problem.getNonlinearSystemBase(0).getMaxVarNDofsPerElem() +
                            n_inner] = -1.;
       }
 
-      _hmin = std::max(_hmin, diff.norm_sq());
+      _hmin = std::min(_hmin, diff.norm_sq());
     }
 
   _hmin = std::sqrt(_hmin);
