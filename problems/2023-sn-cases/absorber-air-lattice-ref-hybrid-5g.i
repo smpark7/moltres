@@ -18,8 +18,8 @@
   [cmg]
     type = CartesianMeshGenerator
     dim = 3
-    dx = '0.49 0.01 1 1.5625 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 3.0625 15'
-    ix = '7 10 5 10 20 6 20 6 20 6 20 6 20 6 20 6 20 6 20 14 75'
+    dx = '0.25 0.24 0.01 1 1.5625 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 1.125 3.875 3.0625 15'
+    ix = '5 8 10 5 10 20 6 20 6 20 6 20 6 20 6 20 6 20 6 20 14 75'
 #    ix = '14 10 10 10 20 6 20 6 20 6 20 6 20 6 20 6 20 6 20 14 75'
 #    ix = '10 10 20 40 12 40 12 40 12 40 12 40 12 40 12 40 12 40 28 150'
 #    ix = '20 20 40 80 24 80 24 80 24 80 24 80 24 80 24 80 24 80 56 300'
@@ -27,7 +27,7 @@
     iy = '1'
     dz = '10'
     iz = '1'
-    subdomain_id = '0 0 1 2 3 2 3 2 3 2 3 2 3 2 3 2 3 2 3 2 4'
+    subdomain_id = '0 0 0 1 2 3 2 3 2 3 2 3 2 3 2 3 2 3 2 3 2 4'
   []
   [fuel]
     type = SubdomainBoundingBoxGenerator
@@ -35,7 +35,7 @@
     restricted_subdomains = 2
     block_id = 5
     bottom_left = '0 0 0'
-    top_right = '5 10 10'
+    top_right = '10 10 10'
   []
   [graphite]
     type = SubdomainBoundingBoxGenerator
@@ -43,7 +43,15 @@
     restricted_subdomains = 3
     block_id = 6
     bottom_left = '0 0 0'
-    top_right = '5 10 10'
+    top_right = '12.5 10 10'
+  []
+  [fuel_adaptive]
+    type = SubdomainBoundingBoxGenerator
+    input = graphite
+    restricted_subdomains = 2
+    block_id = 7
+    bottom_left = '10 0 0'
+    top_right = '15 10 10'
   []
 []
 
@@ -115,6 +123,41 @@
     block = '0 1 5 6'
     group_drift_var = drift5
   []
+  [group1_drift_adaptive]
+    type = GroupDrift
+    variable = group1
+    block = '7'
+    group_drift_var = drift1
+    adaptive = false
+  []
+  [group2_drift_adaptive]
+    type = GroupDrift
+    variable = group2
+    block = '7'
+    group_drift_var = drift2
+    adaptive = false
+  []
+  [group3_drift_adaptive]
+    type = GroupDrift
+    variable = group3
+    block = '7'
+    group_drift_var = drift3
+    adaptive = false
+  []
+  [group4_drift_adaptive]
+    type = GroupDrift
+    variable = group4
+    block = '7'
+    group_drift_var = drift4
+    adaptive = false
+  []
+  [group5_drift_adaptive]
+    type = GroupDrift
+    variable = group5
+    block = '7'
+    group_drift_var = drift5
+    adaptive = false
+  []
 []
 
 [Materials]
@@ -137,7 +180,7 @@
     base_file = 'openmc/absorber-air-lattice-ref-5g.json'
     material_key = 'fuel'
     interp_type = 'none'
-    block = '2 5'
+    block = '2 5 7'
   []
   [graphite]
     type = MoltresJsonMaterial
@@ -176,8 +219,12 @@
 
   solve_type = 'PJFNK'
   petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  petsc_options_iname = '-pc_type -pc_hypre_type'
-  petsc_options_value = 'hypre boomeramg'
+#  petsc_options_iname = '-pc_type -pc_hypre_type'
+#  petsc_options_value = 'hypre boomeramg'
+  petsc_options_iname = '-pc_type -pc_factor_shift_type -pc_factor_mat_solver_type'
+  petsc_options_value = 'lu nonzero superlu_dist'
+#  petsc_options_iname = '-pc_type -pc_hypre_type -pc_hypre_boomeramg_strong_threshold -pc_hypre_boomeramg_agg_nl -pc_hypre_boomeramg_agg_num_paths -pc_hypre_boomeramg_max_levels -pc_hypre_boomeramg_coarsen_type -pc_hypre_boomeramg_interp_type -pc_hypre_boomeramg_P_max -pc_hypre_boomeramg_truncfactor'
+#  petsc_options_value = 'hypre boomeramg 0.7 4 5 25 HMIS ext+i 2 0.3'
   line_search = 'none'
 []
 
@@ -269,5 +316,6 @@
   [exodus]
     type = Exodus
     discontinuous = true
+    execute_on = 'initial timestep_end failed'
   []
 []
