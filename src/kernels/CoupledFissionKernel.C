@@ -59,7 +59,7 @@ CoupledFissionKernel::computeQpResidual()
 {
   Real r = 0;
   for (unsigned int i = 0; i < _num_groups; ++i)
-    r += -_nsf[_qp][i] * computeConcentration((*_group_fluxes[i]), _qp);
+    r += -_nsf[_qp][i] * (*_group_fluxes[i])[_qp];
 
   if (_account_delayed)
     r *= (1. - _beta[_qp]) * _chi_p[_qp][_group];
@@ -80,7 +80,7 @@ CoupledFissionKernel::computeQpJacobian()
   {
     if (i == _group)
     {
-      jac = -_nsf[_qp][i] * computeConcentrationDerivative((*_group_fluxes[i]), _phi, _j, _qp);
+      jac = -_nsf[_qp][i] * _phi[_j][_qp];
       break;
     }
   }
@@ -105,7 +105,7 @@ CoupledFissionKernel::computeQpOffDiagJacobian(unsigned int jvar)
     if (jvar == _flux_ids[i])
     {
       jac = -_test[_i][_qp] * _nsf[_qp][i] *
-            computeConcentrationDerivative((*_group_fluxes[i]), _phi, _j, _qp);
+            _phi[_j][_qp];
       if (_account_delayed)
         jac *= (1. - _beta[_qp]) * _chi_p[_qp][_group];
       else
@@ -121,12 +121,12 @@ CoupledFissionKernel::computeQpOffDiagJacobian(unsigned int jvar)
     for (unsigned int i = 0; i < _num_groups; ++i)
     {
       if (_account_delayed)
-        jac += -_test[_i][_qp] * computeConcentration((*_group_fluxes[i]), _qp) *
+        jac += -_test[_i][_qp] * (*_group_fluxes[i])[_qp] *
                (_d_chi_p_d_temp[_qp][_group] * _phi[_j][_qp] * _nsf[_qp][i] * (1. - _beta[_qp]) +
                 _chi_p[_qp][_group] * _d_nsf_d_temp[_qp][i] * _phi[_j][_qp] * (1. - _beta[_qp]) +
                 _chi_p[_qp][_group] * _nsf[_qp][i] * -_d_beta_d_temp[_qp] * _phi[_j][_qp]);
       else
-        jac += -_test[_i][_qp] * computeConcentration((*_group_fluxes[i]), _qp) *
+        jac += -_test[_i][_qp] * (*_group_fluxes[i])[_qp] *
                (_d_chi_t_d_temp[_qp][_group] * _phi[_j][_qp] * _nsf[_qp][i] +
                 _chi_t[_qp][_group] * _d_nsf_d_temp[_qp][i] * _phi[_j][_qp]);
     }

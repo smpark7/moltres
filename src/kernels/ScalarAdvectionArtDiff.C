@@ -90,7 +90,7 @@ ScalarAdvectionArtDiff::computeQpResidual()
     h = std::cbrt(_current_elem->volume());
   Real delta = U.norm() * h / 2. * ScalarAdvectionArtDiff::tau();
 
-  return -_grad_test[_i][_qp] * -delta * computeConcentrationGradient(_u, _grad_u, _qp) * _scale *
+  return -_grad_test[_i][_qp] * -delta * _grad_u[_qp] * _scale *
          _conc_scaling;
 }
 
@@ -108,7 +108,7 @@ ScalarAdvectionArtDiff::computeQpJacobian()
   Real delta = U.norm() * h / 2. * ScalarAdvectionArtDiff::tau();
 
   return -_grad_test[_i][_qp] * -delta *
-         computeConcentrationGradientDerivative(_u, _grad_u, _phi, _grad_phi, _j, _qp) * _scale *
+         _grad_phi[_j][_qp] * _scale *
          _conc_scaling;
 }
 
@@ -129,7 +129,7 @@ ScalarAdvectionArtDiff::computeQpOffDiagJacobian(unsigned int jvar)
         _u_vel[_qp] * _phi[_j][_qp] / U.norm() *
         h / 2. * ScalarAdvectionArtDiff::tau();
     return -_grad_test[_i][_qp] * -d_delta_d_u_vel *
-           computeConcentrationGradient(_u, _grad_u, _qp) * _scale * _conc_scaling;
+           _grad_u[_qp] * _scale * _conc_scaling;
   }
 
   else if (jvar == _v_vel_var_number)
@@ -139,7 +139,7 @@ ScalarAdvectionArtDiff::computeQpOffDiagJacobian(unsigned int jvar)
         _v_vel[_qp] * _phi[_j][_qp] / U.norm() *
         h / 2. * ScalarAdvectionArtDiff::tau();
     return -_grad_test[_i][_qp] * -d_delta_d_v_vel *
-           computeConcentrationGradient(_u, _grad_u, _qp) * _scale * _conc_scaling;
+           _grad_u[_qp] * _scale * _conc_scaling;
   }
 
   else if (jvar == _w_vel_var_number)
@@ -149,7 +149,7 @@ ScalarAdvectionArtDiff::computeQpOffDiagJacobian(unsigned int jvar)
         _w_vel[_qp] * _phi[_j][_qp] / U.norm() *
         h / 2. * ScalarAdvectionArtDiff::tau();
     return -_grad_test[_i][_qp] * -d_delta_d_w_vel *
-           computeConcentrationGradient(_u, _grad_u, _qp) * _scale * _conc_scaling;
+           _grad_u[_qp] * _scale * _conc_scaling;
   }
   else
     return 0.0;

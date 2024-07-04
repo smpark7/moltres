@@ -54,7 +54,7 @@ PrecursorSource::computeQpResidual()
   for (unsigned int i = 0; i < _num_groups; ++i)
   {
     r += -_test[_i][_qp] * _beta_eff[_qp][_precursor_group] * _nsf[_qp][i] *
-         computeConcentration((*_group_fluxes[i]), _qp) * _prec_scale;
+         (*_group_fluxes[i])[_qp] * _prec_scale;
   }
 
   if ((_eigenvalue_scaling != 1.0))
@@ -77,7 +77,7 @@ PrecursorSource::computeQpOffDiagJacobian(unsigned int jvar)
     if (jvar == _flux_ids[i])
     {
       jac = -_test[_i][_qp] * _beta_eff[_qp][_precursor_group] * _nsf[_qp][i] *
-            computeConcentrationDerivative((*_group_fluxes[i]), _phi, _j, _qp) * _prec_scale;
+            _phi[_j][_qp] * _prec_scale;
       break;
     }
 
@@ -86,9 +86,9 @@ PrecursorSource::computeQpOffDiagJacobian(unsigned int jvar)
     for (unsigned int i = 0; i < _num_groups; ++i)
       jac += -_test[_i][_qp] *
              (_beta_eff[_qp][_precursor_group] * _d_nsf_d_temp[_qp][i] * _phi[_j][_qp] *
-                  computeConcentration((*_group_fluxes[i]), _qp) * _prec_scale +
+                  (*_group_fluxes[i])[_qp] * _prec_scale +
               _d_beta_eff_d_temp[_qp][_precursor_group] * _phi[_j][_qp] * _nsf[_qp][i] *
-                  computeConcentration((*_group_fluxes[i]), _qp) * _prec_scale);
+                  (*_group_fluxes[i])[_qp] * _prec_scale);
   }
 
   if ((_eigenvalue_scaling != 1.0))

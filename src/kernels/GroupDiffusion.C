@@ -28,14 +28,14 @@ Real
 GroupDiffusion::computeQpResidual()
 {
   return _diffcoef[_qp][_group] * _grad_test[_i][_qp] *
-         computeConcentrationGradient(_u, _grad_u, _qp);
+         _grad_u[_qp];
 }
 
 Real
 GroupDiffusion::computeQpJacobian()
 {
   return _diffcoef[_qp][_group] * _grad_test[_i][_qp] *
-         computeConcentrationGradientDerivative(_u, _grad_u, _phi, _grad_phi, _j, _qp);
+         _grad_phi[_j][_qp];
 }
 
 Real
@@ -43,7 +43,7 @@ GroupDiffusion::computeQpOffDiagJacobian(unsigned int jvar)
 {
   if (jvar == _temp_id)
     return _d_diffcoef_d_temp[_qp][_group] * _phi[_j][_qp] * _grad_test[_i][_qp] *
-           computeConcentrationGradient(_u, _grad_u, _qp);
+           _grad_u[_qp];
   else
     return 0;
 }

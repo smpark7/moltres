@@ -33,11 +33,11 @@ VacuumConcBC::VacuumConcBC(const InputParameters & parameters)
 Real
 VacuumConcBC::computeQpResidual()
 {
-  return _test[_i][_qp] * computeConcentration(_u, _qp) / _alpha;
+  return _test[_i][_qp] * _u[_qp] / _alpha;
 }
 
 Real
 VacuumConcBC::computeQpJacobian()
 {
-  return _test[_i][_qp] * computeConcentrationDerivative(_u, _phi, _j, _qp) / _alpha;
+  return _test[_i][_qp] * _phi[_j][_qp] / _alpha;
 }

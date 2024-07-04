@@ -25,12 +25,12 @@ ScalarTransportTimeDerivative::ScalarTransportTimeDerivative(const InputParamete
 Real
 ScalarTransportTimeDerivative::computeQpResidual()
 {
-  return _test[_i][_qp] * computeConcentrationDot(_u, _u_dot, _qp) * _conc_scaling;
+  return _test[_i][_qp] * _u_dot[_qp] * _conc_scaling;
 }
 
 Real
 ScalarTransportTimeDerivative::computeQpJacobian()
 {
-  return _test[_i][_qp] * computeConcentrationDotDerivative(_u, _u_dot, _du_dot_du, _phi, _j, _qp) *
+  return _test[_i][_qp] * _du_dot_du[_qp] * _phi[_j][_qp] *
          _conc_scaling;
 }

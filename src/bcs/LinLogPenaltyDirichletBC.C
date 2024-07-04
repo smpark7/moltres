@@ -31,5 +31,5 @@ LinLogPenaltyDirichletBC::computeQpResidual()
 Real
 LinLogPenaltyDirichletBC::computeQpJacobian()
 {
-  return _p * computeConcentrationDerivative(_u, _phi, _j, _qp) * _test[_i][_qp];
+  return _p * _phi[_j][_qp] * _test[_i][_qp];
 }

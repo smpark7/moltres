@@ -46,7 +46,7 @@ DelayedNeutronSource::computeQpResidual()
 {
   Real r = 0;
   for (unsigned int i = 0; i < _num_precursor_groups; ++i)
-    r += -_decay_constant[_qp][i] * computeConcentration((*_pre_concs[i]), _qp);
+    r += -_decay_constant[_qp][i] * (*_pre_concs[i])[_qp];
 
   return _chi_d[_qp][_group] * _test[_i][_qp] * r;
 }
@@ -65,15 +65,14 @@ DelayedNeutronSource::computeQpOffDiagJacobian(unsigned int jvar)
   {
     if (jvar == _pre_ids[i])
     {
-      jac += -_test[_i][_qp] * _decay_constant[_qp][i] *
-             computeConcentrationDerivative((*_pre_concs[i]), _phi, _j, _qp);
+      jac += -_test[_i][_qp] * _decay_constant[_qp][i] * _phi[_j][_qp];
       break;
     }
   }
 
   if (jvar == _temp_id)
     for (unsigned int i = 0; i < _num_precursor_groups; ++i)
-      jac += -_test[_i][_qp] * computeConcentration((*_pre_concs[i]), _qp) *
+      jac += -_test[_i][_qp] * (*_pre_concs[i])[_qp] *
              _d_decay_constant_d_temp[_qp][i] * _phi[_j][_qp];
 
   return _chi_d[_qp][_group] * jac;

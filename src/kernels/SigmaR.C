@@ -25,13 +25,13 @@ SigmaR::SigmaR(const InputParameters & parameters)
 Real
 SigmaR::computeQpResidual()
 {
-  return _test[_i][_qp] * _remxs[_qp][_group] * computeConcentration(_u, _qp);
+  return _test[_i][_qp] * _remxs[_qp][_group] * _u[_qp];
 }
 
 Real
 SigmaR::computeQpJacobian()
 {
-  return _test[_i][_qp] * _remxs[_qp][_group] * computeConcentrationDerivative(_u, _phi, _j, _qp);
+  return _test[_i][_qp] * _remxs[_qp][_group] * _phi[_j][_qp];
 }
 
 Real
@@ -39,7 +39,7 @@ SigmaR::computeQpOffDiagJacobian(unsigned int jvar)
 {
   if (jvar == _temp_id)
     return _test[_i][_qp] * _d_remxs_d_temp[_qp][_group] * _phi[_j][_qp] *
-           computeConcentration(_u, _qp);
+           _u[_qp];
   else
     return 0;
 }
