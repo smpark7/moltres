@@ -29,4 +29,9 @@ protected:
 
   // Rod cusping correction coefficient
   const Real _cusp_coeff;
+
+  // Group constant interpolators
+  std::map<std::string, std::vector<SplineInterpolation>> _nr_xsec_spline_interpolators;
+  std::map<std::string, std::vector<MonotoneCubicInterpolation>> _nr_xsec_monotone_cubic_interpolators;
+  std::map<std::string, std::vector<LinearInterpolation>> _nr_xsec_linear_interpolators;
 };

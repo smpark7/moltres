@@ -39,15 +39,15 @@ SNRodMaterial::SNRodMaterial(const InputParameters & parameters)
   nlohmann::json xs_root;
   myfile >> xs_root;
 
-  int k = 0;
-  auto temp_root = xs_root[_material_key]["temp"];
-  _XsTemperature.resize(temp_root.size());
-
-  for (auto & el : temp_root.items())
-  {
-    _XsTemperature[k] = el.value().get<int>();
-    k = k + 1;
-  }
+//  int k = 0;
+//  auto temp_root = xs_root[_material_key]["temp"];
+//  _XsTemperature.resize(temp_root.size());
+//
+//  for (auto & el : temp_root.items())
+//  {
+//    _XsTemperature[k] = el.value().get<int>();
+//    k = k + 1;
+//  }
 
   Construct(xs_root);
 }
@@ -64,12 +64,12 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
     auto L = _XsTemperature.size();
 
     // Rod group constant interpolators
-    _xsec_linear_interpolators[_xsec_names[j]].resize(o);
-    _xsec_spline_interpolators[_xsec_names[j]].resize(o);
-    _xsec_monotone_cubic_interpolators[_xsec_names[j]].resize(o);
-    _xsec_map[_xsec_names[j]].resize(o);
+//    _xsec_linear_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_spline_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_monotone_cubic_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_map[_xsec_names[j]].resize(o);
     // Non-rod group constant interpolators
-    _xsec_linear_interpolators[nr + _xsec_names[j]].resize(o);
+    _nr_xsec_linear_interpolators[nr + _xsec_names[j]].resize(o);
     _xsec_spline_interpolators[nr + _xsec_names[j]].resize(o);
     _xsec_monotone_cubic_interpolators[nr + _xsec_names[j]].resize(o);
     _xsec_map[nr + _xsec_names[j]].resize(o);
@@ -79,27 +79,27 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
       for (decltype(_XsTemperature.size()) l = 0; l < L; ++l)
       {
         auto temp_key = std::to_string(static_cast<int>(_XsTemperature[l]));
-        auto dataset = xs_root[_material_key][temp_key][_xsec_names[j]];
+//        auto dataset = xs_root[_material_key][temp_key][_xsec_names[j]];
         auto nonrod_dataset = xs_root[_nonrod_material_key][temp_key][_xsec_names[j]];
-        if (_xsec_names[j] == "CHI_D" && dataset.empty())
+        if (_xsec_names[j] == "CHI_D" && nonrod_dataset.empty())
         {
           for (decltype(_num_groups) k = 1; k < _num_groups; ++k)
           {
-            _xsec_map["CHI_D"][k].push_back(0.0);
+//            _xsec_map["CHI_D"][k].push_back(0.0);
             _xsec_map[nr + "CHI_D"][k].push_back(0.0);
           }
-          _xsec_map["CHI_D"][0].push_back(1.0);
+//          _xsec_map["CHI_D"][0].push_back(1.0);
           _xsec_map[nr + "CHI_D"][0].push_back(1.0);
           mooseWarning(
               "CHI_D data missing -> assume delayed neutrons born in top group for material " +
               _name);
           continue;
         }
-        if (dataset.empty())
+        if (nonrod_dataset.empty())
           mooseError("Unable to open database " + _material_key + "/" + temp_key + "/" +
                      _xsec_names[j]);
 
-        int dims = dataset.size();
+        int dims = nonrod_dataset.size();
         if (o == 0 and !oneInfo)
         {
           mooseInfo("Only precursor material data initialized (num_groups = 0) for material " + _name);
@@ -114,13 +114,13 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
           for (auto i = 0; i < (_L+1); ++i)
             for (auto k = 0; k < o/(_L+1); ++k)
             {
-              _xsec_map[_xsec_names[j]][i*o/(_L+1)+k].push_back(dataset[i][k].get<double>());
+//              _xsec_map[_xsec_names[j]][i*o/(_L+1)+k].push_back(dataset[i][k].get<double>());
               _xsec_map[nr + _xsec_names[j]][i*o/(_L+1)+k].push_back(nonrod_dataset[i][k].get<double>());
             }
         else
           for (auto k = 0; k < o; ++k)
           {
-            _xsec_map[_xsec_names[j]][k].push_back(dataset[k].get<double>());
+//            _xsec_map[_xsec_names[j]][k].push_back(dataset[k].get<double>());
             _xsec_map[nr + _xsec_names[j]][k].push_back(nonrod_dataset[k].get<double>());
           }
       }
@@ -130,10 +130,14 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
       for (decltype(_XsTemperature.size()) l = 0; l < L; ++l)
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_map[_xsec_names[j]][k].push_back(0.);
+//          _xsec_map[_xsec_names[j]][k].push_back(0.);
           _xsec_map[nr + _xsec_names[j]][k].push_back(0.);
         }
     }
+    for (decltype(_XsTemperature.size()) l = 0; l < _XsTemperature.size(); ++l)
+      std::cout << _XsTemperature[l] << std::endl;
+    for (decltype(_xsec_map[_xsec_names[j]][0].size()) l = 0; l < _xsec_map[_xsec_names[j]][0].size(); ++l)
+      std::cout << _xsec_map[_xsec_names[j]][0][l] << std::endl;
     switch (_interp_type)
     {
       case NONE:
@@ -148,17 +152,17 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
           for (auto i = 0; i < (_L+1); ++i)
             for (auto k = 0; k < o/(_L+1); ++k)
             {
-              _xsec_linear_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
-                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
-              _xsec_linear_interpolators[nr + _xsec_names[j]][i*o/(_L+1)+k].setData(
+//              _xsec_linear_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
+//                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
+              _nr_xsec_linear_interpolators[nr + _xsec_names[j]][i*o/(_L+1)+k].setData(
                 _XsTemperature, _xsec_map[nr + _xsec_names[j]][i*o/(_L+1)+k]);
             }
         else
           for (auto k = 0; k < o; ++k)
           {
-            _xsec_linear_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
-                                                                  _xsec_map[_xsec_names[j]][k]);
-            _xsec_linear_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
+//            _xsec_linear_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
+//                                                                  _xsec_map[_xsec_names[j]][k]);
+            _nr_xsec_linear_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
                 _xsec_map[nr + _xsec_names[j]][k]);
           }
         break;
@@ -167,16 +171,16 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
           for (auto i = 0; i < (_L+1); ++i)
             for (auto k = 0; k < o/(_L+1); ++k)
             {
-              _xsec_spline_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
-                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
+//              _xsec_spline_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
+//                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
               _xsec_spline_interpolators[nr + _xsec_names[j]][i*o/(_L+1)+k].setData(
                 _XsTemperature, _xsec_map[nr + _xsec_names[j]][i*o/(_L+1)+k]);
             }
         else
           for (auto k = 0; k < o; ++k)
           {
-            _xsec_spline_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
-                                                                  _xsec_map[_xsec_names[j]][k]);
+//            _xsec_spline_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
+//                                                                  _xsec_map[_xsec_names[j]][k]);
             _xsec_spline_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
                 _xsec_map[nr + _xsec_names[j]][k]);
           }
@@ -188,16 +192,16 @@ SNRodMaterial::Construct(nlohmann::json xs_root)
           for (auto i = 0; i < (_L+1); ++i)
             for (auto k = 0; k < o/(_L+1); ++k)
             {
-              _xsec_monotone_cubic_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
-                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
+//              _xsec_monotone_cubic_interpolators[_xsec_names[j]][i*o/(_L+1)+k].setData(
+//                _XsTemperature, _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
               _xsec_monotone_cubic_interpolators[nr + _xsec_names[j]][i*o/(_L+1)+k].setData(
                 _XsTemperature, _xsec_map[nr + _xsec_names[j]][i*o/(_L+1)+k]);
             }
         else
           for (auto k = 0; k < o; ++k)
           {
-            _xsec_monotone_cubic_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
-                                                                  _xsec_map[_xsec_names[j]][k]);
+//            _xsec_monotone_cubic_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
+//                                                                  _xsec_map[_xsec_names[j]][k]);
             _xsec_monotone_cubic_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
                 _xsec_map[nr + _xsec_names[j]][k]);
           }
@@ -488,78 +492,78 @@ SNRodMaterial::linearComputeQpProperties()
   {
     _totxs[_qp][i] =
       _xsec_linear_interpolators["REMXS"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "REMXS"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "REMXS"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _fissxs[_qp][i] =
       _xsec_linear_interpolators["FISSXS"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "FISSXS"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "FISSXS"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _nsf[_qp][i] =
       _xsec_linear_interpolators["NSF"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "NSF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "NSF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _fisse[_qp][i] =
       (_xsec_linear_interpolators["FISSE"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "FISSE"][i].sample(_temperature[_qp]) * (1 - vol_frac))
+      _nr_xsec_linear_interpolators[nr + "FISSE"][i].sample(_temperature[_qp]) * (1 - vol_frac))
       * 1e6 * 1.6e-19; // convert from MeV to Joules
     _diffcoef[_qp][i] =
       _xsec_linear_interpolators["DIFFCOEF"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "DIFFCOEF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "DIFFCOEF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _recipvel[_qp][i] =
       _xsec_linear_interpolators["RECIPVEL"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "RECIPVEL"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "RECIPVEL"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _chi_t[_qp][i] =
       _xsec_linear_interpolators["CHI_T"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_T"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "CHI_T"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _chi_p[_qp][i] =
       _xsec_linear_interpolators["CHI_P"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_P"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "CHI_P"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _chi_d[_qp][i] =
       _xsec_linear_interpolators["CHI_D"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_D"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "CHI_D"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _d_totxs_d_temp[_qp][i] =
       _xsec_linear_interpolators["REMXS"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "REMXS"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "REMXS"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_fissxs_d_temp[_qp][i] =
       _xsec_linear_interpolators["FISSXS"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "FISSXS"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "FISSXS"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_nsf_d_temp[_qp][i] =
         _xsec_linear_interpolators["NSF"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "NSF"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "NSF"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_fisse_d_temp[_qp][i] =
       (_xsec_linear_interpolators["FISSE"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "FISSE"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "FISSE"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac)) * 1e6 * 1.6e-19; // convert from MeV to Joules
     _d_diffcoef_d_temp[_qp][i] =
       _xsec_linear_interpolators["DIFFCOEF"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "DIFFCOEF"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "DIFFCOEF"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_recipvel_d_temp[_qp][i] =
       _xsec_linear_interpolators["RECIPVEL"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "RECIPVEL"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "RECIPVEL"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_chi_t_d_temp[_qp][i] =
       _xsec_linear_interpolators["CHI_T"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_T"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "CHI_T"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_chi_p_d_temp[_qp][i] =
       _xsec_linear_interpolators["CHI_P"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_P"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "CHI_P"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _d_chi_d_d_temp[_qp][i] =
       _xsec_linear_interpolators["CHI_D"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "CHI_D"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "CHI_D"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
   }
   for (decltype(_num_groups) i = 0; i < _num_groups * _num_groups * (_L+1); ++i)
   {
     _scatter[_qp][i] =
       _xsec_linear_interpolators["SPN"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "SPN"][i].sample(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "SPN"][i].sample(_temperature[_qp]) *
       (1 - vol_frac);
     _d_scatter_d_temp[_qp][i] =
       _xsec_linear_interpolators["SPN"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "SPN"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "SPN"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
   }
   _beta[_qp] = 0;
@@ -568,20 +572,20 @@ SNRodMaterial::linearComputeQpProperties()
   {
     _beta_eff[_qp][i] =
       _xsec_linear_interpolators["BETA_EFF"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "BETA_EFF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
+      _nr_xsec_linear_interpolators[nr + "BETA_EFF"][i].sample(_temperature[_qp]) * (1 - vol_frac);
     _d_beta_eff_d_temp[_qp][i] =
       _xsec_linear_interpolators["BETA_EFF"][i].sampleDerivative(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "BETA_EFF"][i].sampleDerivative(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "BETA_EFF"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
     _beta[_qp] += _beta_eff[_qp][i];
     _d_beta_d_temp[_qp] += _d_beta_eff_d_temp[_qp][i];
     _decay_constant[_qp][i] =
       _xsec_linear_interpolators["DECAY_CONSTANT"][i].sample(_temperature[_qp]) * vol_frac +
-      _xsec_linear_interpolators[nr + "DECAY_CONSTANT"][i].sample(_temperature[_qp]) *
+      _nr_xsec_linear_interpolators[nr + "DECAY_CONSTANT"][i].sample(_temperature[_qp]) *
       (1 - vol_frac);
     _d_decay_constant_d_temp[_qp][i] =
       _xsec_linear_interpolators["DECAY_CONSTANT"][i].sampleDerivative(_temperature[_qp]) * vol_frac
-      + _xsec_linear_interpolators[nr + "DECAY_CONSTANT"][i].sampleDerivative(_temperature[_qp]) *
+      + _nr_xsec_linear_interpolators[nr + "DECAY_CONSTANT"][i].sampleDerivative(_temperature[_qp]) *
       (1 - vol_frac);
   }
 }

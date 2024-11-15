@@ -39,15 +39,15 @@ DiffusionRodMaterial::DiffusionRodMaterial(const InputParameters & parameters)
   nlohmann::json xs_root;
   myfile >> xs_root;
 
-  int k = 0;
-  auto temp_root = xs_root[_material_key]["temp"];
-  _XsTemperature.resize(temp_root.size());
-
-  for (auto & el : temp_root.items())
-  {
-    _XsTemperature[k] = el.value().get<int>();
-    k = k + 1;
-  }
+//  int k = 0;
+//  auto temp_root = xs_root[_material_key]["temp"];
+//  _XsTemperature.resize(temp_root.size());
+//
+//  for (auto & el : temp_root.items())
+//  {
+//    _XsTemperature[k] = el.value().get<int>();
+//    k = k + 1;
+//  }
 
   Construct(xs_root);
 }
@@ -63,10 +63,10 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
     auto o = _vec_lengths[_xsec_names[j]];
     auto L = _XsTemperature.size();
 
-    _xsec_linear_interpolators[_xsec_names[j]].resize(o);
-    _xsec_spline_interpolators[_xsec_names[j]].resize(o);
-    _xsec_monotone_cubic_interpolators[_xsec_names[j]].resize(o);
-    _xsec_map[_xsec_names[j]].resize(o);
+//    _xsec_linear_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_spline_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_monotone_cubic_interpolators[_xsec_names[j]].resize(o);
+//    _xsec_map[_xsec_names[j]].resize(o);
     // Non-rod group constant interpolators
     _xsec_linear_interpolators[nr + _xsec_names[j]].resize(o);
     _xsec_spline_interpolators[nr + _xsec_names[j]].resize(o);
@@ -78,27 +78,27 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
       for (decltype(_XsTemperature.size()) l = 0; l < L; ++l)
       {
         auto temp_key = std::to_string(static_cast<int>(_XsTemperature[l]));
-        auto dataset = xs_root[_material_key][temp_key][_xsec_names[j]];
+//        auto dataset = xs_root[_material_key][temp_key][_xsec_names[j]];
         auto nonrod_dataset = xs_root[_nonrod_material_key][temp_key][_xsec_names[j]];
-        if (_xsec_names[j] == "CHI_D" && dataset.empty())
+        if (_xsec_names[j] == "CHI_D" && nonrod_dataset.empty())
         {
           for (decltype(_num_groups) k = 1; k < _num_groups; ++k)
           {
-            _xsec_map["CHI_D"][k].push_back(0.0);
+//            _xsec_map["CHI_D"][k].push_back(0.0);
             _xsec_map[nr + "CHI_D"][k].push_back(0.0);
           }
-          _xsec_map["CHI_D"][0].push_back(1.0);
+//          _xsec_map["CHI_D"][0].push_back(1.0);
           _xsec_map[nr + "CHI_D"][0].push_back(1.0);
           mooseWarning(
               "CHI_D data missing -> assume delayed neutrons born in top group for material " +
               _name);
           continue;
         }
-        if (dataset.empty())
+        if (nonrod_dataset.empty())
           mooseError("Unable to open database " + _material_key + "/" + temp_key + "/" +
                      _xsec_names[j]);
 
-        int dims = dataset.size();
+        int dims = nonrod_dataset.size();
         if (o == 0 and !oneInfo)
         {
           mooseInfo("Only precursor material data initialized (num_groups = 0) for material " + _name);
@@ -111,7 +111,7 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
                      std::to_string(dims) + "!=" + std::to_string(o));
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_map[_xsec_names[j]][k].push_back(dataset[k].get<double>());
+//          _xsec_map[_xsec_names[j]][k].push_back(dataset[k].get<double>());
           _xsec_map[nr + _xsec_names[j]][k].push_back(nonrod_dataset[k].get<double>());
         }
       }
@@ -120,10 +120,14 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
       for (decltype(_XsTemperature.size()) l = 0; l < L; ++l)
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_map[_xsec_names[j]][k].push_back(0.);
+//          _xsec_map[_xsec_names[j]][k].push_back(0.);
           _xsec_map[nr + _xsec_names[j]][k].push_back(0.);
         }
     }
+//    for (decltype(_XsTemperature.size()) l = 0; l < _XsTemperature.size(); ++l)
+//      std::cout << _XsTemperature[l] << std::endl;
+//    for (decltype(_xsec_map[_xsec_names[j]][0].size()) l = 0; l < _xsec_map[_xsec_names[j]][0].size(); ++l)
+//      std::cout << _xsec_map[_xsec_names[j]][0][l] << std::endl;
     switch (_interp_type)
     {
       case LSQ:
@@ -142,8 +146,8 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
       case LINEAR:
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_linear_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
-                                                                _xsec_map[_xsec_names[j]][k]);
+//          _xsec_linear_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
+//                                                                _xsec_map[_xsec_names[j]][k]);
           _xsec_linear_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
               _xsec_map[nr + _xsec_names[j]][k]);
         }
@@ -151,8 +155,8 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
       case SPLINE:
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_spline_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
-                                                                _xsec_map[_xsec_names[j]][k]);
+//          _xsec_spline_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
+//                                                                _xsec_map[_xsec_names[j]][k]);
           _xsec_spline_interpolators[nr + _xsec_names[j]][k].setData(_XsTemperature,
               _xsec_map[nr + _xsec_names[j]][k]);
         }
@@ -162,9 +166,9 @@ DiffusionRodMaterial::Construct(nlohmann::json xs_root)
           mooseError("Monotone cubic interpolation requires at least three data points.");
         for (auto k = 0; k < o; ++k)
         {
-          _xsec_monotone_cubic_interpolators[_xsec_names[j]][k].setData(
-              _XsTemperature,
-              _xsec_map[_xsec_names[j]][k]);
+//          _xsec_monotone_cubic_interpolators[_xsec_names[j]][k].setData(
+//              _XsTemperature,
+//              _xsec_map[_xsec_names[j]][k]);
           _xsec_monotone_cubic_interpolators[nr + _xsec_names[j]][k].setData(
               _XsTemperature,
               _xsec_map[nr + _xsec_names[j]][k]);
