@@ -28,7 +28,7 @@ jobs:
       # ./doc/html
       - uses: conda-incubator/setup-miniconda@v3
         with:
-          channels: conda-forge,https://conda.software.inl.gov/public
+          channels: conda-forge,https://conda.software.inl.gov/public,defaults
           activate-environment: moose-env
       - shell: bash -l {0}
         run: |
