@@ -13,6 +13,7 @@ NeutronSourceAux::validParams()
                                                "energy/increasing group number.");
   params.addCoupledVar(
       "temperature", 800, "The temperature used to interpolate material properties.");
+  params.addParam<Real>("nt_scale", 1, "Scaling of the neutron fluxes to aid convergence.");
   return params;
 }
 
@@ -21,7 +22,8 @@ NeutronSourceAux::NeutronSourceAux(const InputParameters & parameters)
     ScalarTransportBase(parameters),
     _nsf(getMaterialProperty<std::vector<Real>>("nsf")),
     _num_groups(getParam<unsigned int>("num_groups")),
-    _temp(coupledValue("temperature"))
+    _temp(coupledValue("temperature")),
+    _nt_scale(getParam<Real>("nt_scale"))
 {
   _group_fluxes.resize(_num_groups);
   for (unsigned int i = 0; i < _group_fluxes.size(); ++i)
@@ -36,7 +38,7 @@ NeutronSourceAux::computeValue()
   Real r = 0;
   for (unsigned int i = 0; i < _num_groups; ++i)
   {
-    r += _nsf[_qp][i] * computeConcentration((*_group_fluxes[i]), _qp);
+    r += _nsf[_qp][i] * computeConcentration((*_group_fluxes[i]), _qp) * _nt_scale;
   }
 
   return r;
