@@ -17,5 +17,6 @@ protected:
   unsigned int _num_groups;
   const VariableValue & _temp;
   Real _nt_scale;
+  const PostprocessorValue & _eigenvalue_scaling;
   std::vector<const VariableValue *> _group_fluxes;
 };
