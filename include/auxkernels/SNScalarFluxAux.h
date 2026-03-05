@@ -12,7 +12,9 @@ public:
 protected:
   virtual Real computeValue() override;
 
-  const unsigned int _N;
+  /// Angular group flux variables
   const ArrayVariableValue & _psi;
+
+  /// Level-symmetric quadrature weights
   RealEigenVector _weights;
 };

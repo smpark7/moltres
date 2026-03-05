@@ -34,7 +34,6 @@ MoltresSNMaterial::validParams()
                                "BETA_EFF",
                                "DECAY_CONSTANT"},
       "Group constants to be determined.");
-  params.addRequiredParam<unsigned int>("N", "Discrete ordinate order");
   params.addParam<unsigned int>("L", 2, "Maximum scattering moment");
   params.addParam<Real>("void_constant", 0.,
       "The limit under which stabilization is applied for near-void and void regions");
@@ -85,7 +84,6 @@ MoltresSNMaterial::MoltresSNMaterial(const InputParameters & parameters)
     _interp_type(getParam<MooseEnum>("interp_type")),
     _group_consts(getParam<std::vector<std::string>>("group_constants")),
     _material_key(getParam<std::string>("material_key")),
-    _N(getParam<unsigned int>("N")),
     _L(getParam<unsigned int>("L")),
     _sigma(getParam<Real>("void_constant")),
     _c(getParam<Real>("stabilization_constant")),
@@ -380,8 +378,8 @@ MoltresSNMaterial::Construct(nlohmann::json xs_root)
   bool oneInfo = false;
   for (unsigned int j = 0; j < _xsec_names.size(); ++j)
   {
-    auto o = _vec_lengths[_xsec_names[j]];
-    auto L = _XsTemperature.size();
+    unsigned int o = _vec_lengths[_xsec_names[j]];
+    unsigned int L = _XsTemperature.size();
 
     _xsec_linear_interpolators[_xsec_names[j]].resize(o);
     _xsec_spline_interpolators[_xsec_names[j]].resize(o);
@@ -425,14 +423,14 @@ MoltresSNMaterial::Construct(nlohmann::json xs_root)
             for (unsigned int k = 0; k < o/(_L+1); ++k)
               _xsec_map[_xsec_names[j]][i*o/(_L+1)+k].push_back(dataset[i][k].get<double>());
         else
-          for (auto k = 0; k < o; ++k)
+          for (unsigned int k = 0; k < o; ++k)
             _xsec_map[_xsec_names[j]][k].push_back(dataset[k].get<double>());
       }
     } else
     {
       // Initialize excluded group constants as zero values
       for (decltype(_XsTemperature.size()) l = 0; l < L; ++l)
-        for (auto k = 0; k < o; ++k)
+        for (unsigned int k = 0; k < o; ++k)
           _xsec_map[_xsec_names[j]][k].push_back(0.);
     }
     switch (_interp_type)
@@ -452,7 +450,7 @@ MoltresSNMaterial::Construct(nlohmann::json xs_root)
                 _XsTemperature,
                 _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
         else
-          for (auto k = 0; k < o; ++k)
+          for (unsigned int k = 0; k < o; ++k)
             _xsec_linear_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
                                                                   _xsec_map[_xsec_names[j]][k]);
         break;
@@ -464,7 +462,7 @@ MoltresSNMaterial::Construct(nlohmann::json xs_root)
                 _XsTemperature,
                 _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
         else
-          for (auto k = 0; k < o; ++k)
+          for (unsigned int k = 0; k < o; ++k)
             _xsec_spline_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
                                                                   _xsec_map[_xsec_names[j]][k]);
         break;
@@ -478,7 +476,7 @@ MoltresSNMaterial::Construct(nlohmann::json xs_root)
                 _XsTemperature,
                 _xsec_map[_xsec_names[j]][i*o/(_L+1)+k]);
         else
-          for (auto k = 0; k < o; ++k)
+          for (unsigned int k = 0; k < o; ++k)
             _xsec_monotone_cubic_interpolators[_xsec_names[j]][k].setData(_XsTemperature,
                                                                   _xsec_map[_xsec_names[j]][k]);
         break;

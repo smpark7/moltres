@@ -12,9 +12,15 @@ public:
 protected:
   virtual Real computeValue() override;
 
-  const unsigned int _N;
+  /// Angular group flux variables
   const ArrayVariableValue & _psi;
+
+  /// Boundary normals
   const MooseArray<Point> & _normals;
+
+  /// Level-symmetric quadrature points
   RealEigenMatrix _ordinates;
+
+  /// Level-symmetric quadrature weights
   RealEigenVector _weights;
 };

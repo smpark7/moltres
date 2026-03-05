@@ -2,10 +2,9 @@
   num_groups = 8
   num_precursor_groups = 6
   group_fluxes = 'group1 group2 group3 group4 group5 group6 group7 group8'
-  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
   temperature = 900
   sss2_input = true
-  account_delayed = true
+  account_delayed = false
   use_exp_form = false
   search_value_conflicts = false
 []
@@ -16,90 +15,66 @@
 []
 
 [Mesh]
-  second_order = true
-  [cmg]
+  [mesh]
     type = CartesianMeshGenerator
-    dim = 1
-    dx = '1.9375 1.125 3.875 1.125 3.875 1.125 3.875 1.125 1.9375'
-    ix = '5 4 10 4 10 4 10 4 5'
-    subdomain_id = '0 1 0 1 0 1 0 1 0'
+    dim = 3
+    dx = 10
+    dy = 10
+    dz = '90 10'
+    iz = '90 40'
   []
 []
 
 [AuxVariables]
   [drift1]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift2]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift3]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift4]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift5]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift6]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift7]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
   []
   [drift8]
-    order = SECOND
+    order = FIRST
     family = MONOMIAL
     components = 3
-  []
-  [delayed_source]
-    order = CONSTANT
-    family = MONOMIAL
-    block = 1
   []
 []
 
 [Nt]
   family = LAGRANGE
-  order = SECOND
+  order = FIRST
   var_name_base = group
-  vacuum_boundaries = ''
-  fission_blocks = 1
-  pre_blocks = 1
+  set_diffcoef_limit = true
   create_temperature_var = false
   eigen = true
-[]
-
-[Precursors]
-  [pres]
-    var_name_base = pre
-    block = 1
-    outlet_boundaries = ''
-    u_def = 0
-    v_def = 0
-    w_def = 0
-    nt_exp_form = false
-    loop_precursors = false
-    family = MONOMIAL
-    order = CONSTANT
-    transient = false
-    eigen = true
-  []
 []
 
 [Kernels]
@@ -145,27 +120,21 @@
   []
 []
 
-[AuxKernels]
-  [delayed_neutron_source]
-    type = DelayedNeutronSourceAux
-    variable = delayed_source
+[Functions]
+  [rod_height]
+    type = ParsedFunction
+    expression = '95'
   []
 []
 
 [Materials]
-  [fuel]
-    type = MoltresJsonMaterial
-    base_file = '../../property_file_dir/sn-test/lattice.json'
-    material_key = 'fuel'
+  [rod_fuel]
+    type = DiffusionRodMaterial
+    base_file = '../../property_file_dir/sn-test/absorber-air-lattice-ref.json'
+    material_key = 'ctrlrod'
+    nonrod_material_key = 'fuel'
+    rod_height_func = rod_height
     interp_type = 'none'
-    block = '1'
-  []
-  [graphite]
-    type = MoltresJsonMaterial
-    base_file = '../../property_file_dir/sn-test/lattice.json'
-    material_key = 'graphite'
-    interp_type = 'none'
-    block = '0'
   []
 []
 
@@ -175,7 +144,7 @@
 
   fixed_point_abs_tol = 1e-10
   fixed_point_rel_tol = 1e-10
-  fixed_point_max_its = 20
+  fixed_point_max_its = 15
   accept_on_max_fixed_point_iteration = false
 
   nl_abs_tol = 1e-10
@@ -191,7 +160,7 @@
 [MultiApps]
   [sub]
     type = FullSolveMultiApp
-    input_files = lattice-sn-dnp-sub.i
+    input_files = sn_rod_sub.i
     execute_on = timestep_end
     keep_solution_during_restore = true
     update_old_solution_when_keeping_solution_during_restore = false
@@ -201,8 +170,8 @@
 [Transfers]
   [to_sub]
     type = MultiAppGeneralFieldShapeEvaluationTransfer
-    source_variable = 'group1 group2 group3 group4 group5 group6 group7 group8 delayed_source'
-    variable = 'group1 group2 group3 group4 group5 group6 group7 group8 delayed_source'
+    source_variable = 'group1 group2 group3 group4 group5 group6 group7 group8'
+    variable = 'group1 group2 group3 group4 group5 group6 group7 group8'
     to_multi_app = sub
   []
   [to_sub_k]
@@ -280,7 +249,6 @@
 [Postprocessors]
   [bnorm]
     type = ElmIntegTotFissNtsPostprocessor
-    block = 1
     execute_on = 'initial linear timestep_end'
   []
   [eigenvalue]
