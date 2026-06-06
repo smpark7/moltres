@@ -11,7 +11,7 @@ public:
 
 protected:
   virtual void computeQpResidual(RealEigenVector & residual) override;
-  virtual RealEigenVector computeQpJacobian() override;
+  virtual void computeJacobian() override;
   virtual RealEigenMatrix computeQpOffDiagJacobian(const MooseVariableFEBase & jvar) override;
 
   /// Level-symmetric quadrature normalization factor for isotropic source
@@ -38,6 +38,12 @@ protected:
 
   /// Fixed point iteration number
   const PostprocessorValue & _iteration_postprocessor;
+  
+  /// Residual LHS vector
+  RealEigenVector _lhs;
+
+  /// Jacobian RHS vector
+  RealEigenVector _jac_rhs;
 
   /// Group flux variables
   std::vector<const VariableValue *> _group_fluxes;
@@ -56,4 +62,7 @@ protected:
 
   /// Level-symmetric quadrature harmonics
   RealEigenMatrix _harmonics;
+
+  /// Work vector for residual and diag jacobian
+  RealEigenVector _work_vector;
 };
