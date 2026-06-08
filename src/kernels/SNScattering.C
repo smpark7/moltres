@@ -38,6 +38,7 @@ SNScattering::SNScattering(const InputParameters & parameters)
     _use_initial_flux(getParam<bool>("use_initial_flux")),
     _iteration_postprocessor(getPostprocessorValue("iteration_postprocessor")),
     _lhs(_count),
+    _res_rhs(_count),
     _jac_rhs(_count)
 {
   if (_acceleration || _use_initial_flux)
@@ -71,9 +72,17 @@ SNScattering::SNScattering(const InputParameters & parameters)
 void
 SNScattering::computeQpResidual(RealEigenVector & residual)
 {
-  _lhs = _tau_sn[_qp][_group] * _ordinates * _array_grad_test[_i][_qp] +
-    RealEigenVector::Constant(_count, _test[_i][_qp]);
+  // weight * lhs * rhs
+  residual = _weights.cwiseProduct(
+      _tau_sn[_qp][_group] * _ordinates * _array_grad_test[_i][_qp] +
+      RealEigenVector::Constant(_count, _test[_i][_qp])
+      ).cwiseProduct(_res_rhs);
+}
 
+void
+SNScattering::initQpResidual()
+{
+  _res_rhs.setZero();
   // If using diffusion flux as initial condition, no need to compute scalar flux from
   // angular fluxes on the first iteration.
   int start_idx = 0;
@@ -85,7 +94,7 @@ SNScattering::computeQpResidual(RealEigenVector & residual)
       int scatter_idx = g * _num_groups + _group;
       if (_scatter[_qp][scatter_idx] == 0.0)
         continue;
-      residual -= RealEigenVector::Constant(
+      _res_rhs -= RealEigenVector::Constant(
           _count,
           _scatter[_qp][scatter_idx] * (*_group_fluxes[g])[_qp]) * _ls_norm_factor;
     }
@@ -106,14 +115,13 @@ SNScattering::computeQpResidual(RealEigenVector & residual)
         flux_moment =
           _weights.cwiseProduct(_harmonics.col(harmonics_idx)).transpose() *
           (*_group_angular_fluxes[g])[_qp];
-        residual -=
+        _res_rhs -=
           _scatter[_qp][scatter_idx] * flux_moment *
           (2.0 * l + 1.0) * _ls_norm_factor * _harmonics.col(harmonics_idx);
       }
       ++harmonics_idx;
     }
   }
-  residual = _weights.cwiseProduct(_lhs).cwiseProduct(residual);
 }
 
 void
@@ -125,24 +133,6 @@ SNScattering::computeJacobian()
   for (_qp = 0; _qp < _qrule->n_points(); _qp++)
   {
     initQpJacobian();
-    _jac_rhs.setZero();
-    // If using diffusion flux as initial condition, skip computing Jacobian contributions from
-    // 0th scattering moment.
-    int start_idx = 0;
-    if (_acceleration || (_use_initial_flux && relativeFuzzyEqual(_iteration_postprocessor, 1.0)))
-      ++start_idx;
-    int harmonics_idx = start_idx;
-    for (int l = start_idx; l < _L+1; ++l)
-    {
-      int scatter_idx = l * _num_groups * _num_groups + _group * _num_groups + _group;
-      for (int m = -l; m < l+1; ++m)
-      {
-        _jac_rhs -= _scatter[_qp][scatter_idx] * (2.0 * l + 1.0) * _ls_norm_factor *
-          _harmonics.col(harmonics_idx).cwiseProduct(_harmonics.col(harmonics_idx));
-        ++harmonics_idx;
-      }
-    }
-    _jac_rhs = _weights.cwiseProduct(_weights).cwiseProduct(_jac_rhs);
     for (_i = 0; _i < _test.size(); _i++)
     {
       _lhs = _tau_sn[_qp][_group] * _ordinates * _array_grad_test[_i][_qp] +
@@ -172,10 +162,33 @@ SNScattering::computeJacobian()
   }
 }
 
+void
+SNScattering::initQpJacobian()
+{
+  _jac_rhs.setZero();
+  // If using diffusion flux as initial condition, skip computing Jacobian contributions from
+  // 0th scattering moment.
+  int start_idx = 0;
+  if (_acceleration || (_use_initial_flux && relativeFuzzyEqual(_iteration_postprocessor, 1.0)))
+    ++start_idx;
+  int harmonics_idx = start_idx;
+  for (int l = start_idx; l < _L+1; ++l)
+  {
+    int scatter_idx = l * _num_groups * _num_groups + _group * _num_groups + _group;
+    for (int m = -l; m < l+1; ++m)
+    {
+      _jac_rhs -= _scatter[_qp][scatter_idx] * (2.0 * l + 1.0) * _ls_norm_factor *
+        _harmonics.col(harmonics_idx).cwiseProduct(_harmonics.col(harmonics_idx));
+      ++harmonics_idx;
+    }
+  }
+  _jac_rhs = _weights.cwiseProduct(_weights).cwiseProduct(_jac_rhs);
+}
+
 RealEigenMatrix
 SNScattering::computeQpOffDiagJacobian(const MooseVariableFEBase & jvar)
 {
-  _lhs = _tau_sn[_qp][_group] * _ordinates * _array_grad_test[_i][_qp] +
+  RealEigenVector lhs = _tau_sn[_qp][_group] * _ordinates * _array_grad_test[_i][_qp] +
     RealEigenVector::Constant(_count, _test[_i][_qp]);
 
   for (unsigned int g = 0; g < _num_groups; ++g)
@@ -202,7 +215,7 @@ SNScattering::computeQpOffDiagJacobian(const MooseVariableFEBase & jvar)
         for (int m = -l; m < l+1; ++m)
           for (unsigned int i = 0; i < _count; ++i)
             for (unsigned int j = 0; j < _count; ++j)
-              jac(i, j) -= _weights(i) * _lhs(i) * _scatter[_qp][scatter_idx] * _weights(j) *
+              jac(i, j) -= _weights(i) * lhs(i) * _scatter[_qp][scatter_idx] * _weights(j) *
                 _harmonics(j, idx) * _phi[_j][_qp] * (2.0 * l + 1.0) * _ls_norm_factor *
                 _harmonics(j, idx);
       }

@@ -13,6 +13,8 @@ protected:
   virtual void computeQpResidual(RealEigenVector & residual) override;
   virtual void computeJacobian() override;
   virtual RealEigenMatrix computeQpOffDiagJacobian(const MooseVariableFEBase & jvar) override;
+  virtual void initQpResidual() override;
+  virtual void initQpJacobian() override;
 
   /// Level-symmetric quadrature normalization factor for isotropic source
   const Real _ls_norm_factor = 0.125;
@@ -39,8 +41,11 @@ protected:
   /// Fixed point iteration number
   const PostprocessorValue & _iteration_postprocessor;
   
-  /// Residual LHS vector
+  /// LHS vector
   RealEigenVector _lhs;
+
+  /// Residual RHS vector
+  RealEigenVector _res_rhs;
 
   /// Jacobian RHS vector
   RealEigenVector _jac_rhs;
