@@ -1,0 +1,23 @@
+[Tests]
+  design = 'AffineEigenProblem.md'
+  [affine_eigen]
+    requirement = 'The system shall retain solution-independent residual contributions, such as an auxiliary delayed neutron source, when solving an eigenvalue problem with PJFNKMO and constant matrices'
+    [constant_matrices]
+      type = CSVDiff
+      input = 'affine_eigen.i'
+      csvdiff = 'affine_eigen_out.csv'
+      max_parallel = 1
+      detail = 'using AffineEigenProblem with constant_matrices = true, and'
+    []
+    [pjfnk_reference]
+      type = CSVDiff
+      input = 'affine_eigen.i'
+      csvdiff = 'affine_eigen_out.csv'
+      cli_args = 'Problem/type=EigenProblem Executioner/solve_type=PJFNK Executioner/constant_matrices=false'
+      rel_err = 1e-6
+      max_parallel = 1
+      prereq = 'affine_eigen/constant_matrices'
+      detail = 'matching the eigenvalue from a PJFNK solve with a standard EigenProblem.'
+    []
+  []
+[]
