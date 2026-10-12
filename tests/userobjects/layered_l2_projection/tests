@@ -66,6 +66,17 @@
                    transfer, reproducing the exact cross-section average and conserving its
                    integral.'
   []
+  [nearest_point]
+    type = CSVDiff
+    input = 'nearest_point.i'
+    csvdiff = 'nearest_point_out_nodal_0001.csv nearest_point_out_side_nodal_0001.csv'
+    min_parallel = 1
+    max_parallel = 3
+    requirement = 'The system shall compute one layered L2 projection per point over blocks and over
+                   boundaries, each collecting the elements nearest to its point, reproducing
+                   exactly the cross-section average of each channel, quadratic along the
+                   layer direction.'
+  []
   [unresolved_layer]
     type = 'RunException'
     input = 'projection.i'

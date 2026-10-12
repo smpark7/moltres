@@ -56,6 +56,9 @@ public:
   /// Nodal values of the projected field, ordered along the direction
   const std::vector<Real> & nodalValues() const { return _nodal_values; }
 
+  /// Direction of the layers (0, 1, 2 for x, y, z)
+  unsigned int direction() const { return _direction; }
+
 protected:
   using UserObjectType::_coord;
   using UserObjectType::_JxW;
