@@ -27,9 +27,3 @@ GammaHeatSource::computeQpResidual()
 {
   return -_test[_i][_qp] * _average_fission_heat * _gamma.value(_t, _q_point[_qp]);
 }
-
-Real
-GammaHeatSource::computeQpJacobian()
-{
-  return 0;
-}

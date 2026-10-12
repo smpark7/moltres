@@ -64,12 +64,6 @@ DelayedNeutronSource::computeQpResidual()
 }
 
 Real
-DelayedNeutronSource::computeQpJacobian()
-{
-  return 0.;
-}
-
-Real
 DelayedNeutronSource::computeQpOffDiagJacobian(unsigned int jvar)
 {
   if (_has_delayed_source)

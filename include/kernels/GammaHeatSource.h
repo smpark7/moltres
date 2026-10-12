@@ -9,9 +9,12 @@ public:
 
   static InputParameters validParams();
 
+  /// The on-diagonal Jacobian is identically zero: skip the element loops that would only add
+  /// zeros (they cost as much as a real kernel's Jacobian)
+  virtual void computeJacobian() override {}
+
 protected:
   virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
 
   const PostprocessorValue & _average_fission_heat;
   const Function & _gamma;

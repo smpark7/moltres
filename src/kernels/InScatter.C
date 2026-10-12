@@ -64,12 +64,6 @@ InScatter::computeQpResidual()
 }
 
 Real
-InScatter::computeQpJacobian()
-{
-  return 0.;
-}
-
-Real
 InScatter::computeQpOffDiagJacobian(unsigned int jvar)
 {
   Real jac = 0;
