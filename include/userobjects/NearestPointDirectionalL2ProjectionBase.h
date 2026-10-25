@@ -3,12 +3,12 @@
 #include "NearestPointBase.h"
 
 /**
- * One layered L2 projection per point; each element contributes to the projection of the point
+ * One directional L2 projection per point; each element contributes to the projection of the point
  * nearest to its vertex average (as NearestPointLayeredAverage does for LayeredAverage). Use
  * with one point per receiving 1-D channel.
  */
 template <typename UserObjectType, typename BaseType>
-class NearestPointLayeredL2ProjectionBase : public NearestPointBase<UserObjectType, BaseType>
+class NearestPointDirectionalL2ProjectionBase : public NearestPointBase<UserObjectType, BaseType>
 {
 public:
   static InputParameters validParams()
@@ -16,7 +16,7 @@ public:
     return NearestPointBase<UserObjectType, BaseType>::validParams();
   }
 
-  NearestPointLayeredL2ProjectionBase(const InputParameters & parameters)
+  NearestPointDirectionalL2ProjectionBase(const InputParameters & parameters)
     : NearestPointBase<UserObjectType, BaseType>(parameters)
   {
     // The per-point projections are not managed by MOOSE, so declare the dependency on the

@@ -1,4 +1,4 @@
-# LayeredL2Projection / LayeredSideL2Projection of a quadratic field.
+# DirectionalL2Projection / DirectionalSideL2Projection of a quadratic field.
 #
 # u(x,y,z) = 1 + 2 z - 0.5 z^2 + 3 x + 4 y^2 + 2 x z on [0,0.2] x [0,0.1] x [0,1.6], stored in an
 # L2_LAGRANGE SECOND variable (exact for this quadratic on HEX27 and PRISM18).
@@ -76,9 +76,10 @@
 
 [UserObjects]
   [projection]
-    type = LayeredL2Projection
+    type = DirectionalL2Projection
     variable = u
     direction = z
+    order = SECOND
     num_layers = 4
     direction_min = 0
     direction_max = 1.6

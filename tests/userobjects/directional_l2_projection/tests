@@ -1,0 +1,154 @@
+[Tests]
+  [volume_hex27]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'Outputs/file_base=volume_hex27'
+    csvdiff = 'volume_hex27.csv volume_hex27_nodal_0001.csv'
+    requirement = 'The system shall compute the directional L2 projection of a variable over blocks onto
+                   a continuous piecewise-quadratic field, reproducing exactly a field whose
+                   cross-section average is quadratic along the layer direction on HEX27 elements.'
+  []
+  [volume_prism18]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'Mesh/gen/elem_type=PRISM18 Outputs/file_base=volume_prism18'
+    csvdiff = 'volume_prism18.csv volume_prism18_nodal_0001.csv'
+    requirement = 'The system shall compute the directional L2 projection exactly on PRISM18 elements.'
+  []
+  [volume_two_elements_per_layer]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'Mesh/gen/nz=8 Outputs/file_base=volume_two_per_layer'
+    csvdiff = 'volume_two_per_layer.csv volume_two_per_layer_nodal_0001.csv'
+    requirement = 'The system shall compute the directional L2 projection exactly when the source mesh
+                   has several elements per layer.'
+  []
+  [side_hex27]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'UserObjects/projection/type=DirectionalSideL2Projection UserObjects/projection/boundary=left
+                "Functions/average/expression=1.0133333333333334 + 2*z - 0.5*z*z"
+                Outputs/file_base=side_hex27'
+    csvdiff = 'side_hex27.csv side_hex27_nodal_0001.csv'
+    requirement = 'The system shall compute the directional L2 projection of a variable over boundaries,
+                   reproducing exactly a field whose boundary average is quadratic along the layer
+                   direction.'
+  []
+  [side_prism18]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'UserObjects/projection/type=DirectionalSideL2Projection UserObjects/projection/boundary=left
+                "Functions/average/expression=1.0133333333333334 + 2*z - 0.5*z*z"
+                Mesh/gen/elem_type=PRISM18 Outputs/file_base=side_prism18'
+    csvdiff = 'side_prism18.csv side_prism18_nodal_0001.csv'
+    requirement = 'The system shall compute the directional side L2 projection exactly on PRISM18
+                   elements.'
+  []
+  [misaligned]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    # 5 source elements under 4 layers; non-polynomial field. Gold nodal values agree with an
+    # independent NumPy implementation to 1.4e-14.
+    cli_args = '"Functions/u_func/expression=cos(pi*(z-0.8)/2.0)" Mesh/gen/nz=5
+                Outputs/file_base=misaligned'
+    csvdiff = 'misaligned_nodal_0001.csv'
+    min_parallel = 1
+    max_parallel = 3
+    requirement = 'The system shall compute the directional L2 projection when the source elements are
+                   not aligned with the layers, assigning each quadrature point to its own layer.'
+  []
+  [transfer]
+    type = 'CSVDiff'
+    input = 'transfer.i'
+    csvdiff = 'transfer_out_channel0.csv'
+    requirement = 'The system shall provide the directional L2 projection to a second-order Lagrange
+                   variable on a 1-D sub-application mesh through a general field user object
+                   transfer, reproducing the exact cross-section average and conserving its
+                   integral.'
+  []
+  [nearest_point]
+    type = CSVDiff
+    input = 'nearest_point.i'
+    csvdiff = 'nearest_point_out_nodal_0001.csv nearest_point_out_side_nodal_0001.csv'
+    min_parallel = 1
+    max_parallel = 3
+    requirement = 'The system shall compute one directional L2 projection per point over blocks and over
+                   boundaries, each collecting the elements nearest to its point, reproducing
+                   exactly the cross-section average of each channel, quadratic along the
+                   layer direction.'
+  []
+  [unresolved_layer]
+    type = 'RunException'
+    input = 'projection.i'
+    cli_args = 'Mesh/gen/nz=2 Outputs/file_base=unresolved'
+    expect_err = 'is not resolved by the source mesh'
+    requirement = 'The system shall report an error if the source mesh does not resolve every layer
+                   of a directional L2 projection.'
+  []
+  [volume_first_order]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'UserObjects/projection/order=FIRST
+                "Functions/u_func/expression=1 + 2*z + 3*x + 4*y*y + 2*x*z"
+                "Functions/average/expression=1.3133333333333333 + 2.2*z"
+                Outputs/file_base=volume_first_order'
+    csvdiff = 'volume_first_order.csv volume_first_order_nodal_0001.csv'
+    requirement = 'The system shall compute the first-order directional L2 projection of a variable over
+                   blocks onto a continuous piecewise-linear field, reproducing exactly a field
+                   whose cross-section average is linear along the layer direction.'
+  []
+  [volume_third_order]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    # The projected value is not representable by the LAGRANGE SECOND sampling variable, so only
+    # the nodal values are compared; they equal the exact cubic average at the 13 nodes.
+    cli_args = 'UserObjects/projection/order=THIRD AuxVariables/u/family=MONOMIAL
+                AuxVariables/u/order=THIRD Executioner/Quadrature/order=SEVENTH
+                "Functions/u_func/expression=1 + 2*z - 0.5*z*z + 0.25*z*z*z + 3*x + 4*y*y + 2*x*z"
+                Outputs/file_base=volume_third_order'
+    csvdiff = 'volume_third_order_nodal_0001.csv'
+    requirement = 'The system shall compute the third-order directional L2 projection of a variable
+                   over blocks onto a continuous piecewise-cubic field, reproducing exactly a field
+                   whose cross-section average is cubic along the layer direction.'
+  []
+  [side_third_order]
+    type = 'CSVDiff'
+    input = 'projection.i'
+    cli_args = 'UserObjects/projection/type=DirectionalSideL2Projection UserObjects/projection/boundary=left
+                UserObjects/projection/order=THIRD AuxVariables/u/family=MONOMIAL
+                AuxVariables/u/order=THIRD Executioner/Quadrature/order=SEVENTH
+                "Functions/u_func/expression=1 + 2*z - 0.5*z*z + 0.25*z*z*z + 3*x + 4*y*y + 2*x*z"
+                Outputs/file_base=side_third_order'
+    csvdiff = 'side_third_order_nodal_0001.csv'
+    requirement = 'The system shall compute the third-order directional L2 projection of a variable
+                   over boundaries, reproducing exactly a field whose boundary average is cubic
+                   along the layer direction.'
+  []
+  [transfer_third_order]
+    type = 'CSVDiff'
+    input = 'transfer_third.i'
+    csvdiff = 'transfer_third_out_channel0.csv'
+    requirement = 'The system shall provide the third-order directional L2 projection to a third-order
+                   Lagrange variable on a 1-D sub-application mesh through a general field user
+                   object transfer, reproducing the exact cross-section average and conserving its
+                   integral.'
+  []
+  [unresolved_layer_third_order]
+    type = 'RunException'
+    input = 'projection.i'
+    # 3 Gauss points per direction give only 3 distinct positions per layer, fewer than 4
+    cli_args = 'UserObjects/projection/order=THIRD Outputs/file_base=unresolved_third'
+    expect_err = 'with at least 4 distinct quadrature point positions per layer'
+    requirement = 'The system shall report an error if the source quadrature does not resolve every
+                   layer of a third-order directional L2 projection.'
+  []
+  [constant_source]
+    type = 'RunException'
+    input = 'projection.i'
+    cli_args = 'AuxVariables/u/family=MONOMIAL AuxVariables/u/order=CONSTANT
+                Outputs/file_base=constant_source'
+    expect_err = 'use a layered average for it instead'
+    requirement = 'The system shall report an error if the variable of a directional L2 projection is of
+                   constant order.'
+  []
+[]

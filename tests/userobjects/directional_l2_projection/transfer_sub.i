@@ -1,4 +1,4 @@
-# 1-D channel receiving the layered L2 projection of transfer.i in a LAGRANGE SECOND variable.
+# 1-D channel receiving the directional L2 projection of transfer.i in a LAGRANGE SECOND variable.
 
 [Mesh]
   [gen]

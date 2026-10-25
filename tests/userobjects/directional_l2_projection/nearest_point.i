@@ -1,4 +1,4 @@
-# NearestPointLayeredL2Projection / NearestPointLayeredSideL2Projection: two channels side by side
+# NearestPointDirectionalL2Projection / NearestPointDirectionalSideL2Projection: two channels side by side
 # (x in [0, 0.2] and [0.2, 0.4]), one point each.
 #
 # u(x,y,z) = (1 + 2 z - 0.5 z^2) (1 + 3 x) + 4 y^2, exact in L2_LAGRANGE SECOND on HEX27.
@@ -61,19 +61,21 @@
 
 [UserObjects]
   [projection]
-    type = NearestPointLayeredL2Projection
+    type = NearestPointDirectionalL2Projection
     variable = u
     points = '0.1 0.05 0  0.3 0.05 0'
     direction = z
+    order = SECOND
     bounds = '0 0.4 0.8 1.2 1.6'
     execute_on = 'initial'
   []
   [side_projection]
-    type = NearestPointLayeredSideL2Projection
+    type = NearestPointDirectionalSideL2Projection
     variable = u
     boundary = bottom
     points = '0.1 0 0  0.3 0 0'
     direction = z
+    order = SECOND
     num_layers = 4
     direction_min = 0
     direction_max = 1.6
