@@ -1,0 +1,16 @@
+[Tests]
+  [cached_nearest_location]
+    type = 'CSVDiff'
+    input = 'parent.i'
+    cli_args = 'Outputs/file_base=cached_nearest_location'
+    csvdiff = 'cached_nearest_location.csv'
+    min_parallel = 1
+    max_parallel = 3
+    requirement = 'The system shall transfer a field from a displaced 1-D application by nearest
+                   location with a cached source-location map, giving exactly the values of the
+                   uncached nearest-location transfer for nodal and constant elemental targets with
+                   target block, target boundary and source block restrictions and for target
+                   points no source contains, in serial and in parallel, while the transferred field
+                   changes every step.'
+  []
+[]
