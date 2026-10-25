@@ -33,10 +33,24 @@ class openmc_xs:
         CHI, BETA_EFF, DECAY_CONSTANT and GTRANSFXS.
     """
 
-    def __init__(self, xs_filename, file_num, xs_summary):
+    def __init__(self, xs_filename, file_num, xs_summary,
+                 delayed_filename=None, delayed_summary=None):
         sp = openmc.StatePoint(xs_filename, autolink=False)
         summary = openmc.Summary(xs_summary)
         sp.link_with_summary(summary)
+        # Optional second statepoint holding only the delayed-neutron precursor
+        # tallies (BETA_EFF, DECAY_CONSTANT). These tallies dominate OpenMC
+        # runtime, so they may be generated in a separate, lower-statistics run
+        # (see the "two-run split"). When no delayed file is supplied, all
+        # quantities are read from the single main statepoint (legacy behavior).
+        if delayed_filename is not None:
+            sp_del = openmc.StatePoint(delayed_filename, autolink=False)
+            if delayed_summary is not None:
+                sp_del.link_with_summary(openmc.Summary(delayed_summary))
+            else:
+                sp_del.link_with_summary(summary)
+        else:
+            sp_del = sp
         domain_dict = openmc_ref_modules[file_num].domain_dict
         num_burn = 1
         num_branch = 0
@@ -55,7 +69,7 @@ class openmc_xs:
                 self.xs_lib[i][j - 1] = {}
                 self.xs_lib[i][j - 1][k] = {}
                 self.xs_lib[i][j - 1][k]["BETA_EFF"] = self.mgxs_tallies(
-                    sp, domain_dict[j]["beta"])
+                    sp_del, domain_dict[j]["beta"])
                 self.xs_lib[i][j - 1][k]["CHI_T"] = self.mgxs_tallies(
                     sp, domain_dict[j]["chi"])
                 self.xs_lib[i][j - 1][k]["CHI_P"] = self.mgxs_tallies(
@@ -63,7 +77,7 @@ class openmc_xs:
                 self.xs_lib[i][j - 1][k]["CHI_D"] = self.mgxs_tallies(
                     sp, domain_dict[j]["chidelayed"])
                 self.xs_lib[i][j - 1][k]["DECAY_CONSTANT"] = self.mgxs_tallies(
-                    sp, domain_dict[j]["decayrate"])
+                    sp_del, domain_dict[j]["decayrate"])
                 self.xs_lib[i][j - 1][k]["DIFFCOEF"] = self.get_diffcoeff(
                     sp, domain_dict[j]["diffusioncoefficient"])
                 self.xs_lib[i][j - 1][k]["FISSE"] = self.get_fisse(
@@ -276,7 +290,7 @@ class openmc_xs:
         return list(totalxs_df["mean"])
 
     def generate_openmc_tallies_xml(energy_groups, delayed_groups, domains,
-                                    domain_ids, tallies_file):
+                                    domain_ids, tallies_file, subset='all'):
         """
         Users should use this function to generate the OpenMC tallies file
         for group constant generation.
@@ -294,6 +308,15 @@ class openmc_xs:
             list of openmc domain ids
         tallies_file: openmc.Tallies
             an initialized openmc tallies object
+        subset: str
+            Which tallies to write to ``tallies_file``. ``domain_dict`` always
+            holds every mgxs object (needed when collapsing the statepoint), but
+            only the selected subset is added to the tallies file so a run can be
+            split for performance:
+              - 'all'     : every tally (default, legacy behavior).
+              - 'main'    : everything except the delayed-neutron precursor
+                            tallies (BETA_EFF, DECAY_CONSTANT). ~10x faster.
+              - 'delayed' : only BETA_EFF and DECAY_CONSTANT.
 
         Returns
         -------
@@ -301,6 +324,8 @@ class openmc_xs:
             dictionary containing initialized tallies
 
         """
+        if subset not in ('all', 'main', 'delayed'):
+            raise ValueError("subset must be 'all', 'main', or 'delayed'")
 
         import openmc
         import warnings
@@ -376,19 +401,24 @@ class openmc_xs:
             domain_dict[id]["tally"].scores = [
                 "nu-fission",
                 "flux"]
-            tallies_file += domain_dict[id]["beta"].tallies.values()
-            tallies_file += domain_dict[id]["chi"].tallies.values()
-            tallies_file += domain_dict[id]["chiprompt"].tallies.values()
-            tallies_file += domain_dict[id]["chidelayed"].tallies.values()
-            tallies_file += domain_dict[id]["decayrate"].tallies.values()
-            tallies_file += domain_dict[id]["diffusioncoefficient"] \
-                .tallies.values()
-            tallies_file += domain_dict[id]["nuscattermatrix"].tallies.values()
-            tallies_file += domain_dict[id]["inversevelocity"].tallies.values()
-            tallies_file += domain_dict[id]["fissionxs"].tallies.values()
-            tallies_file += domain_dict[id]["kappafissionxs"].tallies.values()
-            tallies_file += domain_dict[id]["totalxs"].tallies.values()
-            tallies_file.append(domain_dict[id]["tally"])
+            # The delayed-neutron precursor tallies (beta, decayrate) dominate
+            # OpenMC runtime; keep them separable from the cross-section tallies.
+            delayed_keys = ["beta", "decayrate"]
+            main_keys = ["chi", "chiprompt", "chidelayed",
+                         "diffusioncoefficient", "nuscattermatrix",
+                         "inversevelocity", "fissionxs", "kappafissionxs",
+                         "totalxs"]
+            if subset == "delayed":
+                add_keys = delayed_keys
+            elif subset == "main":
+                add_keys = main_keys
+            else:  # 'all'
+                add_keys = main_keys + delayed_keys
+            for key in add_keys:
+                tallies_file += domain_dict[id][key].tallies.values()
+            # the manual nu-fission/flux tally feeds NSF (a cross-section term)
+            if subset != "delayed":
+                tallies_file.append(domain_dict[id]["tally"])
         tallies_file.export_to_xml()
         return domain_dict
 
@@ -661,6 +691,11 @@ if __name__ == '__main__':
                     files[i] = serpent_xs(XS_in)
                 elif "openmc" in XS_t:
                     XS_ref, XS_sum = inputs[2], inputs[3]
+                    # Optional 5th/6th tokens: a separate statepoint (and its
+                    # summary) holding the delayed-neutron precursor tallies
+                    # from the lower-statistics "delayed" run.
+                    XS_del = inputs[4] if len(inputs) > 4 else None
+                    XS_del_sum = inputs[5] if len(inputs) > 5 else None
                     import openmc
                     if float(openmc.__version__[2:]) < 13.2:
                         raise Exception("moltres_xs.py is compatible with " +
@@ -670,7 +705,7 @@ if __name__ == '__main__':
                     openmc_ref_modules[i] = importlib.import_module(
                         XS_ref.replace(".py", "")
                     )
-                    files[i] = openmc_xs(XS_in, i, XS_sum)
+                    files[i] = openmc_xs(XS_in, i, XS_sum, XS_del, XS_del_sum)
                 else:
                     raise (
                         "XS data not understood\n \
