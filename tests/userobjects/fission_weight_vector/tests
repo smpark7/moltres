@@ -1,0 +1,48 @@
+[Tests]
+  [transient]
+    type = CSVDiff
+    input = 'transient.i'
+    csvdiff = 'transient_out.csv'
+    # heat_rel_diff and neutrons_rel_diff are round-off
+    abs_zero = 1e-13
+    requirement = 'The system shall compute the fission heat and fission neutron production integrals as W . u, matching the element-integral postprocessors while the cross sections change between time steps.'
+  []
+  [transient_parallel]
+    type = CSVDiff
+    input = 'transient.i'
+    csvdiff = 'transient_out.csv'
+    abs_zero = 1e-13
+    min_parallel = 3
+    max_parallel = 3
+    min_threads = 2
+    max_threads = 2
+    prereq = transient
+    requirement = 'The system shall compute W . u in parallel with threads, matching the element-integral postprocessors.'
+  []
+  [eigen]
+    type = CSVDiff
+    input = 'eigen.i'
+    csvdiff = 'eigen_out.csv'
+    requirement = 'The system shall use W . u as the Bx norm and normalization of a nonlinear eigenvalue solve and give the same eigenvalue as the element-integral postprocessor.'
+  []
+  [solver_variable_xs]
+    type = RunException
+    input = 'error.i'
+    expect_err = "Material 'fuel' couples the solver variable 'temp'"
+    requirement = 'The system shall refuse to compute W . u when the cross sections depend on a solver variable.'
+  []
+  [exp_form]
+    type = RunException
+    input = 'error.i'
+    cli_args = 'GlobalParams/temperature=950 Kernels/inactive=difft Variables/inactive=temp UserObjects/weights/use_exp_form=true'
+    expect_err = 'The fission integral is not linear in the solution when the fluxes are in exponential form'
+    requirement = 'The system shall refuse to compute W . u when the fluxes are in exponential form.'
+  []
+  [no_initial]
+    type = RunException
+    input = 'error.i'
+    cli_args = 'Variables/inactive=temp Kernels/inactive=difft GlobalParams/temperature=950 UserObjects/weights/execute_on=timestep_begin'
+    expect_err = 'Must include initial'
+    requirement = 'The system shall require the W . u weights to be built on initial.'
+  []
+[]
