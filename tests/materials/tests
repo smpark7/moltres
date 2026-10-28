@@ -51,6 +51,150 @@
     exodiff = 'mjm_monotone_cubic_out.e'
     requirement = 'The system shall be able to load txt-based two-group data at multiple temperatures using MoltresJsonMaterial with interp_type=monotone_cubic.'
   []
+  [xs_sweep_mjm_linear]
+    type = Exodiff
+    input = 'xs_sweep.i'
+    cli_args = 'Materials/fuel/type=MoltresJsonMaterial Materials/fuel/base_file=xsdata.json Materials/fuel/material_key=fuel Materials/fuel/interp_type=linear Outputs/file_base=xs_sweep_mjm_linear'
+    exodiff = 'xs_sweep_mjm_linear.e'
+    # Samples outside the table range on purpose
+    allow_warnings = true
+    requirement = 'The system shall interpolate group constants and their temperature derivatives below, within and above the tabulated temperature range using MoltresJsonMaterial with interp_type=linear.'
+  []
+  [xs_sweep_mjm_spline]
+    type = Exodiff
+    input = 'xs_sweep.i'
+    cli_args = 'Materials/fuel/type=MoltresJsonMaterial Materials/fuel/base_file=xsdata.json Materials/fuel/material_key=fuel Materials/fuel/interp_type=spline Outputs/file_base=xs_sweep_mjm_spline'
+    exodiff = 'xs_sweep_mjm_spline.e'
+    # Samples outside the table range on purpose
+    allow_warnings = true
+    requirement = 'The system shall interpolate group constants and their temperature derivatives below, within and above the tabulated temperature range using MoltresJsonMaterial with interp_type=spline.'
+  []
+  [xs_sweep_mjm_monotone_cubic]
+    type = Exodiff
+    input = 'xs_sweep.i'
+    cli_args = 'Materials/fuel/type=MoltresJsonMaterial Materials/fuel/base_file=xsdata.json Materials/fuel/material_key=fuel Materials/fuel/interp_type=monotone_cubic Outputs/file_base=xs_sweep_mjm_monotone_cubic'
+    exodiff = 'xs_sweep_mjm_monotone_cubic.e'
+    # Samples outside the table range on purpose
+    allow_warnings = true
+    requirement = 'The system shall interpolate group constants and their temperature derivatives below, within and above the tabulated temperature range using MoltresJsonMaterial with interp_type=monotone_cubic.'
+  []
+  [xs_sweep_gmm_monotone_cubic]
+    type = Exodiff
+    input = 'xs_sweep.i'
+    cli_args = 'Materials/fuel/type=GenericMoltresMaterial Materials/fuel/property_tables_root=../../property_file_dir/newt_fuel_ Materials/fuel/sss2_input=false tmin=700 tmax=1150 Materials/fuel/interp_type=monotone_cubic Outputs/file_base=xs_sweep_gmm_monotone_cubic'
+    exodiff = 'xs_sweep_gmm_monotone_cubic.e'
+    # Samples outside the table range on purpose
+    allow_warnings = true
+    requirement = 'The system shall interpolate group constants and their temperature derivatives below, within and above the tabulated temperature range using GenericMoltresMaterial with interp_type=monotone_cubic.'
+  []
+  [xs_2d]
+    requirement = 'The system shall interpolate group constants tabulated on several state variables, and their derivatives along the material temperature, exactly for data that vary multilinearly'
+    [fuel_function]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn Outputs/file_base=xs_2d_fuel_function'
+      csvdiff = 'xs_2d_fuel_function.csv'
+      detail = 'for a fuel material whose moderator temperature is a function,'
+    []
+    [fuel_user_object]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_avg tmod=tmod_uo Outputs/file_base=xs_2d_fuel_user_object'
+      csvdiff = 'xs_2d_fuel_user_object.csv'
+      detail = 'for a fuel material whose moderator temperature is a layered average user object,'
+    []
+    [moderator_variable]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=moderator Materials/fuel/temperature=tmod_fn Materials/fuel/fuel_temperature=tf "dfactor=-3e-4+1e-6*(tfe-1000)" Outputs/file_base=xs_2d_moderator_variable'
+      csvdiff = 'xs_2d_moderator_variable.csv'
+      detail = 'for a moderator material whose fuel temperature is a variable,'
+    []
+    [none]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=none Materials/fuel/fuel_temperature=tf Materials/fuel/moderator_temperature=tm_fn dfactor=0 Outputs/file_base=xs_2d_none'
+      csvdiff = 'xs_2d_none.csv'
+      detail = 'for a material that takes both temperatures from functors, with zero derivatives,'
+    []
+    [one_axis]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_key=graphite Materials/fuel/material_type=moderator Materials/fuel/temperature=tmod_fn "factor=1-3e-4*(tme-900)" dfactor=-3e-4 Outputs/file_base=xs_2d_one_axis'
+      csvdiff = 'xs_2d_one_axis.csv'
+      detail = 'for a table on the moderator temperature only,'
+    []
+    [clamp]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn tf_min=800 tf_max=1300 tm_min=700 tm_max=1100 clamp=1 "dfactor=if(tf<900|tf>1200,0,2e-4+1e-6*(tme-900))" Outputs/file_base=xs_2d_clamp'
+      csvdiff = 'xs_2d_clamp.csv'
+      allow_warnings = true
+      detail = 'beyond the tabulated range of both temperatures, clamped to the range,'
+    []
+    [least_squares]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn Outputs/file_base=xs_2d_least_squares'
+      csvdiff = 'xs_2d_least_squares.csv'
+      detail = 'with a quadratic least-squares fit,'
+    []
+    [least_squares_quadratic]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/material_key=fuel_quadratic Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn qf=4e-7 qm=5e-7 Outputs/file_base=xs_2d_least_squares_quadratic'
+      csvdiff = 'xs_2d_least_squares_quadratic.csv'
+      detail = 'with a quadratic least-squares fit of data that vary quadratically in both temperatures, with derivatives along the fuel temperature,'
+    []
+    [least_squares_quadratic_moderator]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/material_key=fuel_quadratic Materials/fuel/material_type=moderator Materials/fuel/temperature=tmod_fn Materials/fuel/fuel_temperature=tf qf=4e-7 qm=5e-7 "dfactor=-3e-4+1e-6*(tfe-1000)+1e-6*(tme-900)" Outputs/file_base=xs_2d_least_squares_quadratic_moderator'
+      csvdiff = 'xs_2d_least_squares_quadratic_moderator.csv'
+      detail = 'with a quadratic least-squares fit of data that vary quadratically in both temperatures, with derivatives along the moderator temperature,'
+    []
+    [least_squares_cubic]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/material_key=fuel_cubic Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn "factor=1.0102500000000003-0.00022000000000000104*(tme-900)+0.0002560000000000001*(tfe-1050)+9.9999999999999593e-07*(tfe-1050)*(tme-900)+2.9999999999999347e-07*(tfe-1050)^2" "dfactor=0.0002560000000000001+9.9999999999999593e-07*(tme-900)+5.9999999999998695e-07*(tfe-1050)" Outputs/file_base=xs_2d_least_squares_cubic'
+      csvdiff = 'xs_2d_least_squares_cubic.csv'
+      # The expected factor is a reference fit with numpy (make_xsdata_2d.py)
+      expect_out = "Least-squares fit of order 2: largest deviation from the tabulated values.*REMXS +1.69e-03"
+      detail = 'with a quadratic least-squares fit of data that vary cubically, matching a reference fit and its residual,'
+    []
+    [least_squares_clamp]
+      type = CSVDiff
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn tf_min=800 tf_max=1300 tm_min=700 tm_max=1100 clamp=1 "dfactor=if(tf<900|tf>1200,0,2e-4+1e-6*(tme-900))" Outputs/file_base=xs_2d_least_squares_clamp'
+      csvdiff = 'xs_2d_least_squares_clamp.csv'
+      allow_warnings = true
+      detail = 'with a quadratic least-squares fit beyond the tabulated range, clamped to the range.'
+    []
+  []
+  [least_squares_residual]
+    type = RunApp
+    input = 'xs_2d.i'
+    cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/lsq_order=1 Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn Outputs/csv=false'
+    expect_out = "Least-squares fit of order 1: largest deviation from the tabulated values.*REMXS +1.59e-02"
+    requirement = 'The system shall report how closely a least-squares fit reproduces the tabulated group constants.'
+  []
+  [xs_sweep_mjm_least_squares]
+    type = Exodiff
+    input = 'xs_sweep.i'
+    cli_args = 'Materials/fuel/type=MoltresJsonMaterial Materials/fuel/base_file=xsdata.json Materials/fuel/material_key=fuel Materials/fuel/interp_type=least_squares Materials/fuel/lsq_order=1 Outputs/file_base=xs_sweep_mjm_least_squares'
+    exodiff = 'xs_sweep_mjm_least_squares.e'
+    # Samples outside the table range on purpose
+    allow_warnings = true
+    requirement = 'The system shall evaluate a linear least-squares fit of group constants tabulated on temperature, and its temperature derivative, below, within and above the tabulated range using MoltresJsonMaterial.'
+  []
+  [out_of_range_warning]
+    type = RunApp
+    input = 'xs_2d.i'
+    cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn tf_min=800 tm_max=1100 Outputs/csv=false'
+    allow_warnings = true
+    expect_out = "fuel_temperature was sampled at 811.111, below the tabulated range.*moderator_temperature was sampled at 1091.67, above the tabulated range"
+    requirement = 'The system shall warn when a state variable of a group-constant table, including one supplied by a functor, is sampled outside its tabulated range.'
+  []
   [diffusion_rod]
     type = Exodiff
     input = 'diffusion_rod.i'
@@ -118,6 +262,76 @@
       cli_args = "Materials/fuel/base_file='xsdata.json'"
       expect_err = "Group constant data for 'fuel' provided at multiple temperatures with interp_type=none. Remove extra temperature data or change interpolation scheme."
       detail = 'group constant data are provided at multiple temperatures for interp_type=none.'
+    []
+    [xs_2d_no_material_type]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/moderator_temperature=tm_fn'
+      expect_err = "'fuel' is a multi-dimensional table; set 'material_type'"
+      detail = 'a multi-dimensional table is used without a material type.'
+    []
+    [xs_2d_own_functor]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn Materials/fuel/fuel_temperature=tf'
+      expect_err = "The material's own state variable comes from 'temperature'"
+      detail = 'a functor is given for the state variable of the material type.'
+    []
+    [xs_2d_missing_functor]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel'
+      expect_err = "'fuel' depends on moderator_temperature; with material_type = fuel, set the 'moderator_temperature' parameter."
+      detail = 'no functor is given for a state variable of the table other than that of the material type.'
+    []
+    [xs_2d_absent_axis]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_key=graphite Materials/fuel/material_type=moderator Materials/fuel/fuel_temperature=tf'
+      expect_err = "'graphite' does not depend on fuel_temperature."
+      detail = 'a functor is given for a state variable the table does not depend on.'
+    []
+    [xs_2d_legacy_material_type]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/base_file=xsdata.json Materials/fuel/material_type=fuel'
+      expect_err = "Only multi-dimensional tables .'axes' in the material entry. take this parameter"
+      detail = 'a material type is given for a table on temperature only.'
+    []
+    [xs_2d_spline]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn Materials/fuel/interp_type=spline'
+      expect_err = "Spline and monotone cubic interpolation support tables with one state variable only"
+      detail = 'spline interpolation is requested for a table on two state variables.'
+    []
+    [xs_2d_missing_branch]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_key=missing_branch Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn'
+      expect_err = "'missing_branch' has no branch at fuel_temperature = 1000, moderator_temperature = 800."
+      detail = 'a multi-dimensional table lacks a branch.'
+    []
+    [xs_2d_bad_axis]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/material_key=bad_axis Materials/fuel/material_type=fuel'
+      expect_err = "Unsupported state variable 'xenon' in 'axes' of 'bad_axis'."
+      detail = 'a table depends on an unsupported state variable.'
+    []
+    [lsq_order_knots]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/interp_type=least_squares Materials/fuel/lsq_order=3 Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn'
+      expect_err = "A fit of order 3 needs at least 4 knots on every state variable with more than one; 'fuel' has 3 on fuel_temperature."
+      detail = 'a least-squares fit has fewer knots than its order requires on some state variable.'
+    []
+    [lsq_order_interp]
+      type = RunException
+      input = 'xs_2d.i'
+      cli_args = 'Materials/fuel/lsq_order=1 Materials/fuel/material_type=fuel Materials/fuel/moderator_temperature=tm_fn'
+      expect_err = "Only interp_type = least_squares takes this parameter."
+      detail = 'a least-squares order is given without least-squares fitting.'
     []
   []
 []

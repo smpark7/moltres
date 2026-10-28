@@ -38,6 +38,8 @@ DiffusionRodMaterial::DiffusionRodMaterial(const InputParameters & parameters)
     mooseError("Unable to open XS file: " + base_file);
   nlohmann::json xs_root;
   myfile >> xs_root;
+  if (xs_root[_material_key].contains("axes"))
+    mooseError("DiffusionRodMaterial supports tables on 'temp' only, not multi-dimensional tables.");
 
   int k = 0;
   auto temp_root = xs_root[_material_key]["temp"];

@@ -108,6 +108,7 @@ GenericMoltresMaterial::Construct(std::string & property_tables_root)
   int tempLength = 0;
   bool onewarn = false;
   std::vector<Real> oldtemperature;
+  std::vector<XsAxes> grids(_xsec_names.size());
   for (decltype(_xsec_names.size()) j = 0; j < _xsec_names.size(); ++j)
   {
     std::vector<Real> temperature;
@@ -139,6 +140,7 @@ GenericMoltresMaterial::Construct(std::string & property_tables_root)
         mooseWarning("CHI_D data missing -> assume delayed neutrons born in top group for material" + _name);
         onewarn = true;
       }
+      grids[j] = {oldtemperature};
       switch (_interp_type)
       {
         case NONE:
@@ -199,6 +201,7 @@ GenericMoltresMaterial::Construct(std::string & property_tables_root)
         mooseError("The number of " + _file_map[_xsec_names[j]] + " values does not match "
                    "the num_groups/num_precursor_groups parameter.");
       oldtemperature = temperature;
+      grids[j] = {temperature};
       switch (_interp_type)
       {
         case NONE:
@@ -238,6 +241,7 @@ GenericMoltresMaterial::Construct(std::string & property_tables_root)
     else
       mooseError("Unable to open file " + file_name);
   }
+  buildXsTable(grids, {"temperature"}, 0);
 }
 
 void

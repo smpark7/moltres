@@ -5,6 +5,7 @@
 #include "BicubicSplineInterpolation.h"
 #include "MonotoneCubicInterpolation.h"
 #include "LinearInterpolation.h"
+#include "XsTable.h"
 #include "json.h"
 
 /**
@@ -61,6 +62,25 @@ protected:
   virtual void monotoneCubicComputeQpProperties();
   virtual void linearComputeQpProperties();
   virtual void preComputeQpProperties();
+  /// Sets every group-constant property from _xs_table at the current qp
+  void tableComputeQpProperties();
+  /**
+   * Builds _xs_table from _xsec_map.
+   * @param grids grids[j] holds the knots of each axis of _xsec_names[j]
+   * @param axis_names Name of each axis, used in messages
+   * @param own_axis Axis set by the temperature variable; the derivative properties are taken
+   *                 along it. An index past the last axis means none (zero derivatives).
+   * @param lsq_order Total degree of the polynomial for interp_type least_squares
+   */
+  void buildXsTable(const std::vector<XsAxes> & grids,
+                    const std::vector<std::string> & axis_names,
+                    unsigned int own_axis,
+                    unsigned int lsq_order = 2);
+  /// Sets _xs_state, the state point of the table at the current qp
+  virtual void computeXsState();
+
+  /// Reports the first sampling outside the tabulated range of each axis
+  virtual void residualSetup() override;
 
   const VariableValue & _temperature;
 
@@ -154,6 +174,22 @@ protected:
 
   // Vector of temperature values
   std::vector<double> _XsTemperature;
+
+  /// All group constants, interpolated together at each qp
+  XsTable _xs_table;
+  /// Offset of each XsIndex entry in the flat component list of _xs_table
+  std::vector<unsigned int> _xs_offsets;
+  /// State point of _xs_table at the current qp, one coordinate per axis
+  std::vector<Real> _xs_state;
+  /// Axis of _xs_table set by the temperature variable
+  unsigned int _xs_own_axis = 0;
+  /// Name of each axis of _xs_table
+  std::vector<std::string> _xs_axis_names;
+  /// Whether sampling outside the table range is reported
+  bool _xs_warn = false;
+  /// Whether sampling below/above the range of each axis has been reported
+  std::vector<bool> _xs_warned_low;
+  std::vector<bool> _xs_warned_high;
 
   std::vector<std::vector<Real>> _remxs_consts = std::vector<std::vector<Real>>(2);
   std::vector<std::vector<Real>> _fissxs_consts = std::vector<std::vector<Real>>(2);
