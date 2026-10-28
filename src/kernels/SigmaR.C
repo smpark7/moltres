@@ -5,7 +5,7 @@ registerMooseObject("MoltresApp", SigmaR);
 InputParameters
 SigmaR::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = QpCoefficientKernel::validParams();
   params += ScalarTransportBase::validParams();
   params.addRequiredParam<unsigned int>("group_number", "The current energy group.");
   params.addCoupledVar("temperature", "The temperature used to interpolate material properties");
@@ -13,7 +13,7 @@ SigmaR::validParams()
 }
 
 SigmaR::SigmaR(const InputParameters & parameters)
-  : Kernel(parameters),
+  : QpCoefficientKernel(parameters),
     ScalarTransportBase(parameters),
     _remxs(getMaterialProperty<std::vector<Real>>("remxs")),
     _d_remxs_d_temp(getMaterialProperty<std::vector<Real>>("d_remxs_d_temp")),
@@ -23,23 +23,23 @@ SigmaR::SigmaR(const InputParameters & parameters)
 }
 
 Real
-SigmaR::computeQpResidual()
+SigmaR::precomputeQpResidual()
 {
-  return _test[_i][_qp] * _remxs[_qp][_group] * computeConcentration(_u, _qp);
+  return _remxs[_qp][_group] * computeConcentration(_u, _qp);
 }
 
 Real
-SigmaR::computeQpJacobian()
+SigmaR::precomputeQpJacobian()
 {
-  return _test[_i][_qp] * _remxs[_qp][_group] * computeConcentrationDerivative(_u, _phi, _j, _qp);
+  return _remxs[_qp][_group] * computeConcentrationDerivative(_u, _phi, _j, _qp);
 }
 
-Real
-SigmaR::computeQpOffDiagJacobian(unsigned int jvar)
+bool
+SigmaR::precomputeOffDiagCoefficients(unsigned int jvar)
 {
-  if (jvar == _temp_id)
-    return _test[_i][_qp] * _d_remxs_d_temp[_qp][_group] * _phi[_j][_qp] *
-           computeConcentration(_u, _qp);
-  else
-    return 0;
+  if (jvar != _temp_id)
+    return false;
+  for (_qp = 0; _qp < _qrule->n_points(); _qp++)
+    _offdiag_coef[_qp] = _d_remxs_d_temp[_qp][_group] * computeConcentration(_u, _qp);
+  return true;
 }

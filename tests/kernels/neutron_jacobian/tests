@@ -1,0 +1,54 @@
+[Tests]
+  [jacobian]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+  [jacobian_exp_form]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = 'GlobalParams/use_exp_form=true'
+    # finite differences of exp(u) limit the agreement to ~4e-7 relative (~7e-5 absolute, dominated
+    # by the diffusion terms); the old and new kernels give the same values
+    ratio_tol = 1e-6
+    difference_tol = 1e-4
+  []
+  [jacobian_no_delayed]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = 'GlobalParams/account_delayed=false'
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+  [jacobian_eigenvalue_scaling]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = 'GlobalParams/eigenvalue_scaling=1.1'
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+  [jacobian_reaction_rates]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = "Materials/fuel/reaction_rate_fluxes='group1 group2'"
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+  [jacobian_reaction_rates_exp_form]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = "Materials/fuel/reaction_rate_fluxes='group1 group2' GlobalParams/use_exp_form=true"
+    # finite differences of exp(u) limit the agreement to ~4e-7 relative (~7e-5 absolute, dominated
+    # by the diffusion terms); the old and new kernels give the same values
+    ratio_tol = 1e-6
+    difference_tol = 1e-4
+  []
+  [jacobian_diffcoef_limit]
+    type = PetscJacobianTester
+    input = 'neutron_jacobian.i'
+    cli_args = 'GlobalParams/set_diffcoef_limit=true GlobalParams/diffcoef_limit=1.44'
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+[]

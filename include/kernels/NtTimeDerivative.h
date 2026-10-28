@@ -9,6 +9,13 @@ public:
 
   static InputParameters validParams();
 
+  /// The residual and Jacobian are evaluated once per quadrature point (and shape function)
+  /// rather than for every test function
+  virtual void computeResidual() override;
+  virtual void computeJacobian() override;
+  /// Only the temperature block is nonzero; skip the element loops for all other variables
+  virtual void computeOffDiagJacobian(unsigned int jvar) override;
+
 protected:
   virtual Real computeQpResidual() override;
   virtual Real computeQpJacobian() override;

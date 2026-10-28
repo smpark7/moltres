@@ -82,6 +82,11 @@ protected:
   /// Reports the first sampling outside the tabulated range of each axis
   virtual void residualSetup() override;
 
+  virtual void computeProperties() override;
+  virtual void computePropertiesAtQp(unsigned int qp) override;
+  /// Computes the reaction-rate properties at _qp from the group constants already set there
+  void computeQpReactionRates();
+
   const VariableValue & _temperature;
 
   // Number of neutron groups
@@ -117,6 +122,22 @@ protected:
   MaterialProperty<std::vector<Real>> & _d_beta_eff_d_temp;
   MaterialProperty<Real> & _d_beta_d_temp;
   MaterialProperty<std::vector<Real>> & _d_decay_constant_d_temp;
+
+  /// Whether to compute the reaction-rate properties below (reaction_rate_fluxes given)
+  const bool _compute_reaction_rates;
+  /// Whether the group fluxes are in exponential/logarithmic form
+  const bool _use_exp_form;
+  /// Whether scattering matrix indexing follows Serpent 2 and OpenMC format
+  const bool _sss2_input;
+  /// Group flux variables from reaction_rate_fluxes
+  std::vector<const VariableValue *> _group_fluxes;
+  /// Group concentrations at the current quadrature point
+  std::vector<Real> _conc;
+  /// Group-summed rates shared by kernels and postprocessors; declared only with
+  /// reaction_rate_fluxes, so consumers that request them optionally fall back otherwise
+  MaterialProperty<Real> * _fission_neutron_rate = nullptr;
+  MaterialProperty<Real> * _fission_heat_rate = nullptr;
+  MaterialProperty<std::vector<Real>> * _inscatter_rate = nullptr;
 
   // Group constant interpolation type
   MooseEnum _interp_type;

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Kernel.h"
+#include "QpCoefficientKernel.h"
 
 /**
  * This kernel will likely only be used with k-eigenvalue calculation mode
  * with neutrons only, since the power is normalized in this case.
  */
-class FissionHeatSource : public Kernel
+class FissionHeatSource : public QpCoefficientKernel
 {
 public:
   FissionHeatSource(const InputParameters & parameters);
@@ -14,9 +14,9 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
+  virtual Real precomputeQpResidual() override;
+  virtual Real precomputeQpJacobian() override;
+  virtual bool precomputeOffDiagCoefficients(unsigned int jvar) override;
 
   // Group constant MaterialProperty(s)
   const MaterialProperty<std::vector<Real>> & _fissxs;

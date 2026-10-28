@@ -1,25 +1,30 @@
 #pragma once
 
-#include "Kernel.h"
+#include "QpCoefficientKernel.h"
 #include "ScalarTransportBase.h"
 
-class PrecursorSource : public Kernel, public ScalarTransportBase
+class PrecursorSource : public QpCoefficientKernel, public ScalarTransportBase
 {
 public:
   PrecursorSource(const InputParameters & parameters);
 
   static InputParameters validParams();
 
+  /// The on-diagonal Jacobian is identically zero: skip the element loops that would only add
+  /// zeros
+  virtual void computeJacobian() override {}
+
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
+  virtual Real precomputeQpResidual() override;
+  virtual bool precomputeOffDiagCoefficients(unsigned int jvar) override;
 
   // Group constant MaterialProperty(s)
   const MaterialProperty<std::vector<Real>> & _nsf;
   const MaterialProperty<std::vector<Real>> & _d_nsf_d_temp;
   const MaterialProperty<std::vector<Real>> & _beta_eff;
   const MaterialProperty<std::vector<Real>> & _d_beta_eff_d_temp;
+  /// Group-summed fission neutron rate from the nuclear material, if it computes one
+  const OptionalMaterialProperty<Real> & _fission_neutron_rate;
 
   /// Number of neutron groups
   unsigned int _num_groups;

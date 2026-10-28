@@ -49,6 +49,15 @@ ScalarTransportBase::computeConcentrationDerivative(const VariableValue & u,
     return phi[j][qp];
 }
 
+Real
+ScalarTransportBase::computeConcentrationDerivativeFactor(const VariableValue & u, unsigned int qp)
+{
+  if (_use_exp_form)
+    return std::exp(u[qp]);
+  else
+    return 1.;
+}
+
 RealVectorValue
 ScalarTransportBase::computeConcentrationGradientDerivative(const VariableValue & u,
                                                             const VariableGradient & grad_u,

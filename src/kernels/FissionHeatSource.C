@@ -5,7 +5,7 @@ registerMooseObject("MoltresApp", FissionHeatSource);
 InputParameters
 FissionHeatSource::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = QpCoefficientKernel::validParams();
   params.addRequiredParam<unsigned int>("num_groups", "The total numer of energy groups");
   params.addRequiredCoupledVar("group_fluxes", "All the variables that hold the group fluxes. "
                                                "These MUST be listed by decreasing "
@@ -22,7 +22,7 @@ FissionHeatSource::validParams()
 }
 
 FissionHeatSource::FissionHeatSource(const InputParameters & parameters)
-  : Kernel(parameters),
+  : QpCoefficientKernel(parameters),
     _fissxs(getMaterialProperty<std::vector<Real>>("fissxs")),
     _d_fissxs_d_temp(getMaterialProperty<std::vector<Real>>("d_fissxs_d_temp")),
     _fisse(getMaterialProperty<std::vector<Real>>("fisse")),
@@ -52,54 +52,44 @@ FissionHeatSource::FissionHeatSource(const InputParameters & parameters)
 }
 
 Real
-FissionHeatSource::computeQpResidual()
+FissionHeatSource::precomputeQpResidual()
 {
   Real r = 0;
   // Use heat source aux variable if provided
   if (_has_heat_source)
-    r += -_test[_i][_qp] * _heat_source[_qp] * _power / _tot_fission_heat;
+    r = -_heat_source[_qp];
   else
     for (unsigned int i = 0; i < _num_groups; ++i)
-      r += -_test[_i][_qp] * _fisse[_qp][i] * _fissxs[_qp][i] * (*_group_fluxes[i])[_qp] * _power /
-           _tot_fission_heat;
+      r += -_fisse[_qp][i] * _fissxs[_qp][i] * (*_group_fluxes[i])[_qp];
 
-  r *= (1.0 - _gamma_frac);
-
-  return r;
+  return r * _power / _tot_fission_heat * (1.0 - _gamma_frac);
 }
 
 Real
-FissionHeatSource::computeQpJacobian()
+FissionHeatSource::precomputeQpJacobian()
 {
   if (_has_heat_source)
     return 0.0;
   Real jac = 0;
   for (unsigned int i = 0; i < _num_groups; ++i)
-  {
-    jac += -_test[_i][_qp] * (_fisse[_qp][i] * _d_fissxs_d_temp[_qp][i] * _phi[_j][_qp] +
-                              _d_fisse_d_temp[_qp][i] * _phi[_j][_qp] * _fissxs[_qp][i]) *
-                              (*_group_fluxes[i])[_qp] * _power / _tot_fission_heat;
+    jac += -(_fisse[_qp][i] * _d_fissxs_d_temp[_qp][i] + _d_fisse_d_temp[_qp][i] * _fissxs[_qp][i]) *
+           (*_group_fluxes[i])[_qp];
 
-  }
-
-  return jac;
+  return jac * _phi[_j][_qp] * _power / _tot_fission_heat;
 }
 
-Real
-FissionHeatSource::computeQpOffDiagJacobian(unsigned int jvar)
+bool
+FissionHeatSource::precomputeOffDiagCoefficients(unsigned int jvar)
 {
   if (_has_heat_source)
-    return 0.0;
-  Real jac = 0;
+    return false;
   for (unsigned int i = 0; i < _num_groups; ++i)
-  {
     if (jvar == _flux_ids[i])
     {
-      jac += -_test[_i][_qp] * _fisse[_qp][i] * _fissxs[_qp][i] * _phi[_j][_qp] *
-             _power / _tot_fission_heat;
-      break;
+      for (_qp = 0; _qp < _qrule->n_points(); _qp++)
+        _offdiag_coef[_qp] = -_fisse[_qp][i] * _fissxs[_qp][i] * _power / _tot_fission_heat;
+      return true;
     }
-  }
 
-  return jac;
+  return false;
 }

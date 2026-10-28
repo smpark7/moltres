@@ -5,7 +5,7 @@ registerMooseObject("MoltresApp", InScatter);
 InputParameters
 InScatter::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = QpCoefficientKernel::validParams();
   params += ScalarTransportBase::validParams();
   params.addRequiredParam<unsigned int>("group_number", "The current energy group");
   params.addRequiredParam<unsigned int>("num_groups", "The total numer of energy groups");
@@ -19,10 +19,11 @@ InScatter::validParams()
 }
 
 InScatter::InScatter(const InputParameters & parameters)
-  : Kernel(parameters),
+  : QpCoefficientKernel(parameters),
     ScalarTransportBase(parameters),
     _gtransfxs(getMaterialProperty<std::vector<Real>>("gtransfxs")),
     _d_gtransfxs_d_temp(getMaterialProperty<std::vector<Real>>("d_gtransfxs_d_temp")),
+    _inscatter_rate(getOptionalMaterialProperty<std::vector<Real>>("inscatter_rate")),
     _group(getParam<unsigned int>("group_number") - 1),
     _num_groups(getParam<unsigned int>("num_groups")),
     _temp_id(coupled("temperature")),
@@ -48,45 +49,47 @@ InScatter::InScatter(const InputParameters & parameters)
 }
 
 Real
-InScatter::computeQpResidual()
+InScatter::precomputeQpResidual()
 {
+  if (_inscatter_rate)
+    return -_inscatter_rate[_qp][_group];
+
   Real r = 0;
   for (unsigned int i = 0; i < _num_groups; ++i)
   {
     if (i == _group || _gtransfxs[_qp][_idx[i]] == 0.)
       continue;
-    else
-      r += -_test[_i][_qp] * _gtransfxs[_qp][_idx[i]] *
-           computeConcentration((*_group_fluxes[i]), _qp);
+    r += -_gtransfxs[_qp][_idx[i]] * computeConcentration((*_group_fluxes[i]), _qp);
   }
 
   return r;
 }
 
-Real
-InScatter::computeQpOffDiagJacobian(unsigned int jvar)
+bool
+InScatter::precomputeOffDiagCoefficients(unsigned int jvar)
 {
-  Real jac = 0;
   for (unsigned int i = 0; i < _num_groups; ++i)
-  {
     if (jvar == _flux_ids[i])
     {
-      jac += -_test[_i][_qp] * _gtransfxs[_qp][_idx[i]] *
-             computeConcentrationDerivative((*_group_fluxes[i]), _phi, _j, _qp);
-      break;
+      for (_qp = 0; _qp < _qrule->n_points(); _qp++)
+        _offdiag_coef[_qp] = -_gtransfxs[_qp][_idx[i]] *
+                             computeConcentrationDerivativeFactor((*_group_fluxes[i]), _qp);
+      return true;
     }
-  }
 
-  if (jvar == _temp_id)
+  if (jvar != _temp_id)
+    return false;
+
+  for (_qp = 0; _qp < _qrule->n_points(); _qp++)
   {
+    Real jac = 0;
     for (unsigned int i = 0; i < _num_groups; ++i)
     {
       if (i == _group || _gtransfxs[_qp][_idx[i]] == 0.)
         continue;
-      jac += -_test[_i][_qp] * _d_gtransfxs_d_temp[_qp][_idx[i]] * _phi[_j][_qp] *
-             computeConcentration((*_group_fluxes[i]), _qp);
+      jac += -_d_gtransfxs_d_temp[_qp][_idx[i]] * computeConcentration((*_group_fluxes[i]), _qp);
     }
+    _offdiag_coef[_qp] = jac;
   }
-
-  return jac;
+  return true;
 }

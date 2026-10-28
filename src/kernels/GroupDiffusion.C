@@ -5,7 +5,7 @@ registerMooseObject("MoltresApp", GroupDiffusion);
 InputParameters
 GroupDiffusion::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = KernelGrad::validParams();
   params += ScalarTransportBase::validParams();
   params.addRequiredParam<unsigned int>("group_number",
                                         "The group for which this kernel controls diffusion");
@@ -20,7 +20,7 @@ GroupDiffusion::validParams()
 }
 
 GroupDiffusion::GroupDiffusion(const InputParameters & parameters)
-  : Kernel(parameters),
+  : KernelGrad(parameters),
     ScalarTransportBase(parameters),
     _diffcoef(getMaterialProperty<std::vector<Real>>("diffcoef")),
     _d_diffcoef_d_temp(getMaterialProperty<std::vector<Real>>("d_diffcoef_d_temp")),
@@ -32,27 +32,31 @@ GroupDiffusion::GroupDiffusion(const InputParameters & parameters)
 }
 
 Real
-GroupDiffusion::computeQpResidual()
+GroupDiffusion::diffusionCoefficient() const
 {
-  Real diffcoef;
   if (_set_limit && _diffcoef[_qp][_group] > _limit)
-    diffcoef = _limit;
-  else
-    diffcoef = _diffcoef[_qp][_group];
-  return diffcoef * _grad_test[_i][_qp] *
-         computeConcentrationGradient(_u, _grad_u, _qp);
+    return _limit;
+  return _diffcoef[_qp][_group];
 }
 
-Real
-GroupDiffusion::computeQpJacobian()
+RealGradient
+GroupDiffusion::precomputeQpResidual()
 {
-  Real diffcoef;
-  if (_set_limit && _diffcoef[_qp][_group] > _limit)
-    diffcoef = _limit;
-  else
-    diffcoef = _diffcoef[_qp][_group];
-  return diffcoef * _grad_test[_i][_qp] *
+  return diffusionCoefficient() * computeConcentrationGradient(_u, _grad_u, _qp);
+}
+
+RealGradient
+GroupDiffusion::precomputeQpJacobian()
+{
+  return diffusionCoefficient() *
          computeConcentrationGradientDerivative(_u, _grad_u, _phi, _grad_phi, _j, _qp);
+}
+
+void
+GroupDiffusion::computeOffDiagJacobian(const unsigned int jvar)
+{
+  if (jvar == _var.number() || jvar == _temp_id)
+    KernelGrad::computeOffDiagJacobian(jvar);
 }
 
 Real

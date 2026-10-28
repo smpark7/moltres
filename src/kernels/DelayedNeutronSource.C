@@ -5,7 +5,7 @@ registerMooseObject("MoltresApp", DelayedNeutronSource);
 InputParameters
 DelayedNeutronSource::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = QpCoefficientKernel::validParams();
   params += ScalarTransportBase::validParams();
   params.addRequiredParam<unsigned int>("num_precursor_groups", "The number of precursor groups.");
   params.addCoupledVar("temperature", "The temperature used to interpolate material properties");
@@ -21,7 +21,7 @@ DelayedNeutronSource::validParams()
 }
 
 DelayedNeutronSource::DelayedNeutronSource(const InputParameters & parameters)
-  : Kernel(parameters),
+  : QpCoefficientKernel(parameters),
     ScalarTransportBase(parameters),
     _decay_constant(getMaterialProperty<std::vector<Real>>("decay_constant")),
     _d_decay_constant_d_temp(getMaterialProperty<std::vector<Real>>("d_decay_constant_d_temp")),
@@ -52,37 +52,41 @@ DelayedNeutronSource::DelayedNeutronSource(const InputParameters & parameters)
 }
 
 Real
-DelayedNeutronSource::computeQpResidual()
+DelayedNeutronSource::precomputeQpResidual()
 {
   if (_has_delayed_source)
-    return -_chi_d[_qp][_group] * _test[_i][_qp] * _delayed_source[_qp];
+    return -_chi_d[_qp][_group] * _delayed_source[_qp];
   Real r = 0;
   for (unsigned int i = 0; i < _num_precursor_groups; ++i)
     r += -_decay_constant[_qp][i] * computeConcentration((*_pre_concs[i]), _qp);
 
-  return _chi_d[_qp][_group] * _test[_i][_qp] * r;
+  return _chi_d[_qp][_group] * r;
 }
 
-Real
-DelayedNeutronSource::computeQpOffDiagJacobian(unsigned int jvar)
+bool
+DelayedNeutronSource::precomputeOffDiagCoefficients(unsigned int jvar)
 {
   if (_has_delayed_source)
-    return 0.;
-  Real jac = 0;
+    return false;
+
   for (unsigned int i = 0; i < _num_precursor_groups; ++i)
-  {
     if (jvar == _pre_ids[i])
     {
-      jac += -_test[_i][_qp] * _decay_constant[_qp][i] *
-             computeConcentrationDerivative((*_pre_concs[i]), _phi, _j, _qp);
-      break;
+      for (_qp = 0; _qp < _qrule->n_points(); _qp++)
+        _offdiag_coef[_qp] = -_chi_d[_qp][_group] * _decay_constant[_qp][i] *
+                             computeConcentrationDerivativeFactor((*_pre_concs[i]), _qp);
+      return true;
     }
-  }
 
-  if (jvar == _temp_id)
+  if (jvar != _temp_id)
+    return false;
+
+  for (_qp = 0; _qp < _qrule->n_points(); _qp++)
+  {
+    Real jac = 0;
     for (unsigned int i = 0; i < _num_precursor_groups; ++i)
-      jac += -_test[_i][_qp] * computeConcentration((*_pre_concs[i]), _qp) *
-             _d_decay_constant_d_temp[_qp][i] * _phi[_j][_qp];
-
-  return _chi_d[_qp][_group] * jac;
+      jac += -computeConcentration((*_pre_concs[i]), _qp) * _d_decay_constant_d_temp[_qp][i];
+    _offdiag_coef[_qp] = _chi_d[_qp][_group] * jac;
+  }
+  return true;
 }

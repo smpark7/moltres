@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Kernel.h"
+#include "QpCoefficientKernel.h"
 #include "ScalarTransportBase.h"
 
-class SigmaR : public Kernel, public ScalarTransportBase
+class SigmaR : public QpCoefficientKernel, public ScalarTransportBase
 {
 public:
   SigmaR(const InputParameters & parameters);
@@ -11,9 +11,9 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
+  virtual Real precomputeQpResidual() override;
+  virtual Real precomputeQpJacobian() override;
+  virtual bool precomputeOffDiagCoefficients(unsigned int jvar) override;
 
   // Group constant MaterialProperty(s)
   const MaterialProperty<std::vector<Real>> & _remxs;

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Kernel.h"
+#include "QpCoefficientKernel.h"
 #include "ScalarTransportBase.h"
 
 /**
  * Computes fission source of neutrons without normalizing by
  * \f$ 1/k \f$. Note that this kernel is meant for transients.
  */
-class CoupledFissionKernel : public Kernel, public ScalarTransportBase
+class CoupledFissionKernel : public QpCoefficientKernel, public ScalarTransportBase
 {
 public:
   CoupledFissionKernel(const InputParameters & parameters);
@@ -15,9 +15,12 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpJacobian() override;
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
+  virtual Real precomputeQpResidual() override;
+  virtual Real precomputeQpJacobian() override;
+  virtual bool precomputeOffDiagCoefficients(unsigned int jvar) override;
+
+  /// Fission spectrum factor of this group divided by the eigenvalue scaling at _qp
+  Real spectrumFactor() const;
 
   // Group constant MaterialProperty(s)
   const MaterialProperty<std::vector<Real>> & _nsf;
@@ -28,6 +31,8 @@ protected:
   const MaterialProperty<std::vector<Real>> & _d_chi_p_d_temp;
   const MaterialProperty<Real> & _beta;
   const MaterialProperty<Real> & _d_beta_d_temp;
+  /// Group-summed fission neutron rate from NeutronReactionRateMaterial, if one is present
+  const OptionalMaterialProperty<Real> & _fission_neutron_rate;
 
   /// Neutron group number
   const unsigned int _group;

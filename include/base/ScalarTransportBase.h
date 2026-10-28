@@ -30,6 +30,10 @@ public:
                                               unsigned int j,
                                               unsigned int qp);
 
+  /// Computes \f$\frac{\partial c}{\partial u}\f$, so that
+  /// \f$\frac{\partial c}{\partial u_j} = \frac{\partial c}{\partial u} \phi_j\f$
+  virtual Real computeConcentrationDerivativeFactor(const VariableValue & u, unsigned int qp);
+
   /// Computes \f$\nabla \frac{\partial c}{\partial u_j}\f$
   virtual RealVectorValue
   computeConcentrationGradientDerivative(const VariableValue & u,

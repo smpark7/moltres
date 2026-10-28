@@ -20,4 +20,27 @@
     # We loosen up the tolerance to make the test pass in parallel. Alternatively, could explore tightening some of the eigen solve tolerances
     rel_err = 1e-4
   []
+  [coupled_transient_reaction_rates]
+    type = 'Exodiff'
+    input = 'auto_diff_rho.i'
+    exodiff = 'auto_diff_rho.e'
+    cli_args = "GlobalParams/reaction_rate_fluxes='group1 group2'"
+    prereq = 'coupled_transient_scale'
+    heavy = true
+    max_time = 300
+  []
+  [coupled_eigenvalue_reaction_rates]
+    type = 'Exodiff'
+    input = 'coupled_eigenvalue.i'
+    exodiff = 'coupled_eigenvalue.e'
+    cli_args = "GlobalParams/reaction_rate_fluxes='group1 group2'"
+    prereq = 'coupled_eigenvalue'
+    rel_err = 1e-4
+  []
+  [reaction_rate_fluxes_count]
+    type = RunException
+    input = 'coupled_eigenvalue.i'
+    cli_args = "GlobalParams/reaction_rate_fluxes='group1'"
+    expect_err = "There must be one group flux variable per energy group."
+  []
 []

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Kernel.h"
+#include "QpCoefficientKernel.h"
 #include "ScalarTransportBase.h"
 
-class DelayedNeutronSource : public Kernel, public ScalarTransportBase
+class DelayedNeutronSource : public QpCoefficientKernel, public ScalarTransportBase
 {
 public:
   DelayedNeutronSource(const InputParameters & parameters);
@@ -15,8 +15,8 @@ public:
   virtual void computeJacobian() override {}
 
 protected:
-  virtual Real computeQpResidual() override;
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
+  virtual Real precomputeQpResidual() override;
+  virtual bool precomputeOffDiagCoefficients(unsigned int jvar) override;
 
   // Group constant MaterialProperty(s)
   const MaterialProperty<std::vector<Real>> & _decay_constant;

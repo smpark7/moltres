@@ -12,8 +12,17 @@ ElmIntegTotFissHeatPostprocessor::validParams()
 ElmIntegTotFissHeatPostprocessor::ElmIntegTotFissHeatPostprocessor(
     const InputParameters & parameters)
   : ElmIntegTotFissPostprocessor(parameters),
-    _fisse(getMaterialProperty<std::vector<Real>>("fisse"))
+    _fisse(getMaterialProperty<std::vector<Real>>("fisse")),
+    _fission_heat_rate(getOptionalMaterialProperty<Real>("fission_heat_rate"))
 {
+}
+
+Real
+ElmIntegTotFissHeatPostprocessor::computeQpIntegral()
+{
+  if (_fission_heat_rate)
+    return _fission_heat_rate[_qp] * _nt_scale;
+  return ElmIntegTotFissPostprocessor::computeQpIntegral();
 }
 
 Real

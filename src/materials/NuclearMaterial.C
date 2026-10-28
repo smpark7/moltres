@@ -28,6 +28,19 @@ NuclearMaterial::validParams()
                         "tabulated range. Outside the range, linear interpolation holds the values "
                         "at the end of the range, and spline and monotone_cubic interpolation "
                         "evaluate the cubic of the end interval.");
+  // Not named group_fluxes: inputs commonly set that in GlobalParams, and coupling it here would
+  // make every nuclear material require the flux variables
+  params.addCoupledVar("reaction_rate_fluxes",
+                       "The group fluxes, by decreasing energy/increasing group number. If given, "
+                       "the group-summed fission neutron rate (fission_neutron_rate), fission heat "
+                       "rate (fission_heat_rate) and in-scatter rates (inscatter_rate) are computed "
+                       "once per quadrature point, and CoupledFissionKernel, InScatter and "
+                       "ElmIntegTotFissHeatPostprocessor use them instead of summing over the "
+                       "groups themselves.");
+  params.addParam<bool>("use_exp_form",
+                        false,
+                        "Whether the group fluxes are in an exponential/logarithmic format. Must match "
+                        "the kernels' use_exp_form.");
   params.set<MooseEnum>("constant_on") = "NONE";
   // the following two lines esentially make the two parameters optional
   params.set<std::vector<std::string>>("prop_names") = std::vector<std::string>();
@@ -67,8 +80,24 @@ NuclearMaterial::NuclearMaterial(const InputParameters & parameters)
     _d_beta_eff_d_temp(declareProperty<std::vector<Real>>("d_beta_eff_d_temp")),
     _d_beta_d_temp(declareProperty<Real>("d_beta_d_temp")),
     _d_decay_constant_d_temp(declareProperty<std::vector<Real>>("d_decay_constant_d_temp")),
+    _compute_reaction_rates(isCoupled("reaction_rate_fluxes")),
+    _use_exp_form(getParam<bool>("use_exp_form")),
+    _sss2_input(getParam<bool>("sss2_input")),
     _interp_type(getParam<MooseEnum>("interp_type"))
 {
+  if (_compute_reaction_rates)
+  {
+    if (coupledComponents("reaction_rate_fluxes") != _num_groups)
+      paramError("reaction_rate_fluxes", "There must be one group flux variable per energy group.");
+    _group_fluxes.resize(_num_groups);
+    for (unsigned int i = 0; i < _num_groups; ++i)
+      _group_fluxes[i] = &coupledValue("reaction_rate_fluxes", i);
+    _conc.resize(_num_groups);
+    _fission_neutron_rate = &declareProperty<Real>("fission_neutron_rate");
+    _fission_heat_rate = &declareProperty<Real>("fission_heat_rate");
+    _inscatter_rate = &declareProperty<std::vector<Real>>("inscatter_rate");
+  }
+
   auto n = _xsec_names.size();
   for (decltype(n) j = 0; j < n; ++j)
   {
@@ -187,6 +216,53 @@ NuclearMaterial::residualSetup()
                      lower, ", ", upper, "]; the group constants are ", rule,
                      ". Further sampling above the range is not reported.");
     }
+  }
+}
+
+void
+NuclearMaterial::computeProperties()
+{
+  GenericConstantMaterial::computeProperties();
+  if (_compute_reaction_rates)
+    for (_qp = 0; _qp < _qrule->n_points(); ++_qp)
+      computeQpReactionRates();
+}
+
+void
+NuclearMaterial::computePropertiesAtQp(unsigned int qp)
+{
+  GenericConstantMaterial::computePropertiesAtQp(qp);
+  if (_compute_reaction_rates)
+    computeQpReactionRates();
+}
+
+void
+NuclearMaterial::computeQpReactionRates()
+{
+  for (unsigned int i = 0; i < _num_groups; ++i)
+    _conc[i] = _use_exp_form ? std::exp((*_group_fluxes[i])[_qp]) : (*_group_fluxes[i])[_qp];
+
+  Real fission = 0;
+  Real heat = 0;
+  for (unsigned int i = 0; i < _num_groups; ++i)
+  {
+    fission += _nsf[_qp][i] * _conc[i];
+    heat += _fisse[_qp][i] * _fissxs[_qp][i] * _conc[i];
+  }
+  (*_fission_neutron_rate)[_qp] = fission;
+  (*_fission_heat_rate)[_qp] = heat;
+
+  // gtransfxs index of g' -> g follows InScatter
+  auto & inscatter = (*_inscatter_rate)[_qp];
+  inscatter.resize(_num_groups);
+  const auto & gtransfxs = _gtransfxs[_qp];
+  for (unsigned int g = 0; g < _num_groups; ++g)
+  {
+    Real r = 0;
+    for (unsigned int i = 0; i < _num_groups; ++i)
+      if (i != g)
+        r += gtransfxs[_sss2_input ? i * _num_groups + g : i + g * _num_groups] * _conc[i];
+    inscatter[g] = r;
   }
 }
 
