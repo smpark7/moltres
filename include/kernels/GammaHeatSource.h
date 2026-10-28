@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Kernel.h"
+#include "KernelValue.h"
 
-class GammaHeatSource : public Kernel
+class GammaHeatSource : public KernelValue
 {
 public:
   GammaHeatSource(const InputParameters & parameters);
@@ -14,7 +14,7 @@ public:
   virtual void computeJacobian() override {}
 
 protected:
-  virtual Real computeQpResidual() override;
+  virtual Real precomputeQpResidual() override;
 
   const PostprocessorValue & _average_fission_heat;
   const Function & _gamma;

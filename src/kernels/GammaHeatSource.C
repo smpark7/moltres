@@ -6,7 +6,7 @@ registerMooseObject("MoltresApp", GammaHeatSource);
 InputParameters
 GammaHeatSource::validParams()
 {
-  InputParameters params = Kernel::validParams();
+  InputParameters params = KernelValue::validParams();
   params.addRequiredParam<PostprocessorName>(
       "average_fission_heat",
       "The average fission heat being generated in the fuel portion of the reactor.");
@@ -16,14 +16,14 @@ GammaHeatSource::validParams()
 }
 
 GammaHeatSource::GammaHeatSource(const InputParameters & parameters)
-  : Kernel(parameters),
+  : KernelValue(parameters),
     _average_fission_heat(getPostprocessorValue("average_fission_heat")),
     _gamma(getFunction("gamma"))
 {
 }
 
 Real
-GammaHeatSource::computeQpResidual()
+GammaHeatSource::precomputeQpResidual()
 {
-  return -_test[_i][_qp] * _average_fission_heat * _gamma.value(_t, _q_point[_qp]);
+  return -_average_fission_heat * _gamma.value(_t, _q_point[_qp]);
 }

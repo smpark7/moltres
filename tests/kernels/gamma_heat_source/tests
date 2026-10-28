@@ -1,0 +1,14 @@
+[Tests]
+  [gamma_heat_source]
+    type = CSVDiff
+    input = 'gamma_heat_source.i'
+    csvdiff = 'gamma_heat_source_out.csv'
+  []
+  [jacobian]
+    type = PetscJacobianTester
+    input = 'gamma_heat_source.i'
+    cli_args = 'Executioner/num_steps=1 Outputs/csv=false'
+    ratio_tol = 1e-7
+    difference_tol = 1e-6
+  []
+[]
